@@ -1,7 +1,8 @@
 import { Injectable } from '@angular/core';
 import { ApiProvider } from "../api/api";
 import { AuthRoutes } from "./auth.routes";
-import {UserData} from "../types/userData";
+import { UserData } from "../types/userData";
+import { Storage } from "@ionic/storage";
 
 
 /*
@@ -13,7 +14,7 @@ import {UserData} from "../types/userData";
 @Injectable()
 export class AuthProvider {
 
-  constructor(public apiProvider: ApiProvider) {
+  constructor(public apiProvider: ApiProvider, private storage: Storage) {
     console.log('Hello AuthProvider Provider');
   }
 
@@ -25,6 +26,8 @@ export class AuthProvider {
 
     this.apiProvider.post(AuthRoutes.apiLoginCheckUrl, JSON.stringify(credentials)).then((res)=> {
       console.log(res);
+
+      // Save the token
     }).catch((err) => {
       console.log(err);
     })

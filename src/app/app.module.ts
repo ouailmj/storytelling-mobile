@@ -12,6 +12,7 @@ import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { AuthProvider } from '../providers/auth/auth';
 import { ApiProvider } from '../providers/api/api';
+import { IonicStorageModule } from "@ionic/storage";
 
 @NgModule({
   declarations: [
@@ -23,7 +24,8 @@ import { ApiProvider } from '../providers/api/api';
   ],
   imports: [
     BrowserModule,
-    IonicModule.forRoot(StoryTellingApp)
+    IonicModule.forRoot(StoryTellingApp),
+    IonicStorageModule.forRoot()
   ],
   bootstrap: [IonicApp],
   entryComponents: [
