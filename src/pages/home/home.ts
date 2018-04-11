@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NavController, LoadingController, ToastController } from 'ionic-angular';
+import { NavController, LoadingController, ToastController, App } from 'ionic-angular';
 // import { ApiProvider } from "../api/api";
 // import { AuthRoutes } from "../../providers/auth.routes";
 // import { UserData } from "../types/userData";
@@ -19,8 +19,8 @@ export class HomePage {
 
   loading: any;
   loginData:UserData = {
-    username: "test",
-    password: "123456",
+    username: "",
+    password: "",
   };
   errorAuthentication=false;
   data: any;
@@ -40,7 +40,10 @@ export class HomePage {
 
   }
 
-
+  /*logout(){
+    const root = this.app.goRootnav();
+    root.popToRoot();
+  }*/
 
   goSignUpPage(){
     this.navCtrl.push(RegisterPage);

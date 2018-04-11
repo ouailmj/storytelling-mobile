@@ -1,0 +1,29 @@
+page-welcome {
+    .scroll-content {
+        overflow-x: hidden !important;
+        overflow-y: hidden !important;
+    }
+    #logo{
+        background: transparent;
+        margin-top: 90px;
+        margin-left: 100px;
+    }
+    #welcome{
+        background: #003664;
+        color: #fff;
+        text-align: center;
+        font-size: 28px;
+        font-weight: 800;
+    }
+    h1{
+        font-size: 52px;
+        margin-top: 50px;
+        color: #fff;
+    }
+    .marginTop{
+        margin-top: 120px;
+    }
+    .marginBottom{
+        margin-bottom: 20px;
+    }
+}
