@@ -13,6 +13,8 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 import { AuthProvider } from '../providers/auth/auth';
 import { ApiProvider } from '../providers/api/api';
 import { IonicStorageModule } from "@ionic/storage";
+import { HttpClientModule } from '@angular/common/http';
+import { RegisterPage } from '../pages/register/register';
 
 @NgModule({
   declarations: [
@@ -20,10 +22,12 @@ import { IonicStorageModule } from "@ionic/storage";
     AboutPage,
     ContactPage,
     HomePage,
-    TabsPage
+    TabsPage,
+    RegisterPage
   ],
   imports: [
-    BrowserModule,
+  BrowserModule,
+    HttpClientModule,
     IonicModule.forRoot(StoryTellingApp),
     IonicStorageModule.forRoot()
   ],
@@ -33,6 +37,7 @@ import { IonicStorageModule } from "@ionic/storage";
     AboutPage,
     ContactPage,
     HomePage,
+    RegisterPage,
     TabsPage
   ],
   providers: [

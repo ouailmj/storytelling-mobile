@@ -4,29 +4,43 @@
       LOGIN
     </ion-card-header>
     <ion-card-content>
+        <form [formGroup]="authForm" (ngSubmit)="doLogin(authForm.value)">
       <ion-list no-lines>
         <ion-item>
           <ion-label floating>Username</ion-label>
-          <ion-input type="text"></ion-input>
+          <ion-input type="text"  [(ngModel)]="loginData.username" formControlName="username"></ion-input>
+        </ion-item>
+        <ion-item *ngIf="authForm.controls.username.hasError('required') && authForm.controls.username.touched">
+            <p>Sorry, field username is required!</p>
         </ion-item>
         <ion-item>
           <ion-label floating>Password</ion-label>
-          <ion-input type="password"></ion-input>
+          <ion-input type="password" [(ngModel)]="loginData.password" formControlName="password"></ion-input>
+        </ion-item>
+        <ion-item *ngIf="authForm.controls.password.hasError('required') && authForm.controls.password.touched">
+            <p>Sorry, field password is required!</p>
+        </ion-item>
+        <ion-item *ngIf="">
+            <p>Sorry, incorrect username or password !</p>
         </ion-item>
         <ion-item>
-          <p>Forgot Password?<a>Get Here</a></p>
+          <p>SIGN UP ? <a (click)="goSignUpPage()">Get Here</a></p>
         </ion-item>
-        <button class="login" ion-button color="danger" block outline>Let's Go</button>
+        <ion-item>
+          <p>Forgot Password?<a >Get Here</a></p>
+        </ion-item>
+        <button class="login" ion-button color="danger" block outline  type="submit">Let's Go</button>
       </ion-list>
-      <b>OR</b>
-      <button ion-button color="primary" ion-left block>
+      </form>
+      <!-- <b>OR</b> -->
+      <!-- <button ion-button color="primary" ion-left block>
         <ion-icon name="logo-facebook"></ion-icon>
         <div>Login With Facebook</div>
       </button>
       <button ion-button color="danger" ion-left block>
         <ion-icon name="logo-google"></ion-icon>
         <div>Login With Google</div>
-      </button>
+      </button> -->
     </ion-card-content>
   </ion-card>
 </ion-content>
