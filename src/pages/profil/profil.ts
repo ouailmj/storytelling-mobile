@@ -16,6 +16,10 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 export class ProfilPage {
 
   constructor(public navCtrl: NavController, public navParams: NavParams) {
+    
+
+
+    
   }
 
   ionViewDidLoad() {

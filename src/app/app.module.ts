@@ -15,6 +15,8 @@ import { ApiProvider } from '../providers/api/api';
 import { IonicStorageModule } from "@ionic/storage";
 import { HttpClientModule } from '@angular/common/http';
 import { RegisterPage } from '../pages/register/register';
+import { ProfilPage } from '../pages/profil/profil';
+import { ProfilproviderProvider } from '../providers/profilprovider/profilprovider';
 
 @NgModule({
   declarations: [
@@ -23,10 +25,11 @@ import { RegisterPage } from '../pages/register/register';
     ContactPage,
     HomePage,
     TabsPage,
-    RegisterPage
+    RegisterPage,
+    ProfilPage
   ],
   imports: [
-  BrowserModule,
+BrowserModule,
     HttpClientModule,
     IonicModule.forRoot(StoryTellingApp),
     IonicStorageModule.forRoot()
@@ -38,14 +41,16 @@ import { RegisterPage } from '../pages/register/register';
     ContactPage,
     HomePage,
     RegisterPage,
-    TabsPage
+    TabsPage,
+    ProfilPage
   ],
   providers: [
     StatusBar,
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     AuthProvider,
-    ApiProvider
+    ApiProvider,
+    ProfilproviderProvider
   ]
 })
 export class AppModule {}

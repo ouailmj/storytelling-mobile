@@ -9,6 +9,7 @@ import { UserData } from '../../providers/types/userData';
 import { RegisterPage } from '../register/register';
 import { Storage } from '@ionic/storage';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { ProfilPage } from '../profil/profil';
 
 
 @Component({
@@ -50,24 +51,26 @@ export class HomePage {
   doLogin(value : any) {
 
     // this.navCtrl.push(RegisterPage);
-    
 
   if(this.authForm.valid) {
+
 
     this.showLoader();
       this.authService.login(this.loginData)
       .then((result) => {
-        this.loading.dismiss();
         
         result.json().then((data)=>{
-             
+
+          this.loading.dismiss();
 
               if(data.token){
 
+                this.navCtrl.push(ProfilPage);
                 console.log(data.token);
 
               }else{
 
+                this.presentToast("incorrect username or password !");
                 console.log("is null");
 
               }
@@ -93,6 +96,7 @@ export class HomePage {
      
       });
 
+    
     }
   }
 
