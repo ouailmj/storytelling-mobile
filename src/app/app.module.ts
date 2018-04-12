@@ -16,6 +16,7 @@ import { ApiProvider } from '../providers/api/api';
 import { IonicStorageModule } from "@ionic/storage";
 import { HttpClientModule } from '@angular/common/http';
 import { RegisterPage } from '../pages/register/register';
+import { ProfilPage } from '../pages/profil/profil';
 
 @NgModule({
   declarations: [
@@ -25,7 +26,8 @@ import { RegisterPage } from '../pages/register/register';
     HomePage,
     TabsPage,
     RegisterPage,
-    WelcomePage
+    WelcomePage,
+    ProfilPage
   ],
   imports: [
   BrowserModule,
@@ -41,7 +43,8 @@ import { RegisterPage } from '../pages/register/register';
     HomePage,
     RegisterPage,
     TabsPage,
-    WelcomePage
+    WelcomePage,
+    ProfilPage
   ],
   providers: [
     StatusBar,

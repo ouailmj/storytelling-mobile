@@ -9,6 +9,7 @@ import { UserData } from '../../providers/types/userData';
 import { RegisterPage } from '../register/register';
 import { Storage } from '@ionic/storage';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { ProfilPage } from '../profil/profil';
 
 
 @Component({
@@ -64,6 +65,7 @@ export class HomePage {
         
         result.json().then((data)=>{
              
+          console.log(data)
 
               if(data.token){
 
@@ -105,6 +107,16 @@ export class HomePage {
     });
 
     this.loading.present();
+  }
+
+  signup(){
+    this.navCtrl.push(RegisterPage);
+  }
+
+  connect(){
+
+    this.navCtrl.push(ProfilPage);
+    
   }
 
   presentToast(msg) {

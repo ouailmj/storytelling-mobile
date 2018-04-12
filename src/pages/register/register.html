@@ -1,32 +1,33 @@
-<!--
-  Generated template for the RegisterPage page.
+<ion-content padding>
+    <h1>Enregistrement</h1>
+    <ion-icon class="user-icon" name="person" item-start></ion-icon>
+      <form class="marginTop" [formGroup]="authForm" (ngSubmit)="onSubmit(authForm.value)">
+    
+      <div class="wrap-input100 validate-input" data-validate = "Valid email is required: ex@abc.xyz">
+        <input class="input100" type="text"formControlName="username" placeholder="Pseudo">
+        <span class="focus-input100"></span>
+        <span class="symbol-input100">
+          <ion-icon class="symbol-input100" name="person" item-start></ion-icon>
+        </span>
+      </div>
+    
 
-  See http://ionicframework.com/docs/components/#navigation for more info on
-  Ionic pages and navigation.
--->
-<ion-content padding class="background">
-      <ion-list no-lines>
-         
-        
-        <form [formGroup]="authForm" (ngSubmit)="onSubmit(authForm.value)">
-          <ion-item>
-              <ion-label floating>Username</ion-label>
-              <ion-input formControlName="username" type="text"></ion-input>
-          </ion-item>
-          <ion-item>
-            <ion-label floating>Email</ion-label>
-            <ion-input formControlName="email" type="email"></ion-input>
-        </ion-item>    
-          <ion-item>
-              <ion-label floating>Password</ion-label>
-              <ion-input formControlName="password" type="password"></ion-input>
-          </ion-item>
-          <ion-item>
-            <ion-label floating>confirmPassword</ion-label>
-            <ion-input formControlName="confirmPassword" type="password"></ion-input>
-        </ion-item>
-          <!-- <button ion-button full color="primary" [disabled]="!authForm.valid" style="margin-top: 20px;" type="submit">Authorize</button>  -->
-          <button type="submit" class="signUp" ion-button color="danger" block outline  [disabled]="!authForm.valid" >Sign up</button> 
+      <div class="wrap-input100 validate-input" data-validate = "Valid email is required: ex@abc.xyz">
+          <input class="input100" type="email" formControlName="email" placeholder="email">
+          <span class="focus-input100"></span>
+          <span class="symbol-input100">
+            <ion-icon class="symbol-input100" name="mail" item-start></ion-icon>
+          </span>
+        </div>
+    
+      <div class="wrap-input100 validate-input" data-validate = "Valid email is required: ex@abc.xyz">
+          <input class="input100" type="password" formControlName="confirmPassword" placeholder="Password">
+          <span class="focus-input100"></span>
+          <span class="symbol-input100">
+            <ion-icon class="symbol-input100" name="key" item-start></ion-icon>
+          </span>
+        </div>
+        <button ion-button block class="signup login100-form-btn" type="submit">Sign Up</button>
       </form>
-      </ion-list>
-</ion-content>
+      <h6><a (click)="login()">already have account</a></h6>
+  </ion-content>

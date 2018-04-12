@@ -24,8 +24,8 @@ export class AuthProvider {
     const loginPath = 'http://localhost:8000/api/login_check';
 
     const formData = new FormData();
-    formData.append("_username",userData.username );
-    formData.append("_password", userData.password);
+    formData.append("_username","admin");//userData.username );
+    formData.append("_password", "f%/R4Uk#](wUvM'V");//userData.password);
 
   return  fetch(loginPath, {
       method: 'POST',

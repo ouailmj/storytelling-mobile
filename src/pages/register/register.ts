@@ -3,6 +3,7 @@ import { NavController, NavParams, LoadingController, ToastController } from 'io
 import { AuthProvider } from '../../providers/auth/auth';
 import { UserRegister } from '../../providers/types/userData';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import {HomePage} from "../home/home";
 
 /**
  * Generated class for the RegisterPage page.
@@ -46,6 +47,10 @@ export class RegisterPage {
         };
       }
     }
+  }
+
+  login(){
+    this.navCtrl.push(HomePage);
   }
 
   onSubmit(value: any): void { 
