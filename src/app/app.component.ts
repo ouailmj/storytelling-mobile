@@ -19,4 +19,5 @@ export class StoryTellingApp {
       splashScreen.hide();
     });
   }
+  
 }

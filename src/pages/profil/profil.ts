@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import {WelcomePage} from '../welcome/welcome'
 
 /**
  * Generated class for the ProfilPage page.
@@ -22,4 +23,5 @@ export class ProfilPage {
     console.log('ionViewDidLoad ProfilPage');
   }
 
+  
 }

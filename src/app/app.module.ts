@@ -17,6 +17,7 @@ import { IonicStorageModule } from "@ionic/storage";
 import { HttpClientModule } from '@angular/common/http';
 import { RegisterPage } from '../pages/register/register';
 import { ProfilPage } from '../pages/profil/profil';
+import { MailCheckPage } from '../pages/mail-check/mail-check';
 
 @NgModule({
   declarations: [
@@ -27,7 +28,8 @@ import { ProfilPage } from '../pages/profil/profil';
     TabsPage,
     RegisterPage,
     WelcomePage,
-    ProfilPage
+    ProfilPage,
+    MailCheckPage
   ],
   imports: [
   BrowserModule,
@@ -44,7 +46,8 @@ import { ProfilPage } from '../pages/profil/profil';
     RegisterPage,
     TabsPage,
     WelcomePage,
-    ProfilPage
+    ProfilPage,
+    MailCheckPage
   ],
   providers: [
     StatusBar,

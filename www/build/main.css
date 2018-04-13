@@ -27982,6 +27982,15 @@ ion-navbar.toolbar {
   padding-top: 20px;
 }
 
+ion-list ion-item {
+  margin-bottom: 30px !important;
+}
+
+.scroll-content {
+  overflow-x: hidden !important;
+  overflow-y: hidden !important;
+}
+
 page-home {
   /*------------------------------------------------------------------
           [ Focus ]*/
@@ -28105,6 +28114,35 @@ page-home .login100-form-btn {
   transition: all 0.4s;
 }
 
+page-mail-check ion-content {
+  text-align: center;
+  padding-top: 80px;
+}
+
+page-mail-check .check-mail {
+  margin-top: 80px !important;
+}
+
+page-mail-check .check-mail h1 {
+  text-transform: uppercase;
+  color: #3a7979;
+}
+
+page-mail-check .check-mail ion-icon {
+  font-size: 120px;
+  color: #3a7979;
+}
+
+page-mail-check .check-mail p {
+  font-size: 18px;
+}
+
+page-mail-check .check-mail h6 {
+  position: absolute;
+  bottom: 0;
+  left: 40%;
+}
+
 page-profil {
   /*------------------------------------------------------------------
       [ Focus ]*/
@@ -28178,6 +28216,14 @@ page-profil .login100-form-btn {
   transition: all 0.4s;
 }
 
+page-profil hr {
+  border: 2px solid #eee;
+}
+
+page-profil ion-select {
+  background: transparent;
+}
+
 page-profil .focus-input100 {
   display: block;
   position: absolute;
@@ -28223,6 +28269,14 @@ page-profil .symbol-input100 {
 page-profil .input100:focus + .focus-input100 + .symbol-input100 {
   color: #57b846;
   padding-left: 28px;
+}
+
+page-profil .menu-btn {
+  background: transparent;
+}
+
+page-profil .menu-btn ion-icon {
+  color: green;
 }
 
 page-register {
