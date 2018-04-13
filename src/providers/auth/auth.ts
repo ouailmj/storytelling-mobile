@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
 import { ApiProvider } from "../api/api";
 import { AuthRoutes } from "./auth.routes";
-import { UserData } from "../types/userData";
-import { Storage } from "@ionic/storage";
+import { UserData, UserRegister } from "../types/userData";
+
 
 
 /*
@@ -14,23 +14,55 @@ import { Storage } from "@ionic/storage";
 @Injectable()
 export class AuthProvider {
 
-  constructor(public apiProvider: ApiProvider, private storage: Storage) {
+  constructor(public apiProvider: ApiProvider) {
     console.log('Hello AuthProvider Provider');
   }
 
-  login(userData: UserData) {
+  login(userData: UserData):Promise<Response> {
+    
+
+    const loginPath = 'http://localhost:8000/api/login_check';
+
+    const formData = new FormData();
+    formData.append("_username","admin");//userData.username );
+    formData.append("_password", "f%/R4Uk#](wUvM'V");//userData.password);
+
+  return  fetch(loginPath, {
+      method: 'POST',
+      body: formData
+    });
+
+  }
+
+  register(userData: UserRegister): Promise<any> {
+
     const credentials = {
-      _username: userData.username,
-      _password: userData.password,
+      "username": userData.username,
+      "email": userData.email,
+      "password":userData.password
     };
 
-    this.apiProvider.post(AuthRoutes.apiLoginCheckUrl, JSON.stringify(credentials)).then((res)=> {
-      console.log(res);
 
-      // Save the token
-    }).catch((err) => {
-      console.log(err);
-    })
-    ;
+    // let headers = new Headers();
+    // headers.append('Content-Type','application/ld+json');
+    // let options = new RequestOptions({ headers:headers});
+       
+   return this.apiProvider.post(AuthRoutes.apiReg, credentials);
   }
+
+  // login(userData: UserData) {
+  //   const credentials = {
+  //     _username: userData.username,
+  //     _password: userData.password,
+  //   };
+
+  //   this.apiProvider.post(AuthRoutes.apiLoginCheckUrl, JSON.stringify(credentials)).then((res)=> {
+  //     console.log(res);
+
+  //     // Save the token
+  //   }).catch((err) => {
+  //     console.log(err);
+  //   })
+  //   ;
+  // }
 }

@@ -7,12 +7,17 @@ import { AboutPage } from '../pages/about/about';
 import { ContactPage } from '../pages/contact/contact';
 import { HomePage } from '../pages/home/home';
 import { TabsPage } from '../pages/tabs/tabs';
+import { WelcomePage } from '../pages/welcome/welcome';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { AuthProvider } from '../providers/auth/auth';
 import { ApiProvider } from '../providers/api/api';
 import { IonicStorageModule } from "@ionic/storage";
+import { HttpClientModule } from '@angular/common/http';
+import { RegisterPage } from '../pages/register/register';
+import { ProfilPage } from '../pages/profil/profil';
+import { MailCheckPage } from '../pages/mail-check/mail-check';
 
 @NgModule({
   declarations: [
@@ -20,10 +25,15 @@ import { IonicStorageModule } from "@ionic/storage";
     AboutPage,
     ContactPage,
     HomePage,
-    TabsPage
+    TabsPage,
+    RegisterPage,
+    WelcomePage,
+    ProfilPage,
+    MailCheckPage
   ],
   imports: [
-    BrowserModule,
+  BrowserModule,
+    HttpClientModule,
     IonicModule.forRoot(StoryTellingApp),
     IonicStorageModule.forRoot()
   ],
@@ -33,7 +43,11 @@ import { IonicStorageModule } from "@ionic/storage";
     AboutPage,
     ContactPage,
     HomePage,
-    TabsPage
+    RegisterPage,
+    TabsPage,
+    WelcomePage,
+    ProfilPage,
+    MailCheckPage
   ],
   providers: [
     StatusBar,

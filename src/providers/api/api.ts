@@ -35,6 +35,7 @@ export class ApiProvider {
   }
 
   post(url: string, body: any, options?: any): Promise<any> {
+    
     return new Promise(((resolve, reject) => {
       this.http.post(ApiProvider.getFullUrl(url), body, options)
         .subscribe((res)=> {
@@ -56,4 +57,5 @@ export class ApiProvider {
   patch(url: string, body: any, options?: any): Observable<any> {
     return this.http.patch(ApiProvider.getFullUrl(url), body, options);
   }
+  
 }

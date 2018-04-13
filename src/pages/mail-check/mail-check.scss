@@ -1,0 +1,26 @@
+page-mail-check {
+    ion-content{
+        text-align: center;
+        padding-top: 80px;
+    }
+
+    .check-mail{
+        margin-top:80px !important;
+    }
+    .check-mail h1{
+        text-transform: uppercase;
+        color: rgb(58, 121, 121);
+    }
+    .check-mail ion-icon{
+        font-size: 120px;
+        color: rgb(58, 121, 121);
+    }
+    .check-mail p{
+        font-size: 18px;
+    }
+    .check-mail h6{
+        position: absolute;
+        bottom: 0;
+        left:40%;
+    }
+}

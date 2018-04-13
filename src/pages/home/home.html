@@ -1,17 +1,25 @@
-<ion-header>
-  <ion-navbar>
-    <ion-title>Home</ion-title>
-  </ion-navbar>
-</ion-header>
-
 <ion-content padding>
-  <h2>Welcome to Ionic!</h2>
-  <p>
-    This starter project comes with simple tabs-based layout for apps
-    that are going to primarily use a Tabbed UI.
-  </p>
-  <p>
-    Take a look at the <code>src/pages/</code> directory to add or change tabs,
-    update any existing page or create new pages.
-  </p>
+<h1>Espace de connexion</h1>
+<ion-icon class="user-icon" name="contact" item-start></ion-icon>
+  <form class="marginTop" [formGroup]="authForm" (ngSubmit)="doLogin(authForm.value)">
+
+  <div class="wrap-input100 validate-input" data-validate = "Valid email is required: ex@abc.xyz">
+    <input class="input100" type="text" formControlName="username" placeholder="Pseudo">
+    <span class="focus-input100"></span>
+    <span class="symbol-input100">
+      <ion-icon class="symbol-input100" name="person" item-start></ion-icon>
+    </span>
+  </div>
+
+
+  <div class="wrap-input100 validate-input" data-validate = "Valid email is required: ex@abc.xyz">
+      <input class="input100" type="password" formControlName="password" placeholder="Password">
+      <span class="focus-input100"></span>
+      <span class="symbol-input100">
+        <ion-icon class="symbol-input100" name="key" item-start></ion-icon>
+      </span>
+    </div>
+    <button (click)="connect()" ion-button block class="login100-form-btn" type="submit">Login</button>
+  </form>
+  <h6><a (click)="signup()" >I don't have account</a></h6>
 </ion-content>
