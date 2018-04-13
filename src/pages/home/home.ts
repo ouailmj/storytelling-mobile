@@ -1,15 +1,12 @@
 import { Component } from '@angular/core';
 import { NavController, LoadingController, ToastController } from 'ionic-angular';
-// import { ApiProvider } from "../api/api";
-// import { AuthRoutes } from "../../providers/auth.routes";
-// import { UserData } from "../types/userData";
-// import { Storage } from "@ionic/storage";
 import { AuthProvider } from '../../providers/auth/auth';
 import { UserData } from '../../providers/types/userData';
 import { RegisterPage } from '../register/register';
 import { Storage } from '@ionic/storage';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { ProfilPage } from '../profil/profil';
+
 
 
 @Component({
@@ -20,8 +17,8 @@ export class HomePage {
 
   loading: any;
   loginData:UserData = {
-    username: "test",
-    password: "123456",
+    username: "",
+    password: "",
   };
   errorAuthentication=false;
   data: any;
@@ -41,7 +38,10 @@ export class HomePage {
 
   }
 
-
+  /*logout(){
+    const root = this.app.goRootnav();
+    root.popToRoot();
+  }*/
 
   goSignUpPage(){
     this.navCtrl.push(RegisterPage);
@@ -52,49 +52,68 @@ export class HomePage {
 
     // this.navCtrl.push(RegisterPage);
 
+   
+
   if(this.authForm.valid) {
 
-
     this.showLoader();
-      this.authService.login(this.loginData)
-      .then((result) => {
+
+    this.authService.login(this.loginData).then((result) => {
+
+            this.storage.set('token', result.token);
+
         
-        result.json().then((data)=>{
+           this.authService.getUserProfil().then(res=>{
+               this.loading.dismiss();
+               this.navCtrl.push(ProfilPage);
+          })
 
-          this.loading.dismiss();
+    }
+    ).catch(err=>{
 
-              if(data.token){
-
-                this.navCtrl.push(ProfilPage);
-                console.log(data.token);
-
-              }else{
-
-                this.presentToast("incorrect username or password !");
-                console.log("is null");
-
-              }
+      this.loading.dismiss();
+      this.presentToast("incorrect username or password !");
+    });
 
 
-              this.storage.set('token', data.token);
+    // this.showLoader();
+    //   this.authService.login(this.loginData)
+    //   .then((result) => {
+        
+    //     result.json().then((data)=>{
 
-              this.storage.get('token').then((val) => {
-                console.log('Your token is', val);
-              });
+    //       this.loading.dismiss();
 
-        });
+    //           if(data.token){
+
+    //             console.log(data.token);
+
+    //           }else{
+
+    //            
+    //             console.log("is null");
+
+    //           }
+
+
+
+    //           this.storage.get('token').then((val) => {
+    //             console.log('Your token is', val);
+    //           });
+
+    //     });
         
         // console.log(this.data)
         // localStorage.setItem('token', this.data.access_token);
         // this.navCtrl.setRoot(TabsPage);
 
-      }, (err) => {
+      // }, (err) => {
      
-        this.loading.dismiss();
+      //   this.loading.dismiss();
      
-        console.log(err);
+      //   console.log(err);
      
-      });
+      // });
 
     
     }
@@ -106,6 +125,16 @@ export class HomePage {
     });
 
     this.loading.present();
+  }
+
+  signup(){
+    this.navCtrl.push(RegisterPage);
+  }
+
+  connect(){
+
+    // this.navCtrl.push(ProfilPage);
+    
   }
 
   presentToast(msg) {

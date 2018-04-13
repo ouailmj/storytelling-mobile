@@ -2,7 +2,8 @@ import { Injectable } from '@angular/core';
 import { ApiProvider } from "../api/api";
 import { AuthRoutes } from "./auth.routes";
 import { UserData, UserRegister } from "../types/userData";
-
+import {  HttpHeaders } from '@angular/common/http';
+import { Storage } from '@ionic/storage';
 
 
 /*
@@ -14,25 +15,52 @@ import { UserData, UserRegister } from "../types/userData";
 @Injectable()
 export class AuthProvider {
 
-  constructor(public apiProvider: ApiProvider) {
+  constructor(public apiProvider: ApiProvider,private storage: Storage) {
     console.log('Hello AuthProvider Provider');
   }
 
-  login(userData: UserData):Promise<Response> {
+  login(userData: UserData): Promise<any> {
     
 
     const loginPath = 'http://localhost:8000/api/login_check';
-
+    
     const formData = new FormData();
-    formData.append("_username",userData.username );
-    formData.append("_password", userData.password);
+    formData.append("_username",userData.username);
+    formData.append("_password",userData.password);
 
-  return  fetch(loginPath, {
-      method: 'POST',
-      body: formData
-    });
+
+
+     return new Promise((resolve, reject) => {
+
+        fetch(loginPath, {
+          method: 'POST',
+          body: formData
+        })
+        .then(this.handleErrors)
+        .then(response =>{
+          response.json().then(result=>{
+             
+          resolve(result);
+
+         }).catch(err=>{
+            reject(err)
+        });
+        }).catch(err=>{
+          reject(err)
+        });
+
+    
+     
+    })
 
   }
+
+  handleErrors(response) {
+    if (!response.ok) {
+        throw Error(response.statusText);
+    }
+    return response;
+}
 
   register(userData: UserRegister): Promise<any> {
 
@@ -43,9 +71,7 @@ export class AuthProvider {
     };
 
 
-    // let headers = new Headers();
-    // headers.append('Content-Type','application/ld+json');
-    // let options = new RequestOptions({ headers:headers});
+    
        
    return this.apiProvider.post(AuthRoutes.apiReg, credentials);
   }
@@ -65,4 +91,46 @@ export class AuthProvider {
   //   })
   //   ;
   // }
+
+
+  getUserProfil(): Promise<any>{
+
+
+   
+  return new Promise((resolve, reject) => {
+
+
+      this.storage.get('token').then(tok=>{
+
+      let headers = new HttpHeaders();
+    
+      headers = headers.set('Content-Type', 'application/json; charset=utf-8');
+      headers = headers.set('Authorization', 'Bearer ' + tok);
+
+      this.apiProvider.get('/api/current-user',{headers: headers}).then(rep=>{
+
+           this.storage.set('user', rep);
+
+            resolve("ok");
+          
+          }).catch(error=>{
+
+            reject(error);
+
+          })
+      }).catch(error=>{
+
+        reject('erro');
+      })
+
+  
+})
+
+    
+
+   
+    
+  }
+
+
 }

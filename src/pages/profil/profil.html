@@ -1,0 +1,63 @@
+<ion-content padding>
+  
+  
+    <form>
+        <div class="cover" align="center">
+          <img class="profile-image" src="assets/imgs/profile.png">
+            <h4>Mohamed Ahamada</h4>
+        </div>
+      <ion-list>
+        <div class="wrap-input100 validate-input" data-validate = "Valid email is required: ex@abc.xyz">
+            <input class="input100" type="text" placeholder="Full Name" [(ngModel)]="user.fullName" name="fullName">
+            <span class="focus-input100"></span>
+            <span class="symbol-input100">
+              <ion-icon class="symbol-input100" name="person" item-start></ion-icon>
+            </span>
+          </div>
+
+          <div class="wrap-input100 validate-input" data-validate = "Valid email is required: ex@abc.xyz">
+              <input class="input100" type="text" placeholder="Pseudo" [(ngModel)]="user.username" name="username">
+              <span class="focus-input100"></span>
+              <span class="symbol-input100">
+                <ion-icon class="symbol-input100" name="contact" item-start></ion-icon>
+              </span>
+          </div>
+
+          <div class="wrap-input100 validate-input" data-validate = "Valid email is required: ex@abc.xyz">
+              <input class="input100" type="text" placeholder="Email" [(ngModel)]="user.email" name="email">
+              <span class="focus-input100"></span>
+              <span class="symbol-input100">
+                <ion-icon class="symbol-input100" name="mail" item-start></ion-icon>
+              </span>
+          </div>
+
+          <div class="wrap-input100 validate-input" data-validate = "Valid email is required: ex@abc.xyz">
+              <input class="input100" type="text" placeholder="Phone Number" [(ngModel)]="user.phoneNumber" name="phoneNumber">
+              <span class="focus-input100"></span>
+              <span class="symbol-input100">
+                <ion-icon class="symbol-input100" name="call" item-start></ion-icon>
+              </span>
+          </div>
+
+          <div class="wrap-input100 validate-input" data-validate = "Valid email is required: ex@abc.xyz">
+              <input class="input100" type="text" placeholder="TimeZone" [(ngModel)]="user.timezoneId" name="timezone">
+              <span class="focus-input100"></span>
+              <span class="symbol-input100">
+                <ion-icon class="symbol-input100" name="globe" item-start></ion-icon>
+              </span>
+          </div>
+
+          <div class="wrap-input100 validate-input" data-validate = "Valid email is required: ex@abc.xyz">
+              <input class="input100" type="password" placeholder="Password" >
+              <span class="focus-input100"></span>
+              <span class="symbol-input100">
+                <ion-icon class="symbol-input100" name="key" item-start></ion-icon>
+              </span>
+          </div>
+
+        
+      </ion-list>
+      <button ion-button block class="login100-form-btn marginTop signup" color="primary" (click)="signup()">Save</button>
+      <button ion-button block class="login100-form-btn dlt-btn">Delete Account</button>
+  </form>
+  </ion-content>

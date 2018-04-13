@@ -1,46 +1,24 @@
-<ion-content padding class="background">
-  <ion-card>
-    <ion-card-header>
-      LOGIN
-    </ion-card-header>
-    <ion-card-content>
-        <form [formGroup]="authForm" (ngSubmit)="doLogin(authForm.value)">
-      <ion-list no-lines>
-        <ion-item>
-          <ion-label floating>Username</ion-label>
-          <ion-input type="text"  [(ngModel)]="loginData.username" formControlName="username"></ion-input>
-        </ion-item>
-        <ion-item *ngIf="authForm.controls.username.hasError('required') && authForm.controls.username.touched">
-            <p>Sorry, field username is required!</p>
-        </ion-item>
-        <ion-item>
-          <ion-label floating>Password</ion-label>
-          <ion-input type="password" [(ngModel)]="loginData.password" formControlName="password"></ion-input>
-        </ion-item>
-        <ion-item *ngIf="authForm.controls.password.hasError('required') && authForm.controls.password.touched">
-            <p>Sorry, field password is required!</p>
-        </ion-item>
-        <ion-item *ngIf="">
-            <p>Sorry, incorrect username or password !</p>
-        </ion-item>
-        <ion-item>
-          <p>SIGN UP ? <a (click)="goSignUpPage()">Get Here</a></p>
-        </ion-item>
-        <ion-item>
-          <p>Forgot Password?<a >Get Here</a></p>
-        </ion-item>
-        <button class="login" ion-button color="danger" block outline  type="submit">Let's Go</button>
-      </ion-list>
-      </form>
-      <!-- <b>OR</b> -->
-      <!-- <button ion-button color="primary" ion-left block>
-        <ion-icon name="logo-facebook"></ion-icon>
-        <div>Login With Facebook</div>
-      </button>
-      <button ion-button color="danger" ion-left block>
-        <ion-icon name="logo-google"></ion-icon>
-        <div>Login With Google</div>
-      </button> -->
-    </ion-card-content>
-  </ion-card>
+<ion-content padding>
+<h1>Espace de connexion</h1>
+<ion-icon class="user-icon" name="contact" item-start></ion-icon>
+  <form class="marginTop" [formGroup]="authForm" (ngSubmit)="doLogin(authForm.value)">
+
+  <div class="wrap-input100 validate-input" data-validate = "Valid email is required: ex@abc.xyz">
+    <input class="input100" type="text"  formControlName="username" placeholder="Pseudo" [(ngModel)]="loginData.username" >
+    <span class="focus-input100"></span>
+    <span class="symbol-input100">
+      <ion-icon class="symbol-input100" name="person" item-start></ion-icon>
+    </span>
+  </div>
+
+  <div class="wrap-input100 validate-input" data-validate = "Valid email is required: ex@abc.xyz">
+      <input class="input100" type="password" formControlName="password" placeholder="Password" [(ngModel)]="loginData.password">
+      <span class="focus-input100"></span>
+      <span class="symbol-input100">
+        <ion-icon class="symbol-input100" name="key" item-start></ion-icon>
+      </span>
+    </div>
+    <button ion-button block class="login100-form-btn" type="submit">Login</button>
+  </form>
+  <h6><a (click)="connect()">I don't have account</a></h6>
 </ion-content>

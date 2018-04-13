@@ -7,6 +7,7 @@ import { AboutPage } from '../pages/about/about';
 import { ContactPage } from '../pages/contact/contact';
 import { HomePage } from '../pages/home/home';
 import { TabsPage } from '../pages/tabs/tabs';
+import { WelcomePage } from '../pages/welcome/welcome';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
@@ -15,8 +16,11 @@ import { ApiProvider } from '../providers/api/api';
 import { IonicStorageModule } from "@ionic/storage";
 import { HttpClientModule } from '@angular/common/http';
 import { RegisterPage } from '../pages/register/register';
-import { ProfilPage } from '../pages/profil/profil';
+
 import { ProfilproviderProvider } from '../providers/profilprovider/profilprovider';
+import { ProfilPage } from '../pages/profil/profil';
+import { UserProvider } from '../providers/user/user';
+
 
 @NgModule({
   declarations: [
@@ -26,7 +30,9 @@ import { ProfilproviderProvider } from '../providers/profilprovider/profilprovid
     HomePage,
     TabsPage,
     RegisterPage,
-    ProfilPage
+    ProfilPage,
+    WelcomePage
+
   ],
   imports: [
 BrowserModule,
@@ -42,7 +48,8 @@ BrowserModule,
     HomePage,
     RegisterPage,
     TabsPage,
-    ProfilPage
+    ProfilPage,
+    WelcomePage
   ],
   providers: [
     StatusBar,
@@ -50,7 +57,8 @@ BrowserModule,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     AuthProvider,
     ApiProvider,
-    ProfilproviderProvider
+    ProfilproviderProvider,
+    UserProvider
   ]
 })
 export class AppModule {}
