@@ -17,8 +17,8 @@ export class HomePage {
 
   loading: any;
   loginData:UserData = {
-    username: "",
-    password: "",
+    username: "sehtot",
+    password: "12345678",
   };
   errorAuthentication=false;
   data: any;
@@ -50,73 +50,35 @@ export class HomePage {
 
   doLogin(value : any) {
 
-    // this.navCtrl.push(RegisterPage);
+        if(this.authForm.valid) {
 
-   
+          this.showLoader();
 
-  if(this.authForm.valid) {
-
-    this.showLoader();
-
-    this.authService.login(this.loginData).then((result) => {
-
-            this.storage.set('token', result.token);
-
-        
-           this.authService.getUserProfil().then(res=>{
-               this.loading.dismiss();
-               this.navCtrl.push(ProfilPage);
-          })
-
-    }
-    ).catch(err=>{
-
-      this.loading.dismiss();
-      this.presentToast("incorrect username or password !");
-    });
+          this.authService.login(this.loginData).then((result) => {
 
 
-    // this.showLoader();
-    //   this.authService.login(this.loginData)
-    //   .then((result) => {
-        
-    //     result.json().then((data)=>{
+                  this.storage.set('token', result.token);
 
-    //       this.loading.dismiss();
+                  console.log(result.token);
+                      
+                      this.loading.dismiss();
+                      
+                      this.authService.getUserProfil().then(res=>{
+                      
+                        this.navCtrl.push(ProfilPage);
+                      
+                      })
+                      
+          }
+          ).catch(err=>{
 
-    //           if(data.token){
+            this.loading.dismiss();
+            this.presentToast("incorrect username or password !!");
+          });
 
-    //             console.log(data.token);
-
-    //           }else{
-
-    //            
-    //             console.log("is null");
-
-    //           }
+          }
 
 
-
-    //           this.storage.get('token').then((val) => {
-    //             console.log('Your token is', val);
-    //           });
-
-    //     });
-        
-        // console.log(this.data)
-        // localStorage.setItem('token', this.data.access_token);
-        // this.navCtrl.setRoot(TabsPage);
-
-      // }, (err) => {
-     
-      //   this.loading.dismiss();
-     
-      //   console.log(err);
-     
-      // });
-
-    
-    }
   }
 
   showLoader(){
@@ -129,12 +91,6 @@ export class HomePage {
 
   signup(){
     this.navCtrl.push(RegisterPage);
-  }
-
-  connect(){
-
-    // this.navCtrl.push(ProfilPage);
-    
   }
 
   presentToast(msg) {

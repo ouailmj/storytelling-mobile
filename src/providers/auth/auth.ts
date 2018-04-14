@@ -29,6 +29,8 @@ export class AuthProvider {
     formData.append("_password",userData.password);
 
 
+    
+    
 
      return new Promise((resolve, reject) => {
 
@@ -92,6 +94,53 @@ export class AuthProvider {
   //   ;
   // }
 
+  setUserProfil(){
+    
+  }
+
+  updateUser(userdata:UserData){
+
+
+    const credentials = {
+      "username": userdata.username,
+      "fullName": userdata.fullName,
+      "email": userdata.email,
+      "phoneNumber": userdata.phoneNumber,
+      "timeZone": userdata.timezoneId,
+      "password": userdata.password
+    };
+
+    return new Promise((resolve, reject) => {
+
+
+          this.storage.get('token').then(tok=>{
+
+            console.log("update user token is ===> ",tok)
+
+          let headers = new HttpHeaders();
+        
+          headers = headers.set('Content-Type', 'application/json; charset=utf-8');
+          headers = headers.set('Authorization', 'Bearer ' + tok);
+
+          this.apiProvider.post('/api/me/change-profile',credentials,{headers: headers}).then(rep=>{
+
+              this.storage.set('token', rep.token);
+
+                resolve("ok");
+              
+              }).catch(error=>{
+
+                reject(error);
+                
+              })
+          }).catch(error => {
+            console.log(error.status);
+          });
+
+      
+      })
+      
+  }
 
   getUserProfil(): Promise<any>{
 
@@ -116,7 +165,7 @@ export class AuthProvider {
           }).catch(error=>{
 
             reject(error);
-
+            
           })
       }).catch(error=>{
 
@@ -124,12 +173,8 @@ export class AuthProvider {
       })
 
   
-})
+  })
 
-    
-
-   
-    
   }
 
 
