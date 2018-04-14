@@ -21,7 +21,8 @@ import { ProfilproviderProvider } from '../providers/profilprovider/profilprovid
 import { ProfilPage } from '../pages/profil/profil';
 import { UserProvider } from '../providers/user/user';
 
-
+import { MailCheckPage } from '../pages/mail-check/mail-check';
+ 
 @NgModule({
   declarations: [
     StoryTellingApp,
@@ -30,9 +31,9 @@ import { UserProvider } from '../providers/user/user';
     HomePage,
     TabsPage,
     RegisterPage,
+    WelcomePage,
     ProfilPage,
-    WelcomePage
-
+    MailCheckPage
   ],
   imports: [
 BrowserModule,
@@ -48,8 +49,9 @@ BrowserModule,
     HomePage,
     RegisterPage,
     TabsPage,
+    WelcomePage,
     ProfilPage,
-    WelcomePage
+    MailCheckPage
   ],
   providers: [
     StatusBar,

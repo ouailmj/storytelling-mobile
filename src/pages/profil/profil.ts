@@ -4,7 +4,7 @@ import { Storage } from '@ionic/storage';
 import { UserData } from '../../providers/types/userData';
 import { AuthProvider } from '../../providers/auth/auth';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-
+import {WelcomePage} from '../welcome/welcome'
 
 /**
  * Generated class for the ProfilPage page.

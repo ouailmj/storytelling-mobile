@@ -4,6 +4,8 @@ import { AuthProvider } from '../../providers/auth/auth';
 import { UserRegister } from '../../providers/types/userData';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import {HomePage} from "../home/home";
+import {MailCheckPage} from "../mail-check/mail-check"
+import { WelcomePage } from '../welcome/welcome';
 
 /**
  * Generated class for the RegisterPage page.
@@ -51,6 +53,10 @@ export class RegisterPage {
 
   login(){
     this.navCtrl.push(HomePage);
+  }
+
+  signup(){
+    this.navCtrl.push(MailCheckPage);
   }
 
   onSubmit(value: any): void { 
