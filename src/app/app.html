@@ -4,7 +4,7 @@
             <ion-title>Menu</ion-title>
           </ion-toolbar>
         </ion-header>
-        <ion-content>
+        <!-- <ion-content>
           <ion-list>
             <ion-item>
                     <ion-icon name="contact" item-start></ion-icon>
@@ -18,11 +18,21 @@
                     <ion-icon name="calendar" item-start></ion-icon>
                          My Events
             </ion-item>
-            <ion-item>
+            <ion-item menu-close  (click)="openPage()">
                     <ion-icon name="log-out" item-start></ion-icon>
                          Log out
+              <button menuClose ion-item *ngFor="let p of pages" (click)="openPage(p)">
+              {{p.title}}
+            </button>
             </ion-item>
         </ion-list>
+        </ion-content> -->
+        <ion-content>
+          <ion-list>
+            <button menuClose ion-item *ngFor="let p of pages" (click)="openPage(p)">
+              {{p.title}}
+            </button>
+          </ion-list>
         </ion-content>
       </ion-menu>
 
