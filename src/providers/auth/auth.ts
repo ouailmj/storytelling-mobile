@@ -72,10 +72,21 @@ export class AuthProvider {
       "password":userData.password
     };
 
+    return new Promise((resolve, reject) => {
 
-    
-       
-   return this.apiProvider.post(AuthRoutes.apiReg, credentials);
+
+      this.apiProvider.post(AuthRoutes.apiReg, credentials).then(data=>{
+
+        console.log(data);
+        resolve(data)
+      }).catch(error=>{
+
+        reject(error)
+      })
+
+
+    })
+
   }
 
   // login(userData: UserData) {

@@ -25,8 +25,11 @@ export class StoryTellingApp {
     });
 
     this.pages = [
-      { title: 'Home', component: WelcomePage },
-      { title: 'profil', component: ProfilPage }
+      { title: 'Edit Profil', component: WelcomePage },
+      { title: 'Change Password', component: WelcomePage },
+      { title: 'My Events', component: WelcomePage },
+      { title: 'profil', component: ProfilPage },
+      { title: 'Log out', component: WelcomePage }
     ];
   }
 

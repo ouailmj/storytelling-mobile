@@ -29,27 +29,15 @@ export class RegisterPage {
  
     this.authForm = formBuilder.group({
       
-        username: ['', Validators.compose([Validators.required, Validators.pattern('[a-zA-Z]*'), Validators.minLength(8), Validators.maxLength(30)])],
-        email: ['', Validators.compose([Validators.required, Validators.email, Validators.minLength(8), Validators.maxLength(30)])],
+        username: ['', Validators.compose([Validators.required, Validators.pattern('[a-zA-Z]*'), Validators.minLength(4), Validators.maxLength(30)])],
+        email: ['', Validators.compose([Validators.required, Validators.email, Validators.minLength(6), Validators.maxLength(30)])],
         password: ['', Validators.compose([Validators.required, Validators.minLength(8)])],
-        confirmPassword: ['', Validators.compose([Validators.required])]
       
-      },{validator: this.matchingPasswords('password', 'confirmPassword')});
+      });
 
     
   }
-   matchingPasswords(passwordKey: string, confirmPasswordKey: string) {
-    return (group: FormGroup): {[key: string]: any} => {
-      let password = group.controls[passwordKey];
-      let confirmPassword = group.controls[confirmPasswordKey];
-  
-      if (password.value !== confirmPassword.value) {
-        return {
-          mismatchedPasswords: true
-        };
-      }
-    }
-  }
+ 
 
   login(){
     this.navCtrl.push(HomePage);
@@ -60,17 +48,35 @@ export class RegisterPage {
   }
 
   onSubmit(value: any): void { 
+    console.log("submit")
     if(this.authForm.valid) {
-        window.localStorage.setItem('username', value.username);
-        window.localStorage.setItem('password', value.password);
 
+      console.log("valid")
         this.regData.username = value.username;
         this.regData.password = value.password;
         this.regData.email = value.email;
         
-        this.doSignup();
+     
+        this.showLoader();
+
+        this.authService.register(this.regData).then((result) => {
+    
+          this.loading.dismiss();
+          // this.navCtrl.pop();
+          this.navCtrl.push(MailCheckPage);
+
+          console.log(result);
+        }, (err) => {
+    
+          this.loading.dismiss();
+          this.presentToast("err");
+    
+        });
 
         // this.nav.push(HomePage);
+    }else{
+      this.presentToast("invalid data");
+
     }
 }   
 
