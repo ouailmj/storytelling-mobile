@@ -1,6 +1,6 @@
 export interface UserData {
   username: string;
-  password: string;
+  password?: string;
   email?: string;
   fullName?: string;
   phoneNumber?: string;
@@ -10,7 +10,7 @@ export interface UserData {
 
 export interface UserRegister{
   username: string;
-  password: string;
+  plainPassword: string;
   email?: string;
 
 }

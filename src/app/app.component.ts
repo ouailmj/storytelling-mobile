@@ -6,6 +6,8 @@ import { Nav } from 'ionic-angular';
 
 import { WelcomePage } from '../pages/welcome/welcome';
 import { ProfilPage } from '../pages/profil/profil';
+import { ChangepPasswordPage } from '../pages/changep-password/changep-password';
+import { UploadPage } from '../pages/upload/upload';
 
 @Component({
   templateUrl: 'app.html'
@@ -26,8 +28,8 @@ export class StoryTellingApp {
 
     this.pages = [
       { title: 'Edit Profil', component: WelcomePage },
-      { title: 'Change Password', component: WelcomePage },
-      { title: 'My Events', component: WelcomePage },
+      { title: 'Change Password', component: ChangepPasswordPage },
+      { title: 'upload', component: UploadPage },
       { title: 'profil', component: ProfilPage },
       { title: 'Log out', component: WelcomePage }
     ];

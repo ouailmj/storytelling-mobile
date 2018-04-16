@@ -42,6 +42,8 @@ export class AuthProvider {
         .then(response =>{
           response.json().then(result=>{
              
+          this.storage.set('token', result.token);
+
           resolve(result);
 
          }).catch(err=>{
@@ -62,51 +64,60 @@ export class AuthProvider {
         throw Error(response.statusText);
     }
     return response;
-}
+  }
+
+
 
   register(userData: UserRegister): Promise<any> {
 
-    const credentials = {
-      "username": userData.username,
-      "email": userData.email,
-      "password":userData.password
-    };
-
     return new Promise((resolve, reject) => {
+      this.apiProvider.post(AuthRoutes.apiReg, userData).then(data=>{
 
-
-      this.apiProvider.post(AuthRoutes.apiReg, credentials).then(data=>{
-
-        console.log(data);
         resolve(data)
       }).catch(error=>{
 
-        reject(error)
+        reject(error.error.violations)
       })
-
-
     })
 
   }
 
-  // login(userData: UserData) {
-  //   const credentials = {
-  //     _username: userData.username,
-  //     _password: userData.password,
-  //   };
-
-  //   this.apiProvider.post(AuthRoutes.apiLoginCheckUrl, JSON.stringify(credentials)).then((res)=> {
-  //     console.log(res);
-
-  //     // Save the token
-  //   }).catch((err) => {
-  //     console.log(err);
-  //   })
-  //   ;
-  // }
-
   setUserProfil(){
     
+  }
+
+  changePpassword(credentials) : Promise<any>{
+    return new Promise((resolve, reject) => {
+
+
+      this.storage.get('token').then(tok=>{
+
+      let headers = new HttpHeaders();
+      headers = headers.set('Content-Type', 'application/json; charset=utf-8');
+      headers = headers.set('Authorization', 'Bearer ' + tok);
+
+      this.apiProvider.post(AuthRoutes.apiResPass,credentials,{headers: headers}).then(rep=>{
+
+          this.storage.remove('token');
+          this.storage.remove('user');
+          this.storage.set('token', rep.token);
+
+          console.log(rep);
+
+            resolve("ok");
+          
+          }).catch(error=>{
+
+            reject(error);
+            
+          })
+      }).catch(error => {
+        console.log(error.status);
+      });
+
+  
+  })
+
   }
 
   updateUser(userdata:UserData){
@@ -126,10 +137,7 @@ export class AuthProvider {
 
           this.storage.get('token').then(tok=>{
 
-            console.log("update user token is ===> ",tok)
-
           let headers = new HttpHeaders();
-        
           headers = headers.set('Content-Type', 'application/json; charset=utf-8');
           headers = headers.set('Authorization', 'Bearer ' + tok);
 
@@ -156,7 +164,6 @@ export class AuthProvider {
   getUserProfil(): Promise<any>{
 
 
-   
   return new Promise((resolve, reject) => {
 
 
@@ -169,6 +176,7 @@ export class AuthProvider {
 
       this.apiProvider.get('/api/current-user',{headers: headers}).then(rep=>{
 
+        
            this.storage.set('user', rep);
 
             resolve("ok");

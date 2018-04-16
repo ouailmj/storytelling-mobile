@@ -55,6 +55,8 @@ export class ProfilPage {
       this.user.timezoneId=user.timezoneId;
       this.user.username=user.username;
 
+    }).catch(err=>{
+      console.log(err)
     })
   }
 

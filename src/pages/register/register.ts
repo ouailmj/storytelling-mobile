@@ -1,11 +1,10 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams, LoadingController, ToastController } from 'ionic-angular';
 import { AuthProvider } from '../../providers/auth/auth';
-import { UserRegister } from '../../providers/types/userData';
+import {  UserRegister } from '../../providers/types/userData';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import {HomePage} from "../home/home";
 import {MailCheckPage} from "../mail-check/mail-check"
-import { WelcomePage } from '../welcome/welcome';
 
 /**
  * Generated class for the RegisterPage page.
@@ -21,7 +20,7 @@ import { WelcomePage } from '../welcome/welcome';
 export class RegisterPage {
 
   loading: any;
-  regData:UserRegister = { username:'', password:'',email:''};
+  regData:UserRegister = { "username":"", "plainPassword":"","email":""};
   authForm: FormGroup;
 
   constructor(public navCtrl: NavController, public navParams: NavParams, public loadingCtrl: LoadingController,private toastCtrl: ToastController,private authService:AuthProvider,public formBuilder: FormBuilder) {
@@ -49,11 +48,13 @@ export class RegisterPage {
 
   onSubmit(value: any): void { 
     console.log("submit")
+
+    let messageError="";
     if(this.authForm.valid) {
 
       console.log("valid")
         this.regData.username = value.username;
-        this.regData.password = value.password;
+        this.regData.plainPassword = value.password;
         this.regData.email = value.email;
         
      
@@ -68,8 +69,15 @@ export class RegisterPage {
           console.log(result);
         }, (err) => {
     
+
+          err.map((val,key) =>{
+            if(key===0)
+            messageError =`${val.propertyPath} : ${val.message}`;
+           
+          })
+          
           this.loading.dismiss();
-          this.presentToast("err");
+          this.presentToast(messageError);
     
         });
 

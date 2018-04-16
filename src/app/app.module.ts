@@ -8,7 +8,7 @@ import { ContactPage } from '../pages/contact/contact';
 import { HomePage } from '../pages/home/home';
 import { TabsPage } from '../pages/tabs/tabs';
 import { WelcomePage } from '../pages/welcome/welcome';
-
+import { UploadPage } from '../pages/upload/upload';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { AuthProvider } from '../providers/auth/auth';
@@ -16,7 +16,7 @@ import { ApiProvider } from '../providers/api/api';
 import { IonicStorageModule } from "@ionic/storage";
 import { HttpClientModule } from '@angular/common/http';
 import { RegisterPage } from '../pages/register/register';
-
+import { ChangepPasswordPage } from '../pages/changep-password/changep-password';
 import { ProfilproviderProvider } from '../providers/profilprovider/profilprovider';
 import { ProfilPage } from '../pages/profil/profil';
 import { UserProvider } from '../providers/user/user';
@@ -33,7 +33,9 @@ import { MailCheckPage } from '../pages/mail-check/mail-check';
     RegisterPage,
     WelcomePage,
     ProfilPage,
-    MailCheckPage
+    MailCheckPage,
+    ChangepPasswordPage,
+    UploadPage
   ],
   imports: [
 BrowserModule,
@@ -51,7 +53,9 @@ BrowserModule,
     TabsPage,
     WelcomePage,
     ProfilPage,
-    MailCheckPage
+    MailCheckPage,
+    ChangepPasswordPage,
+    UploadPage
   ],
   providers: [
     StatusBar,

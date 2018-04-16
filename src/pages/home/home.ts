@@ -17,7 +17,7 @@ export class HomePage {
 
   loading: any;
   loginData:UserData = {
-    username: "sehtot",
+    username: "test",
     password: "12345678",
   };
   errorAuthentication=false;
@@ -57,7 +57,6 @@ export class HomePage {
           this.authService.login(this.loginData).then((result) => {
 
 
-                  this.storage.set('token', result.token);
 
                   console.log(result.token);
                       
