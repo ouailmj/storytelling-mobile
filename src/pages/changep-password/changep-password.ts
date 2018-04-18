@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, LoadingController, ToastController } from 'ionic-angular';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { AuthProvider } from '../../providers/auth/auth';
 
@@ -16,6 +16,7 @@ import { AuthProvider } from '../../providers/auth/auth';
   templateUrl: 'changep-password.html',
 })
 export class ChangepPasswordPage {
+  loading: any;
   authForm: FormGroup;
   user = {
     "oldPassword": "",
@@ -23,7 +24,7 @@ export class ChangepPasswordPage {
     "repeatedPassword": ""
   };
 
-  constructor(public navCtrl: NavController, public navParams: NavParams,public formBuilder: FormBuilder,private authService:AuthProvider) {
+  constructor(public navCtrl: NavController, public navParams: NavParams,public formBuilder: FormBuilder,private authService:AuthProvider,public loadingCtrl: LoadingController,private toastCtrl: ToastController) {
 
 
     this.authForm = formBuilder.group({
@@ -56,12 +57,14 @@ export class ChangepPasswordPage {
   onSubmit(value){
 
      if(this.authForm.valid){
+       this.showLoader();
         
       this.authService.changePpassword(this.user).then(res=>{
 
         console.log(res)
+        this.loading.dismiss();
 
-      }).catch(error=>{
+      }).catch(error=>{ 
 console.log(error)
 
       })
@@ -72,5 +75,31 @@ console.log(error)
     }
 
   }
+
+  showLoader(){
+    this.loading = this.loadingCtrl.create({
+        content: 'Authenticating...'
+    });
+
+    this.loading.present();
+  }
+
+ 
+
+  presentToast(msg) {
+    let toast = this.toastCtrl.create({
+      message: msg,
+      duration: 3000,
+      position: 'bottom',
+      dismissOnPageChange: true
+    });
+
+    toast.onDidDismiss(() => {
+      console.log('Dismissed toast');
+    });
+
+    toast.present();
+  }
+
 
 }

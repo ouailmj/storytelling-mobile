@@ -48,7 +48,14 @@ export class ProfilPage {
 
     this.storage.get('user').then(user=>{
 
-      console.log(user)
+      if(user===null){
+          return    this.navCtrl.push(WelcomePage).then(page=>{
+
+            console.log(page)
+          }).catch(err=>{
+            console.log(err)
+          })
+      }
       this.user.email=user.email;
       this.user.fullName=user.fullName;
       this.user.phoneNumber=user.phoneNumber;
@@ -56,7 +63,7 @@ export class ProfilPage {
       this.user.username=user.username;
 
     }).catch(err=>{
-      console.log(err)
+      // this.navCtrl.push(WelcomePage)
     })
   }
 

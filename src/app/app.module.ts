@@ -2,7 +2,6 @@ import { NgModule, ErrorHandler } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { IonicApp, IonicModule, IonicErrorHandler } from 'ionic-angular';
 import { StoryTellingApp } from './app.component';
-
 import { AboutPage } from '../pages/about/about';
 import { ContactPage } from '../pages/contact/contact';
 import { HomePage } from '../pages/home/home';
@@ -20,8 +19,8 @@ import { ChangepPasswordPage } from '../pages/changep-password/changep-password'
 import { ProfilproviderProvider } from '../providers/profilprovider/profilprovider';
 import { ProfilPage } from '../pages/profil/profil';
 import { UserProvider } from '../providers/user/user';
-
 import { MailCheckPage } from '../pages/mail-check/mail-check';
+import { PasswordRequestPage } from '../pages/password-request/password-request';
  
 @NgModule({
   declarations: [
@@ -35,7 +34,7 @@ import { MailCheckPage } from '../pages/mail-check/mail-check';
     ProfilPage,
     MailCheckPage,
     ChangepPasswordPage,
-    UploadPage
+    UploadPage,PasswordRequestPage
   ],
   imports: [
 BrowserModule,
@@ -55,7 +54,8 @@ BrowserModule,
     ProfilPage,
     MailCheckPage,
     ChangepPasswordPage,
-    UploadPage
+    UploadPage,
+    PasswordRequestPage
   ],
   providers: [
     StatusBar,

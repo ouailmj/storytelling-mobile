@@ -28279,6 +28279,142 @@ page-mail-check .check-mail h6 {
   left: 40%;
 }
 
+page-password-request {
+  /*------------------------------------------------------------------
+      [ Focus ]*/
+}
+
+page-password-request .cover {
+  background: red;
+  background: url("");
+  background-size: cover;
+}
+
+page-password-request .profile-image {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  border: 2px solid #ccc;
+}
+
+page-password-request .wrap-input100 {
+  position: relative;
+  width: 100%;
+  z-index: 1;
+  margin-bottom: 10px;
+}
+
+page-password-request h4 {
+  font-family: 'Montserrat', sans-serif;
+}
+
+page-password-request .input100 {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 15px;
+  line-height: 1.5;
+  color: #666666;
+  display: block;
+  width: 100%;
+  background: #e6e6e6;
+  height: 50px;
+  border-radius: 25px;
+  padding: 0 30px 0 68px;
+}
+
+page-password-request .dlt-btn {
+  background: #e22626 !important;
+}
+
+page-password-request .login100-form-btn {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 15px;
+  line-height: 1.5;
+  color: #fff;
+  text-transform: uppercase;
+  width: 100%;
+  height: 50px;
+  border-radius: 25px;
+  background: #57b846;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+  -ms-flex-align: center;
+  align-items: center;
+  padding: 0 25px;
+  -webkit-transition: all 0.4s;
+  transition: all 0.4s;
+}
+
+page-password-request hr {
+  border: 2px solid #eee;
+}
+
+page-password-request ion-select {
+  background: transparent;
+}
+
+page-password-request .focus-input100 {
+  display: block;
+  position: absolute;
+  border-radius: 25px;
+  bottom: 0;
+  left: 0;
+  z-index: -1;
+  width: 100%;
+  height: 100%;
+  -webkit-box-shadow: 0px 0px 0px 0px;
+  box-shadow: 0px 0px 0px 0px;
+  color: rgba(87, 184, 70, 0.8);
+}
+
+page-password-request .input100:focus + .focus-input100 {
+  -webkit-animation: anim-shadow 0.5s ease-in-out forwards;
+  animation: anim-shadow 0.5s ease-in-out forwards;
+}
+
+page-password-request .symbol-input100 {
+  font-size: 22px;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+  -ms-flex-align: center;
+  align-items: center;
+  position: absolute;
+  border-radius: 25px;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  padding-left: 35px;
+  pointer-events: none;
+  color: #57b846;
+  -webkit-transition: all 0.4s;
+  transition: all 0.4s;
+}
+
+page-password-request .input100:focus + .focus-input100 + .symbol-input100 {
+  color: #57b846;
+  padding-left: 28px;
+}
+
+page-password-request .menu-btn {
+  background: transparent;
+}
+
+page-password-request .menu-btn ion-icon {
+  color: green;
+}
+
 page-profil {
   /*------------------------------------------------------------------
       [ Focus ]*/
