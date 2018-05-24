@@ -1,15 +1,12 @@
 import { Component } from '@angular/core';
-import { NavController, LoadingController, ToastController, App } from 'ionic-angular';
-// import { ApiProvider } from "../api/api";
-// import { AuthRoutes } from "../../providers/auth.routes";
-// import { UserData } from "../types/userData";
-// import { Storage } from "@ionic/storage";
+import { NavController, LoadingController, ToastController } from 'ionic-angular';
 import { AuthProvider } from '../../providers/auth/auth';
 import { UserData } from '../../providers/types/userData';
 import { RegisterPage } from '../register/register';
 import { Storage } from '@ionic/storage';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { ProfilPage } from '../profil/profil';
+
 
 
 @Component({
@@ -20,8 +17,8 @@ export class HomePage {
 
   loading: any;
   loginData:UserData = {
-    username: "",
-    password: "",
+    username: "test",
+    password: "12345678",
   };
   errorAuthentication=false;
   data: any;
@@ -53,52 +50,34 @@ export class HomePage {
 
   doLogin(value : any) {
 
-    // this.navCtrl.push(RegisterPage);
-    
+        if(this.authForm.valid) {
 
-  if(this.authForm.valid) {
+          this.showLoader();
 
-    this.showLoader();
-      this.authService.login(this.loginData)
-      .then((result) => {
-        this.loading.dismiss();
-        
-        result.json().then((data)=>{
-             
-          console.log(data)
-
-              if(data.token){
-
-                console.log(data.token);
-
-              }else{
-
-                console.log("is null");
-
-              }
+          this.authService.login(this.loginData).then((result) => {
 
 
-              this.storage.set('token', data.token);
 
-              this.storage.get('token').then((val) => {
-                console.log('Your token is', val);
-              });
+                  console.log(result.token);
+                      
+                      this.loading.dismiss();
+                      
+                      this.authService.getUserProfil().then(res=>{
+                      
+                        this.navCtrl.push(ProfilPage);
+                      
+                      })
+                      
+          }
+          ).catch(err=>{
 
-        });
-        
-        // console.log(this.data)
-        // localStorage.setItem('token', this.data.access_token);
-        // this.navCtrl.setRoot(TabsPage);
+            this.loading.dismiss();
+            this.presentToast("incorrect username or password !!");
+          });
 
-      }, (err) => {
-     
-        this.loading.dismiss();
-     
-        console.log(err);
-     
-      });
+          }
 
-    }
+
   }
 
   showLoader(){
@@ -111,12 +90,6 @@ export class HomePage {
 
   signup(){
     this.navCtrl.push(RegisterPage);
-  }
-
-  connect(){
-
-    this.navCtrl.push(ProfilPage);
-    
   }
 
   presentToast(msg) {

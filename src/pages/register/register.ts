@@ -1,11 +1,10 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams, LoadingController, ToastController } from 'ionic-angular';
 import { AuthProvider } from '../../providers/auth/auth';
-import { UserRegister } from '../../providers/types/userData';
+import {  UserRegister } from '../../providers/types/userData';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import {HomePage} from "../home/home";
 import {MailCheckPage} from "../mail-check/mail-check"
-import { WelcomePage } from '../welcome/welcome';
 
 /**
  * Generated class for the RegisterPage page.
@@ -21,7 +20,7 @@ import { WelcomePage } from '../welcome/welcome';
 export class RegisterPage {
 
   loading: any;
-  regData:UserRegister = { username:'', password:'',email:''};
+  regData:UserRegister = { "username":"", "plainPassword":"","email":""};
   authForm: FormGroup;
 
   constructor(public navCtrl: NavController, public navParams: NavParams, public loadingCtrl: LoadingController,private toastCtrl: ToastController,private authService:AuthProvider,public formBuilder: FormBuilder) {
@@ -29,27 +28,15 @@ export class RegisterPage {
  
     this.authForm = formBuilder.group({
       
-        username: ['', Validators.compose([Validators.required, Validators.pattern('[a-zA-Z]*'), Validators.minLength(8), Validators.maxLength(30)])],
-        email: ['', Validators.compose([Validators.required, Validators.email, Validators.minLength(8), Validators.maxLength(30)])],
+        username: ['', Validators.compose([Validators.required, Validators.pattern('[a-zA-Z]*'), Validators.minLength(4), Validators.maxLength(30)])],
+        email: ['', Validators.compose([Validators.required, Validators.email, Validators.minLength(6), Validators.maxLength(30)])],
         password: ['', Validators.compose([Validators.required, Validators.minLength(8)])],
-        confirmPassword: ['', Validators.compose([Validators.required])]
       
-      },{validator: this.matchingPasswords('password', 'confirmPassword')});
+      });
 
     
   }
-   matchingPasswords(passwordKey: string, confirmPasswordKey: string) {
-    return (group: FormGroup): {[key: string]: any} => {
-      let password = group.controls[passwordKey];
-      let confirmPassword = group.controls[confirmPasswordKey];
-  
-      if (password.value !== confirmPassword.value) {
-        return {
-          mismatchedPasswords: true
-        };
-      }
-    }
-  }
+ 
 
   login(){
     this.navCtrl.push(HomePage);
@@ -60,17 +47,44 @@ export class RegisterPage {
   }
 
   onSubmit(value: any): void { 
-    if(this.authForm.valid) {
-        window.localStorage.setItem('username', value.username);
-        window.localStorage.setItem('password', value.password);
+    console.log("submit")
 
+    let messageError="";
+    if(this.authForm.valid) {
+
+      console.log("valid")
         this.regData.username = value.username;
-        this.regData.password = value.password;
+        this.regData.plainPassword = value.password;
         this.regData.email = value.email;
         
-        this.doSignup();
+     
+        this.showLoader();
+
+        this.authService.register(this.regData).then((result) => {
+    
+          this.loading.dismiss();
+          // this.navCtrl.pop();
+          this.navCtrl.push(MailCheckPage);
+
+          console.log(result);
+        }, (err) => {
+    
+
+          err.map((val,key) =>{
+            if(key===0)
+            messageError =`${val.propertyPath} : ${val.message}`;
+           
+          })
+          
+          this.loading.dismiss();
+          this.presentToast(messageError);
+    
+        });
 
         // this.nav.push(HomePage);
+    }else{
+      this.presentToast("invalid data");
+
     }
 }   
 

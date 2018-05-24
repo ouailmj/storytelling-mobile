@@ -4,22 +4,21 @@
   <form class="marginTop" [formGroup]="authForm" (ngSubmit)="doLogin(authForm.value)">
 
   <div class="wrap-input100 validate-input" data-validate = "Valid email is required: ex@abc.xyz">
-    <input class="input100" type="text" formControlName="username" placeholder="Pseudo">
+    <input class="input100" type="text"  formControlName="username" placeholder="Pseudo" [(ngModel)]="loginData.username" >
     <span class="focus-input100"></span>
     <span class="symbol-input100">
       <ion-icon class="symbol-input100" name="person" item-start></ion-icon>
     </span>
   </div>
 
-
   <div class="wrap-input100 validate-input" data-validate = "Valid email is required: ex@abc.xyz">
-      <input class="input100" type="password" formControlName="password" placeholder="Password">
+      <input class="input100" type="password" formControlName="password" placeholder="Password" [(ngModel)]="loginData.password">
       <span class="focus-input100"></span>
       <span class="symbol-input100">
         <ion-icon class="symbol-input100" name="key" item-start></ion-icon>
       </span>
     </div>
-    <button (click)="connect()" ion-button block class="login100-form-btn" type="submit">Login</button>
+    <button  ion-button block class="login100-form-btn" type="submit">Login</button>
   </form>
   <h6><a (click)="signup()" >I don't have account</a></h6>
 </ion-content>

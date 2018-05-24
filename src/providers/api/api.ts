@@ -30,8 +30,14 @@ export class ApiProvider {
     }));
   }
 
-  put(url: string, body: any, options?: any): Observable<any> {
-    return this.http.put(ApiProvider.getFullUrl(url), body, options);
+  put(url: string, body: any, options?: any):  Promise<any> {
+    return  new Promise(((resolve, reject) => {
+       this.http.put(ApiProvider.getFullUrl(url), body, options).subscribe((data)=> {
+        resolve(data);
+      }, (err)=> {
+        reject(err);
+      })
+    }));
   }
 
   post(url: string, body: any, options?: any): Promise<any> {
