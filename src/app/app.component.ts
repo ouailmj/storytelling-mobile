@@ -7,9 +7,9 @@ import { Nav } from 'ionic-angular';
 import { WelcomePage } from '../pages/welcome/welcome';
 import { ProfilPage } from '../pages/profil/profil';
 import { ChangepPasswordPage } from '../pages/changep-password/changep-password';
-import { UploadPage } from '../pages/upload/upload';
 import { Storage } from '@ionic/storage';
 import { PasswordRequestPage } from '../pages/password-request/password-request';
+import { ChoosePlanPage } from '../pages/choose-plan/choose-plan';
 
 @Component({
   templateUrl: 'app.html'
@@ -35,7 +35,7 @@ export class StoryTellingApp {
       { title: 'upload', component: WelcomePage },
       { title: 'profil', component: ProfilPage },
       { title: 'Log out', component: WelcomePage }
-    ]; 
+    ];
   }
 
   openPage(page) {
@@ -48,5 +48,5 @@ export class StoryTellingApp {
     }
     this.nav.setRoot(page.component);
   }
-  
+
 }

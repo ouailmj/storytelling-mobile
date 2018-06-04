@@ -6,7 +6,7 @@ import { RegisterPage } from '../register/register';
 import { Storage } from '@ionic/storage';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { ProfilPage } from '../profil/profil';
-
+import { EventsPage } from '../events/events';
 
 
 @Component({
@@ -17,7 +17,7 @@ export class HomePage {
 
   loading: any;
   loginData:UserData = {
-    username: "test",
+    username: "admin",
     password: "12345678",
   };
   errorAuthentication=false;
@@ -64,7 +64,7 @@ export class HomePage {
                       
                       this.authService.getUserProfil().then(res=>{
                       
-                        this.navCtrl.push(ProfilPage);
+                        this.navCtrl.push(EventsPage);
                       
                       })
                       

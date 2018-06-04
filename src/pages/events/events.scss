@@ -1,0 +1,116 @@
+page-events {
+    @import url('https://fonts.googleapis.com/css?family=Montserrat');
+    @import url('https://fonts.googleapis.com/css?family=Baloo+Chettan');
+
+    .background{
+        font-family: 'Baloo Chettan', cursive;
+        height: 500px;
+        width: 500px;
+        position: absolute;
+        border-radius: 100%;
+        top: -20%;
+        right: -75px;
+        background:url("../assets/imgs/login_cover.jpg");
+        background-size: cover;
+        animation-name: cover;
+        animation-duration: 1s;
+        animation-timing-function: ease-in;
+    }
+
+    @keyframes cover{
+        0% {
+            height: 0;
+            width:0;
+        }
+        
+        
+        100%{
+            height: 500px;
+            width: 500px;
+        }
+    }
+
+    @keyframes show-btn {
+        from{
+            width: 0;
+            height: 0;
+        }
+        to{
+            width: 60px;
+            height: 60px;
+        }
+    }
+
+    .create-btn{
+        position: absolute;
+        height: 60px;
+        width: 60px;
+        background: #43c6ac;
+        border-radius: 100%;
+        left: 42%;
+        top: 50%;
+        text-align: center;
+        color: #fff;
+        animation-name: show-btn;
+        animation-duration: 1s;
+        animation-timing-function: ease-in;
+    }
+
+    .create-btn ion-icon{
+        font-size: 30px;
+        margin-top: 15px
+    }
+
+    .welcome-msg{
+        position: absolute;
+        width: 100%;
+        text-align: center;
+        top: 60%;
+        
+    }
+
+    .welcome-msg h3{
+        font-size: 24px;
+        font-family: 'Baloo Chettan', cursive;
+    }
+
+    .welcome-msg p{
+        font-weight: lighter;
+        padding: 5px 10px;
+    }
+
+    .marginTop{
+        margin-top: 80px;
+    }
+    .login100-form-btn {
+        font-family: 'Baloo Chettan', cursive;
+        font-size: 15px;
+        line-height: 1.5;
+        color: #fff;
+        text-transform: uppercase;
+        width: 80%;
+        height: 50px;
+        border-radius: 25px;
+        background: #57b846;
+        display: -webkit-box;
+        display: -webkit-flex;
+        display: -moz-box;
+        display: -ms-flexbox;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 0 25px;
+        margin: 20px auto;
+        -webkit-transition: all 0.4s;
+        -o-transition: all 0.4s;
+        -moz-transition: all 0.4s;
+        transition: all 0.4s;
+      }
+      .signup{
+          background:#43c6ac;
+      }
+      
+      .login100-form-btn:hover {
+        background: #333333;
+      }
+}
