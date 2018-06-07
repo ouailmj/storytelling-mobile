@@ -18,7 +18,7 @@ export class HomePage {
   loading: any;
   loginData:UserData = {
     username: "admin",
-    password: "12345678",
+    password: "f%/R4Uk#](wUvM'V",
   };
   errorAuthentication=false;
   data: any;
@@ -26,14 +26,14 @@ export class HomePage {
 
 
   constructor(public navCtrl: NavController, public loadingCtrl: LoadingController,private toastCtrl: ToastController,private authService:AuthProvider,private storage: Storage,public formBuilder: FormBuilder) {
- 
+
     this.navCtrl = navCtrl;
- 
+
     this.authForm = formBuilder.group({
-      
+
         username: ['', Validators.compose([Validators.required])],
         password: ['', Validators.compose([Validators.required])],
-      
+
       });
 
   }
@@ -59,15 +59,15 @@ export class HomePage {
 
 
                   console.log(result.token);
-                      
+
                       this.loading.dismiss();
-                      
+
                       this.authService.getUserProfil().then(res=>{
-                      
+
                         this.navCtrl.push(EventsPage);
-                      
+
                       })
-                      
+
           }
           ).catch(err=>{
 

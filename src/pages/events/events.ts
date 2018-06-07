@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
-
+import {ChoosePlanPage} from "../choose-plan/choose-plan";
 /**
  * Generated class for the EventsPage page.
  *
@@ -20,6 +20,10 @@ export class EventsPage {
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad EventsPage');
+  }
+
+  createEvent(){
+    this.navCtrl.push(ChoosePlanPage);
   }
 
 }

@@ -1,24 +1,28 @@
-<ion-content padding>
-<h1>Espace de connexion</h1>
-<ion-icon class="user-icon" name="contact" item-start></ion-icon>
-  <form class="marginTop" [formGroup]="authForm" (ngSubmit)="doLogin(authForm.value)">
-
-  <div class="wrap-input100 validate-input" data-validate = "Valid email is required: ex@abc.xyz">
-    <input class="input100" type="text"  formControlName="username" placeholder="Pseudo" [(ngModel)]="loginData.username" >
-    <span class="focus-input100"></span>
-    <span class="symbol-input100">
-      <ion-icon class="symbol-input100" name="person" item-start></ion-icon>
-    </span>
+<ion-content>
+  <div class="circle-one"></div>
+  <div class="circle-two"></div>
+  <div class="circle-tree"></div>
+  <div class="circle-four"></div>
+  <div class="titre-registe">
+      <h1>log in</h1>
+      <h4>to continue</h4>
   </div>
+<form [formGroup]="authForm" (ngSubmit)="doLogin(authForm.value)">
+<div class="inputs">
+  <ion-list>
 
-  <div class="wrap-input100 validate-input" data-validate = "Valid email is required: ex@abc.xyz">
-      <input class="input100" type="password" formControlName="password" placeholder="Password" [(ngModel)]="loginData.password">
-      <span class="focus-input100"></span>
-      <span class="symbol-input100">
-        <ion-icon class="symbol-input100" name="key" item-start></ion-icon>
-      </span>
-    </div>
-    <button  ion-button block class="login100-form-btn" type="submit">Login</button>
-  </form>
-  <h6><a (click)="signup()" >I don't have account</a></h6>
+    <ion-item>
+      <ion-input type="text" formControlName="username" placeholder="Pseudo" [(ngModel)]="loginData.username"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-input type="password" type="password" formControlName="password" placeholder="Password" [(ngModel)]="loginData.password"></ion-input>
+    </ion-item>
+
+  </ion-list>
+  <div class="buttons">
+    <button ion-button type="submit" name="button">log in</button>
+  </div>
+</div>
+</form>
 </ion-content>

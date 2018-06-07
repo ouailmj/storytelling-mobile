@@ -1,20 +1,25 @@
-<ion-content>
-    <div class="bg">
-      <ion-grid>
-        <ion-row>
-          <ion-col text-center>
-            <h1>Choose plan</h1>
-          </ion-col>
-        </ion-row>
-        <ion-row>
-          <ion-card>
-                <div class="plan-name">
-                  <h1>Gratuit</h1>
-                  <h1 class="price">0€</h1>
-                </div>
-                <img class="plan" src="assets/imgs/plans/starter.png" alt="">  
-          </ion-card>
-        </ion-row>
-      </ion-grid>
-    </div>
+<ion-content class="tutorial-page">
+
+  <ion-slides pager>
+    <ion-slide *ngFor="let slide of slides">
+      <ion-toolbar>
+        <ion-buttons end>
+          <button ion-button color="primary">Annuler</button>
+        </ion-buttons>
+      </ion-toolbar>
+      <img [src]="slide.image" class="slide-image"/>
+      <h2 class="slide-title" [innerHTML]="slide.title"></h2>
+      <p [innerHTML]="slide.description"></p>
+    </ion-slide>
+    <ion-slide>
+      <ion-toolbar>
+      </ion-toolbar>
+      <img src="assets/img/ica-slidebox-img-4.png" class="slide-image"/>
+      <h2 class="slide-title">Premium</h2>
+      <button ion-button large clear icon-end color="primary">
+        Continue
+        <ion-icon name="arrow-forward"></ion-icon>
+      </button>
+    </ion-slide>
+  </ion-slides>
 </ion-content>
