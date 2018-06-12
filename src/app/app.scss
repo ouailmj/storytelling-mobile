@@ -6,7 +6,7 @@
 ion-list ion-item{
     margin-bottom: 30px !important;
 }
-.scroll-content {
-    overflow-x: hidden !important;
-    overflow-y: hidden !important;
+::-webkit-scrollbar,
+*::-webkit-scrollbar {
+  display: none;
 }

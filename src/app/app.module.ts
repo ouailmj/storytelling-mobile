@@ -21,6 +21,8 @@ import { ProfilPage } from '../pages/profil/profil';
 import { UserProvider } from '../providers/user/user';
 import { MailCheckPage } from '../pages/mail-check/mail-check';
 import { PasswordRequestPage } from '../pages/password-request/password-request';
+import { EventsPage } from '../pages/events/events';
+import { ChoosePlanPage } from '../pages/choose-plan/choose-plan';
  
 @NgModule({
   declarations: [
@@ -34,7 +36,9 @@ import { PasswordRequestPage } from '../pages/password-request/password-request'
     ProfilPage,
     MailCheckPage,
     ChangepPasswordPage,
-    UploadPage,PasswordRequestPage
+    UploadPage,PasswordRequestPage,
+    EventsPage,
+    ChoosePlanPage
   ],
   imports: [
 BrowserModule,
@@ -55,7 +59,9 @@ BrowserModule,
     MailCheckPage,
     ChangepPasswordPage,
     UploadPage,
-    PasswordRequestPage
+    PasswordRequestPage,
+    EventsPage,
+    ChoosePlanPage
   ],
   providers: [
     StatusBar,

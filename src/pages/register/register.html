@@ -1,36 +1,27 @@
-<ion-content padding>
-    <h1>Enregistrement</h1>
-    <ion-icon class="user-icon" name="person" item-start></ion-icon>
+<ion-content id="register">
+  <div class="circle-two"></div>
+  <div class="titre-registe">
+      <h1>sign up</h1>
+      <h4>to continue</h4>
+  </div>
+  <div class="inputs">
+    <ion-list>
 
-      <form class="marginTop" [formGroup]="authForm" (ngSubmit)="onSubmit(authForm.value)" >
-    
-      <div class="wrap-input100 validate-input" data-validate = "Valid email is required: ex@abc.xyz">
-        <input class="input100" type="text" placeholder="Pseudo" formControlName="username">
-        <span class="focus-input100"></span>
-        <span class="symbol-input100">
-          <ion-icon class="symbol-input100" name="person"   item-start></ion-icon>
-        </span>
-      </div>
-    
+      <ion-item>
+        <ion-input type="text" placeholder="Username"></ion-input>
+      </ion-item>
 
-      <div class="wrap-input100 validate-input" data-validate = "Valid email is required: ex@abc.xyz">
-          <input class="input100" type="email" placeholder="email" formControlName="email">
-          <span class="focus-input100"></span>
-          <span class="symbol-input100">
-            <ion-icon class="symbol-input100" name="mail" item-start></ion-icon>
-          </span>
-        </div>
-    
-      <div class="wrap-input100 validate-input" data-validate = "Valid email is required: ex@abc.xyz">
-          <input class="input100" type="password" placeholder="Password" formControlName="password">
-          <span class="focus-input100"></span>
-          <span class="symbol-input100">
-            <ion-icon class="symbol-input100" name="key" item-start></ion-icon>
-          </span>
-        </div>
-    
-        <button ion-button block class="signup login100-form-btn" type="submit" >Sign Up</button>
-      </form>
-      <h6><a (click)="login()">already have account</a></h6>
-  </ion-content>
+      <ion-item>
+        <ion-input type="email" placeholder="email"></ion-input>
+      </ion-item>
 
+      <ion-item>
+        <ion-input type="password" placeholder="Password"></ion-input>
+      </ion-item>
+
+    </ion-list>
+    <div class="buttons">
+      <button type="button" name="button">log in</button>
+    </div>
+  </div>
+</ion-content>
