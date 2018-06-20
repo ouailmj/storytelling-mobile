@@ -5,7 +5,6 @@ import { UserData } from '../../providers/types/userData';
 import { RegisterPage } from '../register/register';
 import { Storage } from '@ionic/storage';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
-import { ProfilPage } from '../profil/profil';
 import { EventsPage } from '../events/events';
 
 

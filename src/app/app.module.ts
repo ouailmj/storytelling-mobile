@@ -23,6 +23,7 @@ import { MailCheckPage } from '../pages/mail-check/mail-check';
 import { PasswordRequestPage } from '../pages/password-request/password-request';
 import { EventsPage } from '../pages/events/events';
 import { ChoosePlanPage } from '../pages/choose-plan/choose-plan';
+import { EventProvider } from '../providers/event/event';
  
 @NgModule({
   declarations: [
@@ -70,7 +71,8 @@ BrowserModule,
     AuthProvider,
     ApiProvider,
     ProfilproviderProvider,
-    UserProvider
+    UserProvider,
+    EventProvider
   ]
 })
 export class AppModule {}

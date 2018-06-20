@@ -1,5 +1,10 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import {EventsPage} from "../events/events";
+import {Plan} from "../../models/plan";
+import {Storage} from "@ionic/storage";
+import {ApiProvider} from "../../providers/api/api";
+import {HttpHeaders} from "@angular/common/http";
 
 /**
  * Generated class for the ChoosePlanPage page.
@@ -15,7 +20,19 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 })
 export class ChoosePlanPage {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  plans : Plan[] = [] ;
+  planChoice = "" ;
+  constructor(public navCtrl: NavController, public navParams: NavParams, private storage: Storage, public apiProvider: ApiProvider) {
+      this.storage.get('token').then(tok=>{
+
+          let headers = new HttpHeaders();
+
+          headers = headers.set('Content-Type', 'application/json; charset=utf-8');
+          headers = headers.set('Authorization', 'Bearer ' + tok);
+          this.apiProvider.get('/api/plans',{headers: headers}).then(dataPlans=>{
+              this.plans = dataPlans['hydra:member'];
+          }).catch(error=>{})
+      }).catch(error=>{})
   }
 
   ionViewDidLoad() {
@@ -39,5 +56,29 @@ export class ChoosePlanPage {
       image: "assets/imgs/welcome.png",
     }
   ];
+
+
+
+  cancelAction(){
+        this.navCtrl.push(EventsPage);
+  }
+
+    onSubmit(){
+
+        console.log("submit")
+
+            console.log("valide")
+
+            console.log("attr", this.planChoice)
+         /*this.authService.updateUser(this.user).then(res=>{
+
+                console.log(res)
+            }).catch(err=>{
+                this.presentToast("Password incorrect !!")
+
+            });
+*/
+
+    }
 
 }
