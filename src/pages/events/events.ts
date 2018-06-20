@@ -1,9 +1,9 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
-import {ChoosePlanPage} from "../choose-plan/choose-plan";
+import {IonicPage, NavController, NavParams, ToastController} from 'ionic-angular';
 import { EventProvider } from '../../providers/event/event';
-import {ApiProvider} from "../../providers/api/api";
-import {_switch} from "rxjs/operator/switch";
+import {ChoosePlanPage} from "../choose-plan/choose-plan";
+import {Storage} from "@ionic/storage";
+
 /**
  * Generated class for the EventsPage page.
  *
@@ -18,7 +18,7 @@ import {_switch} from "rxjs/operator/switch";
 })
 export class EventsPage {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, public eventManager: EventProvider, public apiProvider: ApiProvider) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, public eventProvider: EventProvider, private toastCtrl: ToastController, private storage: Storage) {
   }
 
   ionViewDidLoad() {
@@ -27,49 +27,82 @@ export class EventsPage {
 
   createEvent(){
 
-      this.eventManager.newEvent().then((result) => {
-          this.navCtrl.push(ChoosePlanPage);
+      this.eventProvider.newEvent().then((result) => {
+          console.log(result)
       }).catch(err=>{
-       this.eventManager.getEvent(err['error']['appEventURI']).then(rep =>{
-switch(rep.currentStep){
-    case 'choose-plan': {
-        //statements;
-        break;
-    }
-    case 'event-information': {
-        //statements;
-        break;
-    }
-    case 'event-challenge': {
-        //statements;
-        break;
-    }
-    case 'event-cover': {
-        //statements;
-        break;
-    }
-    case 'payment': {
-        //statements;
-        break;
-    }
-    case 'invite-friends': {
-        //statements;
-        break;
-    }
-    case 'finish': {
-        //statements;
-        break;
-    }
-    default: {
-        //statements;
-        break;
-    }
-}
-       }).catch(error => {
+       this.eventProvider.getEvent(err['error']['appEventURI']).then(rep =>{
+           this.storage.set('currentEvent', rep);
+           this.switchToCurrentStep(rep.currentStep)
 
-       })
+       }).catch(error => {
+           this.presentToast(error.statusText)})
       });
 
   }
+
+    presentToast(msg) {
+        let toast = this.toastCtrl.create({
+            message: msg,
+            duration: 3000,
+            position: 'bottom',
+            dismissOnPageChange: true
+        });
+
+        toast.onDidDismiss(() => {
+            console.log('Dismissed toast');
+        });
+
+        toast.present();
+    }
+
+
+    /**
+     * redirect to current step
+     * @param currentStep
+     */
+    switchToCurrentStep(currentStep){
+        //TODO: push to specific page
+        switch(currentStep){
+            case 'choose-plan': {
+                this.navCtrl.push(ChoosePlanPage);
+                break;
+            }
+            case 'event-information': {
+                //statements;
+                console.log('event-information1')
+                this.navCtrl.push(ChoosePlanPage);
+                break;
+            }
+            case 'event-challenge': {
+                //statements;
+                console.log('event-challenge')
+                break;
+            }
+            case 'event-cover': {
+                //statements;
+                console.log('event-cover')
+                break;
+            }
+            case 'payment': {
+                //statements;
+                console.log('payment')
+                break;
+            }
+            case 'invite-friends': {
+                //statements;
+                console.log('invite-friends')
+                break;
+            }
+            case 'finish': {
+                //statements;
+                console.log('finish')
+                break;
+            }
+            default: {
+                //statements;
+                break;
+            }
+        }
+    }
 
 }

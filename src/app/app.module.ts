@@ -24,6 +24,7 @@ import { PasswordRequestPage } from '../pages/password-request/password-request'
 import { EventsPage } from '../pages/events/events';
 import { ChoosePlanPage } from '../pages/choose-plan/choose-plan';
 import { EventProvider } from '../providers/event/event';
+import {EventInformationPage} from "../pages/event-information/event-information";
  
 @NgModule({
   declarations: [
@@ -39,7 +40,8 @@ import { EventProvider } from '../providers/event/event';
     ChangepPasswordPage,
     UploadPage,PasswordRequestPage,
     EventsPage,
-    ChoosePlanPage
+    ChoosePlanPage,
+    EventInformationPage
   ],
   imports: [
 BrowserModule,
@@ -62,7 +64,8 @@ BrowserModule,
     UploadPage,
     PasswordRequestPage,
     EventsPage,
-    ChoosePlanPage
+    ChoosePlanPage,
+    EventInformationPage
   ],
   providers: [
     StatusBar,
