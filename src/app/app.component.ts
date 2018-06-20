@@ -16,7 +16,7 @@ import { ChoosePlanPage } from '../pages/choose-plan/choose-plan';
 })
 export class StoryTellingApp {
   @ViewChild(Nav) nav: Nav;
-  rootPage:any = ChoosePlanPage;
+  rootPage:any = WelcomePage;
   pages: Array<{title: string, component: any}>;
 
 
