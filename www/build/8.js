@@ -1,14 +1,14 @@
 webpackJsonp([8],{
 
-/***/ 304:
+/***/ 307:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ChangepPasswordPageModule", function() { return ChangepPasswordPageModule; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "MailCheckPageModule", function() { return MailCheckPageModule; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(9);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__changep_password__ = __webpack_require__(111);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__mail_check__ = __webpack_require__(113);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -18,23 +18,23 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 
 
 
-var ChangepPasswordPageModule = (function () {
-    function ChangepPasswordPageModule() {
+var MailCheckPageModule = (function () {
+    function MailCheckPageModule() {
     }
-    ChangepPasswordPageModule = __decorate([
+    MailCheckPageModule = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["I" /* NgModule */])({
             declarations: [
-                __WEBPACK_IMPORTED_MODULE_2__changep_password__["a" /* ChangepPasswordPage */],
+                __WEBPACK_IMPORTED_MODULE_2__mail_check__["a" /* MailCheckPage */],
             ],
             imports: [
-                __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["d" /* IonicPageModule */].forChild(__WEBPACK_IMPORTED_MODULE_2__changep_password__["a" /* ChangepPasswordPage */]),
+                __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["d" /* IonicPageModule */].forChild(__WEBPACK_IMPORTED_MODULE_2__mail_check__["a" /* MailCheckPage */]),
             ],
         })
-    ], ChangepPasswordPageModule);
-    return ChangepPasswordPageModule;
+    ], MailCheckPageModule);
+    return MailCheckPageModule;
 }());
 
-//# sourceMappingURL=changep-password.module.js.map
+//# sourceMappingURL=mail-check.module.js.map
 
 /***/ })
 

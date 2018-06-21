@@ -26,6 +26,10 @@ import { ChoosePlanPage } from '../pages/choose-plan/choose-plan';
 import { EventProvider } from '../providers/event/event';
 import {EventInformationPage} from "../pages/event-information/event-information";
 import {NewEventPage} from "../pages/new-event/new-event";
+import {CoverEventPage} from "../pages/cover-event/cover-event";
+import {EventChallengePage} from "../pages/event-challenge/event-challenge";
+import {InviteFriendsPage} from "../pages/invite-friends/invite-friends";
+import {PaymentPage} from "../pages/payment/payment";
  
 @NgModule({
   declarations: [
@@ -43,7 +47,11 @@ import {NewEventPage} from "../pages/new-event/new-event";
       EventsPage,
       ChoosePlanPage,
       EventInformationPage,
-      NewEventPage
+      NewEventPage,
+      CoverEventPage,
+      EventChallengePage,
+      InviteFriendsPage,
+      PaymentPage
   ],
   imports: [
 BrowserModule,
@@ -68,7 +76,11 @@ BrowserModule,
       EventsPage,
       ChoosePlanPage,
       EventInformationPage,
-      NewEventPage
+      NewEventPage,
+      CoverEventPage,
+      EventChallengePage,
+      InviteFriendsPage,
+      PaymentPage
   ],
   providers: [
     StatusBar,
