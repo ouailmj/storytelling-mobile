@@ -25,23 +25,25 @@ import { EventsPage } from '../pages/events/events';
 import { ChoosePlanPage } from '../pages/choose-plan/choose-plan';
 import { EventProvider } from '../providers/event/event';
 import {EventInformationPage} from "../pages/event-information/event-information";
+import {NewEventPage} from "../pages/new-event/new-event";
  
 @NgModule({
   declarations: [
-    StoryTellingApp,
-    AboutPage,
-    ContactPage,
-    HomePage,
-    TabsPage,
-    RegisterPage,
-    WelcomePage,
-    ProfilPage,
-    MailCheckPage,
-    ChangepPasswordPage,
-    UploadPage,PasswordRequestPage,
-    EventsPage,
-    ChoosePlanPage,
-    EventInformationPage
+      StoryTellingApp,
+      AboutPage,
+      ContactPage,
+      HomePage,
+      TabsPage,
+      RegisterPage,
+      WelcomePage,
+      ProfilPage,
+      MailCheckPage,
+      ChangepPasswordPage,
+      UploadPage,PasswordRequestPage,
+      EventsPage,
+      ChoosePlanPage,
+      EventInformationPage,
+      NewEventPage
   ],
   imports: [
 BrowserModule,
@@ -51,21 +53,22 @@ BrowserModule,
   ],
   bootstrap: [IonicApp],
   entryComponents: [
-    StoryTellingApp,
-    AboutPage,
-    ContactPage,
-    HomePage,
-    RegisterPage,
-    TabsPage,
-    WelcomePage,
-    ProfilPage,
-    MailCheckPage,
-    ChangepPasswordPage,
-    UploadPage,
-    PasswordRequestPage,
-    EventsPage,
-    ChoosePlanPage,
-    EventInformationPage
+      StoryTellingApp,
+      AboutPage,
+      ContactPage,
+      HomePage,
+      RegisterPage,
+      TabsPage,
+      WelcomePage,
+      ProfilPage,
+      MailCheckPage,
+      ChangepPasswordPage,
+      UploadPage,
+      PasswordRequestPage,
+      EventsPage,
+      ChoosePlanPage,
+      EventInformationPage,
+      NewEventPage
   ],
   providers: [
     StatusBar,

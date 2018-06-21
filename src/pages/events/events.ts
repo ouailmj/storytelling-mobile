@@ -18,29 +18,15 @@ import {Storage} from "@ionic/storage";
 })
 export class EventsPage {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, public eventProvider: EventProvider, private toastCtrl: ToastController, private storage: Storage) {
+  constructor(public navCtrl: NavController, public navParams: NavParams,  private toastCtrl: ToastController) {
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad EventsPage');
   }
 
-  createEvent(){
 
-      this.eventProvider.newEvent().then((result) => {
-          console.log(result)
-      }).catch(err=>{
-       this.eventProvider.getEvent(err['error']['appEventURI']).then(rep =>{
-           this.storage.set('currentEvent', rep);
-           this.switchToCurrentStep(rep.currentStep)
-
-       }).catch(error => {
-           this.presentToast(error.statusText)})
-      });
-
-  }
-
-    presentToast(msg) {
+  presentToast(msg) {
         let toast = this.toastCtrl.create({
             message: msg,
             duration: 3000,
@@ -55,12 +41,11 @@ export class EventsPage {
         toast.present();
     }
 
-
-    /**
-     * redirect to current step
-     * @param currentStep
-     */
-    switchToCurrentStep(currentStep){
+  /**
+  * redirect to current step
+  * @param currentStep
+  */
+  switchToCurrentStep(currentStep){
         //TODO: push to specific page
         switch(currentStep){
             case 'choose-plan': {

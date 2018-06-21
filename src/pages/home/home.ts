@@ -5,7 +5,7 @@ import { UserData } from '../../providers/types/userData';
 import { RegisterPage } from '../register/register';
 import { Storage } from '@ionic/storage';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
-import { EventsPage } from '../events/events';
+import {NewEventPage} from "../new-event/new-event";
 
 
 @Component({
@@ -63,7 +63,7 @@ export class HomePage {
 
                       this.authService.getUserProfil().then(res=>{
 
-                        this.navCtrl.push(EventsPage);
+                        this.navCtrl.push(NewEventPage);
 
                       })
 
@@ -71,6 +71,7 @@ export class HomePage {
           ).catch(err=>{
 
             this.loading.dismiss();
+            console.log(err)
             this.presentToast("incorrect username or password !!");
           });
 
