@@ -23,6 +23,10 @@ import { MailCheckPage } from '../pages/mail-check/mail-check';
 import { PasswordRequestPage } from '../pages/password-request/password-request';
 import { EventsPage } from '../pages/events/events';
 import { ChoosePlanPage } from '../pages/choose-plan/choose-plan';
+import { Camera } from '@ionic-native/camera';
+import { CameraProvider } from '../providers/util/camera.provider';
+import { EventProvider } from '../providers/event/event';
+
  
 @NgModule({
   declarations: [
@@ -38,7 +42,7 @@ import { ChoosePlanPage } from '../pages/choose-plan/choose-plan';
     ChangepPasswordPage,
     UploadPage,PasswordRequestPage,
     EventsPage,
-    ChoosePlanPage
+    ChoosePlanPage,
   ],
   imports: [
 BrowserModule,
@@ -60,8 +64,8 @@ BrowserModule,
     ChangepPasswordPage,
     UploadPage,
     PasswordRequestPage,
-    EventsPage,
-    ChoosePlanPage
+    ChoosePlanPage,
+    EventsPage
   ],
   providers: [
     StatusBar,
@@ -70,7 +74,10 @@ BrowserModule,
     AuthProvider,
     ApiProvider,
     ProfilproviderProvider,
-    UserProvider
+    UserProvider,
+    CameraProvider,
+    Camera,
+    EventProvider
   ]
 })
 export class AppModule {}

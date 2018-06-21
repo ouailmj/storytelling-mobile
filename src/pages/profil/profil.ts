@@ -1,10 +1,10 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams, LoadingController, ToastController } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, LoadingController, ToastController, Platform, ActionSheetController } from 'ionic-angular';
 import { Storage } from '@ionic/storage';
 import { UserData } from '../../providers/types/userData';
 import { AuthProvider } from '../../providers/auth/auth';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import {WelcomePage} from '../welcome/welcome'
+import { CameraProvider } from '../../providers/util/camera.provider';
 
 /**
  * Generated class for the ProfilPage page.
@@ -19,6 +19,8 @@ import {WelcomePage} from '../welcome/welcome'
   templateUrl: 'profil.html',
 })
 export class ProfilPage {
+  placeholder = 'assets/img/avatar/girl-avatar.png';
+  chosenPicture: any;
 
   loading: any;
    user: UserData = {
@@ -31,7 +33,19 @@ export class ProfilPage {
   };
   authForm: FormGroup;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, public loadingCtrl: LoadingController,private toastCtrl: ToastController,private storage: Storage,public formBuilder: FormBuilder,private authService:AuthProvider) {
+  constructor(
+    public navCtrl: NavController,
+     public navParams: NavParams,
+      public loadingCtrl: LoadingController,
+      private toastCtrl: ToastController,
+      private storage: Storage,
+      public formBuilder: FormBuilder,
+      private authService:AuthProvider,
+      public cameraProvider: CameraProvider,
+      public platform: Platform,
+      public actionsheetCtrl: ActionSheetController,
+
+    ) {
 
 
 
@@ -49,12 +63,12 @@ export class ProfilPage {
     this.storage.get('user').then(user=>{
 
       if(user===null){
-          return    this.navCtrl.push(WelcomePage).then(page=>{
+         // return    this.navCtrl.push(WelcomePage).then(page=>{
 
-            console.log(page)
-          }).catch(err=>{
-            console.log(err)
-          })
+          //   console.log(page)
+          // }).catch(err=>{
+          //   console.log(err)
+          // })
       }
       this.user.email=user.email;
       this.user.fullName=user.fullName;
@@ -147,6 +161,66 @@ export class ProfilPage {
     });
 
     toast.present();
+  }
+
+  changePicture() {
+
+    const actionsheet = this.actionsheetCtrl.create({
+      title: 'upload picture',
+      buttons: [
+        {
+          text: 'camera',
+          icon: !this.platform.is('ios') ? 'camera' : null,
+          handler: () => {
+            this.takePicture();
+          }
+        },
+        {
+          text: !this.platform.is('ios') ? 'gallery' : 'camera roll',
+          icon: !this.platform.is('ios') ? 'image' : null,
+          handler: () => {
+            this.getPicture();
+          }
+        },
+        {
+          text: 'cancel',
+          icon: !this.platform.is('ios') ? 'close' : null,
+          role: 'destructive',
+          handler: () => {
+            console.log('the user has cancelled the interaction.');
+          }
+        }
+      ]
+    });
+    return actionsheet.present();
+  }
+
+  takePicture() {
+    const loading = this.loadingCtrl.create();
+
+    loading.present();
+    return this.cameraProvider.getPictureFromCamera().then(picture => {
+      if (picture) {
+        this.chosenPicture = picture;
+      }
+      loading.dismiss();
+    }, error => {
+      alert(error);
+    });
+  }
+
+  getPicture() {
+    const loading = this.loadingCtrl.create();
+
+    loading.present();
+    return this.cameraProvider.getPictureFromPhotoLibrary().then(picture => {
+      if (picture) {
+        this.chosenPicture = picture;
+      }
+      loading.dismiss();
+    }, error => {
+      alert(error);
+    });
   }
 
 
