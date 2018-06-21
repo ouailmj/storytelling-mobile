@@ -9,7 +9,7 @@ import { ProfilPage } from '../pages/profil/profil';
 import { ChangepPasswordPage } from '../pages/changep-password/changep-password';
 import { Storage } from '@ionic/storage';
 import { PasswordRequestPage } from '../pages/password-request/password-request';
-import { ChoosePlanPage } from '../pages/choose-plan/choose-plan';
+import { ChoosePlanPage } from '../pages/choose-plan/choose-plan'
 
 @Component({
   templateUrl: 'app.html'
