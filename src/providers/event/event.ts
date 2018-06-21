@@ -2,7 +2,6 @@ import { Storage } from '@ionic/storage';
 import {ApiProvider} from "../api/api";
 import { Injectable } from '@angular/core';
 import {HttpHeaders} from "@angular/common/http";
-import {AuthRoutes} from "../auth/auth.routes";
 import {ChoosePlanData} from "../types/eventData";
 import {EventRoutes} from "./event.routes";
 

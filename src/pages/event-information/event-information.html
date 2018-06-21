@@ -4,15 +4,41 @@
   See http://ionicframework.com/docs/components/#navigation for more info on
   Ionic pages and navigation.
 -->
-<ion-header>
 
-  <ion-navbar>
-    <ion-title>eventInformation</ion-title>
-  </ion-navbar>
+<ion-content id="register">
+  <div class="circle-two"></div>
+  <div class="inputs">
 
-</ion-header>
+    <form (ngSubmit)="onSubmit()">
+      <ion-list>
+        <ion-item>
+          <ion-textarea placeholder="Enter a description" name="description" [(ngModel)]="eventInformation.description" ></ion-textarea>
+        </ion-item>
+        <ion-item>
+          <ion-input  placeholder="event name" name="title" [(ngModel)]="eventInformation.title" ></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-input  placeholder="event place" name="place" [(ngModel)]="eventInformation.place" ></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label>startsAt Date</ion-label>
+          <ion-datetime displayFormat="DD-MM-YYYY HH:mm a" name="startsAt" max="2050-12-01"  [(ngModel)]="eventInformation.startsAt" ></ion-datetime>
+        </ion-item>
+        <ion-item>
+          <ion-label>endsAt Date</ion-label>
+          <ion-datetime displayFormat="DD-MM-YYYY HH:mm a" name="endsAt" max="2050-12-01"  [(ngModel)]="eventInformation.endsAt" ></ion-datetime>
+        </ion-item>
 
-
-<ion-content padding>
-
+      <ion-item>
+        <ion-select [ngModelOptions]="{standalone: true}" [(ngModel)]="eventInformation.idCat">
+          <ion-option  *ngFor="let cat of this.categories" value="{{cat.id}}">{{cat.title}}</ion-option>
+        </ion-select>
+      </ion-item>
+      </ion-list>
+      <button type="submit" ion-button large clear icon-end color="primary">
+        Continue
+        <ion-icon name="arrow-forward"></ion-icon>
+      </button>
+    </form>
+  </div>
 </ion-content>

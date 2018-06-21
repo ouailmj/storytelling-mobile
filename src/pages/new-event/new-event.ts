@@ -3,6 +3,7 @@ import {IonicPage, NavController, NavParams, ToastController} from 'ionic-angula
 import { EventProvider } from '../../providers/event/event';
 import {ChoosePlanPage} from "../choose-plan/choose-plan";
 import {Storage} from "@ionic/storage";
+import {EventInformationPage} from "../event-information/event-information";
 
 /**
  * Generated class for the NewEventPage page.
@@ -27,7 +28,8 @@ export class NewEventPage {
     console.log('ionViewDidLoad NewEventPage');
   }
 
-    createEvent(){
+
+  createEvent(){
 
         this.eventProvider.newEvent().then((result) => {
             console.log(result)
@@ -42,7 +44,7 @@ export class NewEventPage {
 
     }
 
-    presentToast(msg) {
+  presentToast(msg) {
         let toast = this.toastCtrl.create({
             message: msg,
             duration: 3000,
@@ -69,41 +71,32 @@ export class NewEventPage {
                 break;
             }
             case 'event-information': {
-                //statements;
-                console.log('event-information1')
-                this.navCtrl.push(ChoosePlanPage);
+                this.navCtrl.push(EventInformationPage);
                 break;
             }
             case 'event-challenge': {
-                //statements;
                 console.log('event-challenge')
                 break;
             }
             case 'event-cover': {
-                //statements;
                 console.log('event-cover')
                 break;
             }
             case 'payment': {
-                //statements;
                 console.log('payment')
                 break;
             }
             case 'invite-friends': {
-                //statements;
                 console.log('invite-friends')
                 break;
             }
             case 'finish': {
-                //statements;
                 console.log('finish')
                 break;
             }
             default: {
-                //statements;
                 break;
             }
         }
     }
-
 }
