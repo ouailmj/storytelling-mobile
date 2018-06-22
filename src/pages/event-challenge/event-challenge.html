@@ -28,10 +28,22 @@
           </ion-select>
         </ion-item>
       </ion-list>
-      <button type="submit" ion-button large clear icon-end color="primary">
+
+      <button ion-button icon-only type="submit">
+        add défi
+      </button>
+    </form>
+
+      <ion-card  *ngFor="let challenge of this.challenges" (tap)="removeChallenge(index)">
+        <ion-item>
+          {{challenge}}
+        </ion-item>
+      </ion-card>
+
+      <button type="button" ion-button large clear icon-end color="primary" (click)="send()">
         Continue
         <ion-icon name="arrow-forward"></ion-icon>
       </button>
-    </form>
+
   </div>
 </ion-content>

@@ -33,7 +33,7 @@ export class InviteFriendsPage {
         });
     }
 
-    tapEvent(index) {
+    removeEmail(index) {
 
         this.emails.splice(index, 1)
     }

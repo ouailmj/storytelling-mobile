@@ -24,7 +24,7 @@
       </button>
     </form>
   </ion-card>
-  <ion-card  *ngFor="let email of this.emails" (tap)="tapEvent(index)">
+  <ion-card  *ngFor="let email of this.emails" (tap)="removeEmail(index)">
     <ion-item>
       {{email}}
     </ion-item>

@@ -25,9 +25,11 @@ import {EventsPage} from "../events/events";
 })
 export class EventChallengePage {
     propositions  = [] ;
+    challenges  = [] ;
     challengeEvent: ChallengeData = {
         "description": ''
     };
+
   constructor(public navCtrl: NavController, public navParams: NavParams, private storage: Storage, public apiProvider: ApiProvider, private eventProvider: EventProvider) {
       this.storage.get('token').then(tok=>{
 
@@ -46,16 +48,21 @@ export class EventChallengePage {
     console.log('ionViewDidLoad EventChallengePage');
   }
 
-    onSubmit(){
-    console.log(this.challengeEvent)
-        let challenges = [
-            this.challengeEvent.description
-        ]
+  onSubmit(){
+      this.challenges.push(this.challengeEvent.description)
+  }
+
+    removeChallenge(index) {
+
+        this.challenges.splice(index, 1)
+    }
+
+    send(){
+      console.log(this.challengeEvent)
+
         this.storage.get('currentEvent').then(event=>{
 
-            console.log("finish",event);
-            console.log("ddd",event.id);
-            this.eventProvider.addEventChallenge(challenges, event.id).then(res =>{
+            this.eventProvider.addEventChallenge(this.challenges, event.id).then(res =>{
                 console.log(res)
                 this.navCtrl.push(CoverEventPage)
             }).catch(error =>{

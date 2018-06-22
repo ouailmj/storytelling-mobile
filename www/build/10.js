@@ -1,14 +1,14 @@
 webpackJsonp([10],{
 
-/***/ 310:
+/***/ 312:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "CoverEventPageModule", function() { return CoverEventPageModule; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "EventChallengePageModule", function() { return EventChallengePageModule; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(6);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__cover_event__ = __webpack_require__(47);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__event_challenge__ = __webpack_require__(63);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -18,23 +18,23 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 
 
 
-var CoverEventPageModule = (function () {
-    function CoverEventPageModule() {
+var EventChallengePageModule = (function () {
+    function EventChallengePageModule() {
     }
-    CoverEventPageModule = __decorate([
+    EventChallengePageModule = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["I" /* NgModule */])({
             declarations: [
-                __WEBPACK_IMPORTED_MODULE_2__cover_event__["a" /* CoverEventPage */],
+                __WEBPACK_IMPORTED_MODULE_2__event_challenge__["a" /* EventChallengePage */],
             ],
             imports: [
-                __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["d" /* IonicPageModule */].forChild(__WEBPACK_IMPORTED_MODULE_2__cover_event__["a" /* CoverEventPage */]),
+                __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["d" /* IonicPageModule */].forChild(__WEBPACK_IMPORTED_MODULE_2__event_challenge__["a" /* EventChallengePage */]),
             ],
         })
-    ], CoverEventPageModule);
-    return CoverEventPageModule;
+    ], EventChallengePageModule);
+    return EventChallengePageModule;
 }());
 
-//# sourceMappingURL=cover-event.module.js.map
+//# sourceMappingURL=event-challenge.module.js.map
 
 /***/ })
 
