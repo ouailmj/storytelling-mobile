@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import {PaymentPage} from "../payment/payment";
 
 /**
  * Generated class for the CoverEventPage page.
@@ -20,6 +21,13 @@ export class CoverEventPage {
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad CoverEventPage');
+  }
+
+
+  onSubmit(){
+
+      this.navCtrl.push(PaymentPage);
+
   }
 
 }

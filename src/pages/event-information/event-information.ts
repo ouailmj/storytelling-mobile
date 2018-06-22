@@ -1,10 +1,14 @@
 import { Component } from '@angular/core';
 import {IonicPage, NavController, NavParams} from 'ionic-angular';
-import {eventInformationData} from "../../providers/types/eventData";
+import {EventInformationData} from "../../providers/types/eventData";
 import {Category} from "../../models/category";
 import {HttpHeaders} from "@angular/common/http";
 import {ApiProvider} from "../../providers/api/api";
 import {Storage} from "@ionic/storage";
+import {EventProvider} from "../../providers/event/event";
+import {EventsPage} from "../events/events";
+import {EventChallengePage} from "../event-challenge/event-challenge";
+import {CoverEventPage} from "../cover-event/cover-event";
 
 /**
  * Generated class for the EventInformationPage page.
@@ -21,17 +25,17 @@ import {Storage} from "@ionic/storage";
 export class EventInformationPage {
 
     public loginForm: any;
-    eventInformation: eventInformationData = {
-        description: "",
-        title: "",
-        place: "",
-        startsAt:  new Date(),
-        endsAt:  new  Date(),
-        idCat: 0
+    eventInformation: EventInformationData = {
+        "description": "sdz",
+        "endsAt":  new Date().toString(),
+        "idCat":2,
+        "place": "hto",
+        "startsAt": new Date().toString(),
+        "title": " sqdzdzd"
     };
     categories: Category [] = [];
 //    today
-  constructor(public navCtrl: NavController, public navParams: NavParams, public apiProvider: ApiProvider, private storage: Storage,) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, public apiProvider: ApiProvider, private storage: Storage, private eventProvider: EventProvider) {
       this.storage.get('token').then(tok=>{
 
           let headers = new HttpHeaders();
@@ -51,10 +55,35 @@ export class EventInformationPage {
   }
 
     onSubmit(){
-        console.log('data' ,  this.eventInformation);
-        console.log("submit")
-            console.log("valide")
-          //  console.log(this.eventInformation)
+
+        this.storage.get('currentEvent').then(event=>{
+
+            console.log("finish",event);
+            console.log("ddd",event.id);
+            this.eventProvider.addEventInformation(this.eventInformation, event.id).then(res =>{
+                console.log(res)
+                console.log('rr', event.eventPurchase.plan)
+                console.log('eventPurchase', event.eventPurchase)
+                this.eventProvider.isFreePlan(event.eventPurchase).then(res =>{
+                    if(res){
+                        this.navCtrl.push(CoverEventPage)
+                    }else{
+
+                        this.navCtrl.push(EventChallengePage)
+                    }
+                    console.log(res)
+
+                }).catch(error =>{
+                    console.log(error)
+                })
+
+            }).catch(error =>{
+                console.log(error)
+            })
+
+        }).catch(err=>{
+            this.navCtrl.push(EventsPage)
+        })
 
 
     }

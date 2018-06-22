@@ -13,6 +13,25 @@
 </ion-header>
 
 
-<ion-content padding>
 
+<ion-content>
+  <div>
+    <form (ngSubmit)="onSubmit()">
+      <ion-list>
+        <ion-item>
+          <ion-textarea placeholder="Enter a description" name="description" [(ngModel)]="challengeEvent.description" ></ion-textarea>
+        </ion-item>
+
+        <ion-item>
+          <ion-select [ngModelOptions]="{standalone: true}" [(ngModel)]="challengeEvent.descriptionPropose">
+            <ion-option  *ngFor="let proposition of this.propositions" value="{{proposition.id}}">{{proposition.description}}</ion-option>
+          </ion-select>
+        </ion-item>
+      </ion-list>
+      <button type="submit" ion-button large clear icon-end color="primary">
+        Continue
+        <ion-icon name="arrow-forward"></ion-icon>
+      </button>
+    </form>
+  </div>
 </ion-content>

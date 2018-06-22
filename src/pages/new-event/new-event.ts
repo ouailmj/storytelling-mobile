@@ -4,6 +4,10 @@ import { EventProvider } from '../../providers/event/event';
 import {ChoosePlanPage} from "../choose-plan/choose-plan";
 import {Storage} from "@ionic/storage";
 import {EventInformationPage} from "../event-information/event-information";
+import {EventChallengePage} from "../event-challenge/event-challenge";
+import {CoverEventPage} from "../cover-event/cover-event";
+import {PaymentPage} from "../payment/payment";
+import {InviteFriendsPage} from "../invite-friends/invite-friends";
 
 /**
  * Generated class for the NewEventPage page.
@@ -75,19 +79,19 @@ export class NewEventPage {
                 break;
             }
             case 'event-challenge': {
-                console.log('event-challenge')
+                this.navCtrl.push(EventChallengePage);
                 break;
             }
             case 'event-cover': {
-                console.log('event-cover')
+                this.navCtrl.push(CoverEventPage);
                 break;
             }
             case 'payment': {
-                console.log('payment')
+                this.navCtrl.push(PaymentPage);
                 break;
             }
             case 'invite-friends': {
-                console.log('invite-friends')
+                this.navCtrl.push(InviteFriendsPage);
                 break;
             }
             case 'finish': {
