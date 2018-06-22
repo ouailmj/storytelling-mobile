@@ -12,13 +12,12 @@ export interface EventInformationData{
 }
 
 export interface ChallengeData{
-    description: string,
-    descriptionPropose: string
+    description: string
 }
 export interface PaymentData{
-    cardNumber: string,
-    experationDateMonth: string,
-    experationDateYear: string,
-    cvv: string,
-    price: string,
+    numberCard: number,
+    monthExpire: number,
+    yearExpire: number,
+    cvv: number,
+    price: number,
 }

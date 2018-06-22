@@ -23,8 +23,8 @@
         </ion-item>
 
         <ion-item>
-          <ion-select [ngModelOptions]="{standalone: true}" [(ngModel)]="challengeEvent.descriptionPropose">
-            <ion-option  *ngFor="let proposition of this.propositions" value="{{proposition.id}}">{{proposition.description}}</ion-option>
+          <ion-select [ngModelOptions]="{standalone: true}" [(ngModel)]="challengeEvent.description">
+            <ion-option  *ngFor="let proposition of this.propositions" value="{{proposition.description}}">{{proposition.description}}</ion-option>
           </ion-select>
         </ion-item>
       </ion-list>

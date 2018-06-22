@@ -4,4 +4,6 @@ export const EventRoutes = {
     apiEventPurchase: 'api/event_purchases/',
     apiPlan: 'api/plans/',
     apiPropositionChallenges: '/api/proposition_challenges',
+    apiEventChallenge: '/api/event/event-challenge/',
+    apiPayment: '/api/event/add-payment/',
 };

@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import {PaymentPage} from "../payment/payment";
+import {EventProvider} from "../../providers/event/event";
 
 /**
  * Generated class for the CoverEventPage page.
@@ -16,7 +17,7 @@ import {PaymentPage} from "../payment/payment";
 })
 export class CoverEventPage {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, private eventProvider: EventProvider) {
   }
 
   ionViewDidLoad() {
@@ -25,8 +26,11 @@ export class CoverEventPage {
 
 
   onSubmit(){
+      this.eventProvider.isTotalPayed().then(res =>{
+        console.log('moooooooooooooooook',res);
+        this.navCtrl.push(PaymentPage);
+      }).catch(err=>{ console.log(err)})
 
-      this.navCtrl.push(PaymentPage);
 
   }
 

@@ -2,7 +2,7 @@ import { Storage } from '@ionic/storage';
 import {ApiProvider} from "../api/api";
 import { Injectable } from '@angular/core';
 import {HttpHeaders} from "@angular/common/http";
-import {ChoosePlanData, EventInformationData} from "../types/eventData";
+import {ChoosePlanData, EventInformationData, PaymentData} from "../types/eventData";
 import {EventRoutes} from "./event.routes";
 
 /*
@@ -164,6 +164,104 @@ console.log(EventRoutes.apiChoosePlan+id)
                 console.log(error.status);
             });
 
+
+        })
+    }
+
+    addEventChallenge(challenges: string[], id): Promise<any>{
+        return new Promise((resolve, reject) => {
+
+
+            this.storage.get('token').then(tok=>{
+                let headers = new HttpHeaders();
+                headers = headers.set('Content-Type', 'application/json; charset=utf-8');
+                headers = headers.set('Authorization', 'Bearer ' + tok);
+                console.log(EventRoutes.apiEventChallenge+id);
+                let data = {
+                    "challenges": challenges
+                }
+                this.apiProvider.post(EventRoutes.apiEventChallenge+id, data,{headers: headers}).then(rep=>{
+                    console.log(rep)
+                    resolve("ok");
+
+                }).catch(error=>{
+                    reject(error);
+                })
+            }).catch(error => {
+                console.log(error.status);
+            });
+
+
+        })
+    }
+
+    addPaymentForEvent(eventPayment: PaymentData,id):  Promise<any>{
+        return new Promise((resolve, reject) => {
+
+
+            this.storage.get('token').then(tok=>{
+                let headers = new HttpHeaders();
+                headers = headers.set('Content-Type', 'application/json; charset=utf-8');
+                headers = headers.set('Authorization', 'Bearer ' + tok);
+                console.log(EventRoutes.apiEventChallenge+id);
+                let data = {
+                    "monthExpire": 12,
+                    "cvv": 123,
+                    "numberCard": 123456789,
+                    "yearExpire": 1234,
+                    "price": 21,
+                }
+                console.log("data", data)
+                this.apiProvider.post(EventRoutes.apiPayment+id, data,{headers: headers}).then(rep=>{
+                    console.log(rep)
+                    resolve("ok");
+
+                }).catch(error=>{
+                    console.log(error.status);
+                    reject(error);
+                })
+            }).catch(error => {
+                console.log(error.status);
+            });
+
+
+        })
+    }
+
+    isTotalPayed(): Promise<any>{
+        return new Promise((resolve, reject) => {
+
+            let somme = 0
+            let price = 0
+            this.storage.get('token').then(tok=>{
+                let headers = new HttpHeaders();
+                headers = headers.set('Content-Type', 'application/json; charset=utf-8');
+                headers = headers.set('Authorization', 'Bearer ' + tok);
+                this.storage.get('currentEvent').then(event=>{
+                    this.apiProvider.get(event.eventPurchase, {headers: headers}).then(eventPurchase=>{
+                        this.apiProvider.get(eventPurchase.plan, {headers: headers}).then(plan=>{
+                            price = plan.price
+                            console.log( ',price  ',price)
+                            console.log( ',eventPurchase.payments  ',eventPurchase.payments)
+                            eventPurchase.payments.forEach((payment)=>{
+                                this.apiProvider.get(payment, {headers: headers}).then(res=>{
+                                    somme += res.totalAmount
+                                    console.log( ',sommed  ',somme)
+                                }).catch(error =>{console.log(error)})
+                            }).then(res=>{
+console.log('wa9awdoooooooo')
+                                resolve({'somme' : somme, 'price': price})
+                            })
+                        }).catch(error =>{})
+                    }).catch(error=>{
+                        reject(error);
+                    })
+                }).catch(error=>{
+                    reject(error);
+                })
+            }).catch(error => {
+                console.log(error.status);
+            })
 
         })
     }

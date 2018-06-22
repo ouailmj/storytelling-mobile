@@ -18,13 +18,13 @@
     <form (ngSubmit)="onSubmit()">
       <ion-list>
         <ion-item>
-          <ion-input  placeholder="CARD NUMBER" name="cardNumber" [(ngModel)]="payment.cardNumber" ></ion-input>
+          <ion-input  placeholder="CARD NUMBER" name="cardNumber" [(ngModel)]="payment.numberCard" ></ion-input>
         </ion-item>
         <ion-item>
-          <ion-input  placeholder="EXPIRATION DATE MONTH" name="experationDateMonth" [(ngModel)]="payment.experationDateMonth" ></ion-input>
+          <ion-input  placeholder="EXPIRATION DATE MONTH" name="experationDateMonth" [(ngModel)]="payment.monthExpire" ></ion-input>
         </ion-item>
         <ion-item>
-          <ion-input  placeholder="EXPIRATION DATE YEAR" name="experationDateYear" [(ngModel)]="payment.experationDateYear" ></ion-input>
+          <ion-input  placeholder="EXPIRATION DATE YEAR" name="experationDateYear" [(ngModel)]="payment.yearExpire" ></ion-input>
         </ion-item>
         <ion-item>
           <ion-input  placeholder="CVV CODE" name="cvv" [(ngModel)]="payment.cvv" ></ion-input>

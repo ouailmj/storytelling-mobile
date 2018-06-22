@@ -2,6 +2,10 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import {PaymentData} from "../../providers/types/eventData";
 import {InviteFriendsPage} from "../invite-friends/invite-friends";
+import {EventProvider} from "../../providers/event/event";
+import {Storage} from "@ionic/storage";
+import {EventInformationPage} from "../event-information/event-information";
+import {EventsPage} from "../events/events";
 
 /**
  * Generated class for the PaymentPage page.
@@ -18,13 +22,13 @@ import {InviteFriendsPage} from "../invite-friends/invite-friends";
 export class PaymentPage {
 
   payment: PaymentData ={
-    cardNumber: '',
-    experationDateMonth: '',
-    experationDateYear: '',
-    cvv: '',
-    price: '',
+      numberCard: null,
+      monthExpire: null,
+      yearExpire: null,
+      cvv: null,
+      price: null,
 }
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, private storage: Storage, public eventProvider: EventProvider) {
   }
 
   ionViewDidLoad() {
@@ -34,7 +38,20 @@ export class PaymentPage {
   onSubmit(){
     console.log(this.payment)
 
-      this.navCtrl.push(InviteFriendsPage);
+      this.storage.get('currentEvent').then(event=>{
+
+          console.log("finish",event);
+          console.log("ddd",event.id);
+          this.eventProvider.addPaymentForEvent(this.payment, event.id).then(res =>{
+              console.log(res)
+              this.navCtrl.push(InviteFriendsPage)
+          }).catch(error =>{
+              console.log(error)
+          })
+
+      }).catch(err=>{
+          this.navCtrl.push(EventsPage)
+      })
   }
 
 }
