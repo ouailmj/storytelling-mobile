@@ -203,18 +203,43 @@ console.log(EventRoutes.apiChoosePlan+id)
                 let headers = new HttpHeaders();
                 headers = headers.set('Content-Type', 'application/json; charset=utf-8');
                 headers = headers.set('Authorization', 'Bearer ' + tok);
-                console.log(EventRoutes.apiEventChallenge+id);
-                let data = {
-                    "monthExpire": 12,
-                    "cvv": 123,
-                    "numberCard": 123456789,
-                    "yearExpire": 1234,
-                    "price": 21,
+                let data={
+                    "monthExpire":  +eventPayment.monthExpire,
+                    "cvv": +eventPayment.cvv,
+                    "numberCard": +eventPayment.numberCard,
+                    "yearExpire": +eventPayment.yearExpire,
+                    "price": +eventPayment.price
                 }
-                console.log("data", data)
+
                 this.apiProvider.post(EventRoutes.apiPayment+id, data,{headers: headers}).then(rep=>{
-                    console.log(rep)
                     resolve("ok");
+
+                }).catch(error=>{
+                    console.log(error.status);
+                    reject(error);
+                })
+            }).catch(error => {
+                console.log(error.status);
+            });
+
+
+        })
+    }
+
+    addInviteFriends(emails: string[], id): Promise<any>{
+        return new Promise((resolve, reject) => {
+
+
+            this.storage.get('token').then(tok=>{
+                let headers = new HttpHeaders();
+                headers = headers.set('Content-Type', 'application/json; charset=utf-8');
+                headers = headers.set('Authorization', 'Bearer ' + tok);
+                let data={
+                    "emails":  emails
+                }
+
+                this.apiProvider.post(EventRoutes.apiInviteFriends+id, data,{headers: headers}).then(rep=>{
+                    resolve(rep);
 
                 }).catch(error=>{
                     console.log(error.status);
@@ -237,7 +262,7 @@ console.log(EventRoutes.apiChoosePlan+id)
                 headers = headers.set('Authorization', 'Bearer ' + tok);
                 this.storage.get('currentEvent').then(event=>{
                     this.apiProvider.get(EventRoutes.apiIsTotalPayed+event.id, {headers: headers}).then(isTotalPayed=>{
-                        console.log("isTotalPayed",isTotalPayed)
+                        resolve(isTotalPayed)
                     }).catch(error=>{
                         reject(error);
                     })

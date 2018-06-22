@@ -30,6 +30,7 @@ import {CoverEventPage} from "../pages/cover-event/cover-event";
 import {EventChallengePage} from "../pages/event-challenge/event-challenge";
 import {InviteFriendsPage} from "../pages/invite-friends/invite-friends";
 import {PaymentPage} from "../pages/payment/payment";
+import {FinishCreateEventPage} from "../pages/finish-create-event/finish-create-event";
  
 @NgModule({
   declarations: [
@@ -51,7 +52,8 @@ import {PaymentPage} from "../pages/payment/payment";
       CoverEventPage,
       EventChallengePage,
       InviteFriendsPage,
-      PaymentPage
+      PaymentPage,
+      FinishCreateEventPage
   ],
   imports: [
 BrowserModule,
@@ -80,7 +82,8 @@ BrowserModule,
       CoverEventPage,
       EventChallengePage,
       InviteFriendsPage,
-      PaymentPage
+      PaymentPage,
+      FinishCreateEventPage
   ],
   providers: [
     StatusBar,

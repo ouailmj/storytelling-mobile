@@ -40,10 +40,8 @@ export class PaymentPage {
 
       this.storage.get('currentEvent').then(event=>{
 
-          console.log("finish",event);
-          console.log("ddd",event.id);
           this.eventProvider.addPaymentForEvent(this.payment, event.id).then(res =>{
-              console.log(res)
+              console.log("addPaymentForEvent", res)
               this.navCtrl.push(InviteFriendsPage)
           }).catch(error =>{
               console.log(error)

@@ -8,6 +8,7 @@ import {EventChallengePage} from "../event-challenge/event-challenge";
 import {CoverEventPage} from "../cover-event/cover-event";
 import {PaymentPage} from "../payment/payment";
 import {InviteFriendsPage} from "../invite-friends/invite-friends";
+import {FinishCreateEventPage} from "../finish-create-event/finish-create-event";
 
 /**
  * Generated class for the NewEventPage page.
@@ -37,6 +38,7 @@ export class NewEventPage {
 
         this.eventProvider.newEvent().then((result) => {
             console.log(result)
+            this.navCtrl.push(ChoosePlanPage);
         }).catch(err=>{
             this.eventProvider.getEvent(err['error']['appEventURI']).then(rep =>{
                 this.storage.set('currentEvent', rep);
@@ -94,11 +96,8 @@ export class NewEventPage {
                 this.navCtrl.push(InviteFriendsPage);
                 break;
             }
-            case 'finish': {
-                console.log('finish')
-                break;
-            }
             default: {
+                this.navCtrl.push(FinishCreateEventPage);
                 break;
             }
         }

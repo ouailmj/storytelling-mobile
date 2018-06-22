@@ -34,7 +34,7 @@ export class EventInformationPage {
         "title": " sqdzdzd"
     };
     categories: Category [] = [];
-//    today
+
   constructor(public navCtrl: NavController, public navParams: NavParams, public apiProvider: ApiProvider, private storage: Storage, private eventProvider: EventProvider) {
       this.storage.get('token').then(tok=>{
 
@@ -46,7 +46,6 @@ export class EventInformationPage {
               this.categories = dataCategories['hydra:member'];
           }).catch(error=>{})
       }).catch(error=>{})
-     // this.today = new Date().toISOString();
 
   }
 
@@ -58,12 +57,8 @@ export class EventInformationPage {
 
         this.storage.get('currentEvent').then(event=>{
 
-            console.log("finish",event);
-            console.log("ddd",event.id);
             this.eventProvider.addEventInformation(this.eventInformation, event.id).then(res =>{
-                console.log(res)
-                console.log('rr', event.eventPurchase.plan)
-                console.log('eventPurchase', event.eventPurchase)
+
                 this.eventProvider.isFreePlan(event.eventPurchase).then(res =>{
                     if(res){
                         this.navCtrl.push(CoverEventPage)

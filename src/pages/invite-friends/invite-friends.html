@@ -12,7 +12,27 @@
 
 </ion-header>
 
+<ion-content>
+  <ion-card >
 
-<ion-content padding>
+    <form [formGroup]="authForm" (ngSubmit)="addEmail(authForm.value)">
+      <ion-item>
+        <ion-input type="email" formControlName="email" placeholder="email" [(ngModel)]="email"></ion-input>
+      </ion-item>
+      <button ion-button icon-only type="submit">
+        add Email
+      </button>
+    </form>
+  </ion-card>
+  <ion-card  *ngFor="let email of this.emails" (tap)="tapEvent(index)">
+    <ion-item>
+      {{email}}
+    </ion-item>
+  </ion-card>
+
+  <button type="button" ion-button large clear icon-end color="primary"  (click)="send()">
+    Continue
+    <ion-icon name="arrow-forward"></ion-icon>
+  </button>
 
 </ion-content>
