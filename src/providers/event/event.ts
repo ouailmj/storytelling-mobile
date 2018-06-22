@@ -231,28 +231,13 @@ console.log(EventRoutes.apiChoosePlan+id)
     isTotalPayed(): Promise<any>{
         return new Promise((resolve, reject) => {
 
-            let somme = 0
-            let price = 0
             this.storage.get('token').then(tok=>{
                 let headers = new HttpHeaders();
                 headers = headers.set('Content-Type', 'application/json; charset=utf-8');
                 headers = headers.set('Authorization', 'Bearer ' + tok);
                 this.storage.get('currentEvent').then(event=>{
-                    this.apiProvider.get(event.eventPurchase, {headers: headers}).then(eventPurchase=>{
-                        this.apiProvider.get(eventPurchase.plan, {headers: headers}).then(plan=>{
-                            price = plan.price
-                            console.log( ',price  ',price)
-                            console.log( ',eventPurchase.payments  ',eventPurchase.payments)
-                            eventPurchase.payments.forEach((payment)=>{
-                                this.apiProvider.get(payment, {headers: headers}).then(res=>{
-                                    somme += res.totalAmount
-                                    console.log( ',sommed  ',somme)
-                                }).catch(error =>{console.log(error)})
-                            }).then(res=>{
-console.log('wa9awdoooooooo')
-                                resolve({'somme' : somme, 'price': price})
-                            })
-                        }).catch(error =>{})
+                    this.apiProvider.get(EventRoutes.apiIsTotalPayed+event.id, {headers: headers}).then(isTotalPayed=>{
+                        console.log("isTotalPayed",isTotalPayed)
                     }).catch(error=>{
                         reject(error);
                     })
