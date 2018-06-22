@@ -26,6 +26,8 @@ import { ChoosePlanPage } from '../pages/choose-plan/choose-plan';
 import { Camera } from '@ionic-native/camera';
 import { CameraProvider } from '../providers/util/camera.provider';
 import { EventProvider } from '../providers/event/event';
+import { ShowEventPage } from '../pages/show-event/show-event';
+
 
  
 @NgModule({
@@ -43,6 +45,7 @@ import { EventProvider } from '../providers/event/event';
     UploadPage,PasswordRequestPage,
     EventsPage,
     ChoosePlanPage,
+    ShowEventPage
   ],
   imports: [
 BrowserModule,
@@ -65,7 +68,8 @@ BrowserModule,
     UploadPage,
     PasswordRequestPage,
     ChoosePlanPage,
-    EventsPage
+    EventsPage,
+    ShowEventPage
   ],
   providers: [
     StatusBar,

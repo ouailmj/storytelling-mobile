@@ -22,7 +22,7 @@ export class CameraProvider {
       allowEdit,
       destinationType: this.camera.DestinationType.DATA_URL,
       sourceType: pictureSourceType,
-      encodingType: this.camera.EncodingType.PNG,
+      encodingType: this.camera.EncodingType.JPEG,
       saveToPhotoAlbum: saveToAlbum
     };
 
@@ -33,8 +33,8 @@ export class CameraProvider {
     }
 
     return this.camera.getPicture(options).then(imageData => {
-      const base64Image = 'data:image/png;base64,' + imageData;
-      return base64Image;
+      const base64Image = 'data:image/jpeg;base64,' + imageData;
+      return base64Image ;
     }, error => {
       console.log('CAMERA ERROR -> ' + JSON.stringify(error));
     });

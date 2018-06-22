@@ -16,7 +16,7 @@ import { EventsPage } from '../pages/events/events';
 })
 export class StoryTellingApp {
   @ViewChild(Nav) nav: Nav;
-  rootPage:any = ProfilPage;
+  rootPage:any = WelcomePage;
   pages: Array<{title: string, component: any}>;
 
 

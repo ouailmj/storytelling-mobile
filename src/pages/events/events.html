@@ -4,34 +4,34 @@
   </ion-navbar>
 </ion-header>
 <ion-content>
-  <ion-card *ngFor="let card of cards" (click)="eventDetails()">
+  <ion-card *ngFor="let event of events" (click)="eventDetails()">
     <ion-item>
       <ion-avatar item-start>
-        <img [src]="card.avatarImageUrl" (click)="avatarTapped(card)">
+        <img [src]="event.avatarImageUrl" onerror="this.src='assets/imgs/avatar/marty-avatar.png'" >
       </ion-avatar>
-      <h2>{{card.name}}</h2>
-      <p>{{card.date}}</p>
+      <h2>{{event.user.fullName}}</h2>
+      <p>{{event.event.endsAt}}</p>
     </ion-item>
-    <img [src]="card.postImageUrl" (click)="imageTapped(card)">
+    <img [src]="event.imagesGallery[0].downloadLink" onerror="this.src='assets/imgs/card/advance-card-bttf.png'"  >
     <ion-card-content>
-      <p>{{card.postText}}</p>
+      <p>{{event.description}}</p>
     </ion-card-content>
     <ion-row>
       <ion-col>
-        <button ion-button color="primary" clear small icon-left (click)="like(card)">
+        <button ion-button color="primary" clear small icon-left >
         <ion-icon name='thumbs-up'></ion-icon>
-        {{card.likes}} Likes
+        {{event.privacy}} Likes
       </button>
       </ion-col>
       <ion-col>
-        <button ion-button color="primary" clear small icon-left (click)="comment(card)">
+        <button ion-button color="primary" clear small icon-left >
         <ion-icon name='text'></ion-icon>
-        {{card.comments}} Comments
+        {{event.started}} Comments
       </button>
       </ion-col>
       <ion-col center text-center>
         <ion-note>
-          {{card.timestamp}}
+          {{event.totalPayed}}
         </ion-note>
       </ion-col>
     </ion-row>

@@ -162,7 +162,12 @@ export class ProfilPage {
 
     toast.present();
   }
+  
 
+
+ 
+ 
+  
   changePicture() {
 
     const actionsheet = this.actionsheetCtrl.create({
