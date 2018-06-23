@@ -38,6 +38,7 @@ export class NewEventPage {
   createEvent(){
       this.showLoader()
         this.eventProvider.newEvent().then((result) => {
+            this.loading.dismiss();
             console.log(result)
             this.navCtrl.push(ChoosePlanPage);
         }).catch(err=>{
@@ -47,7 +48,6 @@ export class NewEventPage {
                 this.switchToCurrentStep(rep.currentStep)
 
             }).catch(error => {
-                this.loading.dismiss();
                 this.presentToast(error.statusText)})
         });
 

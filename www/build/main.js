@@ -215,6 +215,7 @@ var NewEventPage = (function () {
         var _this = this;
         this.showLoader();
         this.eventProvider.newEvent().then(function (result) {
+            _this.loading.dismiss();
             console.log(result);
             _this.navCtrl.push(__WEBPACK_IMPORTED_MODULE_3__choose_plan_choose_plan__["a" /* ChoosePlanPage */]);
         }).catch(function (err) {
@@ -223,7 +224,6 @@ var NewEventPage = (function () {
                 _this.loading.dismiss();
                 _this.switchToCurrentStep(rep.currentStep);
             }).catch(function (error) {
-                _this.loading.dismiss();
                 _this.presentToast(error.statusText);
             });
         });
