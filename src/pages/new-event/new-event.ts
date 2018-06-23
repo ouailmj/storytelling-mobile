@@ -3,6 +3,12 @@ import {IonicPage, NavController, NavParams, ToastController} from 'ionic-angula
 import { EventProvider } from '../../providers/event/event';
 import {ChoosePlanPage} from "../choose-plan/choose-plan";
 import {Storage} from "@ionic/storage";
+import {EventInformationPage} from "../event-information/event-information";
+import {EventChallengePage} from "../event-challenge/event-challenge";
+import {CoverEventPage} from "../cover-event/cover-event";
+import {PaymentPage} from "../payment/payment";
+import {InviteFriendsPage} from "../invite-friends/invite-friends";
+import {FinishCreateEventPage} from "../finish-create-event/finish-create-event";
 
 /**
  * Generated class for the NewEventPage page.
@@ -27,10 +33,12 @@ export class NewEventPage {
     console.log('ionViewDidLoad NewEventPage');
   }
 
-    createEvent(){
+
+  createEvent(){
 
         this.eventProvider.newEvent().then((result) => {
             console.log(result)
+            this.navCtrl.push(ChoosePlanPage);
         }).catch(err=>{
             this.eventProvider.getEvent(err['error']['appEventURI']).then(rep =>{
                 this.storage.set('currentEvent', rep);
@@ -42,7 +50,7 @@ export class NewEventPage {
 
     }
 
-    presentToast(msg) {
+  presentToast(msg) {
         let toast = this.toastCtrl.create({
             message: msg,
             duration: 3000,
@@ -69,41 +77,29 @@ export class NewEventPage {
                 break;
             }
             case 'event-information': {
-                //statements;
-                console.log('event-information1')
-                this.navCtrl.push(ChoosePlanPage);
+                this.navCtrl.push(EventInformationPage);
                 break;
             }
             case 'event-challenge': {
-                //statements;
-                console.log('event-challenge')
+                this.navCtrl.push(EventChallengePage);
                 break;
             }
             case 'event-cover': {
-                //statements;
-                console.log('event-cover')
+                this.navCtrl.push(CoverEventPage);
                 break;
             }
             case 'payment': {
-                //statements;
-                console.log('payment')
+                this.navCtrl.push(PaymentPage);
                 break;
             }
             case 'invite-friends': {
-                //statements;
-                console.log('invite-friends')
-                break;
-            }
-            case 'finish': {
-                //statements;
-                console.log('finish')
+                this.navCtrl.push(InviteFriendsPage);
                 break;
             }
             default: {
-                //statements;
+                this.navCtrl.push(FinishCreateEventPage);
                 break;
             }
         }
     }
-
 }

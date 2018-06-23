@@ -28144,10 +28144,6 @@ page-choose-plan .tutorial-page .slide-zoom {
   height: 100%;
 }
 
-page-choose-plan .tutorial-page ion-slides {
-  height: 100%;
-}
-
 page-choose-plan .tutorial-page .slide-choose-plan {
   width: 80% !important;
   height: 550px;
@@ -28399,7 +28395,7 @@ page-mail-check .check-mail h6 {
 page-new-event {
 }
 
-page-new-event #events {
+page-new-event #new-event {
   height: 100%;
 }
 
