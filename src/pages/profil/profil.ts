@@ -5,6 +5,7 @@ import { UserData } from '../../providers/types/userData';
 import { AuthProvider } from '../../providers/auth/auth';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { CameraProvider } from '../../providers/util/camera.provider';
+import { EventProvider } from '../../providers/event/event';
 
 /**
  * Generated class for the ProfilPage page.
@@ -44,6 +45,7 @@ export class ProfilPage {
       public cameraProvider: CameraProvider,
       public platform: Platform,
       public actionsheetCtrl: ActionSheetController,
+      public eventProvider : EventProvider
 
     ) {
 
@@ -226,6 +228,24 @@ export class ProfilPage {
     }, error => {
       alert(error);
     });
+  }
+
+
+  uploadImag(){
+    console.log('....... up ----')
+
+    let data = new FormData();
+
+    data.append('avatar',this.chosenPicture);
+
+    this.eventProvider.upImg(data).then(data =>{
+      console.log("up imag ......")
+    }).catch(err => {
+  console.log("errr ===== > ",err)
+    })
+    
+
+
   }
 
 

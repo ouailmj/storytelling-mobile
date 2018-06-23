@@ -117,7 +117,7 @@ export class EventProvider {
               })
           }).catch(error=>{
     
-            reject('erro');
+            reject(error);
           })
     
       
