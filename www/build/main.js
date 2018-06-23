@@ -752,7 +752,7 @@ module.exports = webpackAsyncContext;
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return environment; });
 var environment = {
-    API_END_POINT: 'http://localhost:8000',
+    API_END_POINT: 'http://192.168.1.10:8000',
     production: false
 };
 //# sourceMappingURL=environment.js.map
