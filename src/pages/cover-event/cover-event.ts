@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import {IonicPage, LoadingController, NavController, NavParams} from 'ionic-angular';
 import {PaymentPage} from "../payment/payment";
 import {EventProvider} from "../../providers/event/event";
 import {InviteFriendsPage} from "../invite-friends/invite-friends";
@@ -20,7 +20,8 @@ import {Storage} from "@ionic/storage";
 })
 export class CoverEventPage {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, private eventProvider: EventProvider, private storage: Storage,) {
+    loading: any;
+  constructor(public navCtrl: NavController,   public loadingCtrl: LoadingController, public navParams: NavParams, private eventProvider: EventProvider, private storage: Storage,) {
   }
 
   ionViewDidLoad() {
@@ -29,6 +30,7 @@ export class CoverEventPage {
 
 
   onSubmit(){
+      this.showLoader()
       this.storage.get('currentEvent').then(event=> {
           this.eventProvider.isFreePlan(event.eventPurchase).then(res => {
               if (res) {
@@ -36,6 +38,7 @@ export class CoverEventPage {
               } else {
 
                   this.eventProvider.isTotalPayed().then(res =>{
+                      this.loading.dismiss();
                       if(res.isPayed){
                           this.navCtrl.push(InviteFriendsPage);
 
@@ -43,7 +46,9 @@ export class CoverEventPage {
                           this.navCtrl.push(PaymentPage);
 
                       }
-                  }).catch(err=>{ console.log(err)})
+                  }).catch(err=>{
+                      this.loading.dismiss(); console.log(err)
+                  })
               }
               console.log(res)
 
@@ -51,8 +56,14 @@ export class CoverEventPage {
               console.log(error)
           })
       }).catch(err=>{ console.log(err)})
-
-
   }
+
+    showLoader(){
+        this.loading = this.loadingCtrl.create({
+            content: 'Loding...'
+        });
+
+        this.loading.present();
+    }
 
 }

@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import {IonicPage, LoadingController, NavController, NavParams} from 'ionic-angular';
 import {PaymentData} from "../../providers/types/eventData";
 import {InviteFriendsPage} from "../invite-friends/invite-friends";
 import {EventProvider} from "../../providers/event/event";
@@ -27,8 +27,9 @@ export class PaymentPage {
       yearExpire: null,
       cvv: null,
       price: null,
-}
-  constructor(public navCtrl: NavController, public navParams: NavParams, private storage: Storage, public eventProvider: EventProvider) {
+  }
+    loading : any ;
+  constructor(public navCtrl: NavController, public loadingCtrl: LoadingController, public navParams: NavParams, private storage: Storage, public eventProvider: EventProvider) {
   }
 
   ionViewDidLoad() {
@@ -36,14 +37,19 @@ export class PaymentPage {
   }
 
   onSubmit(){
+      this.showLoader()
     console.log(this.payment)
 
       this.storage.get('currentEvent').then(event=>{
 
           this.eventProvider.addPaymentForEvent(this.payment, event.id).then(res =>{
+              this.loading.dismiss();
+
               console.log("addPaymentForEvent", res)
               this.navCtrl.push(InviteFriendsPage)
           }).catch(error =>{
+              this.loading.dismiss();
+
               console.log(error)
           })
 
@@ -52,4 +58,11 @@ export class PaymentPage {
       })
   }
 
+    showLoader(){
+        this.loading = this.loadingCtrl.create({
+            content: 'Loding...'
+        });
+
+        this.loading.present();
+    }
 }

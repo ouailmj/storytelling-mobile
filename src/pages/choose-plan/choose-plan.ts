@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import {IonicPage, LoadingController, NavController, NavParams} from 'ionic-angular';
 import {EventsPage} from "../events/events";
 import {Plan} from "../../models/plan";
 import {Storage} from "@ionic/storage";
@@ -25,7 +25,8 @@ export class ChoosePlanPage {
 
   plans : Plan[] = [] ;
   planChoice = "" ;
-  constructor(public navCtrl: NavController, public navParams: NavParams, private storage: Storage, public apiProvider: ApiProvider, public eventProvider: EventProvider) {
+    loading : any ;
+  constructor(public navCtrl: NavController, public loadingCtrl: LoadingController, public navParams: NavParams, private storage: Storage, public apiProvider: ApiProvider, public eventProvider: EventProvider) {
       this.storage.get('token').then(tok=>{
 
           let headers = new HttpHeaders();
@@ -47,9 +48,7 @@ export class ChoosePlanPage {
   }
 
   onSubmit(){
-
-
-
+      this.showLoader()
       let choosePlanData: ChoosePlanData = {
           planKey: this.planChoice,
       };
@@ -60,15 +59,25 @@ export class ChoosePlanPage {
           console.log("finish",event);
           console.log("ddd",event.id);
       this.eventProvider.addChoosePlan(choosePlanData, event.id).then(res =>{
+          this.loading.dismiss();
           console.log(res)
           this.navCtrl.push(EventInformationPage)
       }).catch(error =>{
+          this.loading.dismiss();
           console.log(error)
       })
 
       }).catch(err=>{
            this.navCtrl.push(EventsPage)
       })
+    }
+
+    showLoader(){
+        this.loading = this.loadingCtrl.create({
+            content: 'Loding...'
+        });
+
+        this.loading.present();
     }
 
 }

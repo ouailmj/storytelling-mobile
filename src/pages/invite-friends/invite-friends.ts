@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import {IonicPage, NavController, NavParams, ToastController} from 'ionic-angular';
+import {IonicPage, LoadingController, NavController, NavParams, ToastController} from 'ionic-angular';
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {EventProvider} from "../../providers/event/event";
 import {Storage} from "@ionic/storage";
@@ -24,8 +24,9 @@ export class InviteFriendsPage {
     public emails: string [] =[];
     public email: string = '';
     authForm: FormGroup;
+    loading : any ;
 
-    constructor(public navCtrl: NavController, public navParams: NavParams, public formBuilder: FormBuilder, private toastCtrl: ToastController, private storage: Storage, private eventProvider: EventProvider) {
+    constructor(public navCtrl: NavController, public navParams: NavParams,public loadingCtrl: LoadingController, public formBuilder: FormBuilder, private toastCtrl: ToastController, private storage: Storage, private eventProvider: EventProvider) {
         this.authForm = formBuilder.group({
 
             email: ['', Validators.compose([Validators.email,Validators.required])],
@@ -52,16 +53,16 @@ export class InviteFriendsPage {
         }
     }
 
-    send(){        
+    send(){
 
+        this.showLoader()
            console.log('emails', this.emails)
-
-
         this.storage.get('currentEvent').then(event=>{
             this.eventProvider.addInviteFriends(this.emails, event.id) .then(res=>{
+                this.loading.dismiss();
                 console.log(res)
                 this.navCtrl.push(FinishCreateEventPage)
-            }).catch(error=>{console.log(error)})
+            }).catch(error=>{this.loading.dismiss();console.log(error)})
         }).catch(error=>{console.log(error)})
     }
 
@@ -78,5 +79,12 @@ export class InviteFriendsPage {
         });
 
         toast.present();
+    }
+    showLoader(){
+        this.loading = this.loadingCtrl.create({
+            content: 'Loding...'
+        });
+
+        this.loading.present();
     }
 }

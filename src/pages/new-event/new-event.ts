@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import {IonicPage, NavController, NavParams, ToastController} from 'ionic-angular';
+import {IonicPage, LoadingController, NavController, NavParams, ToastController} from 'ionic-angular';
 import { EventProvider } from '../../providers/event/event';
 import {ChoosePlanPage} from "../choose-plan/choose-plan";
 import {Storage} from "@ionic/storage";
@@ -26,7 +26,8 @@ export class NewEventPage {
 
 
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, public eventProvider: EventProvider, private toastCtrl: ToastController, private storage: Storage) {
+    loading : any ;
+  constructor(public navCtrl: NavController,  public loadingCtrl: LoadingController, public navParams: NavParams, public eventProvider: EventProvider, private toastCtrl: ToastController, private storage: Storage) {
   }
 
   ionViewDidLoad() {
@@ -35,16 +36,18 @@ export class NewEventPage {
 
 
   createEvent(){
-
+      this.showLoader()
         this.eventProvider.newEvent().then((result) => {
             console.log(result)
             this.navCtrl.push(ChoosePlanPage);
         }).catch(err=>{
             this.eventProvider.getEvent(err['error']['appEventURI']).then(rep =>{
                 this.storage.set('currentEvent', rep);
+                this.loading.dismiss();
                 this.switchToCurrentStep(rep.currentStep)
 
             }).catch(error => {
+                this.loading.dismiss();
                 this.presentToast(error.statusText)})
         });
 
@@ -101,5 +104,13 @@ export class NewEventPage {
                 break;
             }
         }
+    }
+
+    showLoader(){
+        this.loading = this.loadingCtrl.create({
+            content: 'Loding...'
+        });
+
+        this.loading.present();
     }
 }

@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import {IonicPage, NavController, NavParams} from 'ionic-angular';
+import {IonicPage, LoadingController, NavController, NavParams} from 'ionic-angular';
 import {EventInformationData} from "../../providers/types/eventData";
 import {Category} from "../../models/category";
 import {HttpHeaders} from "@angular/common/http";
@@ -34,8 +34,8 @@ export class EventInformationPage {
         "title": " sqdzdzd"
     };
     categories: Category [] = [];
-
-  constructor(public navCtrl: NavController, public navParams: NavParams, public apiProvider: ApiProvider, private storage: Storage, private eventProvider: EventProvider) {
+    loading : any ;
+  constructor(public navCtrl: NavController, public navParams: NavParams,  public loadingCtrl: LoadingController, public apiProvider: ApiProvider, private storage: Storage, private eventProvider: EventProvider) {
       this.storage.get('token').then(tok=>{
 
           let headers = new HttpHeaders();
@@ -60,6 +60,7 @@ export class EventInformationPage {
             this.eventProvider.addEventInformation(this.eventInformation, event.id).then(res =>{
 
                 this.eventProvider.isFreePlan(event.eventPurchase).then(res =>{
+                    this.loading.dismiss();
                     if(res){
                         this.navCtrl.push(CoverEventPage)
                     }else{
@@ -69,6 +70,7 @@ export class EventInformationPage {
                     console.log(res)
 
                 }).catch(error =>{
+                    this.loading.dismiss();
                     console.log(error)
                 })
 
@@ -79,7 +81,14 @@ export class EventInformationPage {
         }).catch(err=>{
             this.navCtrl.push(EventsPage)
         })
+    }
 
 
+    showLoader(){
+        this.loading = this.loadingCtrl.create({
+            content: 'Loding...'
+        });
+
+        this.loading.present();
     }
 }
