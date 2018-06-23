@@ -846,12 +846,18 @@ cordova-android@7.0.0:
     shelljs "^0.5.3"
 
 cordova-common@^2.2.0:
+<<<<<<< HEAD
   version "2.2.4"
   resolved "https://registry.yarnpkg.com/cordova-common/-/cordova-common-2.2.4.tgz#f23b01a5f95828ac71dd181872137039c28f22ca"
+=======
+  version "2.2.3"
+  resolved "https://registry.yarnpkg.com/cordova-common/-/cordova-common-2.2.3.tgz#0c5e493a472baaea4651c093ec8165c7afb224bf"
+>>>>>>> 34e56da206ad9a9342b7c55e4da1d4227fad2db2
   dependencies:
     ansi "^0.3.1"
     bplist-parser "^0.1.0"
     cordova-registry-mapper "^1.1.8"
+<<<<<<< HEAD
     elementtree "0.1.6"
     glob "^5.0.13"
     minimatch "^3.0.0"
@@ -860,6 +866,16 @@ cordova-common@^2.2.0:
     shelljs "^0.5.3"
     underscore "^1.8.3"
     unorm "^1.3.3"
+=======
+    elementtree "0.1.7"
+    glob "^7.1.2"
+    minimatch "^3.0.0"
+    plist "^3.0.1"
+    q "^1.4.1"
+    shelljs "^0.8.1"
+    strip-bom "^3.0.0"
+    underscore "^1.8.3"
+>>>>>>> 34e56da206ad9a9342b7c55e4da1d4227fad2db2
 
 cordova-plugin-device@^2.0.1:
   version "2.0.2"
@@ -1112,6 +1128,15 @@ elementtree@0.1.6:
   dependencies:
     sax "0.3.5"
 
+<<<<<<< HEAD
+=======
+elementtree@0.1.7:
+  version "0.1.7"
+  resolved "https://registry.yarnpkg.com/elementtree/-/elementtree-0.1.7.tgz#9ac91be6e52fb6e6244c4e54a4ac3ed8ae8e29c0"
+  dependencies:
+    sax "1.1.4"
+
+>>>>>>> 34e56da206ad9a9342b7c55e4da1d4227fad2db2
 elliptic@^6.0.0:
   version "6.4.0"
   resolved "https://registry.yarnpkg.com/elliptic/-/elliptic-6.4.0.tgz#cac9af8762c85836187003c8dfe193e5e2eae5df"
@@ -3169,6 +3194,12 @@ recast@^0.10.1:
     private "~0.1.5"
     source-map "~0.5.0"
 
+rechoir@^0.6.2:
+  version "0.6.2"
+  resolved "https://registry.yarnpkg.com/rechoir/-/rechoir-0.6.2.tgz#85204b54dba82d5742e28c96756ef43af50e3384"
+  dependencies:
+    resolve "^1.1.6"
+
 redent@^1.0.0:
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/redent/-/redent-1.0.0.tgz#cf916ab1fd5f1f16dfb20822dd6ec7f730c2afde"
@@ -3398,6 +3429,13 @@ sax@0.3.5:
   version "0.3.5"
   resolved "https://registry.yarnpkg.com/sax/-/sax-0.3.5.tgz#88fcfc1f73c0c8bbd5b7c776b6d3f3501eed073d"
 
+<<<<<<< HEAD
+=======
+sax@1.1.4:
+  version "1.1.4"
+  resolved "https://registry.yarnpkg.com/sax/-/sax-1.1.4.tgz#74b6d33c9ae1e001510f179a91168588f1aedaa9"
+
+>>>>>>> 34e56da206ad9a9342b7c55e4da1d4227fad2db2
 sax@>=0.6.0:
   version "1.2.4"
   resolved "https://registry.yarnpkg.com/sax/-/sax-1.2.4.tgz#2816234e2378bddc4e5354fab5caa895df7100d9"
@@ -3507,6 +3545,17 @@ shelljs@^0.5.3:
   version "0.5.3"
   resolved "https://registry.yarnpkg.com/shelljs/-/shelljs-0.5.3.tgz#c54982b996c76ef0c1e6b59fbdc5825f5b713113"
 
+<<<<<<< HEAD
+=======
+shelljs@^0.8.1:
+  version "0.8.2"
+  resolved "https://registry.yarnpkg.com/shelljs/-/shelljs-0.8.2.tgz#345b7df7763f4c2340d584abb532c5f752ca9e35"
+  dependencies:
+    glob "^7.0.0"
+    interpret "^1.0.0"
+    rechoir "^0.6.2"
+
+>>>>>>> 34e56da206ad9a9342b7c55e4da1d4227fad2db2
 signal-exit@^3.0.0:
   version "3.0.2"
   resolved "https://registry.yarnpkg.com/signal-exit/-/signal-exit-3.0.2.tgz#b5fdc08f1287ea1178628e415e25132b73646c6d"

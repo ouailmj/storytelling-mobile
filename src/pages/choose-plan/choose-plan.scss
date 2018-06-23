@@ -2,22 +2,76 @@ page-choose-plan {
   .tutorial-page {
 
  .toolbar-background {
-   background: #fff;
+   background: transparent !important;
    border-color: transparent;
+ }
+ form{
+   height: 100%;
  }
 
  .slide-zoom {
    height: 100%;
  }
 
+ ion-slides{
+   height: 100%
+ }
+
+ .slide-choose-plan{
+   width: 80% !important;
+   height: 550px;
+   margin-top: 10px;
+   margin-right: 40px;
+   margin-left: 40px;
+   border-radius: 10px;
+   -webkit-box-shadow: 0px 0px 8px 5px rgba(0,0,0,0.10);
+ -moz-box-shadow: 0px 0px 8px 5px rgba(0,0,0,0.10);
+ box-shadow: 0px 0px 8px 5px rgba(0,0,0,0.20);
+ }
+
+ .slide-header{
+   height: 130px;
+   background-color: #43C6AC;
+   border-radius: 10px;
+   color: #fff;
+   position: relative;
+   width: 100%;
+ }
+
+ .slide-price{
+   font-size: 76px;
+   color: #aaa;
+   font-weight: 100
+ }
+
  .slide-title {
-   margin-top: 2.8rem;
+   margin-top: 5rem;
+   font-weight: lighter;;
+   font-size: 2em;
+   float: left;
+   margin-left: 10px;
+   text-transform: capitalize;
+ }
+
+ .choose-btn{
+   position: absolute;
+   bottom: 3%;
+   left: 30%;
+   background: red;
+   height: 35px;
+   width: 120px;
+   border-radius: 50px;
+   color: #fff;
+   background-color: #43C6AC;
+   text-transform: uppercase;
+   font-size: 14px;
+   letter-spacing: 1.5px;
  }
 
  .slide-image {
-   max-height: 50%;
-   max-width: 60%;
-   margin: 18px 0;
+   position: absolute;
+   bottom: 0;
+   right: 0;
  }
 
  b {
