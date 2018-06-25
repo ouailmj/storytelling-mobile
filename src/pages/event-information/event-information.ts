@@ -55,6 +55,7 @@ export class EventInformationPage {
 
     onSubmit(){
 
+      this.showLoader();
         this.storage.get('currentEvent').then(event=>{
 
             this.eventProvider.addEventInformation(this.eventInformation, event.id).then(res =>{
