@@ -22,7 +22,7 @@ export class AuthProvider {
   login(userData: UserData): Promise<any> {
     
 
-    const loginPath = 'http://192.168.1.147:8000/api/login_check';
+    const loginPath = 'http://localhost:8000/api/login_check';
     
     const formData = new FormData();
     formData.append("_username",userData.username);
