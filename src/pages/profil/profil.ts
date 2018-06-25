@@ -232,18 +232,9 @@ export class ProfilPage {
 
 
   uploadImag(){
-    console.log('....... up ----')
-
-    let data = new FormData();
-
-    data.append('avatar',this.chosenPicture);
-
-    this.eventProvider.upImg(data).then(data =>{
-      console.log("up imag ......")
-    }).catch(err => {
-  console.log("errr ===== > ",err)
-    })
-    
+   
+  
+    this.eventProvider.uploadFile(this.chosenPicture);
 
 
   }

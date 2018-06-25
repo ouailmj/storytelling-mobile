@@ -2,8 +2,11 @@ import { Component } from '@angular/core';
 import {  NavController } from 'ionic-angular';
 import {  LoadingController, ToastController } from 'ionic-angular';
 import { FileTransfer, FileUploadOptions, FileTransferObject } from '@ionic-native/file-transfer';
+import { Camera, CameraOptions } from '@ionic-native/camera';
+import { EventProvider } from '../../providers/event/event';
 // import { Camera, CameraOptions } from '@ionic-native/camera';
-/**
+/**import { updateImgs } from 'ionic-angular/components/content/content';
+
  * Generated class for the UploadPage page.
  *
  * See https://ionicframework.com/docs/components/#navigation for more info on
@@ -21,66 +24,31 @@ export class UploadPage {
   imageFileName:any;
 
   constructor(public navCtrl: NavController,
-    private transfer: FileTransfer,
-    // private camera: Camera,
-    public loadingCtrl: LoadingController,
-    public toastCtrl: ToastController) {}
+    private camera: Camera,
+    public eventProvider: EventProvider) {}
 
   getImage() {
-    // const options: CameraOptions = {
-    //   quality: 100,
-    //   destinationType: this.camera.DestinationType.FILE_URI,
-    //   sourceType: this.camera.PictureSourceType.PHOTOLIBRARY
-    // }
+    const options: CameraOptions = {
+      quality: 100,
+      destinationType: this.camera.DestinationType.FILE_URI,
+      sourceType: this.camera.PictureSourceType.PHOTOLIBRARY
+    }
 
-    // this.camera.getPicture(options).then((imageData) => {
-    //   this.imageURI = imageData;
-    // }, (err) => {
-    //   console.log(err);
-    //   this.presentToast(err);
-    // });
+    this.camera.getPicture(options).then((imageData) => {
+      this.imageURI = imageData;
+    }, (err) => {
+      console.log(err);
+      
+    });
   }
 
   uploadFile() {
-    let loader = this.loadingCtrl.create({
-      content: "Uploading..."
-    });
-    loader.present();
-    const fileTransfer: FileTransferObject = this.transfer.create();
-
-    let options: FileUploadOptions = {
-      fileKey: 'ionicfile',
-      fileName: 'ionicfile',
-      chunkedMode: false,
-      mimeType: "image/jpeg",
-      headers: {}
-    }
-
-    fileTransfer.upload(this.imageURI, 'http://192.168.0.7:8080/api/uploadImage', options)
-      .then((data) => {
-      console.log(data+" Uploaded Successfully");
-      this.imageFileName = "http://192.168.0.7:8080/static/images/ionicfile.jpg"
-      loader.dismiss();
-      this.presentToast("Image uploaded successfully");
-    }, (err) => {
-      console.log(err);
-      loader.dismiss();
-      this.presentToast(err);
-    });
+    // this.imageURI
+    this.eventProvider.uploadFile(this.imageURI)
+    
   }
 
-  presentToast(msg) {
-    let toast = this.toastCtrl.create({
-      message: msg,
-      duration: 6000,
-      position: 'bottom'
-    });
 
-    toast.onDidDismiss(() => {
-      console.log('Dismissed toast');
-    });
-
-    toast.present();
-}
+ 
 
 }

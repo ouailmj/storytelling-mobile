@@ -28,7 +28,8 @@ import { CameraProvider } from '../providers/util/camera.provider';
 import { EventProvider } from '../providers/event/event';
 import { ShowEventPage } from '../pages/show-event/show-event';
 
-
+import { FileTransfer, FileUploadOptions, FileTransferObject } from '@ionic-native/file-transfer';
+import { File } from '@ionic-native/file';
  
 @NgModule({
   declarations: [
@@ -45,7 +46,8 @@ import { ShowEventPage } from '../pages/show-event/show-event';
     UploadPage,PasswordRequestPage,
     EventsPage,
     ChoosePlanPage,
-    ShowEventPage
+    ShowEventPage,
+    
   ],
   imports: [
 BrowserModule,
@@ -69,7 +71,7 @@ BrowserModule,
     PasswordRequestPage,
     ChoosePlanPage,
     EventsPage,
-    ShowEventPage
+    ShowEventPage,
   ],
   providers: [
     StatusBar,
@@ -81,7 +83,11 @@ BrowserModule,
     UserProvider,
     CameraProvider,
     Camera,
-    EventProvider
+    EventProvider,
+    FileTransfer,
+    FileTransferObject,
+    File,
+  Camera
   ]
 })
 export class AppModule {}
