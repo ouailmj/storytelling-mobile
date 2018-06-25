@@ -33,12 +33,13 @@ export class CoverEventPage {
       this.showLoader()
       this.storage.get('currentEvent').then(event=> {
           this.eventProvider.isFreePlan(event.eventPurchase).then(res => {
+              this.loading.dismiss();
               if (res) {
                   this.navCtrl.push(InviteFriendsPage)
               } else {
 
                   this.eventProvider.isTotalPayed().then(res =>{
-                      this.loading.dismiss();
+
                       if(res.isPayed){
                           this.navCtrl.push(InviteFriendsPage);
 
@@ -47,11 +48,10 @@ export class CoverEventPage {
 
                       }
                   }).catch(err=>{
-                      this.loading.dismiss(); console.log(err)
+                      console.log(err)
                   })
               }
               console.log(res)
-
           }).catch(error => {
               console.log(error)
           })

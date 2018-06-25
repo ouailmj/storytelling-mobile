@@ -7,7 +7,7 @@ webpackJsonp([14],{
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return ChangepPasswordPage; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(6);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_forms__ = __webpack_require__(12);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_forms__ = __webpack_require__(10);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__providers_auth_auth__ = __webpack_require__(36);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -303,7 +303,7 @@ var NewEventPage = (function () {
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return PasswordRequestPage; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(6);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_forms__ = __webpack_require__(12);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_forms__ = __webpack_require__(10);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__providers_auth_auth__ = __webpack_require__(36);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -394,7 +394,7 @@ var PasswordRequestPage = (function () {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(6);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__ionic_storage__ = __webpack_require__(14);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__providers_auth_auth__ = __webpack_require__(36);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__angular_forms__ = __webpack_require__(12);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__angular_forms__ = __webpack_require__(10);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__welcome_welcome__ = __webpack_require__(49);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -631,7 +631,7 @@ module.exports = webpackAsyncContext;
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return environment; });
 var environment = {
-    API_END_POINT: 'http://192.168.1.10:8000',
+    API_END_POINT: 'http://192.168.1.190:8000',
     production: false
 };
 //# sourceMappingURL=environment.js.map
@@ -1919,12 +1919,12 @@ var CoverEventPage = (function () {
         this.showLoader();
         this.storage.get('currentEvent').then(function (event) {
             _this.eventProvider.isFreePlan(event.eventPurchase).then(function (res) {
+                _this.loading.dismiss();
                 if (res) {
                     _this.navCtrl.push(__WEBPACK_IMPORTED_MODULE_4__invite_friends_invite_friends__["a" /* InviteFriendsPage */]);
                 }
                 else {
                     _this.eventProvider.isTotalPayed().then(function (res) {
-                        _this.loading.dismiss();
                         if (res.isPayed) {
                             _this.navCtrl.push(__WEBPACK_IMPORTED_MODULE_4__invite_friends_invite_friends__["a" /* InviteFriendsPage */]);
                         }
@@ -1932,7 +1932,6 @@ var CoverEventPage = (function () {
                             _this.navCtrl.push(__WEBPACK_IMPORTED_MODULE_2__payment_payment__["a" /* PaymentPage */]);
                         }
                     }).catch(function (err) {
-                        _this.loading.dismiss();
                         console.log(err);
                     });
                 }
@@ -1952,9 +1951,10 @@ var CoverEventPage = (function () {
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
             selector: 'page-cover-event',template:/*ion-inline-start:"/home/soufianemit/Projects/MIT/ionic/mystorytelling-mobile/src/pages/cover-event/cover-event.html"*/'<!--\n  Generated template for the CoverEventPage page.\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n  Ionic pages and navigation.\n-->\n<ion-header>\n\n  <ion-navbar>\n    <ion-title>coverEvent</ion-title>\n  </ion-navbar>\n\n</ion-header>\n\n\n\n<ion-content>\n  <div>\n    <form (ngSubmit)="onSubmit()">\n\n      <button type="submit" ion-button large clear icon-end color="primary">\n        Continue\n        <ion-icon name="arrow-forward"></ion-icon>\n      </button>\n    </form>\n  </div>\n</ion-content>\n'/*ion-inline-end:"/home/soufianemit/Projects/MIT/ionic/mystorytelling-mobile/src/pages/cover-event/cover-event.html"*/,
         }),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["e" /* LoadingController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* NavParams */], __WEBPACK_IMPORTED_MODULE_3__providers_event_event__["a" /* EventProvider */], __WEBPACK_IMPORTED_MODULE_5__ionic_storage__["b" /* Storage */]])
+        __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* NavController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* NavController */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["e" /* LoadingController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["e" /* LoadingController */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* NavParams */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* NavParams */]) === "function" && _c || Object, typeof (_d = typeof __WEBPACK_IMPORTED_MODULE_3__providers_event_event__["a" /* EventProvider */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3__providers_event_event__["a" /* EventProvider */]) === "function" && _d || Object, typeof (_e = typeof __WEBPACK_IMPORTED_MODULE_5__ionic_storage__["b" /* Storage */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_5__ionic_storage__["b" /* Storage */]) === "function" && _e || Object])
     ], CoverEventPage);
     return CoverEventPage;
+    var _a, _b, _c, _d, _e;
 }());
 
 //# sourceMappingURL=cover-event.js.map
@@ -1968,7 +1968,7 @@ var CoverEventPage = (function () {
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return InviteFriendsPage; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(6);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_forms__ = __webpack_require__(12);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_forms__ = __webpack_require__(10);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__providers_event_event__ = __webpack_require__(28);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__ionic_storage__ = __webpack_require__(14);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__finish_create_event_finish_create_event__ = __webpack_require__(65);
@@ -2034,7 +2034,7 @@ var InviteFriendsPage = (function () {
                 console.log(res);
                 _this.navCtrl.push(__WEBPACK_IMPORTED_MODULE_5__finish_create_event_finish_create_event__["a" /* FinishCreateEventPage */]);
             }).catch(function (error) { _this.loading.dismiss(); console.log(error); });
-        }).catch(function (error) { console.log(error); });
+        }).catch(function (error) { console.log(error); _this.loading.dismiss(); });
     };
     InviteFriendsPage.prototype.presentToast = function (msg) {
         var toast = this.toastCtrl.create({
@@ -2058,9 +2058,10 @@ var InviteFriendsPage = (function () {
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
             selector: 'page-invite-friends',template:/*ion-inline-start:"/home/soufianemit/Projects/MIT/ionic/mystorytelling-mobile/src/pages/invite-friends/invite-friends.html"*/'<!--\n  Generated template for the InviteFriendsPage page.\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n  Ionic pages and navigation.\n-->\n<ion-header>\n\n  <ion-navbar>\n    <ion-title>inviteFriends</ion-title>\n  </ion-navbar>\n\n</ion-header>\n\n<ion-content>\n  <ion-card >\n\n    <form [formGroup]="authForm" (ngSubmit)="addEmail(authForm.value)">\n      <ion-item>\n        <ion-input type="email" formControlName="email" placeholder="email" [(ngModel)]="email"></ion-input>\n      </ion-item>\n      <button ion-button icon-only type="submit">\n        add Email\n      </button>\n    </form>\n  </ion-card>\n  <ion-card  *ngFor="let email of this.emails" (tap)="removeEmail(index)">\n    <ion-item>\n      {{email}}\n    </ion-item>\n  </ion-card>\n\n  <button type="button" ion-button large clear icon-end color="primary"  (click)="send()">\n    Continue\n    <ion-icon name="arrow-forward"></ion-icon>\n  </button>\n\n</ion-content>\n'/*ion-inline-end:"/home/soufianemit/Projects/MIT/ionic/mystorytelling-mobile/src/pages/invite-friends/invite-friends.html"*/,
         }),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* NavParams */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["e" /* LoadingController */], __WEBPACK_IMPORTED_MODULE_2__angular_forms__["a" /* FormBuilder */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* ToastController */], __WEBPACK_IMPORTED_MODULE_4__ionic_storage__["b" /* Storage */], __WEBPACK_IMPORTED_MODULE_3__providers_event_event__["a" /* EventProvider */]])
+        __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* NavController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* NavController */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* NavParams */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* NavParams */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["e" /* LoadingController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["e" /* LoadingController */]) === "function" && _c || Object, typeof (_d = typeof __WEBPACK_IMPORTED_MODULE_2__angular_forms__["a" /* FormBuilder */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__angular_forms__["a" /* FormBuilder */]) === "function" && _d || Object, typeof (_e = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* ToastController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* ToastController */]) === "function" && _e || Object, typeof (_f = typeof __WEBPACK_IMPORTED_MODULE_4__ionic_storage__["b" /* Storage */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_4__ionic_storage__["b" /* Storage */]) === "function" && _f || Object, typeof (_g = typeof __WEBPACK_IMPORTED_MODULE_3__providers_event_event__["a" /* EventProvider */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3__providers_event_event__["a" /* EventProvider */]) === "function" && _g || Object])
     ], InviteFriendsPage);
     return InviteFriendsPage;
+    var _a, _b, _c, _d, _e, _f, _g;
 }());
 
 //# sourceMappingURL=invite-friends.js.map
@@ -2132,7 +2133,7 @@ var WelcomePage = (function () {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__providers_auth_auth__ = __webpack_require__(36);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__register_register__ = __webpack_require__(56);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__ionic_storage__ = __webpack_require__(14);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__angular_forms__ = __webpack_require__(12);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__angular_forms__ = __webpack_require__(10);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__new_event_new_event__ = __webpack_require__(119);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -2235,7 +2236,7 @@ var HomePage = (function () {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(6);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__providers_auth_auth__ = __webpack_require__(36);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__angular_forms__ = __webpack_require__(12);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__angular_forms__ = __webpack_require__(10);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__home_home__ = __webpack_require__(55);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__mail_check_mail_check__ = __webpack_require__(118);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -2507,12 +2508,12 @@ var EventInformationPage = (function () {
         this.storage = storage;
         this.eventProvider = eventProvider;
         this.eventInformation = {
-            "description": "sdz",
+            "description": "",
             "endsAt": new Date().toString(),
             "idCat": 2,
-            "place": "hto",
+            "place": "",
             "startsAt": new Date().toString(),
-            "title": " sqdzdzd"
+            "title": ""
         };
         this.categories = [];
         this.storage.get('token').then(function (tok) {
@@ -2546,9 +2547,11 @@ var EventInformationPage = (function () {
                     console.log(error);
                 });
             }).catch(function (error) {
+                _this.loading.dismiss();
                 console.log(error);
             });
         }).catch(function (err) {
+            _this.loading.dismiss();
             _this.navCtrl.push(__WEBPACK_IMPORTED_MODULE_6__events_events__["a" /* EventsPage */]);
         });
     };
@@ -2562,10 +2565,9 @@ var EventInformationPage = (function () {
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
             selector: 'page-event-information',template:/*ion-inline-start:"/home/soufianemit/Projects/MIT/ionic/mystorytelling-mobile/src/pages/event-information/event-information.html"*/'<!--\n  Generated template for the EventInformationPage page.\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n  Ionic pages and navigation.\n-->\n\n<ion-header>\n\n  <ion-navbar>\n    <ion-title>eventInformation</ion-title>\n  </ion-navbar>\n\n</ion-header>\n<ion-content>\n  <div>\n    <form (ngSubmit)="onSubmit()">\n      <ion-list>\n        <ion-item>\n          <ion-textarea placeholder="Enter a description" name="description" [(ngModel)]="eventInformation.description" ></ion-textarea>\n        </ion-item>\n        <ion-item>\n          <ion-input  placeholder="event name" name="title" [(ngModel)]="eventInformation.title" ></ion-input>\n        </ion-item>\n        <ion-item>\n          <ion-input  placeholder="event place" name="place" [(ngModel)]="eventInformation.place" ></ion-input>\n        </ion-item>\n        <ion-item>\n          <ion-label>startsAt Date</ion-label>\n          <ion-datetime displayFormat="DD-MM-YYYY HH:mm a" name="startsAt" max="2050-12-01"  [(ngModel)]="eventInformation.startsAt" ></ion-datetime>\n        </ion-item>\n        <ion-item>\n          <ion-label>endsAt Date</ion-label>\n          <ion-datetime displayFormat="DD-MM-YYYY HH:mm a" name="endsAt" max="2050-12-01"  [(ngModel)]="eventInformation.endsAt" ></ion-datetime>\n        </ion-item>\n\n      <ion-item>\n        <ion-select [ngModelOptions]="{standalone: true}" [(ngModel)]="eventInformation.idCat">\n          <ion-option  *ngFor="let cat of this.categories" value="{{cat.id}}">{{cat.title}}</ion-option>\n        </ion-select>\n      </ion-item>\n      </ion-list>\n      <button type="submit" ion-button large clear icon-end color="primary">\n        Continue\n        <ion-icon name="arrow-forward"></ion-icon>\n      </button>\n    </form>\n  </div>\n</ion-content>\n'/*ion-inline-end:"/home/soufianemit/Projects/MIT/ionic/mystorytelling-mobile/src/pages/event-information/event-information.html"*/,
         }),
-        __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* NavController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* NavController */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* NavParams */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* NavParams */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["e" /* LoadingController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["e" /* LoadingController */]) === "function" && _c || Object, typeof (_d = typeof __WEBPACK_IMPORTED_MODULE_3__providers_api_api__["a" /* ApiProvider */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3__providers_api_api__["a" /* ApiProvider */]) === "function" && _d || Object, typeof (_e = typeof __WEBPACK_IMPORTED_MODULE_4__ionic_storage__["b" /* Storage */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_4__ionic_storage__["b" /* Storage */]) === "function" && _e || Object, typeof (_f = typeof __WEBPACK_IMPORTED_MODULE_5__providers_event_event__["a" /* EventProvider */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_5__providers_event_event__["a" /* EventProvider */]) === "function" && _f || Object])
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* NavParams */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["e" /* LoadingController */], __WEBPACK_IMPORTED_MODULE_3__providers_api_api__["a" /* ApiProvider */], __WEBPACK_IMPORTED_MODULE_4__ionic_storage__["b" /* Storage */], __WEBPACK_IMPORTED_MODULE_5__providers_event_event__["a" /* EventProvider */]])
     ], EventInformationPage);
     return EventInformationPage;
-    var _a, _b, _c, _d, _e, _f;
 }());
 
 //# sourceMappingURL=event-information.js.map
@@ -2586,6 +2588,7 @@ var EventInformationPage = (function () {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__cover_event_cover_event__ = __webpack_require__(47);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__providers_event_event__ = __webpack_require__(28);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__events_events__ = __webpack_require__(37);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__angular_forms__ = __webpack_require__(10);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -2604,6 +2607,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 
+
 /**
  * Generated class for the EventChallengePage page.
  *
@@ -2611,18 +2615,20 @@ var __metadata = (this && this.__metadata) || function (k, v) {
  * Ionic pages and navigation.
  */
 var EventChallengePage = (function () {
-    function EventChallengePage(navCtrl, navParams, loadingCtrl, storage, apiProvider, eventProvider) {
+    function EventChallengePage(navCtrl, navParams, formBuilder, loadingCtrl, storage, apiProvider, eventProvider, toastCtrl) {
         var _this = this;
         this.navCtrl = navCtrl;
         this.navParams = navParams;
+        this.formBuilder = formBuilder;
         this.loadingCtrl = loadingCtrl;
         this.storage = storage;
         this.apiProvider = apiProvider;
         this.eventProvider = eventProvider;
+        this.toastCtrl = toastCtrl;
         this.propositions = [];
         this.challenges = [];
         this.challengeEvent = {
-            "description": ''
+            "description": null
         };
         this.storage.get('token').then(function (tok) {
             var headers = new __WEBPACK_IMPORTED_MODULE_2__angular_common_http__["c" /* HttpHeaders */]();
@@ -2632,12 +2638,22 @@ var EventChallengePage = (function () {
                 _this.propositions = dataPropositions['hydra:member'];
             }).catch(function (error) { });
         }).catch(function (error) { });
+        this.authForm = formBuilder.group({
+            description: ['', __WEBPACK_IMPORTED_MODULE_9__angular_forms__["f" /* Validators */].compose([__WEBPACK_IMPORTED_MODULE_9__angular_forms__["f" /* Validators */].required])],
+        });
     }
     EventChallengePage.prototype.ionViewDidLoad = function () {
         console.log('ionViewDidLoad EventChallengePage');
     };
     EventChallengePage.prototype.onSubmit = function () {
-        this.challenges.push(this.challengeEvent.description);
+        if (this.authForm.valid) {
+            this.challenges.push(this.challengeEvent.description);
+        }
+        else {
+            if (this.authForm.controls.description.hasError('required')) {
+                this.presentToast('Sorry, field description is required');
+            }
+        }
     };
     EventChallengePage.prototype.removeChallenge = function (index) {
         this.challenges.splice(index, 1);
@@ -2656,8 +2672,21 @@ var EventChallengePage = (function () {
                 console.log(error);
             });
         }).catch(function (err) {
+            _this.loading.dismiss();
             _this.navCtrl.push(__WEBPACK_IMPORTED_MODULE_8__events_events__["a" /* EventsPage */]);
         });
+    };
+    EventChallengePage.prototype.presentToast = function (msg) {
+        var toast = this.toastCtrl.create({
+            message: msg,
+            duration: 3000,
+            position: 'bottom',
+            dismissOnPageChange: true
+        });
+        toast.onDidDismiss(function () {
+            console.log('Dismissed toast');
+        });
+        toast.present();
     };
     EventChallengePage.prototype.showLoader = function () {
         this.loading = this.loadingCtrl.create({
@@ -2667,11 +2696,12 @@ var EventChallengePage = (function () {
     };
     EventChallengePage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
-            selector: 'page-event-challenge',template:/*ion-inline-start:"/home/soufianemit/Projects/MIT/ionic/mystorytelling-mobile/src/pages/event-challenge/event-challenge.html"*/'<!--\n  Generated template for the EventChallengePage page.\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n  Ionic pages and navigation.\n-->\n<ion-header>\n\n  <ion-navbar>\n    <ion-title>eventChallenge</ion-title>\n  </ion-navbar>\n\n</ion-header>\n\n\n\n<ion-content>\n  <div>\n    <form (ngSubmit)="onSubmit()">\n      <ion-list>\n        <ion-item>\n          <ion-textarea placeholder="Enter a description" name="description" [(ngModel)]="challengeEvent.description" ></ion-textarea>\n        </ion-item>\n\n        <ion-item>\n          <ion-select [ngModelOptions]="{standalone: true}" [(ngModel)]="challengeEvent.description">\n            <ion-option  *ngFor="let proposition of this.propositions" value="{{proposition.description}}">{{proposition.description}}</ion-option>\n          </ion-select>\n        </ion-item>\n      </ion-list>\n\n      <button ion-button icon-only type="submit">\n        add défi\n      </button>\n    </form>\n\n      <ion-card  *ngFor="let challenge of this.challenges" (tap)="removeChallenge(index)">\n        <ion-item>\n          {{challenge}}\n        </ion-item>\n      </ion-card>\n\n      <button type="button" ion-button large clear icon-end color="primary" (click)="send()">\n        Continue\n        <ion-icon name="arrow-forward"></ion-icon>\n      </button>\n\n  </div>\n</ion-content>\n'/*ion-inline-end:"/home/soufianemit/Projects/MIT/ionic/mystorytelling-mobile/src/pages/event-challenge/event-challenge.html"*/,
+            selector: 'page-event-challenge',template:/*ion-inline-start:"/home/soufianemit/Projects/MIT/ionic/mystorytelling-mobile/src/pages/event-challenge/event-challenge.html"*/'<!--\n  Generated template for the EventChallengePage page.\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n  Ionic pages and navigation.\n-->\n<ion-header>\n\n  <ion-navbar>\n    <ion-title>eventChallenge</ion-title>\n  </ion-navbar>\n\n</ion-header>\n\n\n\n<ion-content>\n  <div>\n    <form [formGroup]="authForm" (ngSubmit)="onSubmit(authForm.value)">\n      <ion-list>\n        <ion-item>\n          <ion-textarea formControlName="description" placeholder="Enter a description" name="description" [(ngModel)]="challengeEvent.description" ></ion-textarea>\n        </ion-item>\n\n        <ion-item>\n          <ion-select [ngModelOptions]="{standalone: true}" [(ngModel)]="challengeEvent.description">\n            <ion-option  *ngFor="let proposition of this.propositions" value="{{proposition.description}}">{{proposition.description}}</ion-option>\n          </ion-select>\n        </ion-item>\n      </ion-list>\n\n      <button ion-button icon-only type="submit">\n        add défi\n      </button>\n    </form>\n\n      <ion-card  *ngFor="let challenge of this.challenges" (tap)="removeChallenge(index)">\n        <ion-item>\n          {{challenge}}\n        </ion-item>\n      </ion-card>\n\n      <button type="button" ion-button large clear icon-end color="primary" (click)="send()">\n        Continue\n        <ion-icon name="arrow-forward"></ion-icon>\n      </button>\n\n  </div>\n</ion-content>\n'/*ion-inline-end:"/home/soufianemit/Projects/MIT/ionic/mystorytelling-mobile/src/pages/event-challenge/event-challenge.html"*/,
         }),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* NavParams */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["e" /* LoadingController */], __WEBPACK_IMPORTED_MODULE_4__ionic_storage__["b" /* Storage */], __WEBPACK_IMPORTED_MODULE_3__providers_api_api__["a" /* ApiProvider */], __WEBPACK_IMPORTED_MODULE_7__providers_event_event__["a" /* EventProvider */]])
+        __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* NavController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* NavController */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* NavParams */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* NavParams */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_9__angular_forms__["a" /* FormBuilder */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_9__angular_forms__["a" /* FormBuilder */]) === "function" && _c || Object, typeof (_d = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["e" /* LoadingController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["e" /* LoadingController */]) === "function" && _d || Object, typeof (_e = typeof __WEBPACK_IMPORTED_MODULE_4__ionic_storage__["b" /* Storage */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_4__ionic_storage__["b" /* Storage */]) === "function" && _e || Object, typeof (_f = typeof __WEBPACK_IMPORTED_MODULE_3__providers_api_api__["a" /* ApiProvider */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3__providers_api_api__["a" /* ApiProvider */]) === "function" && _f || Object, typeof (_g = typeof __WEBPACK_IMPORTED_MODULE_7__providers_event_event__["a" /* EventProvider */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_7__providers_event_event__["a" /* EventProvider */]) === "function" && _g || Object, typeof (_h = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* ToastController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* ToastController */]) === "function" && _h || Object])
     ], EventChallengePage);
     return EventChallengePage;
+    var _a, _b, _c, _d, _e, _f, _g, _h;
 }());
 
 //# sourceMappingURL=event-challenge.js.map
@@ -2689,6 +2719,7 @@ var EventChallengePage = (function () {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__providers_event_event__ = __webpack_require__(28);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__ionic_storage__ = __webpack_require__(14);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__events_events__ = __webpack_require__(37);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__angular_forms__ = __webpack_require__(10);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -2704,6 +2735,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 
+
 /**
  * Generated class for the PaymentPage page.
  *
@@ -2711,12 +2743,14 @@ var __metadata = (this && this.__metadata) || function (k, v) {
  * Ionic pages and navigation.
  */
 var PaymentPage = (function () {
-    function PaymentPage(navCtrl, loadingCtrl, navParams, storage, eventProvider) {
+    function PaymentPage(navCtrl, loadingCtrl, formBuilder, navParams, storage, eventProvider, toastCtrl) {
         this.navCtrl = navCtrl;
         this.loadingCtrl = loadingCtrl;
+        this.formBuilder = formBuilder;
         this.navParams = navParams;
         this.storage = storage;
         this.eventProvider = eventProvider;
+        this.toastCtrl = toastCtrl;
         this.payment = {
             numberCard: null,
             monthExpire: null,
@@ -2724,26 +2758,50 @@ var PaymentPage = (function () {
             cvv: null,
             price: null,
         };
+        this.authForm = formBuilder.group({
+            cardNumber: ['', __WEBPACK_IMPORTED_MODULE_6__angular_forms__["f" /* Validators */].compose([__WEBPACK_IMPORTED_MODULE_6__angular_forms__["f" /* Validators */].required, __WEBPACK_IMPORTED_MODULE_6__angular_forms__["f" /* Validators */].pattern('[0-9]*')])],
+            experationDateMonth: ['', __WEBPACK_IMPORTED_MODULE_6__angular_forms__["f" /* Validators */].compose([__WEBPACK_IMPORTED_MODULE_6__angular_forms__["f" /* Validators */].required, __WEBPACK_IMPORTED_MODULE_6__angular_forms__["f" /* Validators */].pattern('[0-9]*')])],
+            experationDateYear: ['', __WEBPACK_IMPORTED_MODULE_6__angular_forms__["f" /* Validators */].compose([__WEBPACK_IMPORTED_MODULE_6__angular_forms__["f" /* Validators */].required, __WEBPACK_IMPORTED_MODULE_6__angular_forms__["f" /* Validators */].pattern('[0-9]*')])],
+            cvv: ['', __WEBPACK_IMPORTED_MODULE_6__angular_forms__["f" /* Validators */].compose([__WEBPACK_IMPORTED_MODULE_6__angular_forms__["f" /* Validators */].required, __WEBPACK_IMPORTED_MODULE_6__angular_forms__["f" /* Validators */].pattern('[0-9]*')])],
+            price: ['', __WEBPACK_IMPORTED_MODULE_6__angular_forms__["f" /* Validators */].compose([__WEBPACK_IMPORTED_MODULE_6__angular_forms__["f" /* Validators */].required, __WEBPACK_IMPORTED_MODULE_6__angular_forms__["f" /* Validators */].pattern('[0-9]*')])],
+        });
     }
     PaymentPage.prototype.ionViewDidLoad = function () {
         console.log('ionViewDidLoad PaymentPage');
     };
     PaymentPage.prototype.onSubmit = function () {
         var _this = this;
-        this.showLoader();
-        console.log(this.payment);
-        this.storage.get('currentEvent').then(function (event) {
-            _this.eventProvider.addPaymentForEvent(_this.payment, event.id).then(function (res) {
-                _this.loading.dismiss();
-                console.log("addPaymentForEvent", res);
-                _this.navCtrl.push(__WEBPACK_IMPORTED_MODULE_2__invite_friends_invite_friends__["a" /* InviteFriendsPage */]);
-            }).catch(function (error) {
-                _this.loading.dismiss();
-                console.log(error);
+        if (this.authForm.valid) {
+            this.showLoader();
+            console.log(this.payment);
+            this.storage.get('currentEvent').then(function (event) {
+                _this.eventProvider.addPaymentForEvent(_this.payment, event.id).then(function (res) {
+                    _this.loading.dismiss();
+                    console.log("addPaymentForEvent", res);
+                    _this.navCtrl.push(__WEBPACK_IMPORTED_MODULE_2__invite_friends_invite_friends__["a" /* InviteFriendsPage */]);
+                }).catch(function (error) {
+                    _this.loading.dismiss();
+                    console.log(error);
+                });
+            }).catch(function (err) {
+                _this.navCtrl.push(__WEBPACK_IMPORTED_MODULE_5__events_events__["a" /* EventsPage */]);
             });
-        }).catch(function (err) {
-            _this.navCtrl.push(__WEBPACK_IMPORTED_MODULE_5__events_events__["a" /* EventsPage */]);
+        }
+        else {
+            this.presentToast('Sorry, some fields is required or given string');
+        }
+    };
+    PaymentPage.prototype.presentToast = function (msg) {
+        var toast = this.toastCtrl.create({
+            message: msg,
+            duration: 3000,
+            position: 'bottom',
+            dismissOnPageChange: true
         });
+        toast.onDidDismiss(function () {
+            console.log('Dismissed toast');
+        });
+        toast.present();
     };
     PaymentPage.prototype.showLoader = function () {
         this.loading = this.loadingCtrl.create({
@@ -2753,9 +2811,9 @@ var PaymentPage = (function () {
     };
     PaymentPage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
-            selector: 'page-payment',template:/*ion-inline-start:"/home/soufianemit/Projects/MIT/ionic/mystorytelling-mobile/src/pages/payment/payment.html"*/'<!--\n  Generated template for the PaymentPage page.\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n  Ionic pages and navigation.\n-->\n<ion-header>\n\n  <ion-navbar>\n    <ion-title>payment</ion-title>\n  </ion-navbar>\n\n</ion-header>\n\n\n<ion-content>\n  <div>\n    <form (ngSubmit)="onSubmit()">\n      <ion-list>\n        <ion-item>\n          <ion-input  placeholder="CARD NUMBER" name="cardNumber" [(ngModel)]="payment.numberCard" ></ion-input>\n        </ion-item>\n        <ion-item>\n          <ion-input  placeholder="EXPIRATION DATE MONTH" name="experationDateMonth" [(ngModel)]="payment.monthExpire" ></ion-input>\n        </ion-item>\n        <ion-item>\n          <ion-input  placeholder="EXPIRATION DATE YEAR" name="experationDateYear" [(ngModel)]="payment.yearExpire" ></ion-input>\n        </ion-item>\n        <ion-item>\n          <ion-input  placeholder="CVV CODE" name="cvv" [(ngModel)]="payment.cvv" ></ion-input>\n        </ion-item>\n        <ion-item>\n          <ion-input  placeholder="PRICE" name="price" [(ngModel)]="payment.price" ></ion-input>\n        </ion-item>\n\n      </ion-list>\n      <button type="submit" ion-button large clear icon-end color="primary">\n        Continue\n        <ion-icon name="arrow-forward"></ion-icon>\n      </button>\n    </form>\n  </div>\n</ion-content>\n'/*ion-inline-end:"/home/soufianemit/Projects/MIT/ionic/mystorytelling-mobile/src/pages/payment/payment.html"*/,
+            selector: 'page-payment',template:/*ion-inline-start:"/home/soufianemit/Projects/MIT/ionic/mystorytelling-mobile/src/pages/payment/payment.html"*/'<!--\n  Generated template for the PaymentPage page.\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n  Ionic pages and navigation.\n-->\n<ion-header>\n\n  <ion-navbar>\n    <ion-title>payment</ion-title>\n  </ion-navbar>\n\n</ion-header>\n\n\n<ion-content>\n  <div>\n    <form  [formGroup]="authForm" (ngSubmit)="onSubmit(authForm.value)">\n      <ion-list>\n        <ion-item>\n          <ion-input type="number" formControlName="cardNumber" placeholder="CARD NUMBER" name="cardNumber" [(ngModel)]="payment.numberCard" ></ion-input>\n        </ion-item>\n        <ion-item>\n          <ion-input type="number" formControlName="experationDateMonth" placeholder="EXPIRATION DATE MONTH" name="experationDateMonth" [(ngModel)]="payment.monthExpire" ></ion-input>\n        </ion-item>\n        <ion-item>\n          <ion-input type="number"  formControlName="experationDateYear" placeholder="EXPIRATION DATE YEAR" name="experationDateYear" [(ngModel)]="payment.yearExpire" ></ion-input>\n        </ion-item>\n        <ion-item>\n          <ion-input type="number" formControlName="cvv" placeholder="CVV CODE" name="cvv" [(ngModel)]="payment.cvv" ></ion-input>\n        </ion-item>\n        <ion-item>\n          <ion-input type="number" formControlName="price" placeholder="PRICE" name="price" [(ngModel)]="payment.price" ></ion-input>\n        </ion-item>\n\n      </ion-list>\n      <button type="submit" ion-button large clear icon-end color="primary">\n        Continue\n        <ion-icon name="arrow-forward"></ion-icon>\n      </button>\n    </form>\n  </div>\n</ion-content>\n'/*ion-inline-end:"/home/soufianemit/Projects/MIT/ionic/mystorytelling-mobile/src/pages/payment/payment.html"*/,
         }),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["e" /* LoadingController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* NavParams */], __WEBPACK_IMPORTED_MODULE_4__ionic_storage__["b" /* Storage */], __WEBPACK_IMPORTED_MODULE_3__providers_event_event__["a" /* EventProvider */]])
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["e" /* LoadingController */], __WEBPACK_IMPORTED_MODULE_6__angular_forms__["a" /* FormBuilder */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* NavParams */], __WEBPACK_IMPORTED_MODULE_4__ionic_storage__["b" /* Storage */], __WEBPACK_IMPORTED_MODULE_3__providers_event_event__["a" /* EventProvider */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* ToastController */]])
     ], PaymentPage);
     return PaymentPage;
 }());

@@ -63,7 +63,7 @@ export class InviteFriendsPage {
                 console.log(res)
                 this.navCtrl.push(FinishCreateEventPage)
             }).catch(error=>{this.loading.dismiss();console.log(error)})
-        }).catch(error=>{console.log(error)})
+        }).catch(error=>{console.log(error);this.loading.dismiss()})
     }
 
     presentToast(msg) {
@@ -80,6 +80,7 @@ export class InviteFriendsPage {
 
         toast.present();
     }
+
     showLoader(){
         this.loading = this.loadingCtrl.create({
             content: 'Loding...'

@@ -1,11 +1,12 @@
 import { Component } from '@angular/core';
-import {IonicPage, LoadingController, NavController, NavParams} from 'ionic-angular';
+import {IonicPage, LoadingController, NavController, NavParams, ToastController} from 'ionic-angular';
 import {PaymentData} from "../../providers/types/eventData";
 import {InviteFriendsPage} from "../invite-friends/invite-friends";
 import {EventProvider} from "../../providers/event/event";
 import {Storage} from "@ionic/storage";
 import {EventInformationPage} from "../event-information/event-information";
 import {EventsPage} from "../events/events";
+import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 
 /**
  * Generated class for the PaymentPage page.
@@ -21,15 +22,25 @@ import {EventsPage} from "../events/events";
 })
 export class PaymentPage {
 
-  payment: PaymentData ={
-      numberCard: null,
-      monthExpire: null,
-      yearExpire: null,
-      cvv: null,
-      price: null,
-  }
+    payment: PaymentData ={
+        numberCard: null,
+        monthExpire: null,
+        yearExpire: null,
+        cvv: null,
+        price: null,
+    }
+    authForm: FormGroup;
     loading : any ;
-  constructor(public navCtrl: NavController, public loadingCtrl: LoadingController, public navParams: NavParams, private storage: Storage, public eventProvider: EventProvider) {
+  constructor(public navCtrl: NavController, public loadingCtrl: LoadingController, public formBuilder: FormBuilder,  public navParams: NavParams, private storage: Storage, public eventProvider: EventProvider, private toastCtrl: ToastController) {
+      this.authForm = formBuilder.group({
+
+          cardNumber: ['', Validators.compose([Validators.required, Validators.pattern('[0-9]*')])],
+          experationDateMonth: ['', Validators.compose([Validators.required, Validators.pattern('[0-9]*')])],
+          experationDateYear: ['', Validators.compose([Validators.required, Validators.pattern('[0-9]*')])],
+          cvv: ['', Validators.compose([Validators.required, Validators.pattern('[0-9]*')])],
+          price: ['', Validators.compose([Validators.required, Validators.pattern('[0-9]*')])],
+
+      });
   }
 
   ionViewDidLoad() {
@@ -37,26 +48,45 @@ export class PaymentPage {
   }
 
   onSubmit(){
-      this.showLoader()
-    console.log(this.payment)
+      if(this.authForm.valid) {
+          this.showLoader()
+          console.log(this.payment)
 
-      this.storage.get('currentEvent').then(event=>{
+          this.storage.get('currentEvent').then(event => {
 
-          this.eventProvider.addPaymentForEvent(this.payment, event.id).then(res =>{
-              this.loading.dismiss();
+              this.eventProvider.addPaymentForEvent(this.payment, event.id).then(res => {
+                  this.loading.dismiss();
 
-              console.log("addPaymentForEvent", res)
-              this.navCtrl.push(InviteFriendsPage)
-          }).catch(error =>{
-              this.loading.dismiss();
+                  console.log("addPaymentForEvent", res)
+                  this.navCtrl.push(InviteFriendsPage)
+              }).catch(error => {
+                  this.loading.dismiss();
 
-              console.log(error)
+                  console.log(error)
+              })
+
+          }).catch(err => {
+              this.navCtrl.push(EventsPage)
           })
+      }else{
 
-      }).catch(err=>{
-          this.navCtrl.push(EventsPage)
-      })
+          this.presentToast('Sorry, some fields is required or given string')
+      }
   }
+    presentToast(msg) {
+        let toast = this.toastCtrl.create({
+            message: msg,
+            duration: 3000,
+            position: 'bottom',
+            dismissOnPageChange: true
+        });
+
+        toast.onDidDismiss(() => {
+            console.log('Dismissed toast');
+        });
+
+        toast.present();
+    }
 
     showLoader(){
         this.loading = this.loadingCtrl.create({

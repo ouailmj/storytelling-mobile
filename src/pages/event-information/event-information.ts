@@ -26,12 +26,12 @@ export class EventInformationPage {
 
     public loginForm: any;
     eventInformation: EventInformationData = {
-        "description": "sdz",
+        "description": "",
         "endsAt":  new Date().toString(),
         "idCat":2,
-        "place": "hto",
+        "place": "",
         "startsAt": new Date().toString(),
-        "title": " sqdzdzd"
+        "title": ""
     };
     categories: Category [] = [];
     loading : any ;
@@ -76,10 +76,12 @@ export class EventInformationPage {
                 })
 
             }).catch(error =>{
+                this.loading.dismiss();
                 console.log(error)
             })
 
         }).catch(err=>{
+            this.loading.dismiss();
             this.navCtrl.push(EventsPage)
         })
     }
