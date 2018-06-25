@@ -39,4 +39,22 @@ export class CameraProvider {
       console.log('CAMERA ERROR -> ' + JSON.stringify(error));
     });
   }
+
+
+  takePicture() {
+    const loading = this.loadingCtrl.create();
+
+    loading.present();
+    return this.getPictureFromCamera().then(picture => {
+      if (picture) {
+        this.choosePicture = picture;
+      }
+      loading.dismiss();
+    }, error => {
+      alert(error);
+    });
+  }
+
+
+
 }
