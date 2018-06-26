@@ -5,6 +5,7 @@ export const EventRoutes = {
     apiPlan: 'api/plans/',
     apiPropositionChallenges: '/api/proposition_challenges',
     apiEventChallenge: '/api/event/event-challenge/',
+    apiCoverEvent: '/api/event/event-cover/',
     apiPayment: '/api/event/add-payment/',
     apiIsTotalPayed: '/api/is-total-payed/',
     apiInviteFriends: '/api/event/invite-friends/',

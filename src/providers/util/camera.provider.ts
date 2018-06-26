@@ -19,12 +19,12 @@ export class CameraProvider {
   ) {
   }
 
-  getPictureFromCamera() {
-    return this.getImage(this.camera.PictureSourceType.CAMERA, true);
+  getPictureFromCamera(allowEdit = true) {
+    return this.getImage(this.camera.PictureSourceType.CAMERA, true,    50,  allowEdit,  true);
   }
 
-  getPictureFromPhotoLibrary() {
-    return this.getImage(this.camera.PictureSourceType.PHOTOLIBRARY);
+  getPictureFromPhotoLibrary(allowEdit = true) {
+    return this.getImage(this.camera.PictureSourceType.PHOTOLIBRARY, true,    50,  allowEdit,  true);
   }
 
   // This method takes optional parameters to make it more customizable
