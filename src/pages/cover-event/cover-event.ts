@@ -58,7 +58,7 @@ export class CoverEventPage {
       }).catch(err=>{ console.log(err)})
   }
 
-    showLoader(){
+  showLoader(){
         this.loading = this.loadingCtrl.create({
             content: 'Loding...'
         });

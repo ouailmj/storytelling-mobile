@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import {IonicPage, LoadingController, NavController, NavParams} from 'ionic-angular';
+import {IonicPage, LoadingController, NavController, NavParams, ToastController} from 'ionic-angular';
 import {EventInformationData} from "../../providers/types/eventData";
 import {Category} from "../../models/category";
 import {HttpHeaders} from "@angular/common/http";
@@ -35,7 +35,7 @@ export class EventInformationPage {
     };
     categories: Category [] = [];
     loading : any ;
-  constructor(public navCtrl: NavController, public navParams: NavParams,  public loadingCtrl: LoadingController, public apiProvider: ApiProvider, private storage: Storage, private eventProvider: EventProvider) {
+  constructor(public navCtrl: NavController, public navParams: NavParams,  public loadingCtrl: LoadingController, public apiProvider: ApiProvider, private storage: Storage, private eventProvider: EventProvider,  private toastCtrl: ToastController) {
       this.storage.get('token').then(tok=>{
 
           let headers = new HttpHeaders();
@@ -77,7 +77,7 @@ export class EventInformationPage {
 
             }).catch(error =>{
                 this.loading.dismiss();
-                console.log(error)
+                this.presentToast(error['error']['hydra:description'])
             })
 
         }).catch(err=>{
@@ -93,5 +93,21 @@ export class EventInformationPage {
         });
 
         this.loading.present();
+    }
+
+
+    presentToast(msg) {
+        let toast = this.toastCtrl.create({
+            message: msg,
+            duration: 3000,
+            position: 'bottom',
+            dismissOnPageChange: true
+        });
+
+        toast.onDidDismiss(() => {
+            console.log('Dismissed toast');
+        });
+
+        toast.present();
     }
 }
