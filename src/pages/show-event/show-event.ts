@@ -94,7 +94,7 @@ export class ShowEventPage {
     console.log(this.params.get('id_event'))
 
     this.eventProvider.getEvent(this.params.get('id_event')).then(data=>{
-      console.log(data.medias[0].downloadLink);
+      console.log(data);
       this.event.coverImage = data.medias[0].downloadLink
 
     })
