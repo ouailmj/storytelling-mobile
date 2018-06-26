@@ -285,7 +285,7 @@ console.log(EventRoutes.apiChoosePlan+id)
 
                 }).catch(error=>{
                     console.log('errrrrrrrrrrrrrrrrrrrrr')
-                    console.log(error)
+                    console.log(error.error['hydra:title'])
                     reject(error);
                 })
             }).catch(error => {
