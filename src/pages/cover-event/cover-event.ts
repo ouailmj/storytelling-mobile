@@ -21,7 +21,14 @@ import {Storage} from "@ionic/storage";
 export class CoverEventPage {
 
     loading: any;
-  constructor(public navCtrl: NavController,   public loadingCtrl: LoadingController, public navParams: NavParams, private eventProvider: EventProvider, private storage: Storage,) {
+  constructor(
+      public navCtrl: NavController,
+      public loadingCtrl: LoadingController,
+      public navParams: NavParams,
+      private eventProvider: EventProvider,
+      private storage: Storage,
+      )
+  {
   }
 
   ionViewDidLoad() {
