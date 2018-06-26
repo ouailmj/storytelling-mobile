@@ -1,7 +1,5 @@
 import { Component } from '@angular/core';
 import {  NavController } from 'ionic-angular';
-import {  LoadingController, ToastController } from 'ionic-angular';
-import { FileTransfer, FileUploadOptions, FileTransferObject } from '@ionic-native/file-transfer';
 import { Camera, CameraOptions } from '@ionic-native/camera';
 import { EventProvider } from '../../providers/event/event';
 // import { Camera, CameraOptions } from '@ionic-native/camera';

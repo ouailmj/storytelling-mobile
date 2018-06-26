@@ -10,10 +10,8 @@
         <div class="cover" align="center">
                
             <ion-avatar (click)="changePicture()">
-                <img class="profile-image" [src]="chosenPicture || placeholder" onerror="this.src='assets/imgs/profile.png'" />
-                <button ion-button color="danger">Change image</button>
+                <img class="profile-image" [src]="chosenPicture || placeholder " onerror="this.src='assets/imgs/profile.png'" />
             </ion-avatar>
-            <button ion-button color="danger" (click)="uploadImag()" >up image</button>
             <h4>Mohamed Ahamada</h4>
         </div>
       <ion-list>

@@ -31,6 +31,7 @@ export class ProfilPage {
     fullName: "string",
     phoneNumber: "string",
     timezoneId: "string",
+    avatar :""
   };
   authForm: FormGroup;
 
@@ -76,6 +77,10 @@ export class ProfilPage {
       this.user.phoneNumber=user.phoneNumber;
       this.user.timezoneId=user.timezoneId;
       this.user.username=user.username;
+      this.user.avatar=user.avatar.downloadLink;
+
+      this.chosenPicture = user.avatar.downloadLink;
+
 
     }).catch(err=>{
       // this.navCtrl.push(WelcomePage)
@@ -187,7 +192,9 @@ export class ProfilPage {
         }
       ]
     });
+
     return actionsheet.present();
+
   }
 
   takePicture() {
@@ -197,6 +204,7 @@ export class ProfilPage {
     return this.cameraProvider.getPictureFromCamera().then(picture => {
       if (picture) {
         this.chosenPicture = picture;
+        this.uploadImag()
       }
       loading.dismiss();
     }, error => {
@@ -211,6 +219,7 @@ export class ProfilPage {
     return this.cameraProvider.getPictureFromPhotoLibrary().then(picture => {
       if (picture) {
         this.chosenPicture = picture;
+        this.uploadImag()
       }
       loading.dismiss();
     }, error => {

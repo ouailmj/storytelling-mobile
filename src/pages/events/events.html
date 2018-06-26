@@ -12,7 +12,9 @@
       <h2>{{event.user.fullName}}</h2>
       <p>{{event.event.endsAt}}</p>
     </ion-item>
-    <img [src]="event.imagesGallery[0].downloadLink" onerror="this.src='assets/imgs/card/advance-card-bttf.png'"  >
+    <!--*ngIf="event.imagesGallery.length"-->
+    <img [src]="event.imagesGallery[0].downloadLink" *ngIf="event.imagesGallery.length > 0 " onerror="this.src='assets/imgs/card/advance-card-bttf.png'"  >
+
     <ion-card-content>
       <p>{{event.description}}</p>
     </ion-card-content>
