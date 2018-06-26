@@ -1,8 +1,8 @@
 <ion-content padding class="transparent-header">
-    <div id="profile-bg" [ngStyle]="{'background-image': 'url(' + user.coverImage +')'}"></div>
+    <div id="profile-bg" [ngStyle]="{'background-image': 'url(' + event.coverImage +')'}"></div>
     <div id="content">
       <div id="profile-info" padding>
-        <img id="profile-image" [src]="user.profileImage">
+        <img id="profile-image" [src]="event.coverImage">
         <h3 id="profile-name">{{user.name}}</h3>
         <p>{{user.occupation}} &bull; {{user.location}}</p>
         <p class="profile-description">{{user.description}}</p>

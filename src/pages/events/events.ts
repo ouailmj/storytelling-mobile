@@ -21,18 +21,15 @@ export class EventsPage {
   constructor(public navCtrl: NavController, public navParams: NavParams,public eventProvider : EventProvider) {
 
     eventProvider.getEvents().then( data =>{
-      
       this.events = data;
-      console.log(data);
-
     });
 
   
   }
 
-  eventDetails(){
+  eventDetails(id){
     
-    this.navCtrl.push(ShowEventPage);
+    this.navCtrl.setRoot(ShowEventPage,{id_event:id});
 
   }
 

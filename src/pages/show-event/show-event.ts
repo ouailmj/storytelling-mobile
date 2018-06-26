@@ -1,11 +1,11 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, LoadingController, ToastController, Platform, ActionSheetController } from 'ionic-angular';
-import { Storage } from '@ionic/storage';
 import { UserData } from '../../providers/types/userData';
 import { AuthProvider } from '../../providers/auth/auth';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { CameraProvider } from '../../providers/util/camera.provider';
 import { EventProvider } from '../../providers/event/event';
+import { CameraProvider } from '../../providers/util/camera.provider';
+import { Event } from '../../models/event';
 
 /**
  * Generated class for the ShowEventPage page.
@@ -20,11 +20,18 @@ import { EventProvider } from '../../providers/event/event';
   templateUrl: 'show-event.html',
 })
 export class ShowEventPage {
+ 
   placeholder = 'assets/img/avatar/girl-avatar.png';
   chosenPicture: any;
   events = [];
 
   following = false;
+
+  event = {
+    coverImage: ''
+  } 
+
+
   user = {
     name: 'Paula Bolliger',
     profileImage: 'assets/img/avatar/girl-avatar.png',
@@ -70,17 +77,28 @@ export class ShowEventPage {
   constructor(
     public navCtrl: NavController,
     public navParams: NavParams,
-     private storage: Storage,
      public cameraProvider: CameraProvider,
      public platform: Platform,
      public actionsheetCtrl: ActionSheetController,
      public loadingCtrl: LoadingController,
-     public eventProvider : EventProvider
+     public eventProvider : EventProvider,
+     public params: NavParams
 
-  ) { }
+  ) { 
+
+
+  }
 
   ionViewDidLoad() {
     console.log('Hello ProfileFour Page');
+    console.log(this.params.get('id_event'))
+
+    this.eventProvider.getEvent(this.params.get('id_event')).then(data=>{
+      console.log(data.medias[0].downloadLink);
+      this.event.coverImage = data.medias[0].downloadLink
+
+    })
+
   }
 
   changePicture() {
@@ -148,7 +166,7 @@ export class ShowEventPage {
     let postData = new FormData();
     postData.append('avatar',this.chosenPicture);
     
-    this.eventProvider.upImg(postData);
+    //this.eventProvider.upImg(postData);
 
     
     

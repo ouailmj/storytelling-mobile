@@ -28,8 +28,9 @@ import { CameraProvider } from '../providers/util/camera.provider';
 import { EventProvider } from '../providers/event/event';
 import { ShowEventPage } from '../pages/show-event/show-event';
 
-import { FileTransfer, FileUploadOptions, FileTransferObject } from '@ionic-native/file-transfer';
+import { FileTransfer,FileTransferObject } from '@ionic-native/file-transfer';
 import { File } from '@ionic-native/file';
+import { ToastService } from '../providers/util/toast.service';
  
 @NgModule({
   declarations: [
@@ -87,7 +88,7 @@ BrowserModule,
     FileTransfer,
     FileTransferObject,
     File,
-  Camera
+    ToastService
   ]
 })
 export class AppModule {}

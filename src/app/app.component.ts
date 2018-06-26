@@ -10,15 +10,13 @@ import { ChangepPasswordPage } from '../pages/changep-password/changep-password'
 import { Storage } from '@ionic/storage';
 import { PasswordRequestPage } from '../pages/password-request/password-request';
 import { EventsPage } from '../pages/events/events';
-import { updateImgs } from 'ionic-angular/components/content/content';
-import { UploadPage } from '../pages/upload/upload';
 
 @Component({
   templateUrl: 'app.html'
 })
 export class StoryTellingApp {
   @ViewChild(Nav) nav: Nav;
-  rootPage:any = UploadPage;
+  rootPage:any = WelcomePage;
   pages: Array<{title: string, component: any}>;
 
 

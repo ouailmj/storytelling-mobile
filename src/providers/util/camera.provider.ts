@@ -1,10 +1,22 @@
 import { Injectable } from '@angular/core';
 import { Camera } from '@ionic-native/camera';
+import { Platform, ActionSheetController, ToastController, LoadingController } from 'ionic-angular';
+import { EventProvider } from '../event/event';
 
 @Injectable()
 export class CameraProvider {
+  choosePicture: any;
 
-  constructor(private camera: Camera) {
+  constructor(
+    private camera: Camera,
+    public loadingCtrl: LoadingController,
+    private toastCtrl: ToastController,
+    public platform: Platform,
+    public actionsheetCtrl: ActionSheetController,
+    public eventProvider : EventProvider
+
+
+  ) {
   }
 
   getPictureFromCamera() {
@@ -41,18 +53,50 @@ export class CameraProvider {
   }
 
 
+ 
+
+
   takePicture() {
+    const loading = this.loadingCtrl.create();
+    loading.present();
+
+  
+
+      this.getPictureFromCamera().then(picture => {
+        if (picture) {
+          this.choosePicture = picture;
+
+          return picture;
+        }
+        loading.dismiss();
+      }, error => {
+        alert(error);
+      });
+    
+   
+     
+
+
+  }
+
+
+  getPicture() {
     const loading = this.loadingCtrl.create();
 
     loading.present();
-    return this.getPictureFromCamera().then(picture => {
+
+    
+    
+    this.getPictureFromPhotoLibrary().then(picture => {
       if (picture) {
         this.choosePicture = picture;
+        return picture;
       }
       loading.dismiss();
     }, error => {
       alert(error);
     });
+  
   }
 
 
