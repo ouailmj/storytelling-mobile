@@ -25,7 +25,8 @@ export class ShowEventPage {
   following = false;
 
   event = {
-    coverImage: ''
+    coverImage: '',
+    description:'',
   } 
 
 
@@ -44,30 +45,10 @@ export class ShowEventPage {
   posts = [
     {
       postImageUrl: 'assets/img/background/background-2.jpg',
-      text: `I believe in being strong when everything seems to be going wrong.
-             I believe that happy girls are the prettiest girls.
-             I believe that tomorrow is another day and I believe in miracles.`,
       date: 'November 5, 2016',
       likes: 12,
       comments: 4,
       timestamp: '11h ago'
-    },
-    {
-      postImageUrl: 'assets/img/background/background-3.jpg',
-      text: 'Do not go where the path may lead, go instead where there is no path and leave a trail.',
-      date: 'October 23, 2016',
-      likes: 30,
-      comments: 64,
-      timestamp: '30d ago'
-    },
-    {
-      postImageUrl: 'assets/img/background/background-4.jpg',
-      date: 'June 28, 2016',
-      likes: 46,
-      text: `Hope is the thing with feathers that perches in the soul
-             and sings the tune without the words And never stops at all.`,
-      comments: 66,
-      timestamp: '4mo ago'
     },
   ];
 
@@ -89,17 +70,13 @@ export class ShowEventPage {
   ionViewDidLoad() {
     console.log('Hello ProfileFour Page');
     console.log(this.params.get('id_event'))
+    let id_event = this.params.get('id_event');
 
-    this.eventProvider.getEvent('/api/show-event/'+this.params.get('id_event')).then(data=>{
-      console.log(data);
-      console.log(data['hydra:member'][0]['imagesGallery']);
-      let img ;
-        if (typeof data['hydra:member'][0]['imagesGallery'] == 'undefined') {
-            img =null
-        }else {
-          img = data['hydra:member'][0]['imagesGallery'].downloadLink
-        }
-      this.event.coverImage = img
+    this.eventProvider.getEvent('/api/show-event/'+id_event).then(data=>{
+     
+      let img = data[0].imagesGallery[0].downloadLink === undefined ? '' : data[0].imagesGallery[0].downloadLink;
+      this.event.coverImage = img;
+      this.event.description = data[0].description;
 
     })
 
@@ -167,12 +144,20 @@ export class ShowEventPage {
 
   UploadImg(){
    
-    let postData = new FormData();
-    postData.append('avatar',this.chosenPicture);
+    // let postData = new FormData();
+    // postData.append('avatar',this.chosenPicture);
     
-    //this.eventProvider.upImg(postData);
+    // //this.eventProvider.upImg(postData);
 
-    
+    this.posts.push( {
+      postImageUrl: this.chosenPicture,
+      date: 'June 28, 2016',
+      likes: 46,
+      comments: 66,
+      timestamp: '4mo ago'
+    })
+
+    console.log("10101010101010101")
     
 
   }

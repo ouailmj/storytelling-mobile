@@ -31,6 +31,7 @@ export class ProfilPage {
     fullName: "string",
     phoneNumber: "string",
     timezoneId: "string",
+    avatar :""
   };
   authForm: FormGroup;
 
@@ -76,6 +77,10 @@ export class ProfilPage {
       this.user.phoneNumber=user.phoneNumber;
       this.user.timezoneId=user.timezoneId;
       this.user.username=user.username;
+      this.user.avatar=user.avatar.downloadLink;
+
+      this.chosenPicture = user.avatar.downloadLink;
+
 
     }).catch(err=>{
       // this.navCtrl.push(WelcomePage)

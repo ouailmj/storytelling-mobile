@@ -62,7 +62,9 @@ export class EventProvider {
                 headers = headers.set('Authorization', 'Bearer ' + tok);
 
                 this.apiProvider.get(route, {headers: headers}).then(rep => {
-                    resolve(rep);
+                console.log("get Event ======>",rep["hydra:member"]);
+
+                    resolve(rep["hydra:member"]);
                 }).catch(error => {
                     reject(error)
                 })
