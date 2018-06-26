@@ -74,9 +74,9 @@ export class ShowEventPage {
 
     this.eventProvider.getEvent('/api/show-event/'+id_event).then(data=>{
      
-      let img = data[0].imagesGallery[0].downloadLink === undefined ? '' : data[0].imagesGallery[0].downloadLink;
+      let img = data['hydra:member'][0].imagesGallery[0].downloadLink === undefined ? '' : data['hydra:member'][0].imagesGallery[0].downloadLink;
       this.event.coverImage = img;
-      this.event.description = data[0].description;
+      this.event.description = data['hydra:member'][0].description;
 
     })
 

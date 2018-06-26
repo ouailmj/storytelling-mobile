@@ -63,8 +63,7 @@ export class EventProvider {
 
                 this.apiProvider.get(route, {headers: headers}).then(rep => {
                 console.log("get Event ======>",rep["hydra:member"]);
-
-                    resolve(rep["hydra:member"]);
+                    resolve(rep);
                 }).catch(error => {
                     reject(error)
                 })
