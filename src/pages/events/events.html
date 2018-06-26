@@ -1,3 +1,40 @@
-<ion-content id="events">
-
+<ion-header>
+  <ion-navbar>
+    <ion-title>Social Cards</ion-title>
+  </ion-navbar>
+</ion-header>
+<ion-content>
+  <ion-card *ngFor="let event of events" (click)="eventDetails(event.event.id)">
+    <ion-item>
+      <ion-avatar item-start>
+        <img [src]="event.avatarImageUrl" onerror="this.src='assets/imgs/avatar/marty-avatar.png'" >
+      </ion-avatar>
+      <h2>{{event.user.fullName}}</h2>
+      <p>{{event.event.endsAt}}</p>
+    </ion-item>
+    <!--*ngIf="event.imagesGallery.length"-->
+    <img [src]="event.imagesGallery[0].downloadLink" *ngIf="event.imagesGallery.length < 0 " onerror="this.src='assets/imgs/card/advance-card-bttf.png'"  >
+    <ion-card-content>
+      <p>{{event.description}}</p>
+    </ion-card-content>
+    <ion-row>
+      <ion-col>
+        <button ion-button color="primary" clear small icon-left >
+        <ion-icon name='thumbs-up'></ion-icon>
+        {{event.privacy}} Likes
+      </button>
+      </ion-col>
+      <ion-col>
+        <button ion-button color="primary" clear small icon-left >
+        <ion-icon name='text'></ion-icon>
+        {{event.started}} Comments
+      </button>
+      </ion-col>
+      <ion-col center text-center>
+        <ion-note>
+          {{event.totalPayed}}
+        </ion-note>
+      </ion-col>
+    </ion-row>
+  </ion-card>
 </ion-content>
