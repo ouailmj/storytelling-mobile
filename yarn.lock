@@ -62,7 +62,7 @@
   dependencies:
     tslib "^1.7.1"
 
-"@ionic-native/camera@^4.7.0":
+"@ionic-native/camera@^4.8.0":
   version "4.8.0"
   resolved "https://registry.yarnpkg.com/@ionic-native/camera/-/camera-4.8.0.tgz#e7a34c3d03d04b9ebbeb3348db7522a024506fd2"
 
@@ -70,9 +70,13 @@
   version "4.4.0"
   resolved "https://registry.yarnpkg.com/@ionic-native/core/-/core-4.4.0.tgz#fb0f071543bd2725d858f5a0f5c20adbece20df4"
 
-"@ionic-native/file-transfer@^4.7.0":
-  version "4.7.0"
-  resolved "https://registry.yarnpkg.com/@ionic-native/file-transfer/-/file-transfer-4.7.0.tgz#0f727be9e8c8d2e461618de54272e26ff7167c56"
+"@ionic-native/file-transfer@^4.8.0":
+  version "4.8.0"
+  resolved "https://registry.yarnpkg.com/@ionic-native/file-transfer/-/file-transfer-4.8.0.tgz#18fe8bc81390e05e0a1ff95104ae59e9ac64f596"
+
+"@ionic-native/file@^4.8.0":
+  version "4.8.0"
+  resolved "https://registry.yarnpkg.com/@ionic-native/file/-/file-4.8.0.tgz#fdfc5cc7bae161044cbb6ebd0b8a8f2ed84ac04a"
 
 "@ionic-native/splash-screen@4.4.0":
   version "4.4.0"
@@ -869,7 +873,7 @@ cordova-plugin-camera@^4.0.3:
   version "4.0.3"
   resolved "https://registry.yarnpkg.com/cordova-plugin-camera/-/cordova-plugin-camera-4.0.3.tgz#7373a5938318c86ccfd84e3713e2382d10fe076b"
 
-cordova-plugin-device@^2.0.1:
+cordova-plugin-device@^2.0.2:
   version "2.0.2"
   resolved "https://registry.yarnpkg.com/cordova-plugin-device/-/cordova-plugin-device-2.0.2.tgz#fc08f3722e67eef7b6c67bfc99a83df6add0baba"
 
@@ -877,11 +881,15 @@ cordova-plugin-file-transfer@^1.7.1:
   version "1.7.1"
   resolved "https://registry.yarnpkg.com/cordova-plugin-file-transfer/-/cordova-plugin-file-transfer-1.7.1.tgz#a75d8be2ebc3bb9b23c5b1bbd199214ec267586b"
 
-cordova-plugin-ionic-keyboard@^2.0.5:
+cordova-plugin-file@^6.0.1:
+  version "6.0.1"
+  resolved "https://registry.yarnpkg.com/cordova-plugin-file/-/cordova-plugin-file-6.0.1.tgz#49606b8c15a5688d4728f92e4a7325a061de07f5"
+
+cordova-plugin-ionic-keyboard@^2.1.2:
   version "2.1.2"
   resolved "https://registry.yarnpkg.com/cordova-plugin-ionic-keyboard/-/cordova-plugin-ionic-keyboard-2.1.2.tgz#6d91bac2b5aba578dcccfd63e61b0960c33f9e4a"
 
-cordova-plugin-ionic-webview@^1.1.16:
+cordova-plugin-ionic-webview@^1.2.1:
   version "1.2.1"
   resolved "https://registry.yarnpkg.com/cordova-plugin-ionic-webview/-/cordova-plugin-ionic-webview-1.2.1.tgz#6d2162a2b1c593de436359d0746afc28b6a28d57"
 
@@ -901,9 +909,9 @@ cordova-sqlite-storage-dependencies@1.2.0:
   version "1.2.0"
   resolved "https://registry.yarnpkg.com/cordova-sqlite-storage-dependencies/-/cordova-sqlite-storage-dependencies-1.2.0.tgz#2eb6b2fb84e813306b44639ac804a5c63bed7bcb"
 
-cordova-sqlite-storage@^2.3.0:
-  version "2.3.0"
-  resolved "https://registry.yarnpkg.com/cordova-sqlite-storage/-/cordova-sqlite-storage-2.3.0.tgz#9eb96aab0162fa073f87ec126a145bb6aef79b50"
+cordova-sqlite-storage@^2.3.2:
+  version "2.3.2"
+  resolved "https://registry.yarnpkg.com/cordova-sqlite-storage/-/cordova-sqlite-storage-2.3.2.tgz#b87748d93dddfa65c82594fd3c35d62417fb2e18"
   dependencies:
     cordova-sqlite-storage-dependencies "1.2.0"
 

@@ -1,9 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams, LoadingController, ToastController, Platform, ActionSheetController } from 'ionic-angular';
-import { Storage } from '@ionic/storage';
-import { UserData } from '../../providers/types/userData';
-import { AuthProvider } from '../../providers/auth/auth';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { IonicPage, NavController, NavParams, LoadingController, Platform, ActionSheetController } from 'ionic-angular';
 import { CameraProvider } from '../../providers/util/camera.provider';
 import { EventProvider } from '../../providers/event/event';
 
@@ -70,7 +66,6 @@ export class ShowEventPage {
   constructor(
     public navCtrl: NavController,
     public navParams: NavParams,
-     private storage: Storage,
      public cameraProvider: CameraProvider,
      public platform: Platform,
      public actionsheetCtrl: ActionSheetController,
@@ -145,14 +140,7 @@ export class ShowEventPage {
 
   UploadImg(){
    
-    let postData = new FormData();
-    postData.append('avatar',this.chosenPicture);
     
-    this.eventProvider.upImg(postData);
-
-    
-    
-
   }
   
 

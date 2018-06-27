@@ -21,7 +21,7 @@ import { EventProvider } from '../../providers/event/event';
 })
 export class ProfilPage {
   placeholder = 'assets/img/avatar/girl-avatar.png';
-  chosenPicture: any;
+  choosePicture: any;
 
   loading: any;
    user: UserData = {
@@ -208,7 +208,7 @@ export class ProfilPage {
     loading.present();
     return this.cameraProvider.getPictureFromCamera().then(picture => {
       if (picture) {
-        this.chosenPicture = picture;
+        this.choosePicture = picture;
       }
       loading.dismiss();
     }, error => {
@@ -222,7 +222,7 @@ export class ProfilPage {
     loading.present();
     return this.cameraProvider.getPictureFromPhotoLibrary().then(picture => {
       if (picture) {
-        this.chosenPicture = picture;
+        this.choosePicture = picture;
       }
       loading.dismiss();
     }, error => {
@@ -232,18 +232,9 @@ export class ProfilPage {
 
 
   uploadImag(){
-    console.log('....... up ----')
-
-    let data = new FormData();
-
-    data.append('avatar',this.chosenPicture);
-
-    this.eventProvider.upImg(data).then(data =>{
-      console.log("up imag ......")
-    }).catch(err => {
-  console.log("errr ===== > ",err)
-    })
-    
+   
+  
+    this.eventProvider.uploadFile(this.choosePicture);
 
 
   }

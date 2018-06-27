@@ -3,7 +3,6 @@ import { NavController, LoadingController, ToastController } from 'ionic-angular
 import { AuthProvider } from '../../providers/auth/auth';
 import { UserData } from '../../providers/types/userData';
 import { RegisterPage } from '../register/register';
-import { Storage } from '@ionic/storage';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { ProfilPage } from '../profil/profil';
 
@@ -24,7 +23,7 @@ export class HomePage {
   authForm: FormGroup;
 
 
-  constructor(public navCtrl: NavController, public loadingCtrl: LoadingController,private toastCtrl: ToastController,private authService:AuthProvider,private storage: Storage,public formBuilder: FormBuilder) {
+  constructor(public navCtrl: NavController, public loadingCtrl: LoadingController,private toastCtrl: ToastController,private authService:AuthProvider,public formBuilder: FormBuilder) {
 
     this.navCtrl = navCtrl;
 

@@ -1,3 +1,5 @@
+import { SharedModule } from './shared.module';
+
 import { NgModule, ErrorHandler } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { IonicApp, IonicModule, IonicErrorHandler } from 'ionic-angular';
@@ -28,50 +30,28 @@ import { CameraProvider } from '../providers/util/camera.provider';
 import { EventProvider } from '../providers/event/event';
 import { ShowEventPage } from '../pages/show-event/show-event';
 
-
+import { FileTransfer, FileTransferObject } from '@ionic-native/file-transfer';
+import { File } from '@ionic-native/file';
+import { PAGES, PROVIDERS } from './app.imports';
  
 @NgModule({
   declarations: [
-    StoryTellingApp,
-    AboutPage,
-    ContactPage,
-    HomePage,
-    TabsPage,
-    RegisterPage,
-    WelcomePage,
-    ProfilPage,
-    MailCheckPage,
-    ChangepPasswordPage,
-    UploadPage,PasswordRequestPage,
-    EventsPage,
-    ChoosePlanPage,
-    ShowEventPage
+    ...PAGES
   ],
   imports: [
 BrowserModule,
     HttpClientModule,
     IonicModule.forRoot(StoryTellingApp),
-    IonicStorageModule.forRoot()
+    IonicStorageModule.forRoot(),
+    SharedModule,
+
   ],
   bootstrap: [IonicApp],
   entryComponents: [
-    StoryTellingApp,
-    AboutPage,
-    ContactPage,
-    HomePage,
-    RegisterPage,
-    TabsPage,
-    WelcomePage,
-    ProfilPage,
-    MailCheckPage,
-    ChangepPasswordPage,
-    UploadPage,
-    PasswordRequestPage,
-    ChoosePlanPage,
-    EventsPage,
-    ShowEventPage
+    ...PAGES
   ],
   providers: [
+    PROVIDERS,
     StatusBar,
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
@@ -81,7 +61,11 @@ BrowserModule,
     UserProvider,
     CameraProvider,
     Camera,
-    EventProvider
+    EventProvider,
+    FileTransfer,
+    FileTransferObject,
+    File,
+    
   ]
 })
 export class AppModule {}
