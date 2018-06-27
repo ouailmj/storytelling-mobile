@@ -24,15 +24,21 @@ export class ChangepPasswordPage {
     "repeatedPassword": ""
   };
 
-  constructor(public navCtrl: NavController, public navParams: NavParams,public formBuilder: FormBuilder,private authService:AuthProvider,public loadingCtrl: LoadingController,private toastCtrl: ToastController) {
+  constructor(public navCtrl: NavController,
+              public navParams: NavParams,
+              public formBuilder: FormBuilder,
+              private authService:AuthProvider,
+              public loadingCtrl: LoadingController,
+              private toastCtrl: ToastController
+  ) {
 
 
     this.authForm = formBuilder.group({
-  
+
       oldPassword: ['', Validators.compose([Validators.required, Validators.minLength(6)])],
       newPassword: ['', Validators.compose([Validators.required, Validators.minLength(6)])],
       repeatedPassword: ['', Validators.compose([Validators.required, Validators.minLength(6)])],
-    
+
     },{validator: this.matchingPasswords('newPassword', 'repeatedPassword')});
 
   }
@@ -41,7 +47,7 @@ export class ChangepPasswordPage {
     return (group: FormGroup): {[key: string]: any} => {
       let password = group.controls[passwordKey];
       let confirmPassword = group.controls[confirmPasswordKey];
-  
+
       if (password.value !== confirmPassword.value) {
         return {
           mismatchedPasswords: true
@@ -58,13 +64,13 @@ export class ChangepPasswordPage {
 
      if(this.authForm.valid){
        this.showLoader();
-        
+
       this.authService.changePpassword(this.user).then(res=>{
 
         console.log(res)
         this.loading.dismiss();
 
-      }).catch(error=>{ 
+      }).catch(error=>{
 console.log(error)
 
       })
@@ -84,7 +90,7 @@ console.log(error)
     this.loading.present();
   }
 
- 
+
 
   presentToast(msg) {
     let toast = this.toastCtrl.create({

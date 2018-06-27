@@ -3,7 +3,6 @@ import {IonicPage, LoadingController, NavController, NavParams} from 'ionic-angu
 import {PaymentPage} from "../payment/payment";
 import {EventProvider} from "../../providers/event/event";
 import {InviteFriendsPage} from "../invite-friends/invite-friends";
-import {EventChallengePage} from "../event-challenge/event-challenge";
 import {Storage} from "@ionic/storage";
 
 /**
