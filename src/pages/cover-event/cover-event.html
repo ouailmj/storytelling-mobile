@@ -21,10 +21,12 @@
         <img class="profile-image" [src]="pictureOne || placeholder" onerror="this.src='assets/imgs/profile.png'" />
         <button  type="button" ion-button color="danger">Change image</button>
       </ion-avatar>
+
       <ion-avatar (click)="changePicture('pictureTwo')">
         <img class="profile-image" [src]="pictureTwo || placeholder" onerror="this.src='assets/imgs/profile.png'" />
         <button   type="button" ion-button color="danger">Change image</button>
       </ion-avatar>
+
       <ion-avatar (click)="changePicture('pictureThree')">
         <img class="profile-image" [src]="pictureThree || placeholder" onerror="this.src='assets/imgs/profile.png'" />
         <button type="button" ion-button color="danger">Change image</button>

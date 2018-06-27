@@ -140,37 +140,37 @@ console.log(EventRoutes.apiChoosePlan+id)
 
     }
 
-    uploadFile(imageURI) {
-        this.storage.get('token').then(tok=>{
+    uploadFile(imageURI, key ='avatar', route = '/api/upload-avatar', isPresentToast = true) {
 
-
-            let loader = this.loadingCtrl.create({
-                content: "Uploading..."
-            });
-            loader.present();
-            const fileTransfer: FileTransferObject = this.transfer.create();
-
-
-
-            let options: FileUploadOptions = {
-                fileKey: 'avatar',
-                httpMethod: 'POST',
-                headers: { 'Authorization': 'Bearer '+tok },
-
-            }
-
-            fileTransfer.upload(imageURI, ApiProvider.getFullUrl('/api/upload-avatar') , options,true)
-                .then((data) => {
-                    console.log(data+" Uploaded Successfully");
-                    //this.imageFileName = "http://192.168.0.7:8080/static/images/ionicfile.jpg"
-                    loader.dismiss();
-                    this.presentToast("Image uploaded successfully");
-                }, (err) => {
-                    console.log(err);
-                    loader.dismiss();
-                    this.presentToast(err);
+        return new Promise((resolve, reject) => {
+            this.storage.get('token').then(tok => {
+                let loader = this.loadingCtrl.create({
+                    content: "Uploading..."
                 });
+                loader.present();
+                const fileTransfer: FileTransferObject = this.transfer.create();
 
+                let options: FileUploadOptions = {
+                    fileKey: key,
+                    httpMethod: 'POST',
+                    headers: {'Authorization': 'Bearer ' + tok},
+
+                }
+
+                fileTransfer.upload(imageURI, ApiProvider.getFullUrl(route), options, true)
+                    .then((data) => {
+                        console.log(data + " Uploaded Successfully");
+                        resolve(data)
+                        //this.imageFileName = "http://192.168.0.7:8080/static/images/ionicfile.jpg"
+                        loader.dismiss();
+                        if (isPresentToast) this.presentToast("Image uploaded successfully");
+                    }, (err) => {
+                        reject(err);
+                        loader.dismiss();
+                        this.presentToast(err);
+                    });
+
+            })
         })
     }
 
@@ -266,32 +266,11 @@ console.log(EventRoutes.apiChoosePlan+id)
         })
     }
 
-    addCoverEvent(arrayPictures : any, id): Promise<any>{
+    addCoverEvent(pictureOne : any,pictureTwo : any,pictureThree : any,coverType : any, id): Promise<any>{
         return new Promise((resolve, reject) => {
-            this.storage.get('token').then(tok=>{
-                let headers = new HttpHeaders();
-                headers = headers.set('Content-Type', 'application/json; charset=utf-8');
-                headers = headers.set('Authorization', 'Bearer ' + tok);
 
-                let data = {
-                    "firstImageCover":  arrayPictures.pictureOne,
-                    "secondImageCover": arrayPictures.pictureTwo ,
-                    "thirdImageCover": arrayPictures.pictureThree,
-                    "coverType": arrayPictures.coverType ,
-                }
                 console.log(EventRoutes.apiCoverEvent+id)
-                this.apiProvider.post(EventRoutes.apiCoverEvent+id, data,{headers: headers}).then(rep=>{
-                    console.log(rep)
-                    resolve("ok");
-
-                }).catch(error=>{
-                    console.log('errrrrrrrrrrrrrrrrrrrrr')
-                    console.log(error.error['hydra:title'])
-                    reject(error);
-                })
-            }).catch(error => {
-                console.log(error.status);
-            });
+                this.uploadFile(pictureOne,'imageFile', EventRoutes.apiCoverEvent+id+'/firstImageCover');
 
 
         })

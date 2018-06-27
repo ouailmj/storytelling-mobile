@@ -6,6 +6,7 @@ import {InviteFriendsPage} from "../invite-friends/invite-friends";
 import {EventChallengePage} from "../event-challenge/event-challenge";
 import {Storage} from "@ionic/storage";
 import {CameraProvider} from "../../providers/util/camera.provider";
+import {EventRoutes} from "../../providers/event/event.routes";
 
 /**
  * Generated class for the CoverEventPage page.
@@ -48,12 +49,13 @@ export class CoverEventPage {
   onSubmit(){
       this.showLoader()
       this.storage.get('currentEvent').then(event=> {
-          this.eventProvider.isFreePlan(event.eventPurchase).then(res => {
-              this.loading.dismiss();
-              if (res) {
-                  this.navCtrl.push(InviteFriendsPage)
-              } else {
-                  this.uploadImag(event.id).then((res)=>{
+          this.uploadImag(event.id).then(()=>{
+
+              this.eventProvider.isFreePlan(event.eventPurchase).then(res => {
+                  this.loading.dismiss();
+                  if (res) {
+                      this.navCtrl.push(InviteFriendsPage)
+                  } else {
                       this.eventProvider.isTotalPayed().then(res =>{
 
                           if(res.isPayed){
@@ -66,11 +68,11 @@ export class CoverEventPage {
                       }).catch(err=>{
                           console.log(err)
                       })
-                  }).catch((error)=>{console.log(error)})
-              }
-              console.log(res)
-          }).catch(error => {
-              console.log(error)
+                  }
+                  console.log(res)
+              }).catch(error => {
+                  console.log(error)
+              })
           })
       }).catch(err=>{ console.log(err)})
   }
@@ -174,13 +176,40 @@ export class CoverEventPage {
 
 
   uploadImag(id){
+      let arrayPict =  new Array(this.pictureOne, this.pictureTwo, this.pictureThree)
+      let step = null;
+      return new Promise((resolve, reject) => {
 
-        return this.eventProvider.addCoverEvent({
-                'pictureOne': this.pictureOne,
-                'pictureTwo': this.pictureTwo,
-                'pictureThree': this.pictureThree,
-                'coverType': this.coverType
-  },id);
+          Object.keys( arrayPict).forEach((key)=>{
+              switch (key){
+                  case '0':
+                      step = 'firstImageCover'
+                      break
+                  case '1':
+                      step = 'secondImageCover'
+                      break
+                  case '2':
+                      step = 'thirdImageCover'
+                      break
+                  default:
+                      step = 'firstImageCover'
+              }
+              if(arrayPict[key] != null ){
+                  this.eventProvider.uploadFile(arrayPict[key], 'imageFile', EventRoutes.apiUploadCoverEvent + id + '/'+step, false).then((res)=>{
+                      console.log(res , 'image '+key+'is uploaded')
+                      if(step === 'thirdImageCover'){
+                          resolve(res)
+                      }
+                  }).catch((err)=>{
+                      console.log(err)
+                      reject(err)
+                  });
+              }
+          })
+
+
+      })
+
 
 
     }
