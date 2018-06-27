@@ -8,7 +8,10 @@
     <form [formGroup]="authForm" (ngSubmit)="onSubmit(authForm.value)">
         
         <div class="cover" align="center">
-          <img class="profile-image" src="assets/imgs/profile.png">
+               
+            <ion-avatar (click)="changePicture()">
+                <img class="profile-image" [src]="chosenPicture || placeholder " onerror="this.src='assets/imgs/profile.png'" />
+            </ion-avatar>
             <h4>Mohamed Ahamada</h4>
         </div>
       <ion-list>

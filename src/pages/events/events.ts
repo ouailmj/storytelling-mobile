@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
-import {ChoosePlanPage} from "../choose-plan/choose-plan";
+import { EventProvider } from '../../providers/event/event';
+import { ShowEventPage } from '../show-event/show-event';
 /**
  * Generated class for the EventsPage page.
  *
@@ -10,20 +11,29 @@ import {ChoosePlanPage} from "../choose-plan/choose-plan";
 
 @IonicPage()
 @Component({
-  selector: 'page-events',
-  templateUrl: 'events.html',
+    selector: 'page-events',
+    templateUrl: 'events.html',
 })
 export class EventsPage {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
-  }
+    events :any = [];
 
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad EventsPage');
-  }
+    constructor(public navCtrl: NavController, public navParams: NavParams,public eventProvider : EventProvider) {
 
-  createEvent(){
-    this.navCtrl.push(ChoosePlanPage);
-  }
+        console.log("list events");
+        eventProvider.getEvents().then( data =>{
+          console.log("in pqge event ",data[0].imagesGallery);
+            this.events = data;
+        });
+
+
+    }
+
+    eventDetails(id){
+
+        this.navCtrl.setRoot(ShowEventPage,{id_event:id});
+
+    }
+
 
 }
