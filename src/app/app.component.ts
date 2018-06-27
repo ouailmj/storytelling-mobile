@@ -10,6 +10,7 @@ import { ChangepPasswordPage } from '../pages/changep-password/changep-password'
 import { Storage } from '@ionic/storage';
 import { PasswordRequestPage } from '../pages/password-request/password-request';
 import { EventsPage } from '../pages/events/events';
+import {NewEventPage} from "../pages/new-event/new-event";
 
 @Component({
   templateUrl: 'app.html'
@@ -35,6 +36,7 @@ export class StoryTellingApp {
       { title: 'upload', component: WelcomePage },
       { title: 'profil', component: ProfilPage },
       { title: 'Events', component: EventsPage },
+      { title: 'new Event', component: NewEventPage },
       { title: 'Log out', component: WelcomePage }
     ];
   }
