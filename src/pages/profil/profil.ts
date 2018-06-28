@@ -1,10 +1,11 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams, LoadingController, ToastController } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, LoadingController, ToastController, Platform, ActionSheetController } from 'ionic-angular';
 import { Storage } from '@ionic/storage';
 import { UserData } from '../../providers/types/userData';
 import { AuthProvider } from '../../providers/auth/auth';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import {WelcomePage} from '../welcome/welcome'
+import { CameraProvider } from '../../providers/util/camera.provider';
+import { EventProvider } from '../../providers/event/event';
 
 /**
  * Generated class for the ProfilPage page.
@@ -19,6 +20,8 @@ import {WelcomePage} from '../welcome/welcome'
   templateUrl: 'profil.html',
 })
 export class ProfilPage {
+  placeholder = 'assets/img/avatar/girl-avatar.png';
+  chosenPicture: any;
 
   loading: any;
    user: UserData = {
@@ -28,10 +31,24 @@ export class ProfilPage {
     fullName: "string",
     phoneNumber: "string",
     timezoneId: "string",
+    avatar :""
   };
   authForm: FormGroup;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, public loadingCtrl: LoadingController,private toastCtrl: ToastController,private storage: Storage,public formBuilder: FormBuilder,private authService:AuthProvider) {
+  constructor(
+    public navCtrl: NavController,
+     public navParams: NavParams,
+      public loadingCtrl: LoadingController,
+      private toastCtrl: ToastController,
+      private storage: Storage,
+      public formBuilder: FormBuilder,
+      private authService:AuthProvider,
+      public cameraProvider: CameraProvider,
+      public platform: Platform,
+      public actionsheetCtrl: ActionSheetController,
+      public eventProvider : EventProvider
+
+    ) {
 
 
 
@@ -49,18 +66,21 @@ export class ProfilPage {
     this.storage.get('user').then(user=>{
 
       if(user===null){
-          return    this.navCtrl.push(WelcomePage).then(page=>{
-
-            console.log(page)
-          }).catch(err=>{
-            console.log(err)
-          })
+         // return    this.navCtrl.push(WelcomePage).then(page=>{
+          //   console.log(page)
+          // }).catch(err=>{
+          //   console.log(err)
+          // })
       }
       this.user.email=user.email;
       this.user.fullName=user.fullName;
       this.user.phoneNumber=user.phoneNumber;
       this.user.timezoneId=user.timezoneId;
       this.user.username=user.username;
+      this.user.avatar=user.avatar.downloadLink;
+
+      this.chosenPicture = user.avatar.downloadLink;
+
 
     }).catch(err=>{
       // this.navCtrl.push(WelcomePage)
@@ -71,24 +91,18 @@ export class ProfilPage {
   //   console.log('matchingPasswords==========<<>>')
   //   return (group: FormGroup): {[key: string]: any} => {
   //     let password = group.controls[passwordKey];
-
   
   //     if (password.value !== '12345678') {
   //       console.log('matchingPasswords==========<<>>')
-
   //       return {
   //         mismatchedPasswords: true
   //       };
   //     }
   //   }
   // }
-
   // console.log(passwordKey);
-
   //     this.authService.login({username:'test',password:"123456"}).then((result) => {
-
   //           this.storage.set('token', result.token);
-
   //           console.log(result.token)
   //           return {
   //             mismatchedPasswords: false
@@ -104,7 +118,6 @@ export class ProfilPage {
   //       return {
   //         mismatchedPasswords: false
   //       };
-
 
   onSubmit(value){
 
@@ -147,6 +160,80 @@ export class ProfilPage {
     });
 
     toast.present();
+  }
+  
+ 
+  changePicture() {
+
+    const actionsheet = this.actionsheetCtrl.create({
+      title: 'upload picture',
+      buttons: [
+        {
+          text: 'camera',
+          icon: !this.platform.is('ios') ? 'camera' : null,
+          handler: () => {
+            this.takePicture();
+          }
+        },
+        {
+          text: !this.platform.is('ios') ? 'gallery' : 'camera roll',
+          icon: !this.platform.is('ios') ? 'image' : null,
+          handler: () => {
+            this.getPicture();
+          }
+        },
+        {
+          text: 'cancel',
+          icon: !this.platform.is('ios') ? 'close' : null,
+          role: 'destructive',
+          handler: () => {
+            console.log('the user has cancelled the interaction.');
+          }
+        }
+      ]
+    });
+
+    return actionsheet.present();
+
+  }
+
+  takePicture() {
+    const loading = this.loadingCtrl.create();
+
+    loading.present();
+    return this.cameraProvider.getPictureFromCamera().then(picture => {
+      if (picture) {
+        this.chosenPicture = picture;
+        this.uploadImag()
+      }
+      loading.dismiss();
+    }, error => {
+      alert(error);
+    });
+  }
+
+  getPicture() {
+    const loading = this.loadingCtrl.create();
+
+    loading.present();
+    return this.cameraProvider.getPictureFromPhotoLibrary().then(picture => {
+      if (picture) {
+        this.chosenPicture = picture;
+        this.uploadImag()
+      }
+      loading.dismiss();
+    }, error => {
+      alert(error);
+    });
+  }
+
+
+  uploadImag(){
+   
+  
+    this.eventProvider.uploadFile(this.chosenPicture);
+
+
   }
 
 

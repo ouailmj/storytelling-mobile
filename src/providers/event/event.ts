@@ -4,7 +4,8 @@ import { Injectable } from '@angular/core';
 import {HttpHeaders} from "@angular/common/http";
 import {ChoosePlanData, EventInformationData, PaymentData} from "../types/eventData";
 import {EventRoutes} from "./event.routes";
-
+import {  LoadingController, ToastController } from 'ionic-angular';
+import { FileTransfer, FileUploadOptions, FileTransferObject } from '@ionic-native/file-transfer';
 /*
   Generated class for the EventProvider provider.
 
@@ -14,7 +15,14 @@ import {EventRoutes} from "./event.routes";
 @Injectable()
 export class EventProvider {
 
-    constructor(public apiProvider: ApiProvider, private storage: Storage) {
+    constructor(
+        public apiProvider: ApiProvider,
+        private storage: Storage,
+        private transfer: FileTransfer,
+        public loadingCtrl: LoadingController,
+        public toastCtrl: ToastController
+    )
+    {
         console.log('Hello EventProvider Provider');
     }
 
@@ -30,23 +38,15 @@ export class EventProvider {
                 headers = headers.set('Authorization', 'Bearer ' + tok);
 
                 this.apiProvider.get('/api/event/new', {headers: headers}).then(rep => {
-                    console.log('frfrfrfrf')
-
                     console.log(rep)
-
                     resolve("ok");
-
                 }).catch(error => {
                     console.log('error')
                     reject(error);
-
                 })
             }).catch(error => {
-
                 reject('erro');
             })
-
-
         })
     }
 
@@ -62,6 +62,7 @@ export class EventProvider {
                 headers = headers.set('Authorization', 'Bearer ' + tok);
 
                 this.apiProvider.get(route, {headers: headers}).then(rep => {
+                console.log("get Event ======>",rep["hydra:member"]);
                     resolve(rep);
                 }).catch(error => {
                     reject(error)
@@ -71,6 +72,42 @@ export class EventProvider {
             })
 
         })
+    }
+
+    getEvents():Promise<any>{
+
+
+        return new Promise((resolve, reject) => {
+
+
+            this.storage.get('token').then(tok=>{
+
+                let headers = new HttpHeaders();
+
+                headers = headers.set('Content-Type', 'application/json; charset=utf-8');
+                headers = headers.set('Authorization', 'Bearer ' + tok);
+
+                this.apiProvider.get('/api/event-joined',{headers: headers}).then(rep=>{
+
+
+                    //  this.storage.set('user', rep);
+                    console.log("list Events ====> ",rep);
+
+                    resolve(rep["hydra:member"]);
+
+                }).catch(error=>{
+
+                    reject(error);
+
+                })
+            }).catch(error=>{
+
+                reject('erro');
+            })
+
+
+        })
+
     }
 
     addChoosePlan(choosePlanData: ChoosePlanData, id): Promise<any>{
@@ -101,6 +138,40 @@ console.log(EventRoutes.apiChoosePlan+id)
 
         })
 
+    }
+
+    uploadFile(imageURI, key ='avatar', route = '/api/upload-avatar', isPresentToast = true) {
+
+        return new Promise((resolve, reject) => {
+            this.storage.get('token').then(tok => {
+                let loader = this.loadingCtrl.create({
+                    content: "Uploading..."
+                });
+                loader.present();
+                const fileTransfer: FileTransferObject = this.transfer.create();
+
+                let options: FileUploadOptions = {
+                    fileKey: key,
+                    httpMethod: 'POST',
+                    headers: {'Authorization': 'Bearer ' + tok},
+
+                }
+
+                fileTransfer.upload(imageURI, ApiProvider.getFullUrl(route), options, true)
+                    .then((data) => {
+                        console.log(data + " Uploaded Successfully");
+                        resolve(data)
+                        //this.imageFileName = "http://192.168.0.7:8080/static/images/ionicfile.jpg"
+                        loader.dismiss();
+                        if (isPresentToast) this.presentToast("Image uploaded successfully");
+                    }, (err) => {
+                        reject(err);
+                        loader.dismiss();
+                        this.presentToast(err);
+                    });
+
+            })
+        })
     }
 
     addEventInformation(eventInformationData: EventInformationData, id): Promise<any>{
@@ -195,6 +266,16 @@ console.log(EventRoutes.apiChoosePlan+id)
         })
     }
 
+    addCoverEvent(pictureOne : any,pictureTwo : any,pictureThree : any,coverType : any, id): Promise<any>{
+        return new Promise((resolve, reject) => {
+
+                console.log(EventRoutes.apiCoverEvent+id)
+                this.uploadFile(pictureOne,'imageFile', EventRoutes.apiCoverEvent+id+'/firstImageCover');
+
+
+        })
+    }
+
     addPaymentForEvent(eventPayment: PaymentData,id):  Promise<any>{
         return new Promise((resolve, reject) => {
 
@@ -276,5 +357,17 @@ console.log(EventRoutes.apiChoosePlan+id)
         })
     }
 
+    presentToast(msg) {
+        let toast = this.toastCtrl.create({
+            message: msg,
+            duration: 6000,
+            position: 'bottom'
+        });
 
+        toast.onDidDismiss(() => {
+            console.log('Dismissed toast');
+        });
+
+        toast.present();
+    }
 }

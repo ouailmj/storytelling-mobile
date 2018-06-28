@@ -1,3 +1,29 @@
 <ion-content padding>
+<<<<<<< HEAD
+=======
+  
+  
+    
+    <button class="menu-btn" ion-button menuToggle icon-only>
+        <ion-icon name='menu'></ion-icon>
+    </button>
+    <form [formGroup]="authForm" (ngSubmit)="onSubmit(authForm.value)">
+        
+        <div class="cover" align="center">
+               
+            <ion-avatar (click)="changePicture()">
+                <img class="profile-image" [src]="chosenPicture || placeholder " onerror="this.src='assets/imgs/profile.png'" />
+            </ion-avatar>
+            <h4>Mohamed Ahamada</h4>
+        </div>
+      <ion-list>
+        <div class="wrap-input100 validate-input" data-validate = "Valid email is required: ex@abc.xyz">
+            <input class="input100" type="text" placeholder="Full Name" [(ngModel)]="user.fullName" formControlName="fullName">
+            <span class="focus-input100"></span>
+            <span class="symbol-input100">
+              <ion-icon class="symbol-input100" name="person" item-start></ion-icon>
+            </span>
+          </div>
+>>>>>>> aa56bbdd9bb195f29f79ffb84d5c29cd320b6ef9
 
 </ion-content>

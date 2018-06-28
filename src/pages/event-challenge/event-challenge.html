@@ -16,10 +16,10 @@
 
 <ion-content>
   <div>
-    <form (ngSubmit)="onSubmit()">
+    <form [formGroup]="authForm" (ngSubmit)="onSubmit(authForm.value)">
       <ion-list>
         <ion-item>
-          <ion-textarea placeholder="Enter a description" name="description" [(ngModel)]="challengeEvent.description" ></ion-textarea>
+          <ion-textarea formControlName="description" placeholder="Enter a description" name="description" [(ngModel)]="challengeEvent.description" ></ion-textarea>
         </ion-item>
 
         <ion-item>

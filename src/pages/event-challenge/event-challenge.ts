@@ -1,15 +1,14 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import {IonicPage, LoadingController, NavController, NavParams, ToastController} from 'ionic-angular';
 import {HttpHeaders} from "@angular/common/http";
 import {ApiProvider} from "../../providers/api/api";
 import {Storage} from "@ionic/storage";
-import {Plan} from "../../models/plan";
 import {EventRoutes} from "../../providers/event/event.routes";
-import {ChallengeData, EventInformationData} from "../../providers/types/eventData";
+import {ChallengeData} from "../../providers/types/eventData";
 import {CoverEventPage} from "../cover-event/cover-event";
 import {EventProvider} from "../../providers/event/event";
-import {EventInformationPage} from "../event-information/event-information";
 import {EventsPage} from "../events/events";
+import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 
 /**
  * Generated class for the EventChallengePage page.
@@ -27,10 +26,11 @@ export class EventChallengePage {
     propositions  = [] ;
     challenges  = [] ;
     challengeEvent: ChallengeData = {
-        "description": ''
+        "description": null
     };
-
-  constructor(public navCtrl: NavController, public navParams: NavParams, private storage: Storage, public apiProvider: ApiProvider, private eventProvider: EventProvider) {
+    authForm: FormGroup;
+    loading : any ;
+  constructor(public navCtrl: NavController, public navParams: NavParams, public formBuilder: FormBuilder,  public loadingCtrl: LoadingController, private storage: Storage, public apiProvider: ApiProvider, private eventProvider: EventProvider, private toastCtrl: ToastController) {
       this.storage.get('token').then(tok=>{
 
           let headers = new HttpHeaders();
@@ -41,7 +41,11 @@ export class EventChallengePage {
               this.propositions = dataPropositions['hydra:member'];
           }).catch(error=>{})
       }).catch(error=>{})
+      this.authForm = formBuilder.group({
 
+          description: ['', Validators.compose([Validators.required])],
+
+      });
   }
 
   ionViewDidLoad() {
@@ -49,7 +53,13 @@ export class EventChallengePage {
   }
 
   onSubmit(){
-      this.challenges.push(this.challengeEvent.description)
+      if(this.authForm.valid) {
+          this.challenges.push(this.challengeEvent.description)
+      }else{
+          if(this.authForm.controls.description.hasError('required')){
+              this.presentToast('Sorry, field description is required');
+          }
+      }
   }
 
     removeChallenge(index) {
@@ -58,22 +68,49 @@ export class EventChallengePage {
     }
 
     send(){
+
+        this.showLoader()
       console.log(this.challengeEvent)
 
         this.storage.get('currentEvent').then(event=>{
 
             this.eventProvider.addEventChallenge(this.challenges, event.id).then(res =>{
+
+                this.loading.dismiss();
                 console.log(res)
                 this.navCtrl.push(CoverEventPage)
             }).catch(error =>{
+
+                this.loading.dismiss();
                 console.log(error)
             })
 
         }).catch(err=>{
+            this.loading.dismiss()
             this.navCtrl.push(EventsPage)
         })
+    }
+    presentToast(msg) {
+        let toast = this.toastCtrl.create({
+            message: msg,
+            duration: 3000,
+            position: 'bottom',
+            dismissOnPageChange: true
+        });
 
+        toast.onDidDismiss(() => {
+            console.log('Dismissed toast');
+        });
 
+        toast.present();
+    }
+
+    showLoader(){
+        this.loading = this.loadingCtrl.create({
+            content: 'Loding...'
+        });
+
+        this.loading.present();
     }
 
 }

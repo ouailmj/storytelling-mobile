@@ -1,0 +1,44 @@
+<ion-content padding class="transparent-header">
+    <div id="profile-bg" [ngStyle]="{'background-image': 'url(' + event.coverImage +')'}"></div>
+    <div id="content">
+      <div id="profile-info" padding>
+        <img id="profile-image" [src]="event.coverImage">
+        <h3 id="profile-name">{{user.name}}</h3>
+        <p>{{user.occupation}} &bull; {{user.location}}</p>
+        <p class="profile-description">{{event.description}}</p>
+      
+      </div>
+      <hr/>
+    
+      <div id="posts">
+          
+        <ion-card *ngFor="let post of posts">
+          <ion-item>
+            <ion-avatar item-start>
+              <img [src]="user.profileImage">
+            </ion-avatar>
+            <h2 class="sticky">{{user.name}}</h2>
+            <p>{{post.date}}</p>
+          </ion-item>
+          <img [src]="post.postImageUrl" >
+          <ion-row>
+            <ion-col col-3 align-self-center text-center>
+              <p>
+                {{post.timestamp}}
+              </p>
+            </ion-col>
+          </ion-row>
+        </ion-card>
+
+
+        <ion-avatar (click)="changePicture()">
+          <button ion-button color="danger">Change image</button>
+          <button ion-button color="danger" (click)="UploadImg()" >up image</button>
+
+      </ion-avatar>
+
+
+      </div>
+    </div>
+  </ion-content>
+  
