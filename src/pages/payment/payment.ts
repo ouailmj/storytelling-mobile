@@ -4,7 +4,6 @@ import {PaymentData} from "../../providers/types/eventData";
 import {InviteFriendsPage} from "../invite-friends/invite-friends";
 import {EventProvider} from "../../providers/event/event";
 import {Storage} from "@ionic/storage";
-import {EventInformationPage} from "../event-information/event-information";
 import {EventsPage} from "../events/events";
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 

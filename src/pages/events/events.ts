@@ -22,8 +22,8 @@ export class EventsPage {
 
         console.log("list events");
         eventProvider.getEvents().then( data =>{
-          console.log("in pqge event ",data[0].imagesGallery);
-            this.events = data;
+          console.log("in pqge event ",data);
+            this.events = data.length > 0 ? data : [] ;
         });
 
 
