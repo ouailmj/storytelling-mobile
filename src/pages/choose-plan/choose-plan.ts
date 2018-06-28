@@ -48,12 +48,7 @@ export class ChoosePlanPage {
   }
 
   onSubmit(){
-<<<<<<< HEAD
-
-
-=======
       this.showLoader()
->>>>>>> aa56bbdd9bb195f29f79ffb84d5c29cd320b6ef9
       let choosePlanData: ChoosePlanData = {
           planKey: this.planChoice,
       };
@@ -84,5 +79,3 @@ export class ChoosePlanPage {
 
         this.loading.present();
     }
-
-}
