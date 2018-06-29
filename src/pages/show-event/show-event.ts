@@ -3,6 +3,7 @@ import { IonicPage, NavController, NavParams, LoadingController, Platform, Actio
 
 import { EventProvider } from '../../providers/event/event';
 import { CameraProvider } from '../../providers/util/camera.provider';
+import { FileUploadResult } from '@ionic-native/file-transfer';
 
 /**
  * Generated class for the ShowEventPage page.
@@ -20,14 +21,45 @@ export class ShowEventPage {
  
   placeholder = 'assets/img/avatar/girl-avatar.png';
   chosenPicture: any;
-  events = [];
+  id_event:string;
+ 
 
   following = false;
 
-  event = {
-    coverImage: '',
-    description:'',
-  } 
+  event :any={
+    "id": '',
+    "CreatedBy": {
+        "firstName": "",
+        "lastName": "",
+        "fullName": "",
+        "avatar": {
+            "@id": "",
+            "@type": "",
+            "uploadedBy": "",
+            "id": "",
+            "downloadLink": "",
+            "file": "",
+            "expiresAt": "",
+            "hasBeenDownloaded": "",
+            "uploadedAt": "",
+            "createdBy": "",
+            "src": "",
+            "type": "",
+            "trashedAt": ""
+        },
+        "email": ""
+    },
+    "startsAt": "",
+    "endsAt": "",
+    "place": "",
+    "description": "",
+    "videoGallery": [],
+    "imagesGallery": [
+      {
+        "downloadLink" : "",
+      }
+    ]
+  };
 
 
   user = {
@@ -43,13 +75,7 @@ export class ShowEventPage {
   };
 
   posts = [
-    {
-      postImageUrl: 'assets/img/background/background-2.jpg',
-      date: 'November 5, 2016',
-      likes: 12,
-      comments: 4,
-      timestamp: '11h ago'
-    },
+   
   ];
 
   constructor(
@@ -60,7 +86,7 @@ export class ShowEventPage {
      public actionsheetCtrl: ActionSheetController,
      public loadingCtrl: LoadingController,
      public eventProvider : EventProvider,
-     public params: NavParams
+     public params: NavParams,
 
   ) { 
 
@@ -70,13 +96,19 @@ export class ShowEventPage {
   ionViewDidLoad() {
     console.log('Hello ProfileFour Page');
     console.log(this.params.get('id_event'))
-    let id_event = this.params.get('id_event');
+     this.id_event = this.params.get('id_event');
 
-    this.eventProvider.getEvent('/api/show-event/'+id_event).then(data=>{
+     console.log('id event ===< ',this.id_event)
+
+    this.eventProvider.getEvent('/api/show-event/'+this.id_event).then(data=>{
+
+      console.log("show event ===> ",data['hydra:member'][0])
      
-      let img = data['hydra:member'][0].imagesGallery[0].downloadLink === undefined ? '' : data['hydra:member'][0].imagesGallery[0].downloadLink;
-      this.event.coverImage = img;
-      this.event.description = data['hydra:member'][0].description;
+      // let img = data['hydra:member'][0].imagesGallery[0].downloadLink === undefined ? '' : data['hydra:member'][0].imagesGallery[0].downloadLink;
+      
+      this.event = data['hydra:member'][0];
+
+      console.log(this.event.imagesGallery[0].downloadLink)
 
     })
 
@@ -121,6 +153,7 @@ export class ShowEventPage {
     return this.cameraProvider.getPictureFromCamera().then(picture => {
       if (picture) {
         this.chosenPicture = picture;
+        this.UploadImg();
       }
       loading.dismiss();
     }, error => {
@@ -135,6 +168,7 @@ export class ShowEventPage {
     return this.cameraProvider.getPictureFromPhotoLibrary().then(picture => {
       if (picture) {
         this.chosenPicture = picture;
+        this.UploadImg();
       }
       loading.dismiss();
     }, error => {
@@ -142,22 +176,38 @@ export class ShowEventPage {
     });
   }
 
+  dataG :any;
+
   UploadImg(){
    
     // let postData = new FormData();
     // postData.append('avatar',this.chosenPicture);
-    
-    // //this.eventProvider.upImg(postData);
 
-    this.posts.push( {
-      postImageUrl: this.chosenPicture,
-      date: 'June 28, 2016',
-      likes: 46,
-      comments: 66,
-      timestamp: '4mo ago'
+    // uploadFile(imageURI, key ='avatar', route = '/api/upload-avatar', isPresentToast = true) {
+
+    
+    this.eventProvider.uploadFile(this.chosenPicture,'imageUpload',`/api/event/upload-media/${this.id_event}`,true).then((data : FileUploadResult)=>{
+     
+      let coData = JSON.parse(data.response)["hydra:member"][0];
+      // console.log(coData)
+      
+      
+      console.log(coData.imgUp.downloadLink)
+
+      this.posts.push( {
+        postImageUrl: coData.imgUp.downloadLink,
+        date: coData.imgUp.uploadedAt,
+        avatar: coData.user.avatar.downloadLink,
+        userName: coData.user.FullName,
+      })
+
+
     })
 
-    console.log("10101010101010101")
+    
+
+    
+
     
 
   }
@@ -165,3 +215,4 @@ export class ShowEventPage {
 
 
 }
+
