@@ -4,6 +4,7 @@ import { AuthRoutes } from "./auth.routes";
 import { UserData, UserRegister } from "../types/userData";
 import {  HttpHeaders } from '@angular/common/http';
 import { Storage } from '@ionic/storage';
+import {environment} from "../../environments/environment";
 
 
 /*
@@ -22,7 +23,7 @@ export class AuthProvider {
   login(userData: UserData): Promise<any> {
     
 
-    const loginPath = 'http://localhost:8000/api/login_check';
+    const loginPath = environment.API_END_POINT+'/api/login_check';
     
     const formData = new FormData();
     formData.append("_username",userData.username);
@@ -41,6 +42,7 @@ export class AuthProvider {
         .then(this.handleErrors)
         .then(response =>{
           response.json().then(result=>{
+            console.log(result)
              
           this.storage.set('token', result.token);
 

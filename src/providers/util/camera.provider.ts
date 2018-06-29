@@ -1,18 +1,29 @@
 import { Injectable } from '@angular/core';
 import { Camera } from '@ionic-native/camera';
+import { Platform, ActionSheetController, LoadingController } from 'ionic-angular';
+import { EventProvider } from '../event/event';
 
 @Injectable()
 export class CameraProvider {
+  choosePicture: any;
 
-  constructor(private camera: Camera) {
+  constructor(
+    private camera: Camera,
+    public loadingCtrl: LoadingController,
+    public platform: Platform,
+    public actionsheetCtrl: ActionSheetController,
+    public eventProvider : EventProvider
+
+
+  ) {
   }
 
-  getPictureFromCamera() {
-    return this.getImage(this.camera.PictureSourceType.CAMERA, true);
+  getPictureFromCamera(allowEdit = true) {
+    return this.getImage(this.camera.PictureSourceType.CAMERA, true,    50,  allowEdit,  true);
   }
 
-  getPictureFromPhotoLibrary() {
-    return this.getImage(this.camera.PictureSourceType.PHOTOLIBRARY);
+  getPictureFromPhotoLibrary(allowEdit = true) {
+    return this.getImage(this.camera.PictureSourceType.PHOTOLIBRARY, true,    50,  allowEdit,  true);
   }
 
   // This method takes optional parameters to make it more customizable
@@ -41,18 +52,50 @@ export class CameraProvider {
   }
 
 
-  takePicture() {
-    // const loading = this.loadingCtrl.create();
+ 
 
-    // loading.present();
-    // return this.getPictureFromCamera().then(picture => {
-    //   if (picture) {
-    //     this.choosePicture = picture;
-    //   }
-    //   loading.dismiss();
-    // }, error => {
-    //   alert(error);
-    // });
+
+  takePicture() {
+    const loading = this.loadingCtrl.create();
+    loading.present();
+
+  
+
+      this.getPictureFromCamera().then(picture => {
+        if (picture) {
+          this.choosePicture = picture;
+
+          return picture;
+        }
+        loading.dismiss();
+      }, error => {
+        alert(error);
+      });
+    
+   
+     
+
+
+  }
+
+
+  getPicture() {
+    const loading = this.loadingCtrl.create();
+
+    loading.present();
+
+    
+    
+    this.getPictureFromPhotoLibrary().then(picture => {
+      if (picture) {
+        this.choosePicture = picture;
+        return picture;
+      }
+      loading.dismiss();
+    }, error => {
+      alert(error);
+    });
+  
   }
 
 

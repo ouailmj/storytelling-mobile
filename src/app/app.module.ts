@@ -1,5 +1,3 @@
-import { SharedModule } from './shared.module';
-
 import { NgModule, ErrorHandler } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { IonicApp, IonicModule, IonicErrorHandler } from 'ionic-angular';
@@ -8,8 +6,6 @@ import { AboutPage } from '../pages/about/about';
 import { ContactPage } from '../pages/contact/contact';
 import { HomePage } from '../pages/home/home';
 import { TabsPage } from '../pages/tabs/tabs';
-import { WelcomePage } from '../pages/welcome/welcome';
-import { UploadPage } from '../pages/upload/upload';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { AuthProvider } from '../providers/auth/auth';
@@ -17,55 +13,101 @@ import { ApiProvider } from '../providers/api/api';
 import { IonicStorageModule } from "@ionic/storage";
 import { HttpClientModule } from '@angular/common/http';
 import { RegisterPage } from '../pages/register/register';
-import { ChangepPasswordPage } from '../pages/changep-password/changep-password';
 import { ProfilproviderProvider } from '../providers/profilprovider/profilprovider';
-import { ProfilPage } from '../pages/profil/profil';
 import { UserProvider } from '../providers/user/user';
-import { MailCheckPage } from '../pages/mail-check/mail-check';
-import { PasswordRequestPage } from '../pages/password-request/password-request';
-import { EventsPage } from '../pages/events/events';
-import { ChoosePlanPage } from '../pages/choose-plan/choose-plan';
 import { Camera } from '@ionic-native/camera';
 import { CameraProvider } from '../providers/util/camera.provider';
-import { EventProvider } from '../providers/event/event';
-import { ShowEventPage } from '../pages/show-event/show-event';
-
-import { FileTransfer, FileTransferObject } from '@ionic-native/file-transfer';
+import { FileTransfer,FileTransferObject } from '@ionic-native/file-transfer';
 import { File } from '@ionic-native/file';
-import { PAGES, PROVIDERS } from './app.imports';
- 
+import { ToastService } from '../providers/util/toast.service';
+import {EventProvider} from "../providers/event/event";
+import { WelcomePage } from '../pages/welcome/welcome';
+import { ProfilPage } from '../pages/profil/profil';
+import { MailCheckPage } from '../pages/mail-check/mail-check';
+import { UploadPage } from '../pages/upload/upload';
+import { PasswordRequestPage } from '../pages/password-request/password-request';
+import { EventsPage } from '../pages/events/events';
+import { ShowEventPage } from '../pages/show-event/show-event';
+import { EventInformationPage } from '../pages/event-information/event-information';
+import { NewEventPage } from '../pages/new-event/new-event';
+import { CoverEventPage } from '../pages/cover-event/cover-event';
+import { EventChallengePage } from '../pages/event-challenge/event-challenge';
+import { InviteFriendsPage } from '../pages/invite-friends/invite-friends';
+import { PaymentPage } from '../pages/payment/payment';
+import { FinishCreateEventPage } from '../pages/finish-create-event/finish-create-event';
+import { ChoosePlanPage } from '../pages/choose-plan/choose-plan';
+
 @NgModule({
   declarations: [
-    ...PAGES
+      StoryTellingApp,
+      AboutPage,
+      ContactPage,
+      HomePage,
+      TabsPage,
+      RegisterPage,
+      WelcomePage,
+      ProfilPage,
+      MailCheckPage,
+      UploadPage,
+      PasswordRequestPage,
+      EventsPage,
+      ShowEventPage,
+      ChoosePlanPage,
+      EventInformationPage,
+      NewEventPage,
+      CoverEventPage,
+      EventChallengePage,
+      InviteFriendsPage,
+      PaymentPage,
+      FinishCreateEventPage
   ],
   imports: [
 BrowserModule,
     HttpClientModule,
     IonicModule.forRoot(StoryTellingApp),
     IonicStorageModule.forRoot(),
-    SharedModule,
 
   ],
   bootstrap: [IonicApp],
   entryComponents: [
-    ...PAGES
+      StoryTellingApp,
+      AboutPage,
+      ContactPage,
+      HomePage,
+      RegisterPage,
+      TabsPage,
+      WelcomePage,
+      ProfilPage,
+      MailCheckPage,
+      UploadPage,
+      PasswordRequestPage,
+      EventsPage,
+      ShowEventPage,
+
+      EventInformationPage,
+      NewEventPage,
+      CoverEventPage,
+      EventChallengePage,
+      InviteFriendsPage,
+      PaymentPage,
+      FinishCreateEventPage
   ],
   providers: [
-    PROVIDERS,
     StatusBar,
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     AuthProvider,
     ApiProvider,
     ProfilproviderProvider,
-    UserProvider,
     CameraProvider,
     Camera,
-    EventProvider,
+    EventProvider ,
     FileTransfer,
     FileTransferObject,
     File,
-    
+    ToastService,
+    UserProvider,
+
   ]
 })
 export class AppModule {}

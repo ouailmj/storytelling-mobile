@@ -6,6 +6,7 @@ export interface UserData {
   phoneNumber?: string;
   plainPassword?: string;
   timezoneId?: string;
+  avatar?:string
 }
 
 export interface UserRegister{

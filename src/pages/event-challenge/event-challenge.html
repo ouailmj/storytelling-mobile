@@ -1,0 +1,49 @@
+<!--
+  Generated template for the EventChallengePage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>eventChallenge</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+
+<ion-content>
+  <div>
+    <form [formGroup]="authForm" (ngSubmit)="onSubmit(authForm.value)">
+      <ion-list>
+        <ion-item>
+          <ion-textarea formControlName="description" placeholder="Enter a description" name="description" [(ngModel)]="challengeEvent.description" ></ion-textarea>
+        </ion-item>
+
+        <ion-item>
+          <ion-select [ngModelOptions]="{standalone: true}" [(ngModel)]="challengeEvent.description">
+            <ion-option  *ngFor="let proposition of this.propositions" value="{{proposition.description}}">{{proposition.description}}</ion-option>
+          </ion-select>
+        </ion-item>
+      </ion-list>
+
+      <button ion-button icon-only type="submit">
+        add défi
+      </button>
+    </form>
+
+      <ion-card  *ngFor="let challenge of this.challenges" (tap)="removeChallenge(index)">
+        <ion-item>
+          {{challenge}}
+        </ion-item>
+      </ion-card>
+
+      <button type="button" ion-button large clear icon-end color="primary" (click)="send()">
+        Continue
+        <ion-icon name="arrow-forward"></ion-icon>
+      </button>
+
+  </div>
+</ion-content>

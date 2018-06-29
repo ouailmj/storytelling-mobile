@@ -2,6 +2,8 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { ApiProvider } from '../api/api';
 import { UserData } from '../types/userData';
+import { Storage } from '@ionic/storage';
+
 
 /*
   Generated class for the UserProvider provider.
@@ -12,14 +14,8 @@ import { UserData } from '../types/userData';
 @Injectable()
 export class UserProvider {
 
-  
-  constructor(public http: HttpClient,private storage: Storage,public apiProvider: ApiProvider) {
+  constructor(public http: HttpClient,public storage : Storage,public apiProvider: ApiProvider) {
     console.log('Hello UserProvider Provider');
-  }
-
-  
-  getUser(){
-
   }
 
   updateUser(userdata:UserData){
@@ -54,7 +50,5 @@ export class UserProvider {
   })
   
   }
-
-
 
 }

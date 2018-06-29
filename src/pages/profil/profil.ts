@@ -21,7 +21,7 @@ import { EventProvider } from '../../providers/event/event';
 })
 export class ProfilPage {
   placeholder = 'assets/img/avatar/girl-avatar.png';
-  choosePicture: any;
+  chosenPicture: any;
 
   loading: any;
    user: UserData = {
@@ -31,6 +31,7 @@ export class ProfilPage {
     fullName: "string",
     phoneNumber: "string",
     timezoneId: "string",
+    avatar :""
   };
   authForm: FormGroup;
 
@@ -66,7 +67,6 @@ export class ProfilPage {
 
       if(user===null){
          // return    this.navCtrl.push(WelcomePage).then(page=>{
-
           //   console.log(page)
           // }).catch(err=>{
           //   console.log(err)
@@ -77,6 +77,10 @@ export class ProfilPage {
       this.user.phoneNumber=user.phoneNumber;
       this.user.timezoneId=user.timezoneId;
       this.user.username=user.username;
+      this.user.avatar=user.avatar.downloadLink;
+
+      this.chosenPicture = user.avatar.downloadLink;
+
 
     }).catch(err=>{
       // this.navCtrl.push(WelcomePage)
@@ -87,24 +91,18 @@ export class ProfilPage {
   //   console.log('matchingPasswords==========<<>>')
   //   return (group: FormGroup): {[key: string]: any} => {
   //     let password = group.controls[passwordKey];
-
   
   //     if (password.value !== '12345678') {
   //       console.log('matchingPasswords==========<<>>')
-
   //       return {
   //         mismatchedPasswords: true
   //       };
   //     }
   //   }
   // }
-
   // console.log(passwordKey);
-
   //     this.authService.login({username:'test',password:"123456"}).then((result) => {
-
   //           this.storage.set('token', result.token);
-
   //           console.log(result.token)
   //           return {
   //             mismatchedPasswords: false
@@ -120,7 +118,6 @@ export class ProfilPage {
   //       return {
   //         mismatchedPasswords: false
   //       };
-
 
   onSubmit(value){
 
@@ -165,11 +162,7 @@ export class ProfilPage {
     toast.present();
   }
   
-
-
  
- 
-  
   changePicture() {
 
     const actionsheet = this.actionsheetCtrl.create({
@@ -199,7 +192,9 @@ export class ProfilPage {
         }
       ]
     });
+
     return actionsheet.present();
+
   }
 
   takePicture() {
@@ -208,7 +203,8 @@ export class ProfilPage {
     loading.present();
     return this.cameraProvider.getPictureFromCamera().then(picture => {
       if (picture) {
-        this.choosePicture = picture;
+        this.chosenPicture = picture;
+        this.uploadImag()
       }
       loading.dismiss();
     }, error => {
@@ -222,7 +218,8 @@ export class ProfilPage {
     loading.present();
     return this.cameraProvider.getPictureFromPhotoLibrary().then(picture => {
       if (picture) {
-        this.choosePicture = picture;
+        this.chosenPicture = picture;
+        this.uploadImag()
       }
       loading.dismiss();
     }, error => {
@@ -234,7 +231,7 @@ export class ProfilPage {
   uploadImag(){
    
   
-    this.eventProvider.uploadFile(this.choosePicture);
+    this.eventProvider.uploadFile(this.chosenPicture);
 
 
   }

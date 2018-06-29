@@ -11,30 +11,29 @@ import { ShowEventPage } from '../show-event/show-event';
 
 @IonicPage()
 @Component({
-  selector: 'page-events',
-  templateUrl: 'events.html',
+    selector: 'page-events',
+    templateUrl: 'events.html',
 })
 export class EventsPage {
 
-  events :any = [];
+    events :any = [];
 
-  constructor(public navCtrl: NavController, public navParams: NavParams,public eventProvider : EventProvider) {
+    constructor(public navCtrl: NavController, public navParams: NavParams,public eventProvider : EventProvider) {
 
-    eventProvider.getEvents().then( data =>{
-      
-      this.events = data;
-      console.log(data);
+        console.log("list events");
+        eventProvider.getEvents().then( data =>{
+          console.log("in pqge event ",data);
+            this.events = data.length > 0 ? data : [] ;
+        });
 
-    });
 
-  
-  }
+    }
 
-  eventDetails(){
-    
-    this.navCtrl.push(ShowEventPage);
+    eventDetails(id){
 
-  }
+        this.navCtrl.setRoot(ShowEventPage,{id_event:id});
+
+    }
 
 
 }

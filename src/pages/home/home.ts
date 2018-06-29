@@ -4,7 +4,7 @@ import { AuthProvider } from '../../providers/auth/auth';
 import { UserData } from '../../providers/types/userData';
 import { RegisterPage } from '../register/register';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
-import { ProfilPage } from '../profil/profil';
+import { EventsPage } from '../events/events';
 
 
 @Component({
@@ -16,7 +16,7 @@ export class HomePage {
   loading: any;
   loginData:UserData = {
     username: "admin",
-    password: "1234567",
+    password: "f%/R4Uk#](wUvM'V",
   };
   errorAuthentication=false;
   data: any;
@@ -62,7 +62,7 @@ export class HomePage {
 
                       this.authService.getUserProfil().then(res=>{
 
-                        this.navCtrl.push(ProfilPage);
+                        this.navCtrl.push(EventsPage);
 
                       })
 
@@ -70,6 +70,7 @@ export class HomePage {
           ).catch(err=>{
              console.log(err);
             this.loading.dismiss();
+            console.log(err)
             this.presentToast("incorrect username or password !!");
           });
 
