@@ -22,10 +22,7 @@ export class ShowEventPage {
   placeholder = 'assets/img/avatar/girl-avatar.png';
   chosenPicture: any;
   id_event:string;
- 
-
   following = false;
-
   event :any={
     "id": '',
     "CreatedBy": {
@@ -58,25 +55,10 @@ export class ShowEventPage {
       {
         "downloadLink" : "",
       }
-    ]
+    ],
+    "loadedMedias":''
   };
-
-
-  user = {
-    name: 'Paula Bolliger',
-    profileImage: 'assets/img/avatar/girl-avatar.png',
-    coverImage: 'assets/img/background/background-5.jpg',
-    occupation: 'Designer',
-    location: 'Seattle, WA',
-    description: 'A wise man once said: The more you do something, the better you will become at it.',
-    followers: 456,
-    following: 1052,
-    posts: 35
-  };
-
-  posts = [
-   
-  ];
+  posts = [];
 
   constructor(
     public navCtrl: NavController,
@@ -88,10 +70,7 @@ export class ShowEventPage {
      public eventProvider : EventProvider,
      public params: NavParams,
 
-  ) { 
-
-
-  }
+  ){ }
 
   ionViewDidLoad() {
     console.log('Hello ProfileFour Page');
@@ -107,8 +86,11 @@ export class ShowEventPage {
       // let img = data['hydra:member'][0].imagesGallery[0].downloadLink === undefined ? '' : data['hydra:member'][0].imagesGallery[0].downloadLink;
       
       this.event = data['hydra:member'][0];
+   
 
-      console.log(this.event.imagesGallery[0].downloadLink)
+      this.posts =  data['hydra:member'][0].loadedMedias;
+
+      console.log(this.event)
 
     })
 
@@ -176,7 +158,6 @@ export class ShowEventPage {
     });
   }
 
-  dataG :any;
 
   UploadImg(){
    
@@ -190,8 +171,6 @@ export class ShowEventPage {
      
       let coData = JSON.parse(data.response)["hydra:member"][0];
       // console.log(coData)
-      
-      
       console.log(coData.imgUp.downloadLink)
 
       this.posts.push( {
@@ -203,12 +182,6 @@ export class ShowEventPage {
 
 
     })
-
-    
-
-    
-
-    
 
   }
   
