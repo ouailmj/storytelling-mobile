@@ -62,7 +62,7 @@ export class EventProvider {
                 headers = headers.set('Authorization', 'Bearer ' + tok);
 
                 this.apiProvider.get(route, {headers: headers}).then(rep => {
-                console.log("get Event ======>",rep["hydra:member"]);
+                console.log("get Event ======>",rep );
                     resolve(rep);
                 }).catch(error => {
                     reject(error)
@@ -369,5 +369,28 @@ console.log(EventRoutes.apiChoosePlan+id)
         });
 
         toast.present();
+    }
+
+    getPriceEvent(id): Promise<number>{
+        return new Promise((resolve, reject) => {
+
+            this.storage.get('token').then(tok => {
+
+                let headers = new HttpHeaders();
+
+                headers = headers.set('Content-Type', 'application/json; charset=utf-8');
+                headers = headers.set('Authorization', 'Bearer ' + tok);
+
+                this.apiProvider.get(EventRoutes.apiPriceEvent+id, {headers: headers}).then(rep => {
+                    console.log("price  ======>",rep );
+                    resolve(rep);
+                }).catch(error => {
+                    reject(error)
+                })
+            }).catch(error => {
+                reject(error)
+            })
+
+        })
     }
 }
