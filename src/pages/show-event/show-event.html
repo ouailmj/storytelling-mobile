@@ -1,27 +1,53 @@
 <ion-content padding class="transparent-header">
-    <div id="profile-bg" [ngStyle]="{'background-image': 'url(' + event.coverImage +')'}"></div>
+    <div id="profile-bg" [ngStyle]="{'background-image': 'url(' + event.imagesGallery[0].downloadLink +')'}" *ngIf="event.imagesGallery.length > 0" ></div>
     <div id="content">
       <div id="profile-info" padding>
-        <img id="profile-image" [src]="event.coverImage">
-        <h3 id="profile-name">{{user.name}}</h3>
-        <p>{{user.occupation}} &bull; {{user.location}}</p>
+        <img id="profile-image"  src='assets/img/avatar/girl-avatar.png' > 
+        <h3 id="profile-name">{{event.CreatedBy.fullName}}</h3>
         <p class="profile-description">{{event.description}}</p>
-      
       </div>
+     
+      <ion-row class="profile-numbers">
+        <ion-col col-4>
+          <p>Followers</p>
+          <span>156</span>
+        </ion-col>
+        <ion-col col-4>
+          <p>Following</p>
+          <span>1002</span>
+        </ion-col>
+        <ion-col col-4>
+          <p>Posts</p>
+          <span>633</span>
+        </ion-col>
+      </ion-row>
       <hr/>
-    
       <div id="posts">
-          
         <ion-card *ngFor="let post of posts">
           <ion-item>
             <ion-avatar item-start>
-              <img [src]="user.profileImage">
+              <img [src]="post.avatar">
             </ion-avatar>
-            <h2 class="sticky">{{user.name}}</h2>
+            <h2 class="sticky">{{post.userName}}</h2>
             <p>{{post.date}}</p>
           </ion-item>
           <img [src]="post.postImageUrl" >
+          <ion-card-content>
+            <p>{{post.text}}</p>
+          </ion-card-content>
           <ion-row>
+            <ion-col col-4>
+              <button ion-button color="purple" clear small icon-left >
+                  <ion-icon name='thumbs-up'></ion-icon>
+                  {{post.likes}} Likes
+                </button>
+            </ion-col>
+            <ion-col col-5>
+              <button ion-button no-padding color="purple" clear small icon-left >
+                  <ion-icon name='text'></ion-icon>
+                  {{post.comments}} Comments
+                </button>
+            </ion-col>
             <ion-col col-3 align-self-center text-center>
               <p>
                 {{post.timestamp}}
@@ -29,16 +55,10 @@
             </ion-col>
           </ion-row>
         </ion-card>
-
-
-        <ion-avatar (click)="changePicture()">
-          <button ion-button color="danger">Change image</button>
-          <button ion-button color="danger" (click)="UploadImg()" >up image</button>
-
-      </ion-avatar>
-
-
       </div>
     </div>
+    <ion-fab right bottom>
+        <button ion-fab color="light" (click)="changePicture()"><ion-icon name="camera"></ion-icon></button>
+    </ion-fab>
   </ion-content>
-  
+
