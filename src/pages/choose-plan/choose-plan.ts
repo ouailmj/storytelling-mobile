@@ -23,61 +23,63 @@ import {EventInformationPage} from "../event-information/event-information";
 })
 export class ChoosePlanPage {
 
-  plans : Plan[] = [] ;
-  planChoice = "" ;
-    loading : any ;
-  constructor(public navCtrl: NavController, public loadingCtrl: LoadingController, public navParams: NavParams, private storage: Storage, public apiProvider: ApiProvider, public eventProvider: EventProvider) {
-      this.storage.get('token').then(tok=>{
+    plans: Plan[] = [];
+    planChoice = "";
+    loading: any;
 
-          let headers = new HttpHeaders();
+    constructor(public navCtrl: NavController, public loadingCtrl: LoadingController, public navParams: NavParams, private storage: Storage, public apiProvider: ApiProvider, public eventProvider: EventProvider) {
+        this.storage.get('token').then(tok => {
 
-          headers = headers.set('Content-Type', 'application/json; charset=utf-8');
-          headers = headers.set('Authorization', 'Bearer ' + tok);
-          this.apiProvider.get('/api/plans',{headers: headers}).then(dataPlans=>{
-              this.plans = dataPlans['hydra:member'];
-          }).catch(error=>{})
-      }).catch(error=>{})
-  }
+            let headers = new HttpHeaders();
 
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad ChoosePlanPage');
-  }
-
-  cancelAction(){
-        this.navCtrl.push(EventsPage);
-  }
-
-  onSubmit(){
-      this.showLoader()
-      let choosePlanData: ChoosePlanData = {
-          planKey: this.planChoice,
-      };
-
-      console.log("attrqssqq", choosePlanData);
-      this.storage.get('currentEvent').then(event=>{
-
-          console.log("finish",event);
-          console.log("ddd",event.id);
-      this.eventProvider.addChoosePlan(choosePlanData, event.id).then(res =>{
-          this.loading.dismiss();
-          console.log(res)
-          this.navCtrl.push(EventInformationPage)
-      }).catch(error =>{
-          this.loading.dismiss();
-          console.log(error)
-      })
-
-      }).catch(err=>{
-           this.navCtrl.push(EventsPage)
-      })
+            headers = headers.set('Content-Type', 'application/json; charset=utf-8');
+            headers = headers.set('Authorization', 'Bearer ' + tok);
+            this.apiProvider.get('/api/plans', {headers: headers}).then(dataPlans => {
+                this.plans = dataPlans['hydra:member'];
+            }).catch(error => {
+            })
+        }).catch(error => {
+        })
     }
 
-    showLoader(){
+    ionViewDidLoad() {
+        console.log('ionViewDidLoad ChoosePlanPage');
+    }
+
+    cancelAction() {
+        this.navCtrl.push(EventsPage);
+    }
+
+    onSubmit() {
+        this.showLoader()
+        let choosePlanData: ChoosePlanData = {
+            planKey: this.planChoice,
+        };
+
+        console.log("attrqssqq", choosePlanData);
+        this.storage.get('currentEvent').then(event => {
+
+            console.log("finish", event);
+            console.log("ddd", event.id);
+            this.eventProvider.addChoosePlan(choosePlanData, event.id).then(res => {
+                this.loading.dismiss();
+                console.log(res)
+                this.navCtrl.push(EventInformationPage)
+            }).catch(error => {
+                this.loading.dismiss();
+                console.log(error)
+            })
+
+        }).catch(err => {
+            this.navCtrl.push(EventsPage)
+        })
+    }
+
+    showLoader() {
         this.loading = this.loadingCtrl.create({
             content: 'Loding...'
         });
 
         this.loading.present();
     }
-
 }

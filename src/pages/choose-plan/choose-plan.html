@@ -1,22 +1,23 @@
 <ion-content class="tutorial-page">
 
   <form (ngSubmit)="onSubmit()">
-  <ion-slides pager>
-    <ion-slide *ngFor="let plan of this.plans">
-      <ion-toolbar>
-        <ion-buttons end>
-          <button ion-button color="primary" type="button" (click)="cancelAction()">Annuler</button>
-        </ion-buttons>
-      </ion-toolbar>
-      <img [src]="" class="slide-image"/>
-      <h2 class="slide-title" [innerHTML]="plan.name"></h2>
-      <h3 class="slide-title" [innerHTML]="plan.price/100 + ' €'"></h3>
-      <p [innerHTML]="plan.description"></p>
-      <button type="submit" (click)="planChoice=plan.planKey"  ion-button large clear icon-end color="primary">
-        Continue
-        <ion-icon name="arrow-forward"></ion-icon>
-      </button>
-    </ion-slide>
-  </ion-slides>
+  <ion-toolbar>
+      <ion-buttons end>
+        <button ion-button color="primary" type="button" (click)="cancelAction()">Annuler</button>
+    </ion-buttons>
+    </ion-toolbar>
+    <ion-slides>
+      <ion-slide class="slide-choose-plan" *ngFor="let plan of this.plans">
+        <div class="slide-header">
+          <img src="../assets/imgs/plans/{{plan.planKey}}.png" class="slide-image"/>
+          <h2 class="slide-title" [innerHTML]="plan.planKey"></h2>
+        </div>
+        <h3 class="slide-price" [innerHTML]="plan.price/100"></h3>
+        <p [innerHTML]="plan.description"></p>
+        <button class="choose-btn" type="submit" (click)="planChoice=plan.planKey"  ion-button large clear icon-end color="primary">
+          choose
+        </button>
+      </ion-slide>
+    </ion-slides>
   </form>
 </ion-content>

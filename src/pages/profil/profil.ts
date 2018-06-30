@@ -53,14 +53,14 @@ export class ProfilPage {
 
 
     this.authForm = formBuilder.group({
-      
+
       username: ['', Validators.compose([Validators.required, Validators.pattern('[a-zA-Z]*'),  Validators.maxLength(30)])],
       fullName: ['', Validators.compose([Validators.required, Validators.pattern('[a-zA-Z]*'), Validators.maxLength(30)])],
       phoneNumber: ['', Validators.compose([Validators.required, Validators.pattern('[0-9]*'), Validators.maxLength(30)])],
       timezoneId: ['', Validators.compose([Validators.required,Validators.maxLength(30)])],
       email: ['', Validators.compose([Validators.required, Validators.email, Validators.minLength(6), Validators.maxLength(30)])],
       password: ['', Validators.compose([Validators.required, Validators.minLength(6)])],
-    
+
     });
 
     this.storage.get('user').then(user=>{
@@ -91,7 +91,7 @@ export class ProfilPage {
   //   console.log('matchingPasswords==========<<>>')
   //   return (group: FormGroup): {[key: string]: any} => {
   //     let password = group.controls[passwordKey];
-  
+
   //     if (password.value !== '12345678') {
   //       console.log('matchingPasswords==========<<>>')
   //       return {
@@ -107,14 +107,14 @@ export class ProfilPage {
   //           return {
   //             mismatchedPasswords: false
   //           };
-        
+
   //       }
   //       ).catch(err=>{
   //         return {
   //           mismatchedPasswords: true
   //         };
   //       });
-  
+
   //       return {
   //         mismatchedPasswords: false
   //       };
@@ -145,7 +145,7 @@ export class ProfilPage {
     this.loading.present();
   }
 
- 
+
 
   presentToast(msg) {
     let toast = this.toastCtrl.create({
@@ -161,8 +161,8 @@ export class ProfilPage {
 
     toast.present();
   }
-  
- 
+
+
   changePicture() {
 
     const actionsheet = this.actionsheetCtrl.create({
@@ -229,8 +229,8 @@ export class ProfilPage {
 
 
   uploadImag(){
-   
-  
+
+
     this.eventProvider.uploadFile(this.chosenPicture);
 
 
