@@ -23,59 +23,63 @@ import {EventInformationPage} from "../event-information/event-information";
 })
 export class ChoosePlanPage {
 
-  plans : Plan[] = [] ;
-  planChoice = "" ;
-    loading : any ;
+  plans: Plan[] = [];
+  planChoice = "";
+  loading: any;
+
   constructor(public navCtrl: NavController, public loadingCtrl: LoadingController, public navParams: NavParams, private storage: Storage, public apiProvider: ApiProvider, public eventProvider: EventProvider) {
-      this.storage.get('token').then(tok=>{
+    this.storage.get('token').then(tok => {
 
-          let headers = new HttpHeaders();
+      let headers = new HttpHeaders();
 
-          headers = headers.set('Content-Type', 'application/json; charset=utf-8');
-          headers = headers.set('Authorization', 'Bearer ' + tok);
-          this.apiProvider.get('/api/plans',{headers: headers}).then(dataPlans=>{
-              this.plans = dataPlans['hydra:member'];
-          }).catch(error=>{})
-      }).catch(error=>{})
+      headers = headers.set('Content-Type', 'application/json; charset=utf-8');
+      headers = headers.set('Authorization', 'Bearer ' + tok);
+      this.apiProvider.get('/api/plans', {headers: headers}).then(dataPlans => {
+        this.plans = dataPlans['hydra:member'];
+      }).catch(error => {
+      })
+    }).catch(error => {
+    })
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad ChoosePlanPage');
   }
 
-  cancelAction(){
-        this.navCtrl.push(EventsPage);
+  cancelAction() {
+    this.navCtrl.push(EventsPage);
   }
 
-  onSubmit(){
-      this.showLoader()
-      let choosePlanData: ChoosePlanData = {
-          planKey: this.planChoice,
-      };
+  onSubmit() {
+    this.showLoader()
+    let choosePlanData: ChoosePlanData = {
+      planKey: this.planChoice,
+    };
 
-      console.log("attrqssqq", choosePlanData);
-      this.storage.get('currentEvent').then(event=>{
+    console.log("attrqssqq", choosePlanData);
+    this.storage.get('currentEvent').then(event => {
 
-          console.log("finish",event);
-          console.log("ddd",event.id);
-      this.eventProvider.addChoosePlan(choosePlanData, event.id).then(res =>{
-          this.loading.dismiss();
-          console.log(res)
-          this.navCtrl.push(EventInformationPage)
-      }).catch(error =>{
-          this.loading.dismiss();
-          console.log(error)
+      console.log("finish", event);
+      console.log("ddd", event.id);
+      this.eventProvider.addChoosePlan(choosePlanData, event.id).then(res => {
+        this.loading.dismiss();
+        console.log(res)
+        this.navCtrl.push(EventInformationPage)
+      }).catch(error => {
+        this.loading.dismiss();
+        console.log(error)
       })
 
-      }).catch(err=>{
-           this.navCtrl.push(EventsPage)
-      })
-    }
+    }).catch(err => {
+      this.navCtrl.push(EventsPage)
+    })
+  }
 
-    showLoader(){
-        this.loading = this.loadingCtrl.create({
-            content: 'Loding...'
-        });
+  showLoader() {
+    this.loading = this.loadingCtrl.create({
+      content: 'Loding...'
+    });
 
-        this.loading.present();
-    }
+    this.loading.present();
+  }
+}

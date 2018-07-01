@@ -96,7 +96,7 @@ var ChangepPasswordPage = (function () {
     };
     ChangepPasswordPage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
-            selector: 'page-changep-password',template:/*ion-inline-start:"/home/abdenbiworks/mit/mystorytelling-mobile/src/pages/changep-password/changep-password.html"*/'<ion-header>\n  <ion-navbar>\n    <ion-title>change Password</ion-title>\n  </ion-navbar>\n</ion-header>\n\n<ion-content padding>\n\n  <div class="cover" align="center">\n    <img class="profile-image" src="assets/imgs/profile.png">\n      <h4>Mohamed Ahamada</h4>\n  </div>\n  <ion-list>\n      <form [formGroup]="authForm" (ngSubmit)="onSubmit(authForm.value)">\n\n        <div class="wrap-input100 validate-input" data-validate = "Valid email is required: ex@abc.xyz">\n            <input class="input100" type="text" placeholder="old Password"  [(ngModel)]="user.oldPassword" formControlName="oldPassword">\n            <span class="focus-input100"></span>\n            <span class="symbol-input100">\n              <ion-icon class="symbol-input100" name="key" item-start></ion-icon>\n            </span>\n        </div>\n\n        <div class="wrap-input100 validate-input" data-validate = "Valid email is required: ex@abc.xyz">\n          <input class="input100" type="password" placeholder="new Password"  [(ngModel)]="user.newPassword" formControlName="newPassword">\n          <span class="focus-input100"></span>\n          <span class="symbol-input100">\n            <ion-icon class="symbol-input100" name="key" item-start></ion-icon>\n          </span>\n        </div>\n\n        <div class="wrap-input100 validate-input" data-validate = "Valid email is required: ex@abc.xyz">\n          <input class="input100" type="password" placeholder="repeated Password" [(ngModel)]="user.repeatedPassword" formControlName="repeatedPassword">\n          <span class="focus-input100"></span>\n          <span class="symbol-input100">\n            <ion-icon class="symbol-input100" name="key" item-start></ion-icon>\n          </span>\n        </div>\n        <button  ion-button block class="login100-form-btn" type="submit">change Password</button>\n\n      </form>\n\n\n  </ion-list>\n</ion-content>\n'/*ion-inline-end:"/home/abdenbiworks/mit/mystorytelling-mobile/src/pages/changep-password/changep-password.html"*/,
+            selector: 'page-changep-password',template:/*ion-inline-start:"C:\xampp\htdocs\mit\mystorytelling-mobile\src\pages\changep-password\changep-password.html"*/'<ion-header>\n\n  <ion-navbar>\n\n    <ion-title>change Password</ion-title>\n\n  </ion-navbar>\n\n</ion-header>\n\n\n\n<ion-content padding>\n\n\n\n  <div class="cover" align="center">\n\n    <img class="profile-image" src="assets/imgs/profile.png">\n\n      <h4>Mohamed Ahamada</h4>\n\n  </div>\n\n  <ion-list>\n\n      <form [formGroup]="authForm" (ngSubmit)="onSubmit(authForm.value)">\n\n\n\n        <div class="wrap-input100 validate-input" data-validate = "Valid email is required: ex@abc.xyz">\n\n            <input class="input100" type="text" placeholder="old Password"  [(ngModel)]="user.oldPassword" formControlName="oldPassword">\n\n            <span class="focus-input100"></span>\n\n            <span class="symbol-input100">\n\n              <ion-icon class="symbol-input100" name="key" item-start></ion-icon>\n\n            </span>\n\n        </div>\n\n\n\n        <div class="wrap-input100 validate-input" data-validate = "Valid email is required: ex@abc.xyz">\n\n          <input class="input100" type="password" placeholder="new Password"  [(ngModel)]="user.newPassword" formControlName="newPassword">\n\n          <span class="focus-input100"></span>\n\n          <span class="symbol-input100">\n\n            <ion-icon class="symbol-input100" name="key" item-start></ion-icon>\n\n          </span>\n\n        </div>\n\n\n\n        <div class="wrap-input100 validate-input" data-validate = "Valid email is required: ex@abc.xyz">\n\n          <input class="input100" type="password" placeholder="repeated Password" [(ngModel)]="user.repeatedPassword" formControlName="repeatedPassword">\n\n          <span class="focus-input100"></span>\n\n          <span class="symbol-input100">\n\n            <ion-icon class="symbol-input100" name="key" item-start></ion-icon>\n\n          </span>\n\n        </div>\n\n        <button  ion-button block class="login100-form-btn" type="submit">change Password</button>\n\n\n\n      </form>\n\n\n\n\n\n  </ion-list>\n\n</ion-content>\n\n'/*ion-inline-end:"C:\xampp\htdocs\mit\mystorytelling-mobile\src\pages\changep-password\changep-password.html"*/,
         }),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* NavParams */], __WEBPACK_IMPORTED_MODULE_2__angular_forms__["a" /* FormBuilder */], __WEBPACK_IMPORTED_MODULE_3__providers_auth_auth__["a" /* AuthProvider */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* LoadingController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["k" /* ToastController */]])
     ], ChangepPasswordPage);
@@ -160,8 +160,10 @@ var ChoosePlanPage = (function () {
             headers = headers.set('Authorization', 'Bearer ' + tok);
             _this.apiProvider.get('/api/plans', { headers: headers }).then(function (dataPlans) {
                 _this.plans = dataPlans['hydra:member'];
-            }).catch(function (error) { });
-        }).catch(function (error) { });
+            }).catch(function (error) {
+            });
+        }).catch(function (error) {
+        });
     }
     ChoosePlanPage.prototype.ionViewDidLoad = function () {
         console.log('ionViewDidLoad ChoosePlanPage');
@@ -199,12 +201,11 @@ var ChoosePlanPage = (function () {
     };
     ChoosePlanPage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
-            selector: 'page-choose-plan',template:/*ion-inline-start:"/home/abdenbiworks/mit/mystorytelling-mobile/src/pages/choose-plan/choose-plan.html"*/'<ion-content class="tutorial-page">\n\n  <form (ngSubmit)="onSubmit()">\n  <ion-toolbar>\n      <ion-buttons end>\n        <button ion-button color="primary" type="button" (click)="cancelAction()">Annuler</button>\n    </ion-buttons>\n    </ion-toolbar>\n    <ion-slides>\n      <ion-slide class="slide-choose-plan" *ngFor="let plan of this.plans">\n        <div class="slide-header">\n          <img src="../assets/imgs/plans/{{plan.planKey}}.png" class="slide-image"/>\n          <h2 class="slide-title" [innerHTML]="plan.planKey"></h2>\n        </div>\n        <h3 class="slide-price" [innerHTML]="plan.price/100"></h3>\n        <p [innerHTML]="plan.description"></p>\n        <button class="choose-btn" type="submit" (click)="planChoice=plan.planKey"  ion-button large clear icon-end color="primary">\n          choose\n        </button>\n      </ion-slide>\n    </ion-slides>\n  </form>\n</ion-content>\n'/*ion-inline-end:"/home/abdenbiworks/mit/mystorytelling-mobile/src/pages/choose-plan/choose-plan.html"*/,
+            selector: 'page-choose-plan',template:/*ion-inline-start:"C:\xampp\htdocs\mit\mystorytelling-mobile\src\pages\choose-plan\choose-plan.html"*/'<ion-content class="tutorial-page">\n\n\n\n  <form (ngSubmit)="onSubmit()">\n\n  <ion-toolbar>\n\n      <ion-buttons end>\n\n        <button ion-button color="primary" type="button" (click)="cancelAction()">Annuler</button>\n\n    </ion-buttons>\n\n    </ion-toolbar>\n\n    <ion-slides>\n\n      <ion-slide class="slide-choose-plan" *ngFor="let plan of this.plans">\n\n        <div class="slide-header">\n\n          <img src="../assets/imgs/plans/{{plan.planKey}}.png" class="slide-image"/>\n\n          <h2 class="slide-title" [innerHTML]="plan.planKey"></h2>\n\n        </div>\n\n        <h3 class="slide-price" [innerHTML]="plan.price/100"></h3>\n\n        <p [innerHTML]="plan.description"></p>\n\n        <button class="choose-btn" type="submit" (click)="planChoice=plan.planKey"  ion-button large clear icon-end color="primary">\n\n          choose\n\n        </button>\n\n      </ion-slide>\n\n    </ion-slides>\n\n  </form>\n\n</ion-content>\n\n'/*ion-inline-end:"C:\xampp\htdocs\mit\mystorytelling-mobile\src\pages\choose-plan\choose-plan.html"*/,
         }),
-        __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* NavController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* NavController */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* LoadingController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* LoadingController */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* NavParams */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* NavParams */]) === "function" && _c || Object, typeof (_d = typeof __WEBPACK_IMPORTED_MODULE_3__ionic_storage__["b" /* Storage */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3__ionic_storage__["b" /* Storage */]) === "function" && _d || Object, typeof (_e = typeof __WEBPACK_IMPORTED_MODULE_4__providers_api_api__["a" /* ApiProvider */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_4__providers_api_api__["a" /* ApiProvider */]) === "function" && _e || Object, typeof (_f = typeof __WEBPACK_IMPORTED_MODULE_6__providers_event_event__["a" /* EventProvider */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_6__providers_event_event__["a" /* EventProvider */]) === "function" && _f || Object])
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* LoadingController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* NavParams */], __WEBPACK_IMPORTED_MODULE_3__ionic_storage__["b" /* Storage */], __WEBPACK_IMPORTED_MODULE_4__providers_api_api__["a" /* ApiProvider */], __WEBPACK_IMPORTED_MODULE_6__providers_event_event__["a" /* EventProvider */]])
     ], ChoosePlanPage);
     return ChoosePlanPage;
-    var _a, _b, _c, _d, _e, _f;
 }());
 
 //# sourceMappingURL=choose-plan.js.map
@@ -360,7 +361,7 @@ var ShowEventPage = (function () {
     };
     ShowEventPage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
-            selector: 'page-show-event',template:/*ion-inline-start:"/home/abdenbiworks/mit/mystorytelling-mobile/src/pages/show-event/show-event.html"*/'<ion-content padding class="transparent-header">\n    <div id="profile-bg" [ngStyle]="{\'background-image\': \'url(\' + event.coverImage +\')\'}"></div>\n    <div id="content">\n      <div id="profile-info" padding>\n        <img id="profile-image" [src]="event.coverImage">\n        <h3 id="profile-name">{{user.name}}</h3>\n        <p>{{user.occupation}} &bull; {{user.location}}</p>\n        <p class="profile-description">{{event.description}}</p>\n      \n      </div>\n      <hr/>\n    \n      <div id="posts">\n          \n        <ion-card *ngFor="let post of posts">\n          <ion-item>\n            <ion-avatar item-start>\n              <img [src]="user.profileImage">\n            </ion-avatar>\n            <h2 class="sticky">{{user.name}}</h2>\n            <p>{{post.date}}</p>\n          </ion-item>\n          <img [src]="post.postImageUrl" >\n          <ion-row>\n            <ion-col col-3 align-self-center text-center>\n              <p>\n                {{post.timestamp}}\n              </p>\n            </ion-col>\n          </ion-row>\n        </ion-card>\n\n\n        <ion-avatar (click)="changePicture()">\n          <button ion-button color="danger">Change image</button>\n          <button ion-button color="danger" (click)="UploadImg()" >up image</button>\n\n      </ion-avatar>\n\n\n      </div>\n    </div>\n  </ion-content>\n  '/*ion-inline-end:"/home/abdenbiworks/mit/mystorytelling-mobile/src/pages/show-event/show-event.html"*/,
+            selector: 'page-show-event',template:/*ion-inline-start:"C:\xampp\htdocs\mit\mystorytelling-mobile\src\pages\show-event\show-event.html"*/'<ion-content padding class="transparent-header">\n\n    <div id="profile-bg" [ngStyle]="{\'background-image\': \'url(\' + event.coverImage +\')\'}"></div>\n\n    <div id="content">\n\n      <div id="profile-info" padding>\n\n        <img id="profile-image" [src]="event.coverImage">\n\n        <h3 id="profile-name">{{user.name}}</h3>\n\n        <p>{{user.occupation}} &bull; {{user.location}}</p>\n\n        <p class="profile-description">{{event.description}}</p>\n\n      \n\n      </div>\n\n      <hr/>\n\n    \n\n      <div id="posts">\n\n          \n\n        <ion-card *ngFor="let post of posts">\n\n          <ion-item>\n\n            <ion-avatar item-start>\n\n              <img [src]="user.profileImage">\n\n            </ion-avatar>\n\n            <h2 class="sticky">{{user.name}}</h2>\n\n            <p>{{post.date}}</p>\n\n          </ion-item>\n\n          <img [src]="post.postImageUrl" >\n\n          <ion-row>\n\n            <ion-col col-3 align-self-center text-center>\n\n              <p>\n\n                {{post.timestamp}}\n\n              </p>\n\n            </ion-col>\n\n          </ion-row>\n\n        </ion-card>\n\n\n\n\n\n        <ion-avatar (click)="changePicture()">\n\n          <button ion-button color="danger">Change image</button>\n\n          <button ion-button color="danger" (click)="UploadImg()" >up image</button>\n\n\n\n      </ion-avatar>\n\n\n\n\n\n      </div>\n\n    </div>\n\n  </ion-content>\n\n  '/*ion-inline-end:"C:\xampp\htdocs\mit\mystorytelling-mobile\src\pages\show-event\show-event.html"*/,
         }),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* NavController */],
             __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* NavParams */],
@@ -417,7 +418,7 @@ var MailCheckPage = (function () {
     };
     MailCheckPage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
-            selector: 'page-mail-check',template:/*ion-inline-start:"/home/abdenbiworks/mit/mystorytelling-mobile/src/pages/mail-check/mail-check.html"*/'<ion-content padding>\n  <div class="check-mail">\n    <h1>Check your Email</h1>\n    <ion-icon name="mail"></ion-icon>\n    <p>An email has been sent to you. It contains an activation link you must click to activate your account.</p>\n      <h6><a (click)="home()" >Home Page</a></h6>\n  </div>\n</ion-content>\n'/*ion-inline-end:"/home/abdenbiworks/mit/mystorytelling-mobile/src/pages/mail-check/mail-check.html"*/,
+            selector: 'page-mail-check',template:/*ion-inline-start:"C:\xampp\htdocs\mit\mystorytelling-mobile\src\pages\mail-check\mail-check.html"*/'<ion-content padding>\n\n  <div class="check-mail">\n\n    <h1>Check your Email</h1>\n\n    <ion-icon name="mail"></ion-icon>\n\n    <p>An email has been sent to you. It contains an activation link you must click to activate your account.</p>\n\n      <h6><a (click)="home()" >Home Page</a></h6>\n\n  </div>\n\n</ion-content>\n\n'/*ion-inline-end:"C:\xampp\htdocs\mit\mystorytelling-mobile\src\pages\mail-check\mail-check.html"*/,
         }),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* NavParams */]])
     ], MailCheckPage);
@@ -429,6 +430,95 @@ var MailCheckPage = (function () {
 /***/ }),
 
 /***/ 123:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return PasswordRequestPage; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(6);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_forms__ = __webpack_require__(10);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__providers_auth_auth__ = __webpack_require__(37);
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+
+
+/**
+ * Generated class for the PasswordRequestPage page.
+ *
+ * See https://ionicframework.com/docs/components/#navigation for more info on
+ * Ionic pages and navigation.
+ */
+var PasswordRequestPage = (function () {
+    function PasswordRequestPage(navCtrl, navParams, formBuilder, authService, loadingCtrl, toastCtrl) {
+        this.navCtrl = navCtrl;
+        this.navParams = navParams;
+        this.formBuilder = formBuilder;
+        this.authService = authService;
+        this.loadingCtrl = loadingCtrl;
+        this.toastCtrl = toastCtrl;
+        this.user = {
+            "email": "",
+        };
+        this.authForm = formBuilder.group({
+            email: ['', __WEBPACK_IMPORTED_MODULE_2__angular_forms__["f" /* Validators */].compose([__WEBPACK_IMPORTED_MODULE_2__angular_forms__["f" /* Validators */].required, __WEBPACK_IMPORTED_MODULE_2__angular_forms__["f" /* Validators */].email, __WEBPACK_IMPORTED_MODULE_2__angular_forms__["f" /* Validators */].minLength(6), __WEBPACK_IMPORTED_MODULE_2__angular_forms__["f" /* Validators */].maxLength(30)])],
+        });
+    }
+    PasswordRequestPage.prototype.onSubmit = function (value) {
+        var _this = this;
+        if (this.authForm.valid) {
+            this.showLoader();
+            this.authService.resetPassword(this.user).then(function (res) {
+                console.log(res);
+                _this.loading.dismiss();
+            }).catch(function (error) {
+                console.log(error);
+            });
+        }
+        else {
+            console.log(this.authForm.controls);
+        }
+    };
+    PasswordRequestPage.prototype.showLoader = function () {
+        this.loading = this.loadingCtrl.create({
+            content: 'Authenticating...'
+        });
+        this.loading.present();
+    };
+    PasswordRequestPage.prototype.presentToast = function (msg) {
+        var toast = this.toastCtrl.create({
+            message: msg,
+            duration: 3000,
+            position: 'bottom',
+            dismissOnPageChange: true
+        });
+        toast.onDidDismiss(function () {
+            console.log('Dismissed toast');
+        });
+        toast.present();
+    };
+    PasswordRequestPage = __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
+            selector: 'page-password-request',template:/*ion-inline-start:"C:\xampp\htdocs\mit\mystorytelling-mobile\src\pages\password-request\password-request.html"*/'<ion-header>\n\n\n\n  <ion-navbar>\n\n    <ion-title>password-request</ion-title>\n\n  </ion-navbar>\n\n\n\n</ion-header>\n\n\n\n\n\n<ion-content padding>\n\n\n\n  <form [formGroup]="authForm" (ngSubmit)="onSubmit(authForm.value)">\n\n\n\n      <div class="wrap-input100 validate-input" data-validate = "Valid email is required: ex@abc.xyz">\n\n          <input class="input100" type="text" placeholder="Email" [(ngModel)]="user.email" formControlName="email">\n\n          <span class="focus-input100"></span>\n\n          <span class="symbol-input100">\n\n            <ion-icon class="symbol-input100" name="mail" item-start></ion-icon>\n\n          </span>\n\n      </div>\n\n    <button  ion-button block class="login100-form-btn" type="submit">Reset Password</button>\n\n\n\n  </form>\n\n\n\n</ion-content>\n\n'/*ion-inline-end:"C:\xampp\htdocs\mit\mystorytelling-mobile\src\pages\password-request\password-request.html"*/,
+        }),
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* NavParams */], __WEBPACK_IMPORTED_MODULE_2__angular_forms__["a" /* FormBuilder */], __WEBPACK_IMPORTED_MODULE_3__providers_auth_auth__["a" /* AuthProvider */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* LoadingController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["k" /* ToastController */]])
+    ], PasswordRequestPage);
+    return PasswordRequestPage;
+}());
+
+//# sourceMappingURL=password-request.js.map
+
+/***/ }),
+
+/***/ 124:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -556,7 +646,7 @@ var NewEventPage = (function () {
     };
     NewEventPage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
-            selector: 'page-new-event',template:/*ion-inline-start:"/home/abdenbiworks/mit/mystorytelling-mobile/src/pages/new-event/new-event.html"*/'<!--\n  Generated template for the NewEventPage page.\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n  Ionic pages and navigation.\n-->\n<ion-content id="new-event">\n  <div class="background">\n    <img src="" alt="">\n  </div>\n  <a (click)="createEvent()"><div class="create-btn">\n    <ion-icon name="md-arrow-round-forward" item-start></ion-icon>\n  </div></a>\n  <div class="welcome-msg">\n    <h3>Welcome !</h3>\n    <p>is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s</p>\n    <button ion-button block class="login100-form-btn marginTop signup" color="primary" (click)="createEvent()">Create Your Event</button>\n  </div>\n</ion-content>\n'/*ion-inline-end:"/home/abdenbiworks/mit/mystorytelling-mobile/src/pages/new-event/new-event.html"*/,
+            selector: 'page-new-event',template:/*ion-inline-start:"C:\xampp\htdocs\mit\mystorytelling-mobile\src\pages\new-event\new-event.html"*/'<!--\n\n  Generated template for the NewEventPage page.\n\n\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n\n  Ionic pages and navigation.\n\n-->\n\n<ion-content id="new-event">\n\n  <div class="background">\n\n    <img src="" alt="">\n\n  </div>\n\n  <a (click)="createEvent()"><div class="create-btn">\n\n    <ion-icon name="md-arrow-round-forward" item-start></ion-icon>\n\n  </div></a>\n\n  <div class="welcome-msg">\n\n    <h3>Welcome !</h3>\n\n    <p>is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s</p>\n\n    <button ion-button block class="login100-form-btn marginTop signup" color="primary" (click)="createEvent()">Create Your Event</button>\n\n  </div>\n\n</ion-content>\n\n'/*ion-inline-end:"C:\xampp\htdocs\mit\mystorytelling-mobile\src\pages\new-event\new-event.html"*/,
         }),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* LoadingController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* NavParams */], __WEBPACK_IMPORTED_MODULE_2__providers_event_event__["a" /* EventProvider */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["k" /* ToastController */], __WEBPACK_IMPORTED_MODULE_4__ionic_storage__["b" /* Storage */]])
     ], NewEventPage);
@@ -564,95 +654,6 @@ var NewEventPage = (function () {
 }());
 
 //# sourceMappingURL=new-event.js.map
-
-/***/ }),
-
-/***/ 124:
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return PasswordRequestPage; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(6);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_forms__ = __webpack_require__(10);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__providers_auth_auth__ = __webpack_require__(37);
-var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
-    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-    return c > 3 && r && Object.defineProperty(target, key, r), r;
-};
-var __metadata = (this && this.__metadata) || function (k, v) {
-    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
-};
-
-
-
-
-/**
- * Generated class for the PasswordRequestPage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
-var PasswordRequestPage = (function () {
-    function PasswordRequestPage(navCtrl, navParams, formBuilder, authService, loadingCtrl, toastCtrl) {
-        this.navCtrl = navCtrl;
-        this.navParams = navParams;
-        this.formBuilder = formBuilder;
-        this.authService = authService;
-        this.loadingCtrl = loadingCtrl;
-        this.toastCtrl = toastCtrl;
-        this.user = {
-            "email": "",
-        };
-        this.authForm = formBuilder.group({
-            email: ['', __WEBPACK_IMPORTED_MODULE_2__angular_forms__["f" /* Validators */].compose([__WEBPACK_IMPORTED_MODULE_2__angular_forms__["f" /* Validators */].required, __WEBPACK_IMPORTED_MODULE_2__angular_forms__["f" /* Validators */].email, __WEBPACK_IMPORTED_MODULE_2__angular_forms__["f" /* Validators */].minLength(6), __WEBPACK_IMPORTED_MODULE_2__angular_forms__["f" /* Validators */].maxLength(30)])],
-        });
-    }
-    PasswordRequestPage.prototype.onSubmit = function (value) {
-        var _this = this;
-        if (this.authForm.valid) {
-            this.showLoader();
-            this.authService.resetPassword(this.user).then(function (res) {
-                console.log(res);
-                _this.loading.dismiss();
-            }).catch(function (error) {
-                console.log(error);
-            });
-        }
-        else {
-            console.log(this.authForm.controls);
-        }
-    };
-    PasswordRequestPage.prototype.showLoader = function () {
-        this.loading = this.loadingCtrl.create({
-            content: 'Authenticating...'
-        });
-        this.loading.present();
-    };
-    PasswordRequestPage.prototype.presentToast = function (msg) {
-        var toast = this.toastCtrl.create({
-            message: msg,
-            duration: 3000,
-            position: 'bottom',
-            dismissOnPageChange: true
-        });
-        toast.onDidDismiss(function () {
-            console.log('Dismissed toast');
-        });
-        toast.present();
-    };
-    PasswordRequestPage = __decorate([
-        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
-            selector: 'page-password-request',template:/*ion-inline-start:"/home/abdenbiworks/mit/mystorytelling-mobile/src/pages/password-request/password-request.html"*/'<ion-header>\n\n  <ion-navbar>\n    <ion-title>password-request</ion-title>\n  </ion-navbar>\n\n</ion-header>\n\n\n<ion-content padding>\n\n  <form [formGroup]="authForm" (ngSubmit)="onSubmit(authForm.value)">\n\n      <div class="wrap-input100 validate-input" data-validate = "Valid email is required: ex@abc.xyz">\n          <input class="input100" type="text" placeholder="Email" [(ngModel)]="user.email" formControlName="email">\n          <span class="focus-input100"></span>\n          <span class="symbol-input100">\n            <ion-icon class="symbol-input100" name="mail" item-start></ion-icon>\n          </span>\n      </div>\n    <button  ion-button block class="login100-form-btn" type="submit">Reset Password</button>\n\n  </form>\n\n</ion-content>\n'/*ion-inline-end:"/home/abdenbiworks/mit/mystorytelling-mobile/src/pages/password-request/password-request.html"*/,
-        }),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* NavParams */], __WEBPACK_IMPORTED_MODULE_2__angular_forms__["a" /* FormBuilder */], __WEBPACK_IMPORTED_MODULE_3__providers_auth_auth__["a" /* AuthProvider */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* LoadingController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["k" /* ToastController */]])
-    ], PasswordRequestPage);
-    return PasswordRequestPage;
-}());
-
-//# sourceMappingURL=password-request.js.map
 
 /***/ }),
 
@@ -863,12 +864,21 @@ var ProfilPage = (function () {
     };
     ProfilPage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
-            selector: 'page-profil',template:/*ion-inline-start:"/home/abdenbiworks/mit/mystorytelling-mobile/src/pages/profil/profil.html"*/'<ion-content padding>\n\n\n    <button class="menu-btn" ion-button menuToggle icon-only>\n        <ion-icon name=\'menu\'></ion-icon>\n    </button>\n\n        <div class="cover" align="center">\n\n            <ion-avatar (click)="changePicture()">\n                <img class="profile-image" [src]="chosenPicture || placeholder " onerror="this.src=\'assets/imgs/profile.png\'" />\n            </ion-avatar>\n            <h4>Mohamed Ahamada</h4>\n        </div>\n</ion-content>\n'/*ion-inline-end:"/home/abdenbiworks/mit/mystorytelling-mobile/src/pages/profil/profil.html"*/,
+            selector: 'page-profil',template:/*ion-inline-start:"C:\xampp\htdocs\mit\mystorytelling-mobile\src\pages\profil\profil.html"*/'<ion-content padding>\n\n\n\n\n\n    <button class="menu-btn" ion-button menuToggle icon-only>\n\n        <ion-icon name=\'menu\'></ion-icon>\n\n    </button>\n\n\n\n        <div class="cover" align="center">\n\n\n\n            <ion-avatar (click)="changePicture()">\n\n                <img class="profile-image" [src]="chosenPicture || placeholder " onerror="this.src=\'assets/imgs/profile.png\'" />\n\n            </ion-avatar>\n\n            <h4>Mohamed Ahamada</h4>\n\n        </div>\n\n</ion-content>\n\n'/*ion-inline-end:"C:\xampp\htdocs\mit\mystorytelling-mobile\src\pages\profil\profil.html"*/,
         }),
-        __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* NavController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* NavController */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* NavParams */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* NavParams */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* LoadingController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* LoadingController */]) === "function" && _c || Object, typeof (_d = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["k" /* ToastController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["k" /* ToastController */]) === "function" && _d || Object, typeof (_e = typeof __WEBPACK_IMPORTED_MODULE_2__ionic_storage__["b" /* Storage */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__ionic_storage__["b" /* Storage */]) === "function" && _e || Object, typeof (_f = typeof __WEBPACK_IMPORTED_MODULE_4__angular_forms__["a" /* FormBuilder */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_4__angular_forms__["a" /* FormBuilder */]) === "function" && _f || Object, typeof (_g = typeof __WEBPACK_IMPORTED_MODULE_3__providers_auth_auth__["a" /* AuthProvider */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3__providers_auth_auth__["a" /* AuthProvider */]) === "function" && _g || Object, typeof (_h = typeof __WEBPACK_IMPORTED_MODULE_5__providers_util_camera_provider__["a" /* CameraProvider */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_5__providers_util_camera_provider__["a" /* CameraProvider */]) === "function" && _h || Object, typeof (_j = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* Platform */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* Platform */]) === "function" && _j || Object, typeof (_k = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["a" /* ActionSheetController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["a" /* ActionSheetController */]) === "function" && _k || Object, typeof (_l = typeof __WEBPACK_IMPORTED_MODULE_6__providers_event_event__["a" /* EventProvider */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_6__providers_event_event__["a" /* EventProvider */]) === "function" && _l || Object])
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* NavController */],
+            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* NavParams */],
+            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* LoadingController */],
+            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["k" /* ToastController */],
+            __WEBPACK_IMPORTED_MODULE_2__ionic_storage__["b" /* Storage */],
+            __WEBPACK_IMPORTED_MODULE_4__angular_forms__["a" /* FormBuilder */],
+            __WEBPACK_IMPORTED_MODULE_3__providers_auth_auth__["a" /* AuthProvider */],
+            __WEBPACK_IMPORTED_MODULE_5__providers_util_camera_provider__["a" /* CameraProvider */],
+            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* Platform */],
+            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["a" /* ActionSheetController */],
+            __WEBPACK_IMPORTED_MODULE_6__providers_event_event__["a" /* EventProvider */]])
     ], ProfilPage);
     return ProfilPage;
-    var _a, _b, _c, _d, _e, _f, _g, _h, _j, _k, _l;
 }());
 
 //# sourceMappingURL=profil.js.map
@@ -1260,11 +1270,11 @@ var map = {
 		6
 	],
 	"../pages/new-event/new-event.module": [
-		323,
+		324,
 		5
 	],
 	"../pages/password-request/password-request.module": [
-		324,
+		323,
 		4
 	],
 	"../pages/payment/payment.module": [
@@ -1337,7 +1347,7 @@ var AboutPage = (function () {
     }
     AboutPage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
-            selector: 'page-about',template:/*ion-inline-start:"/home/abdenbiworks/mit/mystorytelling-mobile/src/pages/about/about.html"*/'<ion-header>\n  <ion-navbar>\n    <ion-title>\n      About\n    </ion-title>\n  </ion-navbar>\n</ion-header>\n\n<ion-content padding>\n\n</ion-content>\n'/*ion-inline-end:"/home/abdenbiworks/mit/mystorytelling-mobile/src/pages/about/about.html"*/
+            selector: 'page-about',template:/*ion-inline-start:"C:\xampp\htdocs\mit\mystorytelling-mobile\src\pages\about\about.html"*/'<ion-header>\n\n  <ion-navbar>\n\n    <ion-title>\n\n      About\n\n    </ion-title>\n\n  </ion-navbar>\n\n</ion-header>\n\n\n\n<ion-content padding>\n\n\n\n</ion-content>\n\n'/*ion-inline-end:"C:\xampp\htdocs\mit\mystorytelling-mobile\src\pages\about\about.html"*/
         }),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* NavController */]])
     ], AboutPage);
@@ -1372,7 +1382,7 @@ var ContactPage = (function () {
     }
     ContactPage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
-            selector: 'page-contact',template:/*ion-inline-start:"/home/abdenbiworks/mit/mystorytelling-mobile/src/pages/contact/contact.html"*/'<ion-header>\n  <ion-navbar>\n    <ion-title>\n      Contact\n    </ion-title>\n  </ion-navbar>\n</ion-header>\n\n<ion-content>\n  <ion-list>\n    <ion-list-header>Follow us on Twitter</ion-list-header>\n    <ion-item>\n      <ion-icon name="ionic" item-start></ion-icon>\n      @ionicframework\n    </ion-item>\n  </ion-list>\n</ion-content>\n'/*ion-inline-end:"/home/abdenbiworks/mit/mystorytelling-mobile/src/pages/contact/contact.html"*/
+            selector: 'page-contact',template:/*ion-inline-start:"C:\xampp\htdocs\mit\mystorytelling-mobile\src\pages\contact\contact.html"*/'<ion-header>\n\n  <ion-navbar>\n\n    <ion-title>\n\n      Contact\n\n    </ion-title>\n\n  </ion-navbar>\n\n</ion-header>\n\n\n\n<ion-content>\n\n  <ion-list>\n\n    <ion-list-header>Follow us on Twitter</ion-list-header>\n\n    <ion-item>\n\n      <ion-icon name="ionic" item-start></ion-icon>\n\n      @ionicframework\n\n    </ion-item>\n\n  </ion-list>\n\n</ion-content>\n\n'/*ion-inline-end:"C:\xampp\htdocs\mit\mystorytelling-mobile\src\pages\contact\contact.html"*/
         }),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* NavController */]])
     ], ContactPage);
@@ -1424,11 +1434,11 @@ Object(__WEBPACK_IMPORTED_MODULE_0__angular_platform_browser_dynamic__["a" /* pl
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_19__pages_profil_profil__ = __webpack_require__(125);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_20__providers_user_user__ = __webpack_require__(311);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_21__pages_mail_check_mail_check__ = __webpack_require__(122);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_22__pages_password_request_password_request__ = __webpack_require__(124);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_22__pages_password_request_password_request__ = __webpack_require__(123);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_23__pages_events_events__ = __webpack_require__(29);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_24__pages_choose_plan_choose_plan__ = __webpack_require__(120);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_25__pages_event_information_event_information__ = __webpack_require__(62);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_26__pages_new_event_new_event__ = __webpack_require__(123);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_26__pages_new_event_new_event__ = __webpack_require__(124);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_27__pages_cover_event_cover_event__ = __webpack_require__(48);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_28__pages_event_challenge_event_challenge__ = __webpack_require__(63);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_29__pages_invite_friends_invite_friends__ = __webpack_require__(49);
@@ -1529,8 +1539,8 @@ var AppModule = (function () {
                         { loadChildren: '../pages/finish-create-event/finish-create-event.module#FinishCreateEventPageModule', name: 'FinishCreateEventPage', segment: 'finish-create-event', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/invite-friends/invite-friends.module#InviteFriendsPageModule', name: 'InviteFriendsPage', segment: 'invite-friends', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/mail-check/mail-check.module#MailCheckPageModule', name: 'MailCheckPage', segment: 'mail-check', priority: 'low', defaultHistory: [] },
-                        { loadChildren: '../pages/new-event/new-event.module#NewEventPageModule', name: 'NewEventPage', segment: 'new-event', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/password-request/password-request.module#PasswordRequestPageModule', name: 'PasswordRequestPage', segment: 'password-request', priority: 'low', defaultHistory: [] },
+                        { loadChildren: '../pages/new-event/new-event.module#NewEventPageModule', name: 'NewEventPage', segment: 'new-event', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/payment/payment.module#PaymentPageModule', name: 'PaymentPage', segment: 'payment', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/profil/profil.module#ProfilPageModule', name: 'ProfilPage', segment: 'profil', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/show-event/show-event.module#ShowEventPageModule', name: 'ShowEventPage', segment: 'show-event', priority: 'low', defaultHistory: [] },
@@ -1650,7 +1660,7 @@ var EventsPage = (function () {
     };
     EventsPage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
-            selector: 'page-events',template:/*ion-inline-start:"/home/abdenbiworks/mit/mystorytelling-mobile/src/pages/events/events.html"*/'<ion-header>\n  <ion-navbar>\n    <ion-title>Social Cards</ion-title>\n  </ion-navbar>\n</ion-header>\n<ion-content>\n  <ion-card *ngFor="let event of events" (click)="eventDetails(event.event.id)">\n    <ion-item>\n      <ion-avatar item-start>\n        <img [src]="event.avatarImageUrl" onerror="this.src=\'assets/imgs/avatar/marty-avatar.png\'" >\n      </ion-avatar>\n      <h2>{{event.user.fullName}}</h2>\n      <p>{{event.event.endsAt}}</p>\n    </ion-item>\n    <!--*ngIf="event.imagesGallery.length"-->\n    <img [src]="event.imagesGallery[0].downloadLink" *ngIf="event.imagesGallery.length > 0 " onerror="this.src=\'assets/imgs/card/advance-card-bttf.png\'"  >\n\n    <ion-card-content>\n      <p>{{event.description}}</p>\n    </ion-card-content>\n    <ion-row>\n      <ion-col>\n        <button ion-button color="primary" clear small icon-left >\n        <ion-icon name=\'thumbs-up\'></ion-icon>\n        {{event.privacy}} Likes\n      </button>\n      </ion-col>\n      <ion-col>\n        <button ion-button color="primary" clear small icon-left >\n        <ion-icon name=\'text\'></ion-icon>\n        {{event.started}} Comments\n      </button>\n      </ion-col>\n      <ion-col center text-center>\n        <ion-note>\n          {{event.totalPayed}}\n        </ion-note>\n      </ion-col>\n    </ion-row>\n  </ion-card>\n</ion-content>\n'/*ion-inline-end:"/home/abdenbiworks/mit/mystorytelling-mobile/src/pages/events/events.html"*/,
+            selector: 'page-events',template:/*ion-inline-start:"C:\xampp\htdocs\mit\mystorytelling-mobile\src\pages\events\events.html"*/'<ion-header>\n\n  <ion-navbar>\n\n    <ion-title>Social Cards</ion-title>\n\n  </ion-navbar>\n\n</ion-header>\n\n<ion-content>\n\n  <ion-card *ngFor="let event of events" (click)="eventDetails(event.event.id)">\n\n    <ion-item>\n\n      <ion-avatar item-start>\n\n        <img [src]="event.avatarImageUrl" onerror="this.src=\'assets/imgs/avatar/marty-avatar.png\'" >\n\n      </ion-avatar>\n\n      <h2>{{event.user.fullName}}</h2>\n\n      <p>{{event.event.endsAt}}</p>\n\n    </ion-item>\n\n    <!--*ngIf="event.imagesGallery.length"-->\n\n    <img [src]="event.imagesGallery[0].downloadLink" *ngIf="event.imagesGallery.length > 0 " onerror="this.src=\'assets/imgs/card/advance-card-bttf.png\'"  >\n\n\n\n    <ion-card-content>\n\n      <p>{{event.description}}</p>\n\n    </ion-card-content>\n\n    <ion-row>\n\n      <ion-col>\n\n        <button ion-button color="primary" clear small icon-left >\n\n        <ion-icon name=\'thumbs-up\'></ion-icon>\n\n        {{event.privacy}} Likes\n\n      </button>\n\n      </ion-col>\n\n      <ion-col>\n\n        <button ion-button color="primary" clear small icon-left >\n\n        <ion-icon name=\'text\'></ion-icon>\n\n        {{event.started}} Comments\n\n      </button>\n\n      </ion-col>\n\n      <ion-col center text-center>\n\n        <ion-note>\n\n          {{event.totalPayed}}\n\n        </ion-note>\n\n      </ion-col>\n\n    </ion-row>\n\n  </ion-card>\n\n</ion-content>\n\n'/*ion-inline-end:"C:\xampp\htdocs\mit\mystorytelling-mobile\src\pages\events\events.html"*/,
         }),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* NavParams */], __WEBPACK_IMPORTED_MODULE_2__providers_event_event__["a" /* EventProvider */]])
     ], EventsPage);
@@ -1674,9 +1684,9 @@ var EventsPage = (function () {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__pages_profil_profil__ = __webpack_require__(125);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__pages_changep_password_changep_password__ = __webpack_require__(119);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__ionic_storage__ = __webpack_require__(14);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__pages_password_request_password_request__ = __webpack_require__(124);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__pages_password_request_password_request__ = __webpack_require__(123);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__pages_events_events__ = __webpack_require__(29);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__pages_new_event_new_event__ = __webpack_require__(123);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__pages_new_event_new_event__ = __webpack_require__(124);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -1733,7 +1743,7 @@ var StoryTellingApp = (function () {
         __metadata("design:type", __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* Nav */])
     ], StoryTellingApp.prototype, "nav", void 0);
     StoryTellingApp = __decorate([
-        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({template:/*ion-inline-start:"/home/abdenbiworks/mit/mystorytelling-mobile/src/app/app.html"*/'<ion-menu [content]="content">\n        <ion-header>\n          <ion-toolbar>\n            <ion-title>Menu</ion-title>\n          </ion-toolbar>\n        </ion-header>\n        <!-- <ion-content>\n          <ion-list>\n            <ion-item>\n                    <ion-icon name="contact" item-start></ion-icon>\n                         Edit Profil\n            </ion-item>\n            <ion-item>\n                    <ion-icon name="key" item-start></ion-icon>\n                         Change Password\n            </ion-item>\n            <ion-item>\n                    <ion-icon name="calendar" item-start></ion-icon>\n                         My Events\n            </ion-item>\n            <ion-item menu-close  (click)="openPage()">\n                    <ion-icon name="log-out" item-start></ion-icon>\n                         Log out\n              <button menuClose ion-item *ngFor="let p of pages" (click)="openPage(p)">\n              {{p.title}}\n            </button>\n            </ion-item>\n        </ion-list>\n        </ion-content> -->\n        <ion-content>\n          <ion-list>\n            <button menuClose ion-item *ngFor="let p of pages" (click)="openPage(p)">\n              {{p.title}}\n            </button>\n          </ion-list>\n        </ion-content>\n      </ion-menu>\n\n<ion-nav [root]="rootPage" #content></ion-nav>\n'/*ion-inline-end:"/home/abdenbiworks/mit/mystorytelling-mobile/src/app/app.html"*/
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({template:/*ion-inline-start:"C:\xampp\htdocs\mit\mystorytelling-mobile\src\app\app.html"*/'<ion-menu [content]="content">\n\n        <ion-header>\n\n          <ion-toolbar>\n\n            <ion-title>Menu</ion-title>\n\n          </ion-toolbar>\n\n        </ion-header>\n\n        <!-- <ion-content>\n\n          <ion-list>\n\n            <ion-item>\n\n                    <ion-icon name="contact" item-start></ion-icon>\n\n                         Edit Profil\n\n            </ion-item>\n\n            <ion-item>\n\n                    <ion-icon name="key" item-start></ion-icon>\n\n                         Change Password\n\n            </ion-item>\n\n            <ion-item>\n\n                    <ion-icon name="calendar" item-start></ion-icon>\n\n                         My Events\n\n            </ion-item>\n\n            <ion-item menu-close  (click)="openPage()">\n\n                    <ion-icon name="log-out" item-start></ion-icon>\n\n                         Log out\n\n              <button menuClose ion-item *ngFor="let p of pages" (click)="openPage(p)">\n\n              {{p.title}}\n\n            </button>\n\n            </ion-item>\n\n        </ion-list>\n\n        </ion-content> -->\n\n        <ion-content>\n\n          <ion-list>\n\n            <button menuClose ion-item *ngFor="let p of pages" (click)="openPage(p)">\n\n              {{p.title}}\n\n            </button>\n\n          </ion-list>\n\n        </ion-content>\n\n      </ion-menu>\n\n\n\n<ion-nav [root]="rootPage" #content></ion-nav>\n\n'/*ion-inline-end:"C:\xampp\htdocs\mit\mystorytelling-mobile\src\app\app.html"*/
         }),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* Platform */], __WEBPACK_IMPORTED_MODULE_2__ionic_native_status_bar__["a" /* StatusBar */], __WEBPACK_IMPORTED_MODULE_3__ionic_native_splash_screen__["a" /* SplashScreen */], __WEBPACK_IMPORTED_MODULE_7__ionic_storage__["b" /* Storage */]])
     ], StoryTellingApp);
@@ -1776,7 +1786,7 @@ var TabsPage = (function () {
         this.tab4Root = __WEBPACK_IMPORTED_MODULE_4__register_register__["a" /* RegisterPage */];
     }
     TabsPage = __decorate([
-        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({template:/*ion-inline-start:"/home/abdenbiworks/mit/mystorytelling-mobile/src/pages/tabs/tabs.html"*/'<ion-tabs>\n  <ion-tab [root]="tab1Root" tabTitle="Login" tabIcon="person"></ion-tab>\n</ion-tabs>\n'/*ion-inline-end:"/home/abdenbiworks/mit/mystorytelling-mobile/src/pages/tabs/tabs.html"*/
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({template:/*ion-inline-start:"C:\xampp\htdocs\mit\mystorytelling-mobile\src\pages\tabs\tabs.html"*/'<ion-tabs>\n\n  <ion-tab [root]="tab1Root" tabTitle="Login" tabIcon="person"></ion-tab>\n\n</ion-tabs>\n\n'/*ion-inline-end:"C:\xampp\htdocs\mit\mystorytelling-mobile\src\pages\tabs\tabs.html"*/
         }),
         __metadata("design:paramtypes", [])
     ], TabsPage);
@@ -1842,7 +1852,7 @@ var UploadPage = (function () {
     };
     UploadPage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
-            selector: 'page-upload',template:/*ion-inline-start:"/home/abdenbiworks/mit/mystorytelling-mobile/src/pages/upload/upload.html"*/'<ion-header>\n  <ion-navbar>\n    <ion-title>\n      Ionic Blank\n    </ion-title>\n  </ion-navbar>\n</ion-header>\n\n<ion-content padding>\n  <ion-item>\n    <p>{{imageURI}}</p>\n    <button ion-button color="secondary" (click)="getImage()">Get Image</button>\n  </ion-item>\n  <!-- <ion-item>\n    <h4>Image Preview</h4>\n    <img src="{{imageFileName}}" *ngIf="imageFileName" alt="Ionic File" width="300" />\n  </ion-item> -->\n  <ion-item>\n    <button ion-button (click)="uploadFile()">Upload</button>\n  </ion-item>\n</ion-content>'/*ion-inline-end:"/home/abdenbiworks/mit/mystorytelling-mobile/src/pages/upload/upload.html"*/,
+            selector: 'page-upload',template:/*ion-inline-start:"C:\xampp\htdocs\mit\mystorytelling-mobile\src\pages\upload\upload.html"*/'<ion-header>\n\n  <ion-navbar>\n\n    <ion-title>\n\n      Ionic Blank\n\n    </ion-title>\n\n  </ion-navbar>\n\n</ion-header>\n\n\n\n<ion-content padding>\n\n  <ion-item>\n\n    <p>{{imageURI}}</p>\n\n    <button ion-button color="secondary" (click)="getImage()">Get Image</button>\n\n  </ion-item>\n\n  <!-- <ion-item>\n\n    <h4>Image Preview</h4>\n\n    <img src="{{imageFileName}}" *ngIf="imageFileName" alt="Ionic File" width="300" />\n\n  </ion-item> -->\n\n  <ion-item>\n\n    <button ion-button (click)="uploadFile()">Upload</button>\n\n  </ion-item>\n\n</ion-content>'/*ion-inline-end:"C:\xampp\htdocs\mit\mystorytelling-mobile\src\pages\upload\upload.html"*/,
         }),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* NavController */],
             __WEBPACK_IMPORTED_MODULE_2__ionic_native_camera__["a" /* Camera */],
@@ -2477,7 +2487,7 @@ var CoverEventPage = (function () {
     };
     CoverEventPage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
-            selector: 'page-cover-event',template:/*ion-inline-start:"/home/abdenbiworks/mit/mystorytelling-mobile/src/pages/cover-event/cover-event.html"*/'<!--\n  Generated template for the CoverEventPage page.\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n  Ionic pages and navigation.\n-->\n<ion-header>\n\n  <ion-navbar>\n    <ion-title>coverEvent</ion-title>\n  </ion-navbar>\n\n</ion-header>\n\n\n\n<ion-content>\n  <div>\n    <form (ngSubmit)="onSubmit()">\n      <ion-avatar (click)="changePicture(\'pictureOne\')">\n        <img class="profile-image" [src]="pictureOne || placeholder" onerror="this.src=\'assets/imgs/profile.png\'" />\n        <button  type="button" ion-button color="danger">Change image</button>\n      </ion-avatar>\n\n      <ion-avatar (click)="changePicture(\'pictureTwo\')">\n        <img class="profile-image" [src]="pictureTwo || placeholder" onerror="this.src=\'assets/imgs/profile.png\'" />\n        <button   type="button" ion-button color="danger">Change image</button>\n      </ion-avatar>\n\n      <ion-avatar (click)="changePicture(\'pictureThree\')">\n        <img class="profile-image" [src]="pictureThree || placeholder" onerror="this.src=\'assets/imgs/profile.png\'" />\n        <button type="button" ion-button color="danger">Change image</button>\n      </ion-avatar>\n\n      <button type="submit" ion-button large clear icon-end color="primary">\n        Continue\n        <ion-icon name="arrow-forward"></ion-icon>\n      </button>\n    </form>\n  </div>\n</ion-content>\n'/*ion-inline-end:"/home/abdenbiworks/mit/mystorytelling-mobile/src/pages/cover-event/cover-event.html"*/,
+            selector: 'page-cover-event',template:/*ion-inline-start:"C:\xampp\htdocs\mit\mystorytelling-mobile\src\pages\cover-event\cover-event.html"*/'<!--\n\n  Generated template for the CoverEventPage page.\n\n\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n\n  Ionic pages and navigation.\n\n-->\n\n<ion-header>\n\n\n\n  <ion-navbar>\n\n    <ion-title>coverEvent</ion-title>\n\n  </ion-navbar>\n\n\n\n</ion-header>\n\n\n\n\n\n\n\n<ion-content>\n\n  <div>\n\n    <form (ngSubmit)="onSubmit()">\n\n      <ion-avatar (click)="changePicture(\'pictureOne\')">\n\n        <img class="profile-image" [src]="pictureOne || placeholder" onerror="this.src=\'assets/imgs/profile.png\'" />\n\n        <button  type="button" ion-button color="danger">Change image</button>\n\n      </ion-avatar>\n\n\n\n      <ion-avatar (click)="changePicture(\'pictureTwo\')">\n\n        <img class="profile-image" [src]="pictureTwo || placeholder" onerror="this.src=\'assets/imgs/profile.png\'" />\n\n        <button   type="button" ion-button color="danger">Change image</button>\n\n      </ion-avatar>\n\n\n\n      <ion-avatar (click)="changePicture(\'pictureThree\')">\n\n        <img class="profile-image" [src]="pictureThree || placeholder" onerror="this.src=\'assets/imgs/profile.png\'" />\n\n        <button type="button" ion-button color="danger">Change image</button>\n\n      </ion-avatar>\n\n\n\n      <button type="submit" ion-button large clear icon-end color="primary">\n\n        Continue\n\n        <ion-icon name="arrow-forward"></ion-icon>\n\n      </button>\n\n    </form>\n\n  </div>\n\n</ion-content>\n\n'/*ion-inline-end:"C:\xampp\htdocs\mit\mystorytelling-mobile\src\pages\cover-event\cover-event.html"*/,
         }),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* NavController */],
             __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* LoadingController */],
@@ -2590,7 +2600,7 @@ var InviteFriendsPage = (function () {
     };
     InviteFriendsPage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
-            selector: 'page-invite-friends',template:/*ion-inline-start:"/home/abdenbiworks/mit/mystorytelling-mobile/src/pages/invite-friends/invite-friends.html"*/'<!--\n  Generated template for the InviteFriendsPage page.\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n  Ionic pages and navigation.\n-->\n<ion-header>\n\n  <ion-navbar>\n    <ion-title>inviteFriends</ion-title>\n  </ion-navbar>\n\n</ion-header>\n\n<ion-content>\n  <ion-card >\n\n    <form [formGroup]="authForm" (ngSubmit)="addEmail(authForm.value)">\n      <ion-item>\n        <ion-input type="email" formControlName="email" placeholder="email" [(ngModel)]="email"></ion-input>\n      </ion-item>\n      <button ion-button icon-only type="submit">\n        add Email\n      </button>\n    </form>\n  </ion-card>\n  <ion-card  *ngFor="let email of this.emails" (tap)="removeEmail(index)">\n    <ion-item>\n      {{email}}\n    </ion-item>\n  </ion-card>\n\n  <button type="button" ion-button large clear icon-end color="primary"  (click)="send()">\n    Continue\n    <ion-icon name="arrow-forward"></ion-icon>\n  </button>\n\n</ion-content>\n'/*ion-inline-end:"/home/abdenbiworks/mit/mystorytelling-mobile/src/pages/invite-friends/invite-friends.html"*/,
+            selector: 'page-invite-friends',template:/*ion-inline-start:"C:\xampp\htdocs\mit\mystorytelling-mobile\src\pages\invite-friends\invite-friends.html"*/'<!--\n\n  Generated template for the InviteFriendsPage page.\n\n\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n\n  Ionic pages and navigation.\n\n-->\n\n<ion-header>\n\n\n\n  <ion-navbar>\n\n    <ion-title>inviteFriends</ion-title>\n\n  </ion-navbar>\n\n\n\n</ion-header>\n\n\n\n<ion-content>\n\n  <ion-card >\n\n\n\n    <form [formGroup]="authForm" (ngSubmit)="addEmail(authForm.value)">\n\n      <ion-item>\n\n        <ion-input type="email" formControlName="email" placeholder="email" [(ngModel)]="email"></ion-input>\n\n      </ion-item>\n\n      <button ion-button icon-only type="submit">\n\n        add Email\n\n      </button>\n\n    </form>\n\n  </ion-card>\n\n  <ion-card  *ngFor="let email of this.emails" (tap)="removeEmail(index)">\n\n    <ion-item>\n\n      {{email}}\n\n    </ion-item>\n\n  </ion-card>\n\n\n\n  <button type="button" ion-button large clear icon-end color="primary"  (click)="send()">\n\n    Continue\n\n    <ion-icon name="arrow-forward"></ion-icon>\n\n  </button>\n\n\n\n</ion-content>\n\n'/*ion-inline-end:"C:\xampp\htdocs\mit\mystorytelling-mobile\src\pages\invite-friends\invite-friends.html"*/,
         }),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* NavParams */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* LoadingController */], __WEBPACK_IMPORTED_MODULE_2__angular_forms__["a" /* FormBuilder */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["k" /* ToastController */], __WEBPACK_IMPORTED_MODULE_4__ionic_storage__["b" /* Storage */], __WEBPACK_IMPORTED_MODULE_3__providers_event_event__["a" /* EventProvider */]])
     ], InviteFriendsPage);
@@ -2805,7 +2815,7 @@ var HomePage = (function () {
     };
     HomePage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
-            selector: 'page-home',template:/*ion-inline-start:"/home/abdenbiworks/mit/mystorytelling-mobile/src/pages/home/home.html"*/'<ion-content>\n  <div class="circle-one"></div>\n  <div class="circle-two"></div>\n  <div class="circle-tree"></div>\n  <div class="circle-four"></div>\n  <div class="titre-registe">\n      <h1>log in</h1>\n      <h4>to continue</h4>\n  </div>\n<form [formGroup]="authForm" (ngSubmit)="doLogin(authForm.value)">\n<div class="inputs">\n  <ion-list>\n\n    <ion-item>\n      <ion-input type="text" formControlName="username" placeholder="Pseudo" [(ngModel)]="loginData.username"></ion-input>\n    </ion-item>\n\n    <ion-item>\n      <ion-input type="password" type="password" formControlName="password" placeholder="Password" [(ngModel)]="loginData.password"></ion-input>\n    </ion-item>\n\n  </ion-list>\n  <div class="buttons">\n    <button ion-button type="submit" name="button">log in</button>\n  </div>\n</div>\n</form>\n</ion-content>\n'/*ion-inline-end:"/home/abdenbiworks/mit/mystorytelling-mobile/src/pages/home/home.html"*/
+            selector: 'page-home',template:/*ion-inline-start:"C:\xampp\htdocs\mit\mystorytelling-mobile\src\pages\home\home.html"*/'<ion-content>\n\n  <div class="circle-one"></div>\n\n  <div class="circle-two"></div>\n\n  <div class="circle-tree"></div>\n\n  <div class="circle-four"></div>\n\n  <div class="titre-registe">\n\n      <h1>log in</h1>\n\n      <h4>to continue</h4>\n\n  </div>\n\n<form [formGroup]="authForm" (ngSubmit)="doLogin(authForm.value)">\n\n<div class="inputs">\n\n  <ion-list>\n\n\n\n    <ion-item>\n\n      <ion-input type="text" formControlName="username" placeholder="Pseudo" [(ngModel)]="loginData.username"></ion-input>\n\n    </ion-item>\n\n\n\n    <ion-item>\n\n      <ion-input type="password" type="password" formControlName="password" placeholder="Password" [(ngModel)]="loginData.password"></ion-input>\n\n    </ion-item>\n\n\n\n  </ion-list>\n\n  <div class="buttons">\n\n    <button ion-button type="submit" name="button">log in</button>\n\n  </div>\n\n</div>\n\n</form>\n\n</ion-content>\n\n'/*ion-inline-end:"C:\xampp\htdocs\mit\mystorytelling-mobile\src\pages\home\home.html"*/
         }),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* LoadingController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["k" /* ToastController */], __WEBPACK_IMPORTED_MODULE_2__providers_auth_auth__["a" /* AuthProvider */], __WEBPACK_IMPORTED_MODULE_4__ionic_storage__["b" /* Storage */], __WEBPACK_IMPORTED_MODULE_5__angular_forms__["a" /* FormBuilder */]])
     ], HomePage);
@@ -2934,7 +2944,7 @@ var RegisterPage = (function () {
     };
     RegisterPage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
-            selector: 'page-register',template:/*ion-inline-start:"/home/abdenbiworks/mit/mystorytelling-mobile/src/pages/register/register.html"*/'<ion-content id="register">\n  <div class="circle-two"></div>\n  <div class="titre-registe">\n      <h1>sign up</h1>\n      <h4>to continue</h4>\n  </div>\n  <div class="inputs">\n    <ion-list>\n\n      <ion-item>\n        <ion-input type="text" placeholder="Username"></ion-input>\n      </ion-item>\n\n      <ion-item>\n        <ion-input type="email" placeholder="email"></ion-input>\n      </ion-item>\n\n      <ion-item>\n        <ion-input type="password" placeholder="Password"></ion-input>\n      </ion-item>\n\n    </ion-list>\n    <div class="buttons">\n      <button type="button" name="button">log in</button>\n    </div>\n  </div>\n</ion-content>\n'/*ion-inline-end:"/home/abdenbiworks/mit/mystorytelling-mobile/src/pages/register/register.html"*/,
+            selector: 'page-register',template:/*ion-inline-start:"C:\xampp\htdocs\mit\mystorytelling-mobile\src\pages\register\register.html"*/'<ion-content id="register">\n\n  <div class="circle-two"></div>\n\n  <div class="titre-registe">\n\n      <h1>sign up</h1>\n\n      <h4>to continue</h4>\n\n  </div>\n\n  <div class="inputs">\n\n    <ion-list>\n\n\n\n      <ion-item>\n\n        <ion-input type="text" placeholder="Username"></ion-input>\n\n      </ion-item>\n\n\n\n      <ion-item>\n\n        <ion-input type="email" placeholder="email"></ion-input>\n\n      </ion-item>\n\n\n\n      <ion-item>\n\n        <ion-input type="password" placeholder="Password"></ion-input>\n\n      </ion-item>\n\n\n\n    </ion-list>\n\n    <div class="buttons">\n\n      <button type="button" name="button">log in</button>\n\n    </div>\n\n  </div>\n\n</ion-content>\n\n'/*ion-inline-end:"C:\xampp\htdocs\mit\mystorytelling-mobile\src\pages\register\register.html"*/,
         }),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* NavParams */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* LoadingController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["k" /* ToastController */], __WEBPACK_IMPORTED_MODULE_2__providers_auth_auth__["a" /* AuthProvider */], __WEBPACK_IMPORTED_MODULE_3__angular_forms__["a" /* FormBuilder */]])
     ], RegisterPage);
@@ -3061,7 +3071,7 @@ var EventInformationPage = (function () {
     };
     EventInformationPage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
-            selector: 'page-event-information',template:/*ion-inline-start:"/home/abdenbiworks/mit/mystorytelling-mobile/src/pages/event-information/event-information.html"*/'<ion-content>\n  <div>\n    <form (ngSubmit)="onSubmit()">\n      <ion-list>\n        <ion-item>\n          <ion-textarea placeholder="Enter a description" name="description" [(ngModel)]="eventInformation.description" ></ion-textarea>\n        </ion-item>\n        <ion-item>\n          <ion-input  placeholder="event name" name="title" [(ngModel)]="eventInformation.title" ></ion-input>\n        </ion-item>\n        <ion-item>\n          <ion-input  placeholder="event place" name="place" [(ngModel)]="eventInformation.place" ></ion-input>\n        </ion-item>\n        <ion-item>\n          <ion-label>startsAt Date</ion-label>\n          <ion-datetime displayFormat="DD-MM-YYYY HH:mm a" name="startsAt" max="2050-12-01"  [(ngModel)]="eventInformation.startsAt" ></ion-datetime>\n        </ion-item>\n        <ion-item>\n          <ion-label>endsAt Date</ion-label>\n          <ion-datetime displayFormat="DD-MM-YYYY HH:mm a" name="endsAt" max="2050-12-01"  [(ngModel)]="eventInformation.endsAt" ></ion-datetime>\n        </ion-item>\n\n      <ion-item>\n        <ion-select [ngModelOptions]="{standalone: true}" [(ngModel)]="eventInformation.idCat">\n          <ion-option  *ngFor="let cat of this.categories" value="{{cat.id}}">{{cat.title}}</ion-option>\n        </ion-select>\n      </ion-item>\n      </ion-list>\n      <button type="submit" ion-button large clear icon-end color="primary">\n        Next\n        <ion-icon name="arrow-forward"></ion-icon>\n      </button>\n    </form>\n  </div>\n</ion-content>\n'/*ion-inline-end:"/home/abdenbiworks/mit/mystorytelling-mobile/src/pages/event-information/event-information.html"*/,
+            selector: 'page-event-information',template:/*ion-inline-start:"C:\xampp\htdocs\mit\mystorytelling-mobile\src\pages\event-information\event-information.html"*/'<ion-content>\n\n  <div>\n\n    <form (ngSubmit)="onSubmit()">\n\n      <ion-list>\n\n        <ion-item>\n\n          <ion-textarea placeholder="Enter a description" name="description" [(ngModel)]="eventInformation.description" ></ion-textarea>\n\n        </ion-item>\n\n        <ion-item>\n\n          <ion-input  placeholder="event name" name="title" [(ngModel)]="eventInformation.title" ></ion-input>\n\n        </ion-item>\n\n        <ion-item>\n\n          <ion-input  placeholder="event place" name="place" [(ngModel)]="eventInformation.place" ></ion-input>\n\n        </ion-item>\n\n        <ion-item>\n\n          <ion-label>startsAt Date</ion-label>\n\n          <ion-datetime displayFormat="DD-MM-YYYY HH:mm a" name="startsAt" max="2050-12-01"  [(ngModel)]="eventInformation.startsAt" ></ion-datetime>\n\n        </ion-item>\n\n        <ion-item>\n\n          <ion-label>endsAt Date</ion-label>\n\n          <ion-datetime displayFormat="DD-MM-YYYY HH:mm a" name="endsAt" max="2050-12-01"  [(ngModel)]="eventInformation.endsAt" ></ion-datetime>\n\n        </ion-item>\n\n\n\n      <ion-item>\n\n        <ion-select [ngModelOptions]="{standalone: true}" [(ngModel)]="eventInformation.idCat">\n\n          <ion-option  *ngFor="let cat of this.categories" value="{{cat.id}}">{{cat.title}}</ion-option>\n\n        </ion-select>\n\n      </ion-item>\n\n      </ion-list>\n\n      <button type="submit" ion-button large clear icon-end color="primary">\n\n        Next\n\n        <ion-icon name="arrow-forward"></ion-icon>\n\n      </button>\n\n    </form>\n\n  </div>\n\n</ion-content>\n\n'/*ion-inline-end:"C:\xampp\htdocs\mit\mystorytelling-mobile\src\pages\event-information\event-information.html"*/,
         }),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* NavParams */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* LoadingController */], __WEBPACK_IMPORTED_MODULE_3__providers_api_api__["a" /* ApiProvider */], __WEBPACK_IMPORTED_MODULE_4__ionic_storage__["b" /* Storage */], __WEBPACK_IMPORTED_MODULE_5__providers_event_event__["a" /* EventProvider */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["k" /* ToastController */]])
     ], EventInformationPage);
@@ -3194,7 +3204,7 @@ var EventChallengePage = (function () {
     };
     EventChallengePage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
-            selector: 'page-event-challenge',template:/*ion-inline-start:"/home/abdenbiworks/mit/mystorytelling-mobile/src/pages/event-challenge/event-challenge.html"*/'<!--\n  Generated template for the EventChallengePage page.\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n  Ionic pages and navigation.\n-->\n<ion-header>\n\n  <ion-navbar>\n    <ion-title>eventChallenge</ion-title>\n  </ion-navbar>\n\n</ion-header>\n\n\n\n<ion-content>\n  <div>\n    <form [formGroup]="authForm" (ngSubmit)="onSubmit(authForm.value)">\n      <ion-list>\n        <ion-item>\n          <ion-textarea formControlName="description" placeholder="Enter a description" name="description" [(ngModel)]="challengeEvent.description" ></ion-textarea>\n        </ion-item>\n\n        <ion-item>\n          <ion-select [ngModelOptions]="{standalone: true}" [(ngModel)]="challengeEvent.description">\n            <ion-option  *ngFor="let proposition of this.propositions" value="{{proposition.description}}">{{proposition.description}}</ion-option>\n          </ion-select>\n        </ion-item>\n      </ion-list>\n\n      <button ion-button icon-only type="submit">\n        add défi\n      </button>\n    </form>\n\n      <ion-card  *ngFor="let challenge of this.challenges" (tap)="removeChallenge(index)">\n        <ion-item>\n          {{challenge}}\n        </ion-item>\n      </ion-card>\n\n      <button type="button" ion-button large clear icon-end color="primary" (click)="send()">\n        Continue\n        <ion-icon name="arrow-forward"></ion-icon>\n      </button>\n\n  </div>\n</ion-content>\n'/*ion-inline-end:"/home/abdenbiworks/mit/mystorytelling-mobile/src/pages/event-challenge/event-challenge.html"*/,
+            selector: 'page-event-challenge',template:/*ion-inline-start:"C:\xampp\htdocs\mit\mystorytelling-mobile\src\pages\event-challenge\event-challenge.html"*/'<!--\n\n  Generated template for the EventChallengePage page.\n\n\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n\n  Ionic pages and navigation.\n\n-->\n\n<ion-header>\n\n\n\n  <ion-navbar>\n\n    <ion-title>eventChallenge</ion-title>\n\n  </ion-navbar>\n\n\n\n</ion-header>\n\n\n\n\n\n\n\n<ion-content>\n\n  <div>\n\n    <form [formGroup]="authForm" (ngSubmit)="onSubmit(authForm.value)">\n\n      <ion-list>\n\n        <ion-item>\n\n          <ion-textarea formControlName="description" placeholder="Enter a description" name="description" [(ngModel)]="challengeEvent.description" ></ion-textarea>\n\n        </ion-item>\n\n\n\n        <ion-item>\n\n          <ion-select [ngModelOptions]="{standalone: true}" [(ngModel)]="challengeEvent.description">\n\n            <ion-option  *ngFor="let proposition of this.propositions" value="{{proposition.description}}">{{proposition.description}}</ion-option>\n\n          </ion-select>\n\n        </ion-item>\n\n      </ion-list>\n\n\n\n      <button ion-button icon-only type="submit">\n\n        add défi\n\n      </button>\n\n    </form>\n\n\n\n      <ion-card  *ngFor="let challenge of this.challenges" (tap)="removeChallenge(index)">\n\n        <ion-item>\n\n          {{challenge}}\n\n        </ion-item>\n\n      </ion-card>\n\n\n\n      <button type="button" ion-button large clear icon-end color="primary" (click)="send()">\n\n        Continue\n\n        <ion-icon name="arrow-forward"></ion-icon>\n\n      </button>\n\n\n\n  </div>\n\n</ion-content>\n\n'/*ion-inline-end:"C:\xampp\htdocs\mit\mystorytelling-mobile\src\pages\event-challenge\event-challenge.html"*/,
         }),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* NavParams */], __WEBPACK_IMPORTED_MODULE_9__angular_forms__["a" /* FormBuilder */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* LoadingController */], __WEBPACK_IMPORTED_MODULE_4__ionic_storage__["b" /* Storage */], __WEBPACK_IMPORTED_MODULE_3__providers_api_api__["a" /* ApiProvider */], __WEBPACK_IMPORTED_MODULE_7__providers_event_event__["a" /* EventProvider */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["k" /* ToastController */]])
     ], EventChallengePage);
@@ -3308,7 +3318,7 @@ var PaymentPage = (function () {
     };
     PaymentPage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
-            selector: 'page-payment',template:/*ion-inline-start:"/home/abdenbiworks/mit/mystorytelling-mobile/src/pages/payment/payment.html"*/'<!--\n  Generated template for the PaymentPage page.\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n  Ionic pages and navigation.\n-->\n<ion-header>\n\n  <ion-navbar>\n    <ion-title>payment</ion-title>\n  </ion-navbar>\n\n</ion-header>\n\n\n<ion-content>\n  <div>\n    <form  [formGroup]="authForm" (ngSubmit)="onSubmit(authForm.value)">\n      <ion-list>\n        <ion-item>\n          <ion-input type="number" formControlName="cardNumber" placeholder="CARD NUMBER" name="cardNumber" [(ngModel)]="payment.numberCard" ></ion-input>\n        </ion-item>\n        <ion-item>\n          <ion-input type="number" formControlName="experationDateMonth" placeholder="EXPIRATION DATE MONTH" name="experationDateMonth" [(ngModel)]="payment.monthExpire" ></ion-input>\n        </ion-item>\n        <ion-item>\n          <ion-input type="number"  formControlName="experationDateYear" placeholder="EXPIRATION DATE YEAR" name="experationDateYear" [(ngModel)]="payment.yearExpire" ></ion-input>\n        </ion-item>\n        <ion-item>\n          <ion-input type="number" formControlName="cvv" placeholder="CVV CODE" name="cvv" [(ngModel)]="payment.cvv" ></ion-input>\n        </ion-item>\n        <ion-item>\n          <ion-input type="number" formControlName="price" placeholder="PRICE" name="price" [(ngModel)]="payment.price" ></ion-input>\n        </ion-item>\n\n      </ion-list>\n      <button type="submit" ion-button large clear icon-end color="primary">\n        Continue\n        <ion-icon name="arrow-forward"></ion-icon>\n      </button>\n    </form>\n  </div>\n</ion-content>\n'/*ion-inline-end:"/home/abdenbiworks/mit/mystorytelling-mobile/src/pages/payment/payment.html"*/,
+            selector: 'page-payment',template:/*ion-inline-start:"C:\xampp\htdocs\mit\mystorytelling-mobile\src\pages\payment\payment.html"*/'<!--\n\n  Generated template for the PaymentPage page.\n\n\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n\n  Ionic pages and navigation.\n\n-->\n\n<ion-header>\n\n\n\n  <ion-navbar>\n\n    <ion-title>payment</ion-title>\n\n  </ion-navbar>\n\n\n\n</ion-header>\n\n\n\n\n\n<ion-content>\n\n  <div>\n\n    <form  [formGroup]="authForm" (ngSubmit)="onSubmit(authForm.value)">\n\n      <ion-list>\n\n        <ion-item>\n\n          <ion-input type="number" formControlName="cardNumber" placeholder="CARD NUMBER" name="cardNumber" [(ngModel)]="payment.numberCard" ></ion-input>\n\n        </ion-item>\n\n        <ion-item>\n\n          <ion-input type="number" formControlName="experationDateMonth" placeholder="EXPIRATION DATE MONTH" name="experationDateMonth" [(ngModel)]="payment.monthExpire" ></ion-input>\n\n        </ion-item>\n\n        <ion-item>\n\n          <ion-input type="number"  formControlName="experationDateYear" placeholder="EXPIRATION DATE YEAR" name="experationDateYear" [(ngModel)]="payment.yearExpire" ></ion-input>\n\n        </ion-item>\n\n        <ion-item>\n\n          <ion-input type="number" formControlName="cvv" placeholder="CVV CODE" name="cvv" [(ngModel)]="payment.cvv" ></ion-input>\n\n        </ion-item>\n\n        <ion-item>\n\n          <ion-input type="number" formControlName="price" placeholder="PRICE" name="price" [(ngModel)]="payment.price" ></ion-input>\n\n        </ion-item>\n\n\n\n      </ion-list>\n\n      <button type="submit" ion-button large clear icon-end color="primary">\n\n        Continue\n\n        <ion-icon name="arrow-forward"></ion-icon>\n\n      </button>\n\n    </form>\n\n  </div>\n\n</ion-content>\n\n'/*ion-inline-end:"C:\xampp\htdocs\mit\mystorytelling-mobile\src\pages\payment\payment.html"*/,
         }),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* LoadingController */], __WEBPACK_IMPORTED_MODULE_6__angular_forms__["a" /* FormBuilder */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* NavParams */], __WEBPACK_IMPORTED_MODULE_4__ionic_storage__["b" /* Storage */], __WEBPACK_IMPORTED_MODULE_3__providers_event_event__["a" /* EventProvider */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["k" /* ToastController */]])
     ], PaymentPage);
@@ -3353,7 +3363,7 @@ var FinishCreateEventPage = (function () {
     };
     FinishCreateEventPage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
-            selector: 'page-finish-create-event',template:/*ion-inline-start:"/home/abdenbiworks/mit/mystorytelling-mobile/src/pages/finish-create-event/finish-create-event.html"*/'<!--\n  Generated template for the FinishCreateEventPage page.\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n  Ionic pages and navigation.\n-->\n<ion-header>\n\n  <ion-navbar>\n    <ion-title>finishCreateEvent</ion-title>\n  </ion-navbar>\n\n</ion-header>\n\n\n<ion-content padding>\n\n</ion-content>\n'/*ion-inline-end:"/home/abdenbiworks/mit/mystorytelling-mobile/src/pages/finish-create-event/finish-create-event.html"*/,
+            selector: 'page-finish-create-event',template:/*ion-inline-start:"C:\xampp\htdocs\mit\mystorytelling-mobile\src\pages\finish-create-event\finish-create-event.html"*/'<!--\n\n  Generated template for the FinishCreateEventPage page.\n\n\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n\n  Ionic pages and navigation.\n\n-->\n\n<ion-header>\n\n\n\n  <ion-navbar>\n\n    <ion-title>finishCreateEvent</ion-title>\n\n  </ion-navbar>\n\n\n\n</ion-header>\n\n\n\n\n\n<ion-content padding>\n\n\n\n</ion-content>\n\n'/*ion-inline-end:"C:\xampp\htdocs\mit\mystorytelling-mobile\src\pages\finish-create-event\finish-create-event.html"*/,
         }),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* NavParams */]])
     ], FinishCreateEventPage);
@@ -3408,7 +3418,7 @@ var WelcomePage = (function () {
     };
     WelcomePage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
-            selector: 'page-welcome',template:/*ion-inline-start:"/home/abdenbiworks/mit/mystorytelling-mobile/src/pages/welcome/welcome.html"*/'<ion-content id="welcome">\n  <div class="blur">\n  </div>\n  <h1>Welcome</h1>\n  <h2>On board</h2>\n  <div class="message">\n    <img src="../assets/imgs/welcome.png" alt="">\n    <h5>All the fun starts here!</h5>\n    <p>Tell your story with the pictures of your guests</p>\n  </div>\n  <div class="buttons">\n    <button type="button" name="button" (click)="signup()">Sign Up</button>\n    <p>\n      Have an account? Cool!<br>\n      <a (click)="login()">Login in Then</a>\n    </p>\n  </div>\n</ion-content>\n'/*ion-inline-end:"/home/abdenbiworks/mit/mystorytelling-mobile/src/pages/welcome/welcome.html"*/,
+            selector: 'page-welcome',template:/*ion-inline-start:"C:\xampp\htdocs\mit\mystorytelling-mobile\src\pages\welcome\welcome.html"*/'<ion-content id="welcome">\n\n  <div class="blur">\n\n  </div>\n\n  <h1>Welcome</h1>\n\n  <h2>On board</h2>\n\n  <div class="message">\n\n    <img src="../assets/imgs/welcome.png" alt="">\n\n    <h5>All the fun starts here!</h5>\n\n    <p>Tell your story with the pictures of your guests</p>\n\n  </div>\n\n  <div class="buttons">\n\n    <button type="button" name="button" (click)="signup()">Sign Up</button>\n\n    <p>\n\n      Have an account? Cool!<br>\n\n      <a (click)="login()">Login in Then</a>\n\n    </p>\n\n  </div>\n\n</ion-content>\n\n'/*ion-inline-end:"C:\xampp\htdocs\mit\mystorytelling-mobile\src\pages\welcome\welcome.html"*/,
         }),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* NavParams */]])
     ], WelcomePage);
