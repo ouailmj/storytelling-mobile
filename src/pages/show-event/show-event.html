@@ -1,12 +1,11 @@
 <ion-content padding class="transparent-header">
-    <div id="profile-bg" [ngStyle]="{'background-image': 'url(' + event.imagesGallery[0].downloadLink +')'}" *ngIf="event.imagesGallery.length > 0" ></div>
+    <div id="profile-bg" [ngStyle]="{'background-image': 'url(' + event.imagesGallery.img1 +')'}"  onerror="this.src='/assets/imgs/profile_image_1488952985.6978.png'" ></div>
     <div id="content">
       <div id="profile-info" padding>
-        <img id="profile-image"  src='assets/img/avatar/girl-avatar.png' > 
+        <img id="profile-image" [src]="this.event.CreatedBy.avatar.downloadLink"   >
         <h3 id="profile-name">{{event.CreatedBy.fullName}}</h3>
         <p class="profile-description">{{event.description}}</p>
       </div>
-     
       <ion-row class="profile-numbers">
         <ion-col col-4>
           <p>Followers</p>
