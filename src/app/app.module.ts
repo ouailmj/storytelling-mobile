@@ -15,7 +15,6 @@ import { HttpClientModule } from '@angular/common/http';
 import { RegisterPage } from '../pages/register/register';
 import { ProfilproviderProvider } from '../providers/profilprovider/profilprovider';
 import { UserProvider } from '../providers/user/user';
-
 import { Camera } from '@ionic-native/camera';
 import { CameraProvider } from '../providers/util/camera.provider';
 import { FileTransfer,FileTransferObject } from '@ionic-native/file-transfer';
@@ -107,7 +106,6 @@ BrowserModule,
     File,
     ToastService,
     UserProvider,
-
   ]
 })
 export class AppModule {}
