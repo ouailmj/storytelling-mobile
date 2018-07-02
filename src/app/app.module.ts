@@ -84,6 +84,7 @@ BrowserModule,
       EventsPage,
       ShowEventPage,
 
+      ChoosePlanPage,
       EventInformationPage,
       NewEventPage,
       CoverEventPage,
