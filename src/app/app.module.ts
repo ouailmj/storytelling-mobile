@@ -83,7 +83,7 @@ BrowserModule,
       PasswordRequestPage,
       EventsPage,
       ShowEventPage,
-
+      ChoosePlanPage,
       EventInformationPage,
       NewEventPage,
       CoverEventPage,
