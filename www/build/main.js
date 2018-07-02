@@ -142,11 +142,40 @@ var ShowEventPage = (function () {
         this.eventProvider = eventProvider;
         this.params = params;
         this.placeholder = 'assets/img/avatar/girl-avatar.png';
-        this.events = [];
         this.following = false;
         this.event = {
-            coverImage: '',
-            description: '',
+            "id": '',
+            "CreatedBy": {
+                "firstName": "",
+                "lastName": "",
+                "fullName": "",
+                "avatar": {
+                    "@id": "",
+                    "@type": "",
+                    "uploadedBy": "",
+                    "id": "",
+                    "downloadLink": "",
+                    "file": "",
+                    "expiresAt": "",
+                    "hasBeenDownloaded": "",
+                    "uploadedAt": "",
+                    "createdBy": "",
+                    "src": "",
+                    "type": "",
+                    "trashedAt": ""
+                },
+                "email": ""
+            },
+            "startsAt": "",
+            "endsAt": "",
+            "place": "",
+            "description": "",
+            "videoGallery": [],
+            "imagesGallery": [
+                {
+                    "downloadLink": "",
+                }
+            ]
         };
         this.user = {
             name: 'Paula Bolliger',
@@ -159,25 +188,19 @@ var ShowEventPage = (function () {
             following: 1052,
             posts: 35
         };
-        this.posts = [
-            {
-                postImageUrl: 'assets/img/background/background-2.jpg',
-                date: 'November 5, 2016',
-                likes: 12,
-                comments: 4,
-                timestamp: '11h ago'
-            },
-        ];
+        this.posts = [];
     }
     ShowEventPage.prototype.ionViewDidLoad = function () {
         var _this = this;
         console.log('Hello ProfileFour Page');
         console.log(this.params.get('id_event'));
-        var id_event = this.params.get('id_event');
-        this.eventProvider.getEvent('/api/show-event/' + id_event).then(function (data) {
-            var img = data['hydra:member'][0].imagesGallery[0].downloadLink === undefined ? '' : data['hydra:member'][0].imagesGallery[0].downloadLink;
-            _this.event.coverImage = img;
-            _this.event.description = data['hydra:member'][0].description;
+        this.id_event = this.params.get('id_event');
+        console.log('id event ===< ', this.id_event);
+        this.eventProvider.getEvent('/api/show-event/' + this.id_event).then(function (data) {
+            console.log("show event ===> ", data['hydra:member'][0]);
+            // let img = data['hydra:member'][0].imagesGallery[0].downloadLink === undefined ? '' : data['hydra:member'][0].imagesGallery[0].downloadLink;
+            _this.event = data['hydra:member'][0];
+            console.log(_this.event.imagesGallery[0].downloadLink);
         });
     };
     ShowEventPage.prototype.changePicture = function () {
@@ -218,6 +241,7 @@ var ShowEventPage = (function () {
         return this.cameraProvider.getPictureFromCamera().then(function (picture) {
             if (picture) {
                 _this.chosenPicture = picture;
+                _this.UploadImg();
             }
             loading.dismiss();
         }, function (error) {
@@ -231,6 +255,7 @@ var ShowEventPage = (function () {
         return this.cameraProvider.getPictureFromPhotoLibrary().then(function (picture) {
             if (picture) {
                 _this.chosenPicture = picture;
+                _this.UploadImg();
             }
             loading.dismiss();
         }, function (error) {
@@ -240,19 +265,23 @@ var ShowEventPage = (function () {
     ShowEventPage.prototype.UploadImg = function () {
         // let postData = new FormData();
         // postData.append('avatar',this.chosenPicture);
-        // //this.eventProvider.upImg(postData);
-        this.posts.push({
-            postImageUrl: this.chosenPicture,
-            date: 'June 28, 2016',
-            likes: 46,
-            comments: 66,
-            timestamp: '4mo ago'
+        var _this = this;
+        // uploadFile(imageURI, key ='avatar', route = '/api/upload-avatar', isPresentToast = true) {
+        this.eventProvider.uploadFile(this.chosenPicture, 'imageUpload', "/api/event/upload-media/" + this.id_event, true).then(function (data) {
+            var coData = JSON.parse(data.response)["hydra:member"][0];
+            // console.log(coData)
+            console.log(coData.imgUp.downloadLink);
+            _this.posts.push({
+                postImageUrl: coData.imgUp.downloadLink,
+                date: coData.imgUp.uploadedAt,
+                avatar: coData.user.avatar.downloadLink,
+                userName: coData.user.FullName,
+            });
         });
-        console.log("10101010101010101");
     };
     ShowEventPage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
-            selector: 'page-show-event',template:/*ion-inline-start:"/home/alfa/Desktop/mystorytelling-mobile/src/pages/show-event/show-event.html"*/'<ion-content padding class="transparent-header">\n    <div id="profile-bg" [ngStyle]="{\'background-image\': \'url(\' + event.coverImage +\')\'}"></div>\n    <div id="content">\n      <div id="profile-info" padding>\n        <img id="profile-image" [src]="event.coverImage">\n        <h3 id="profile-name">{{user.name}}</h3>\n        <p>{{user.occupation}} &bull; {{user.location}}</p>\n        <p class="profile-description">{{event.description}}</p>\n      \n      </div>\n      <hr/>\n    \n      <div id="posts">\n          \n        <ion-card *ngFor="let post of posts">\n          <ion-item>\n            <ion-avatar item-start>\n              <img [src]="user.profileImage">\n            </ion-avatar>\n            <h2 class="sticky">{{user.name}}</h2>\n            <p>{{post.date}}</p>\n          </ion-item>\n          <img [src]="post.postImageUrl" >\n          <ion-row>\n            <ion-col col-3 align-self-center text-center>\n              <p>\n                {{post.timestamp}}\n              </p>\n            </ion-col>\n          </ion-row>\n        </ion-card>\n\n\n        <ion-avatar (click)="changePicture()">\n          <button ion-button color="danger">Change image</button>\n          <button ion-button color="danger" (click)="UploadImg()" >up image</button>\n\n      </ion-avatar>\n\n\n      </div>\n    </div>\n  </ion-content>\n  '/*ion-inline-end:"/home/alfa/Desktop/mystorytelling-mobile/src/pages/show-event/show-event.html"*/,
+            selector: 'page-show-event',template:/*ion-inline-start:"/home/alfa/Desktop/mystorytelling-mobile/src/pages/show-event/show-event.html"*/'<ion-content padding class="transparent-header">\n    <div id="profile-bg" [ngStyle]="{\'background-image\': \'url(\' + event.imagesGallery[0].downloadLink +\')\'}"></div>\n    <div id="content">\n      <div id="profile-info" padding>\n        <img id="profile-image"  src=\'assets/img/avatar/girl-avatar.png\' > \n        <h3 id="profile-name">{{event.CreatedBy.fullName}}</h3>\n        <p class="profile-description">{{event.description}}</p>\n      </div>\n     \n      <ion-row class="profile-numbers">\n        <ion-col col-4>\n          <p>Followers</p>\n          <span>{{user.followers}}</span>\n        </ion-col>\n        <ion-col col-4>\n          <p>Following</p>\n          <span>{{user.following}}</span>\n        </ion-col>\n        <ion-col col-4>\n          <p>Posts</p>\n          <span>{{user.posts}}</span>\n        </ion-col>\n      </ion-row>\n      <hr/>\n      <div id="posts">\n        <ion-card *ngFor="let post of posts">\n          <ion-item>\n            <ion-avatar item-start>\n              <img [src]="post.avatar">\n            </ion-avatar>\n            <h2 class="sticky">{{post.userName}}</h2>\n            <p>{{post.date}}</p>\n          </ion-item>\n          <img [src]="post.postImageUrl" (click)="imageTapped(post)">\n          <ion-card-content>\n            <p>{{post.text}}</p>\n          </ion-card-content>\n          <ion-row>\n            <ion-col col-4>\n              <button ion-button color="purple" clear small icon-left (click)="like(post)">\n                  <ion-icon name=\'thumbs-up\'></ion-icon>\n                  {{post.likes}} Likes\n                </button>\n            </ion-col>\n            <ion-col col-5>\n              <button ion-button no-padding color="purple" clear small icon-left (click)="comment(post)">\n                  <ion-icon name=\'text\'></ion-icon>\n                  {{post.comments}} Comments\n                </button>\n            </ion-col>\n            <ion-col col-3 align-self-center text-center>\n              <p>\n                {{post.timestamp}}\n              </p>\n            </ion-col>\n          </ion-row>\n        </ion-card>\n      </div>\n    </div>\n    <ion-fab right bottom>\n        <button ion-fab color="light" (click)="changePicture()"><ion-icon name="logo-twitter"></ion-icon></button>\n    </ion-fab>\n  </ion-content>\n\n'/*ion-inline-end:"/home/alfa/Desktop/mystorytelling-mobile/src/pages/show-event/show-event.html"*/,
         }),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* NavController */],
             __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* NavParams */],
@@ -930,7 +959,7 @@ var EventProvider = (function () {
                 };
                 fileTransfer.upload(imageURI, __WEBPACK_IMPORTED_MODULE_1__api_api__["a" /* ApiProvider */].getFullUrl(route), options, true)
                     .then(function (data) {
-                    console.log(data + " Uploaded Successfully");
+                    console.log(data);
                     resolve(data);
                     //this.imageFileName = "http://192.168.0.7:8080/static/images/ionicfile.jpg"
                     loader.dismiss();
@@ -1207,7 +1236,8 @@ module.exports = webpackAsyncContext;
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return environment; });
 var environment = {
-    API_END_POINT: 'http://staging.instantapp.dev.mit-agency.com',
+    API_END_POINT: 'http://192.168.1.101:8000',
+    // API_END_POINT: 'http://staging.instantapp.dev.mit-agency.com',
     production: false
 };
 //# sourceMappingURL=environment.js.map
@@ -1641,26 +1671,39 @@ var __metadata = (this && this.__metadata) || function (k, v) {
  * Ionic pages and navigation.
  */
 var EventsPage = (function () {
-    function EventsPage(navCtrl, navParams, eventProvider) {
+    function EventsPage(navCtrl, navParams, eventProvider, loadingCtrl) {
         var _this = this;
         this.navCtrl = navCtrl;
         this.navParams = navParams;
         this.eventProvider = eventProvider;
+        this.loadingCtrl = loadingCtrl;
         this.events = [];
+        this.showLoader();
         console.log("list events");
         eventProvider.getEvents().then(function (data) {
             console.log("in pqge event ", data);
             _this.events = data.length > 0 ? data : [];
+            _this.loading.dismiss();
+            //
         });
     }
     EventsPage.prototype.eventDetails = function (id) {
         this.navCtrl.setRoot(__WEBPACK_IMPORTED_MODULE_3__show_event_show_event__["a" /* ShowEventPage */], { id_event: id });
     };
+    EventsPage.prototype.showLoader = function () {
+        this.loading = this.loadingCtrl.create({
+            content: 'Loading...'
+        });
+        this.loading.present();
+    };
     EventsPage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
-            selector: 'page-events',template:/*ion-inline-start:"/home/alfa/Desktop/mystorytelling-mobile/src/pages/events/events.html"*/'<ion-header>\n  <ion-navbar>\n    <ion-title>Social Cards</ion-title>\n  </ion-navbar>\n</ion-header>\n<ion-content>\n  <ion-card *ngFor="let event of events" (click)="eventDetails(event.event.id)">\n    <ion-item>\n      <ion-avatar item-start>\n        <img [src]="event.avatarImageUrl" onerror="this.src=\'assets/imgs/avatar/marty-avatar.png\'" >\n      </ion-avatar>\n      <h2>{{event.user.fullName}}</h2>\n      <p>{{event.event.endsAt}}</p>\n    </ion-item>\n    <!--*ngIf="event.imagesGallery.length"-->\n    <img [src]="event.imagesGallery[0].downloadLink" *ngIf="event.imagesGallery.length > 0 " onerror="this.src=\'assets/imgs/card/advance-card-bttf.png\'"  >\n\n    <ion-card-content>\n      <p>{{event.description}}</p>\n    </ion-card-content>\n    <ion-row>\n      <ion-col>\n        <button ion-button color="primary" clear small icon-left >\n        <ion-icon name=\'thumbs-up\'></ion-icon>\n        {{event.privacy}} Likes\n      </button>\n      </ion-col>\n      <ion-col>\n        <button ion-button color="primary" clear small icon-left >\n        <ion-icon name=\'text\'></ion-icon>\n        {{event.started}} Comments\n      </button>\n      </ion-col>\n      <ion-col center text-center>\n        <ion-note>\n          {{event.totalPayed}}\n        </ion-note>\n      </ion-col>\n    </ion-row>\n  </ion-card>\n</ion-content>\n'/*ion-inline-end:"/home/alfa/Desktop/mystorytelling-mobile/src/pages/events/events.html"*/,
+            selector: 'page-events',template:/*ion-inline-start:"/home/alfa/Desktop/mystorytelling-mobile/src/pages/events/events.html"*/'<ion-header>\n  <ion-navbar>\n    <ion-title>Social Cards</ion-title>\n  </ion-navbar>\n</ion-header>\n<ion-content>\n  \n  <ion-card *ngFor="let event of events"  (click)="eventDetails(event.event.id)">\n    <ion-item>\n      <ion-avatar item-start>\n        <img [src]="event.event.CreatedBy.downloadLink" onerror="this.src=\'assets/imgs/avatar/marty-avatar.png\'" >\n      </ion-avatar>\n      <h2>{{event.event.CreatedBy.fullName}}</h2>\n      <!-- <p>{{event.event.endsAt}}</p> -->\n    </ion-item>\n    <!--*ngIf="event.imagesGallery.length"-->\n    <img [src]="event.event.imagesGallery[0].downloadLink" *ngIf="event.event.imagesGallery.length > 0 " onerror="this.src=\'assets/imgs/card/advance-card-bttf.png\'"  >\n\n    <ion-card-content>\n      <p>{{event.event.description}}</p>\n    </ion-card-content>\n    <ion-row>\n      <ion-col>\n        <button ion-button color="primary" clear small icon-left >\n        <ion-icon name=\'thumbs-up\'></ion-icon>\n        {{event.event.place}} Likes\n      </button>\n      </ion-col>\n      <ion-col>\n        <button ion-button color="primary" clear small icon-left >\n        <ion-icon name=\'text\'></ion-icon>\n        {{event.event.startsAt}} Comments\n      </button>\n      </ion-col>\n      <ion-col center text-center>\n        <ion-note>\n          <!-- {{event.totalPayed}} -->\n        </ion-note>\n      </ion-col>\n    </ion-row>\n  </ion-card>\n</ion-content>\n'/*ion-inline-end:"/home/alfa/Desktop/mystorytelling-mobile/src/pages/events/events.html"*/,
         }),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* NavParams */], __WEBPACK_IMPORTED_MODULE_2__providers_event_event__["a" /* EventProvider */]])
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* NavController */],
+            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* NavParams */],
+            __WEBPACK_IMPORTED_MODULE_2__providers_event_event__["a" /* EventProvider */],
+            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* LoadingController */]])
     ], EventsPage);
     return EventsPage;
 }());
@@ -2744,14 +2787,15 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 var HomePage = (function () {
-    function HomePage(navCtrl, loadingCtrl, toastCtrl, authService, formBuilder) {
+    function HomePage(navCtrl, loadingCtrl, toastCtrl, authService, storage, formBuilder) {
         this.navCtrl = navCtrl;
         this.loadingCtrl = loadingCtrl;
         this.toastCtrl = toastCtrl;
         this.authService = authService;
+        this.storage = storage;
         this.formBuilder = formBuilder;
         this.loginData = {
-            username: "admin",
+            username: "user_test",
             password: "f%/R4Uk#](wUvM'V",
         };
         this.errorAuthentication = false;
@@ -2811,7 +2855,12 @@ var HomePage = (function () {
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
             selector: 'page-home',template:/*ion-inline-start:"/home/alfa/Desktop/mystorytelling-mobile/src/pages/home/home.html"*/'<ion-content>\n  <div class="circle-one"></div>\n  <div class="circle-two"></div>\n  <div class="circle-tree"></div>\n  <div class="circle-four"></div>\n  <div class="titre-registe">\n      <h1>log in</h1>\n      <h4>to continue</h4>\n  </div>\n<form [formGroup]="authForm" (ngSubmit)="doLogin(authForm.value)">\n<div class="inputs">\n  <ion-list>\n\n    <ion-item>\n      <ion-input type="text" formControlName="username" placeholder="Pseudo" [(ngModel)]="loginData.username"></ion-input>\n    </ion-item>\n\n    <ion-item>\n      <ion-input type="password" type="password" formControlName="password" placeholder="Password" [(ngModel)]="loginData.password"></ion-input>\n    </ion-item>\n\n  </ion-list>\n  <div class="buttons">\n    <button ion-button type="submit" name="button">log in</button>\n  </div>\n</div>\n</form>\n</ion-content>\n'/*ion-inline-end:"/home/alfa/Desktop/mystorytelling-mobile/src/pages/home/home.html"*/
         }),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* LoadingController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["k" /* ToastController */], __WEBPACK_IMPORTED_MODULE_2__providers_auth_auth__["a" /* AuthProvider */], __WEBPACK_IMPORTED_MODULE_4__angular_forms__["a" /* FormBuilder */]])
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* NavController */],
+            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* LoadingController */],
+            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["k" /* ToastController */],
+            __WEBPACK_IMPORTED_MODULE_2__providers_auth_auth__["a" /* AuthProvider */],
+            Storage,
+            __WEBPACK_IMPORTED_MODULE_4__angular_forms__["a" /* FormBuilder */]])
     ], HomePage);
     return HomePage;
 }());

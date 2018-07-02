@@ -159,7 +159,7 @@ console.log(EventRoutes.apiChoosePlan+id)
 
                 fileTransfer.upload(imageURI, ApiProvider.getFullUrl(route), options, true)
                     .then((data) => {
-                        console.log(data + " Uploaded Successfully");
+                        console.log(data);
                         resolve(data)
                         //this.imageFileName = "http://192.168.0.7:8080/static/images/ionicfile.jpg"
                         loader.dismiss();
