@@ -83,7 +83,7 @@ BrowserModule,
       PasswordRequestPage,
       EventsPage,
       ShowEventPage,
-
+      ChoosePlanPage,
       EventInformationPage,
       NewEventPage,
       CoverEventPage,
@@ -107,7 +107,6 @@ BrowserModule,
     File,
     ToastService,
     UserProvider,
-
   ]
 })
 export class AppModule {}

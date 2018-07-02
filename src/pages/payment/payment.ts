@@ -6,6 +6,7 @@ import {EventProvider} from "../../providers/event/event";
 import {Storage} from "@ionic/storage";
 import {EventsPage} from "../events/events";
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
+import {isNumber} from "ionic-angular/util/util";
 
 /**
  * Generated class for the PaymentPage page.
@@ -28,6 +29,7 @@ export class PaymentPage {
         cvv: null,
         price: null,
     }
+    idEvent : number = null
     authForm: FormGroup;
     loading : any ;
   constructor(public navCtrl: NavController, public loadingCtrl: LoadingController, public formBuilder: FormBuilder,  public navParams: NavParams, private storage: Storage, public eventProvider: EventProvider, private toastCtrl: ToastController) {
@@ -37,9 +39,21 @@ export class PaymentPage {
           experationDateMonth: ['', Validators.compose([Validators.required, Validators.pattern('[0-9]*')])],
           experationDateYear: ['', Validators.compose([Validators.required, Validators.pattern('[0-9]*')])],
           cvv: ['', Validators.compose([Validators.required, Validators.pattern('[0-9]*')])],
-          price: ['', Validators.compose([Validators.required, Validators.pattern('[0-9]*')])],
 
       });
+
+      this.storage.get('currentEvent').then(event => {
+          this.idEvent = event.id
+          this.eventProvider.getPriceEvent(this.idEvent).then(res  => {
+              this.payment.price =  res*100;
+          }).catch(error => {
+              this.loading.dismiss();
+
+              console.log(error)
+          })
+      }).catch(err => {
+          this.navCtrl.push(EventsPage)
+      })
   }
 
   ionViewDidLoad() {
@@ -51,9 +65,8 @@ export class PaymentPage {
           this.showLoader()
           console.log(this.payment)
 
-          this.storage.get('currentEvent').then(event => {
 
-              this.eventProvider.addPaymentForEvent(this.payment, event.id).then(res => {
+              this.eventProvider.addPaymentForEvent(this.payment, this.idEvent).then(res => {
                   this.loading.dismiss();
 
                   console.log("addPaymentForEvent", res)
@@ -64,9 +77,7 @@ export class PaymentPage {
                   console.log(error)
               })
 
-          }).catch(err => {
-              this.navCtrl.push(EventsPage)
-          })
+
       }else{
 
           this.presentToast('Sorry, some fields is required or given string')

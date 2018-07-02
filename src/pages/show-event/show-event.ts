@@ -17,14 +17,11 @@ import { FileUploadResult } from '@ionic-native/file-transfer';
   templateUrl: 'show-event.html',
 })
 export class ShowEventPage {
- 
+
   placeholder = 'assets/img/avatar/girl-avatar.png';
   chosenPicture: any;
   id_event:string;
- 
-
   following = false;
-
   event :any={
     "id": '',
     "CreatedBy": {
@@ -53,29 +50,10 @@ export class ShowEventPage {
     "place": "",
     "description": "",
     "videoGallery": [],
-    "imagesGallery": [
-      {
-        "downloadLink" : "",
-      }
-    ]
+    "imagesGallery": [],
+    "loadedMedias":''
   };
-
-
-  user = {
-    name: 'Paula Bolliger',
-    profileImage: 'assets/img/avatar/girl-avatar.png',
-    coverImage: 'assets/img/background/background-5.jpg',
-    occupation: 'Designer',
-    location: 'Seattle, WA',
-    description: 'A wise man once said: The more you do something, the better you will become at it.',
-    followers: 456,
-    following: 1052,
-    posts: 35
-  };
-
-  posts = [
-   
-  ];
+  posts = [];
 
   constructor(
     public navCtrl: NavController,
@@ -87,10 +65,7 @@ export class ShowEventPage {
      public eventProvider : EventProvider,
      public params: NavParams,
 
-  ) { 
-
-
-  }
+  ){ }
 
   ionViewDidLoad() {
     console.log('Hello ProfileFour Page');
@@ -101,14 +76,13 @@ export class ShowEventPage {
 
     this.eventProvider.getEvent('/api/show-event/'+this.id_event).then(data=>{
 
-      console.log("show event ===> ",data['hydra:member'][0])
-     
       // let img = data['hydra:member'][0].imagesGallery[0].downloadLink === undefined ? '' : data['hydra:member'][0].imagesGallery[0].downloadLink;
-      
+
       this.event = data['hydra:member'][0];
+      this.event.CreatedBy.avatar.downloadLink =  this.event.CreatedBy.avatar.downloadLink == null ? 'assets/imgs/avatar/marty-avatar.png' : this.event.CreatedBy.avatar.downloadLink ;
+      this.event.imagesGallery.img1 =  this.event.imagesGallery.img1 == null ? '/assets/imgs/profile_image_1488952985.6978.png' : this.event.imagesGallery.img1 ;
 
-      console.log(this.event.imagesGallery[0].downloadLink)
-
+      this.posts =  data['hydra:member'][0].loadedMedias;
     })
 
   }
@@ -175,22 +149,19 @@ export class ShowEventPage {
     });
   }
 
-  dataG :any;
 
   UploadImg(){
-   
+
     // let postData = new FormData();
     // postData.append('avatar',this.chosenPicture);
 
     // uploadFile(imageURI, key ='avatar', route = '/api/upload-avatar', isPresentToast = true) {
 
-    
+
     this.eventProvider.uploadFile(this.chosenPicture,'imageUpload',`/api/event/upload-media/${this.id_event}`,true).then((data : FileUploadResult)=>{
-     
+
       let coData = JSON.parse(data.response)["hydra:member"][0];
       // console.log(coData)
-      
-      
       console.log(coData.imgUp.downloadLink)
 
       this.posts.push( {
@@ -203,14 +174,8 @@ export class ShowEventPage {
 
     })
 
-    
-
-    
-
-    
-
   }
-  
+
 
 
 }

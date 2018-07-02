@@ -30,7 +30,7 @@
           <ion-input type="number" formControlName="cvv" placeholder="CVV CODE" name="cvv" [(ngModel)]="payment.cvv" ></ion-input>
         </ion-item>
         <ion-item>
-          <ion-input type="number" formControlName="price" placeholder="PRICE" name="price" [(ngModel)]="payment.price" ></ion-input>
+          <ion-label>{{payment.price/100}} €</ion-label>
         </ion-item>
 
       </ion-list>
