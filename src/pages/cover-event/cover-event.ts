@@ -3,7 +3,6 @@ import {ActionSheetController, IonicPage, LoadingController, NavController, NavP
 import {PaymentPage} from "../payment/payment";
 import {EventProvider} from "../../providers/event/event";
 import {InviteFriendsPage} from "../invite-friends/invite-friends";
-import {EventChallengePage} from "../event-challenge/event-challenge";
 import {Storage} from "@ionic/storage";
 import {CameraProvider} from "../../providers/util/camera.provider";
 import {EventRoutes} from "../../providers/event/event.routes";
@@ -49,7 +48,7 @@ export class CoverEventPage {
   onSubmit(){
       this.showLoader()
       this.storage.get('currentEvent').then(event=> {
-          this.uploadImag(event.id).then(()=>{
+          this.uploadImage(event.id).then(()=>{
 
               this.eventProvider.isFreePlan(event.eventPurchase).then(res => {
                   this.loading.dismiss();
@@ -175,12 +174,12 @@ export class CoverEventPage {
     }
 
 
-  uploadImag(id){
+  uploadImage(id){
       let arrayPict =  new Array(this.pictureOne, this.pictureTwo, this.pictureThree)
       let step = null;
       return new Promise((resolve, reject) => {
 
-          Object.keys( arrayPict).forEach((key)=>{
+          Object.keys(arrayPict).forEach((key)=>{
               switch (key){
                   case '0':
                       step = 'firstImageCover'
@@ -194,7 +193,10 @@ export class CoverEventPage {
                   default:
                       step = 'firstImageCover'
               }
+
+              console.log('arrayPict[key]', arrayPict[key])
               if(arrayPict[key] != null ){
+                  console.log('arrayPict[key] is not null')
                   this.eventProvider.uploadFile(arrayPict[key], 'imageFile', EventRoutes.apiUploadCoverEvent + id + '/'+step, false).then((res)=>{
                       console.log(res , 'image '+key+'is uploaded')
                       if(step === 'thirdImageCover'){
@@ -204,7 +206,7 @@ export class CoverEventPage {
                       console.log(err)
                       reject(err)
                   });
-              }
+              }else{resolve('ok')}
           })
 
 

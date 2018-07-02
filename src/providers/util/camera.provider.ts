@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Camera } from '@ionic-native/camera';
-import { Platform, ActionSheetController, ToastController, LoadingController } from 'ionic-angular';
+import { Platform, ActionSheetController, LoadingController } from 'ionic-angular';
 import { EventProvider } from '../event/event';
 
 @Injectable()
@@ -10,7 +10,6 @@ export class CameraProvider {
   constructor(
     private camera: Camera,
     public loadingCtrl: LoadingController,
-    private toastCtrl: ToastController,
     public platform: Platform,
     public actionsheetCtrl: ActionSheetController,
     public eventProvider : EventProvider

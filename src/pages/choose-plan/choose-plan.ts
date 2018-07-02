@@ -42,9 +42,19 @@ export class ChoosePlanPage {
     })
   }
 
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad ChoosePlanPage');
-  }
+            headers = headers.set('Content-Type', 'application/json; charset=utf-8');
+            headers = headers.set('Authorization', 'Bearer ' + tok);
+            this.apiProvider.get('/api/plans', {headers: headers}).then(dataPlans => {
+                this.plans = dataPlans['hydra:member'];
+            }).catch(error => {
+            })
+        }).catch(error => {
+        })
+    }
+
+    ionViewDidLoad() {
+        console.log('ionViewDidLoad ChoosePlanPage');
+    }
 
   cancelAction() {
     this.navCtrl.push(EventsPage);

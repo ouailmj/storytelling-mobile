@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, LoadingController } from 'ionic-angular';
 import { EventProvider } from '../../providers/event/event';
 import { ShowEventPage } from '../show-event/show-event';
 /**
@@ -17,13 +17,22 @@ import { ShowEventPage } from '../show-event/show-event';
 export class EventsPage {
 
     events :any = [];
+    loading: any;
 
-    constructor(public navCtrl: NavController, public navParams: NavParams,public eventProvider : EventProvider) {
+    constructor(
+         public navCtrl: NavController,
+         public navParams: NavParams,
+         public eventProvider : EventProvider,
+         public loadingCtrl: LoadingController) {
+            this.showLoader();
 
         console.log("list events");
         eventProvider.getEvents().then( data =>{
-          console.log("in pqge event ",data[0].imagesGallery);
-            this.events = data;
+          console.log("in pqge event ",data);
+         this.events = data.length > 0 ? data : [] ;
+
+         this.loading.dismiss();
+//
         });
 
 
@@ -34,6 +43,14 @@ export class EventsPage {
         this.navCtrl.setRoot(ShowEventPage,{id_event:id});
 
     }
+
+    showLoader(){
+        this.loading = this.loadingCtrl.create({
+            content: 'Loading...'
+        });
+    
+        this.loading.present();
+      }
 
 
 }

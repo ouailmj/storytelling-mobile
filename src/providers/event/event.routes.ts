@@ -10,4 +10,5 @@ export const EventRoutes = {
     apiPayment: '/api/event/add-payment/',
     apiIsTotalPayed: '/api/is-total-payed/',
     apiInviteFriends: '/api/event/invite-friends/',
+    apiPriceEvent: '/api/event/price/',
 };

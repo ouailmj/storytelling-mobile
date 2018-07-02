@@ -16,7 +16,7 @@ export class HomePage {
 
   loading: any;
   loginData:UserData = {
-    username: "admin",
+    username: "user_test",
     password: "f%/R4Uk#](wUvM'V",
   };
   errorAuthentication=false;
@@ -24,7 +24,12 @@ export class HomePage {
   authForm: FormGroup;
 
 
-  constructor(public navCtrl: NavController, public loadingCtrl: LoadingController,private toastCtrl: ToastController,private authService:AuthProvider,private storage: Storage,public formBuilder: FormBuilder) {
+  constructor(public navCtrl: NavController,
+     public loadingCtrl: LoadingController,
+     private toastCtrl: ToastController,
+     private authService:AuthProvider,
+     private storage: Storage,
+     public formBuilder: FormBuilder) {
 
     this.navCtrl = navCtrl;
 
