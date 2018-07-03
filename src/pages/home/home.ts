@@ -3,7 +3,6 @@ import { NavController, LoadingController, ToastController } from 'ionic-angular
 import { AuthProvider } from '../../providers/auth/auth';
 import { UserData } from '../../providers/types/userData';
 import { RegisterPage } from '../register/register';
-import { Storage } from '@ionic/storage';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { EventsPage } from '../events/events';
 

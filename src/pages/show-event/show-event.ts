@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, LoadingController, Platform, ActionSheetController } from 'ionic-angular';
-
 import { EventProvider } from '../../providers/event/event';
 import { CameraProvider } from '../../providers/util/camera.provider';
 import { FileUploadResult } from '@ionic-native/file-transfer';

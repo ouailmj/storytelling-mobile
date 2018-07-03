@@ -65,7 +65,8 @@ import { ChoosePlanPage } from '../pages/choose-plan/choose-plan';
 BrowserModule,
     HttpClientModule,
     IonicModule.forRoot(StoryTellingApp),
-    IonicStorageModule.forRoot()
+    IonicStorageModule.forRoot(),
+
   ],
   bootstrap: [IonicApp],
   entryComponents: [
