@@ -36,6 +36,7 @@ import { InviteFriendsPage } from '../pages/invite-friends/invite-friends';
 import { PaymentPage } from '../pages/payment/payment';
 import { FinishCreateEventPage } from '../pages/finish-create-event/finish-create-event';
 import { ChoosePlanPage } from '../pages/choose-plan/choose-plan';
+import {ChangepPasswordPage} from "../pages/changep-password/changep-password";
 
 @NgModule({
   declarations: [
@@ -59,6 +60,7 @@ import { ChoosePlanPage } from '../pages/choose-plan/choose-plan';
       EventChallengePage,
       InviteFriendsPage,
       PaymentPage,
+      ChangepPasswordPage,
       FinishCreateEventPage
   ],
   imports: [
@@ -87,6 +89,7 @@ BrowserModule,
       EventInformationPage,
       NewEventPage,
       CoverEventPage,
+      ChangepPasswordPage,
       EventChallengePage,
       InviteFriendsPage,
       PaymentPage,

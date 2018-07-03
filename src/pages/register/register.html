@@ -5,23 +5,27 @@
       <h4>to continue</h4>
   </div>
   <div class="inputs">
+
+    <form [formGroup]="authForm"  (ngSubmit)="onSubmit()">
     <ion-list>
 
       <ion-item>
-        <ion-input type="text" placeholder="Username"></ion-input>
+        <ion-input type="text"  formControlName="username" [(ngModel)]="regData.username" placeholder="Username"></ion-input>
       </ion-item>
 
       <ion-item>
-        <ion-input type="email" placeholder="email"></ion-input>
+        <ion-input type="email"  formControlName="email" [(ngModel)]="regData.email" placeholder="email"></ion-input>
       </ion-item>
 
       <ion-item>
-        <ion-input type="password" placeholder="Password"></ion-input>
+        <ion-input type="password"  formControlName="password" [(ngModel)]="regData.plainPassword"  placeholder="Password"></ion-input>
       </ion-item>
+      <span class="msg-pswd">Enter between 6 and 18 charchter</span>
 
     </ion-list>
     <div class="buttons">
-      <button type="button" name="button">log in</button>
+      <button type="submit" name="button">log in</button>
     </div>
+    </form>
   </div>
 </ion-content>

@@ -30,14 +30,11 @@ export class StoryTellingApp {
     });
 
     this.pages = [
-      { title: 'Edit Profil', component: WelcomePage },
-      { title: 'Change Password', component: ChangepPasswordPage },
-      { title: 'reset password', component: PasswordRequestPage },
-      { title: 'upload', component: WelcomePage },
-      { title: 'profil', component: ProfilPage },
-      { title: 'Events', component: EventsPage },
-      { title: 'new Event', component: NewEventPage },
-      { title: 'Log out', component: WelcomePage }
+      { title: 'PROFILE', component: ProfilPage },
+      { title: 'CHANGE PASSWORD', component: ChangepPasswordPage },
+      { title: 'EVENTS LIST', component: EventsPage },
+      { title: 'NEW EVENT', component: NewEventPage },
+      { title: 'LOG OUT ', component: WelcomePage }
     ];
   }
 

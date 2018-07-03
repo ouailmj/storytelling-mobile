@@ -20,7 +20,7 @@ import {MailCheckPage} from "../mail-check/mail-check"
 export class RegisterPage {
 
   loading: any;
-  regData:UserRegister = { "username":"", "plainPassword":"","email":""};
+  regData:UserRegister = { username:"", plainPassword:"",email:""};
   authForm: FormGroup;
 
   constructor(public navCtrl: NavController, public navParams: NavParams, public loadingCtrl: LoadingController,private toastCtrl: ToastController,private authService:AuthProvider,public formBuilder: FormBuilder) {
@@ -30,7 +30,7 @@ export class RegisterPage {
       
         username: ['', Validators.compose([Validators.required, Validators.pattern('[a-zA-Z]*'), Validators.minLength(4), Validators.maxLength(30)])],
         email: ['', Validators.compose([Validators.required, Validators.email, Validators.minLength(6), Validators.maxLength(30)])],
-        password: ['', Validators.compose([Validators.required, Validators.minLength(8)])],
+        password: ['', Validators.compose([Validators.required, Validators.minLength(6)])],
       
       });
 
@@ -46,17 +46,13 @@ export class RegisterPage {
     this.navCtrl.push(MailCheckPage);
   }
 
-  onSubmit(value: any): void { 
+  onSubmit(): void {
     console.log("submit")
 
     let messageError="";
     if(this.authForm.valid) {
 
       console.log("valid")
-        this.regData.username = value.username;
-        this.regData.plainPassword = value.password;
-        this.regData.email = value.email;
-        
      
         this.showLoader();
 
@@ -90,27 +86,6 @@ export class RegisterPage {
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad RegisterPage');
-  }
-
-
-  doSignup() {
-
-
-    this.showLoader();
-
-    this.authService.register(this.regData).then((result) => {
-
-      this.loading.dismiss();
-      // this.navCtrl.pop();
-
-      console.log(result);
-    }, (err) => {
-
-      this.loading.dismiss();
-      this.presentToast("err");
-
-    });
-
   }
 
   showLoader(){
