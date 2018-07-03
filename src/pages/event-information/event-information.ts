@@ -56,6 +56,9 @@ export class EventInformationPage {
     onSubmit(){
 
       this.showLoader();
+      console.log('hhhhhhhhhhhhhhhhhhhhhhhhhhhhh',parseInt(this.eventInformation.idCat.toString()))
+        this.eventInformation.idCat = parseInt(this.eventInformation.idCat.toString())
+        console.log('hhhhhhhhhhhhhhhhhhhhhhhhhhhhh',this.eventInformation)
         this.storage.get('currentEvent').then(event=>{
 
             this.eventProvider.addEventInformation(this.eventInformation, event.id).then(res =>{
