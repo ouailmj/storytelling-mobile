@@ -40,6 +40,18 @@ export class AuthProvider {
           response.json().then(result=>{
 
           this.storage.set('token', result.token);
+              let headers = new HttpHeaders();
+
+              headers = headers.set('Content-Type', 'application/json; charset=utf-8');
+              headers = headers.set('Authorization', 'Bearer ' + result.token);
+
+              this.apiProvider.get(AuthRoutes.apiCurrentUser, {headers: headers}).then(user => {
+
+                  this.storage.set('user', user);
+              }).catch(err=>{
+                  console.log(err)
+                  reject(err)
+              })
 
           resolve(result);
 
@@ -68,8 +80,7 @@ export class AuthProvider {
   register(userData: UserRegister): Promise<any> {
 
     return new Promise((resolve, reject) => {
-      this.apiProvider.post(AuthRoutes.apiReg, userData).then(data=>{
-
+      this.apiProvider.post(AuthRoutes.apiSignUp, userData).then(data=>{
         resolve(data)
       }).catch(error=>{
 
