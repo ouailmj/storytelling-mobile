@@ -15,7 +15,6 @@ import { HttpClientModule } from '@angular/common/http';
 import { RegisterPage } from '../pages/register/register';
 import { ProfilproviderProvider } from '../providers/profilprovider/profilprovider';
 import { UserProvider } from '../providers/user/user';
-
 import { Camera } from '@ionic-native/camera';
 import { CameraProvider } from '../providers/util/camera.provider';
 import { FileTransfer,FileTransferObject } from '@ionic-native/file-transfer';
@@ -37,6 +36,7 @@ import { InviteFriendsPage } from '../pages/invite-friends/invite-friends';
 import { PaymentPage } from '../pages/payment/payment';
 import { FinishCreateEventPage } from '../pages/finish-create-event/finish-create-event';
 import { ChoosePlanPage } from '../pages/choose-plan/choose-plan';
+import {ChangepPasswordPage} from "../pages/changep-password/changep-password";
 
 @NgModule({
   declarations: [
@@ -60,13 +60,15 @@ import { ChoosePlanPage } from '../pages/choose-plan/choose-plan';
       EventChallengePage,
       InviteFriendsPage,
       PaymentPage,
+      ChangepPasswordPage,
       FinishCreateEventPage
   ],
   imports: [
 BrowserModule,
     HttpClientModule,
     IonicModule.forRoot(StoryTellingApp),
-    IonicStorageModule.forRoot()
+    IonicStorageModule.forRoot(),
+
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -83,11 +85,11 @@ BrowserModule,
       PasswordRequestPage,
       EventsPage,
       ShowEventPage,
-
       ChoosePlanPage,
       EventInformationPage,
       NewEventPage,
       CoverEventPage,
+      ChangepPasswordPage,
       EventChallengePage,
       InviteFriendsPage,
       PaymentPage,
@@ -108,7 +110,6 @@ BrowserModule,
     File,
     ToastService,
     UserProvider,
-
   ]
 })
 export class AppModule {}

@@ -1,25 +1,40 @@
 page-welcome {
+  @font-face {
+    font-family: 'voiceInMyHead';
+    src: url("../assets/fonts/Voice In My Head.otf") format("otf");
+  }
   @import url('https://fonts.googleapis.com/css?family=Monoton');
+    .ion-page{
+      position: fixed !important;
+    }
 
+    .scroll-content{
+background: linear-gradient(135deg, rgba(13, 12, 58, 0.856) 50%,rgba(67,198,172,0.5) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#161454', endColorstr='#8043c6ac',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
+    }
     #welcome{
-      background: url('../assets/imgs/login_cover.jpg');
-      background-size: cover;
+      background: url('../assets/imgs/login_cover.png');
+      background-origin: border-box;
+      background-size: cover ;
+      background-position: 30%;
+      background-repeat: no-repeat;
       text-align: center;
     }
 
     #welcome h1{
       text-transform: uppercase;
       color: #43C6AC;
-      font-family: 'Monoton', cursive;
+      font-family: 'voiceInMyHead';
       font-size: 3em;
-      margin: 25% 0 0 0
+      margin: 20% 0 0 0
     }
 
     h2{
       text-transform: uppercase;
       color: #fff;
-      font-weight: lighter;
-      letter-spacing: 10px;
+      font-weight: 400;
+      letter-spacing: 8px;
+      font-size: 18px;
       margin: 0
     }
 
@@ -39,12 +54,13 @@ page-welcome {
       line-height: 20px;
       margin: 10px 0;
       color: #ddd;
+      font-size: 12px;
       font-weight: 500;
       letter-spacing: 4px;
     }
 
     .buttons{
-      margin-top: 25%;
+      margin-top: 15%;
     }
 
     .buttons button{

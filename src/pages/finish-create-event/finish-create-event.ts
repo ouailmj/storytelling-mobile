@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import {EventsPage} from "../events/events";
 
 /**
  * Generated class for the FinishCreateEventPage page.
@@ -21,5 +22,7 @@ export class FinishCreateEventPage {
   ionViewDidLoad() {
     console.log('ionViewDidLoad FinishCreateEventPage');
   }
-
+    listEvent(){
+    this.navCtrl.push(EventsPage);
+    }
 }

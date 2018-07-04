@@ -3,9 +3,9 @@ import { NavController, LoadingController, ToastController } from 'ionic-angular
 import { AuthProvider } from '../../providers/auth/auth';
 import { UserData } from '../../providers/types/userData';
 import { RegisterPage } from '../register/register';
-import { Storage } from '@ionic/storage';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { EventsPage } from '../events/events';
+import {PasswordRequestPage} from "../password-request/password-request";
 
 
 @Component({
@@ -28,7 +28,6 @@ export class HomePage {
      public loadingCtrl: LoadingController,
      private toastCtrl: ToastController,
      private authService:AuthProvider,
-     private storage: Storage,
      public formBuilder: FormBuilder) {
 
     this.navCtrl = navCtrl;
@@ -84,6 +83,10 @@ export class HomePage {
 
 
   }
+
+    forgotPassword(){
+        this.navCtrl.push(PasswordRequestPage);
+    }
 
   showLoader(){
     this.loading = this.loadingCtrl.create({

@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, LoadingController, ToastController } from 'ionic-angular';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { AuthProvider } from '../../providers/auth/auth';
+import {Storage} from "@ionic/storage";
 
 /**
  * Generated class for the ChangepPasswordPage page.
@@ -17,6 +18,8 @@ import { AuthProvider } from '../../providers/auth/auth';
 })
 export class ChangepPasswordPage {
   loading: any;
+  userCurrent: any;
+  fullName: '';
   authForm: FormGroup;
   user = {
     "oldPassword": "",
@@ -27,12 +30,17 @@ export class ChangepPasswordPage {
   constructor(public navCtrl: NavController,
               public navParams: NavParams,
               public formBuilder: FormBuilder,
+              private storage: Storage,
               private authService:AuthProvider,
               public loadingCtrl: LoadingController,
               private toastCtrl: ToastController
   ) {
 
-
+      this.storage.get('user').then(user => {
+        this.userCurrent = user
+        this.fullName = user.fullName
+          console.log('HHHHHHHHHHH', user)
+      }).catch(err=>{console.log(err)})
     this.authForm = formBuilder.group({
 
       oldPassword: ['', Validators.compose([Validators.required, Validators.minLength(6)])],

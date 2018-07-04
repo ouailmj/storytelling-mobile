@@ -4,7 +4,10 @@
   </ion-navbar>
 </ion-header>
 <ion-content>
-  
+
+  <button class="menu-btn" ion-button menuToggle icon-only>
+    <ion-icon name='menu'></ion-icon>
+  </button>
   <ion-card *ngFor="let event of events"  (click)="eventDetails(event.event.id)">
     <ion-item>
       <ion-avatar item-start>

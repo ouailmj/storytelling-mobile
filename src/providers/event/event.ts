@@ -38,7 +38,11 @@ export class EventProvider {
                 headers = headers.set('Authorization', 'Bearer ' + tok);
 
                 this.apiProvider.get('/api/event/new', {headers: headers}).then(rep => {
-                    console.log(rep)
+                    this.apiProvider.get(rep.appEventURI, {headers: headers}).then(event => {
+                        this.storage.set('currentEvent', event)
+                        console.log('event eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee',event)
+                    }).catch(err=>{console.log('error');reject(err);})
+
                     resolve("ok");
                 }).catch(error => {
                     console.log('error')

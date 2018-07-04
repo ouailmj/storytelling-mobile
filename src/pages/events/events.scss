@@ -1,5 +1,12 @@
-page-card-social {
+page-events {
     ion-col {
       padding: 0;
     }
+
+  .menu-btn{
+    background: transparent !important;
+  }
+  .menu-btn ion-icon{
+    color: green !important;
+  }
   }
