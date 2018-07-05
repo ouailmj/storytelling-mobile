@@ -1,9 +1,13 @@
 page-welcome {
+
     @font-face {
         font-family: 'voiceInMyHead';
-        src: url("../assets/fonts/Voice In My Head.otf");
+        src: url("assets/fonts/Voice In My Head.otf");
     }
     @import url('https://fonts.googleapis.com/css?family=Monoton');
+    body {
+        font-family: voiceInMyHead !important;
+    } 
     .ion-page {
         position: fixed !important;
     }
@@ -78,4 +82,6 @@ page-welcome {
         color: #fff;
         font-size: 1em
     }
+
+
 }

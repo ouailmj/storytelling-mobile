@@ -1,6 +1,7 @@
 page-home {
   #login-page{
     background: #0d1d38;
+    position: relative
   }
     @import url('https://fonts.googleapis.com/css?family=Kaushan+Script');
     @import url('https://fonts.googleapis.com/css?family=Montserrat');
@@ -87,17 +88,18 @@ page-home {
 
   .inputs ion-item{
     background: #0d1d38;
-    border: none !important;
+
   }
 
   .inputs ion-input{
-    background: #0d1d38;
-    border-bottom: 1px solid #fff;
+    background: transparent;
+    border-bottom: none !important;
     color: #fff;
-    font-family: Montserrat
+    font-family: Montserrat;
+    margin-left: 20px;
   }
 
-  .item-md.item-input.ng-valid.item-input-has-value:not(.input-has-focus):not(.item-input-has-focus) .item-inner, .item-md.item-input.ng-valid.input-has-value:not(.input-has-focus):not(.item-input-has-focus) .item-inner{
-    border: none !important
+  .item-inner{
+    border: none !important;
   }
 }
