@@ -82,6 +82,9 @@ export class ShowEventPage {
       this.event.CreatedBy.avatar.downloadLink =  this.event.CreatedBy.avatar.downloadLink == null ? 'assets/imgs/avatar/marty-avatar.png' : this.event.CreatedBy.avatar.downloadLink ;
       this.event.imagesGallery.img1 =  this.event.imagesGallery.img1 == null ? '/assets/imgs/profile_image_1488952985.6978.png' : this.event.imagesGallery.img1 ;
 
+
+      console.log('======>',data['hydra:member'][0].loadedMedias);
+
       this.posts =  data['hydra:member'][0].loadedMedias;
     })
 
@@ -123,7 +126,7 @@ export class ShowEventPage {
     const loading = this.loadingCtrl.create();
 
     loading.present();
-    return this.cameraProvider.getPictureFromCamera().then(picture => {
+    return this.cameraProvider.getPictureFromCamera(false).then(picture => {
       if (picture) {
         this.chosenPicture = picture;
         this.UploadImg();
@@ -138,7 +141,7 @@ export class ShowEventPage {
     const loading = this.loadingCtrl.create();
 
     loading.present();
-    return this.cameraProvider.getPictureFromPhotoLibrary().then(picture => {
+    return this.cameraProvider.getPictureFromPhotoLibrary(false).then(picture => {
       if (picture) {
         this.chosenPicture = picture;
         this.UploadImg();
@@ -151,12 +154,6 @@ export class ShowEventPage {
 
 
   UploadImg(){
-
-    // let postData = new FormData();
-    // postData.append('avatar',this.chosenPicture);
-
-    // uploadFile(imageURI, key ='avatar', route = '/api/upload-avatar', isPresentToast = true) {
-
 
     this.eventProvider.uploadFile(this.chosenPicture,'imageUpload',`/api/event/upload-media/${this.id_event}`,true).then((data : FileUploadResult)=>{
 

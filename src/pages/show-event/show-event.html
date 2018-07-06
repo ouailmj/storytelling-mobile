@@ -22,7 +22,7 @@
         <ion-card *ngFor="let post of posts">
           <ion-item>
             <ion-avatar item-start>
-              <img [src]="post.avatar">
+              <img [src]="post.avatar" onerror="this.src='/assets/imgs/avatar/cosima-avatar.jpg'">
             </ion-avatar>
             <h2 class="sticky">{{post.userName}}</h2>
             <p>{{post.date}}</p>
