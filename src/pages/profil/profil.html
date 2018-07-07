@@ -1,67 +1,65 @@
-<ion-content padding>
+<ion-content>
+  <form [formGroup]="authForm" (ngSubmit)="onSubmit(authForm.value)">
+    <div class="header">
+      <div class="panel">
+        <button class="menu-btn" ion-button menuToggle icon-only>
+          <ion-icon name='menu'></ion-icon>
+        </button>
+        <p>Edit profil</p>
+        <button class="cancel-btn" ion-button icon-only>
+            <ion-icon name='ios-close'></ion-icon>
+          </button>
+      </div>
+      <div class="cover" align="center">
+          <img id="profile-image" [src]="this.chosenPicture" onerror="this.src='assets/imgs/profile.png'" (click)="changePicture()">
+          <h4 id="username">{{this.user.fullName}}</h4>
+          <button id="btn-event" ion-button color="primary" round>My Events</button>
+      </div>
+    </div>
+    <ion-list class="inputs">
 
-<button class="menu-btn" ion-button menuToggle icon-only>
-       <ion-icon name='menu'></ion-icon>
-    </button>
-   <form [formGroup]="authForm" (ngSubmit)="onSubmit(authForm.value)">
-        
-        <div class="cover" align="center">
-          <img class="profile-image" [src]="this.chosenPicture" onerror="this.src='assets/imgs/profile.png'" (click)="changePicture()">
-            <h4>{{this.user.fullName}}</h4>
-        </div>
-      <ion-list>
-        <div class="wrap-input100 validate-input" data-validate = "Valid email is required: ex@abc.xyz">
-            <input class="input100" type="text" placeholder="Full Name" [(ngModel)]="user.fullName" formControlName="fullName">
-            <span class="focus-input100"></span>
-            <span class="symbol-input100">
-              <ion-icon class="symbol-input100" name="person" item-start></ion-icon>
-            </span>
-          </div>
- 
-          <div class="wrap-input100 validate-input" data-validate = "Valid email is required: ex@abc.xyz">
-              <input class="input100" type="text" placeholder="Pseudo" [(ngModel)]="user.username" formControlName="username">
-              <span class="focus-input100"></span>
-              <span class="symbol-input100">
-                <ion-icon class="symbol-input100" name="contact" item-start></ion-icon>
-              </span>
-          </div>
+      <ion-item>
+        <ion-label>
+          <ion-icon name="contact"></ion-icon>
+        </ion-label>
+        <ion-input type="text" [(ngModel)]="user.fullName" formControlName="fullName"></ion-input>
+      </ion-item>
+    
+      <ion-item>
+        <ion-label>
+          <ion-icon name="contact"></ion-icon>
+        </ion-label>
+        <ion-input type="text" [(ngModel)]="user.username" formControlName="username"></ion-input>
+      </ion-item>
 
-          <div class="wrap-input100 validate-input" data-validate = "Valid email is required: ex@abc.xyz">
-              <input class="input100" type="text" placeholder="Email" [(ngModel)]="user.email" formControlName="email">
-              <span class="focus-input100"></span>
-              <span class="symbol-input100">
-                <ion-icon class="symbol-input100" name="mail" item-start></ion-icon>
-              </span>
-          </div>
+      <ion-item>
+        <ion-label>
+          <ion-icon name="mail"></ion-icon>
+        </ion-label>
+        <ion-input type="text" [(ngModel)]="user.email" formControlName="email"></ion-input>
+      </ion-item>
 
-          <div class="wrap-input100 validate-input" data-validate = "Valid email is required: ex@abc.xyz">
-              <input class="input100" type="text" placeholder="Phone Number" [(ngModel)]="user.phoneNumber" formControlName="phoneNumber">
-              <span class="focus-input100"></span>
-              <span class="symbol-input100">
-                <ion-icon class="symbol-input100" name="call" item-start></ion-icon>
-              </span>
-          </div>
+      <ion-item>
+        <ion-label>
+          <ion-icon name="phone-portrait"></ion-icon>
+        </ion-label>
+        <ion-input type="text" [(ngModel)]="user.phoneNumber" formControlName="phoneNumber"></ion-input>
+      </ion-item>
 
-          <div class="wrap-input100 validate-input" data-validate = "Valid email is required: ex@abc.xyz">
-              <input class="input100" type="text" placeholder="TimeZone" [(ngModel)]="user.timezoneId" formControlName="timezoneId">
-              <span class="focus-input100"></span>
-              <span class="symbol-input100">
-                <ion-icon class="symbol-input100" name="globe" item-start></ion-icon>
-              </span>
-          </div>
-          <hr>
-          <div class="wrap-input100 validate-input" data-validate = "Valid email is required: ex@abc.xyz">
-              <input class="input100" type="password" placeholder="Password" [(ngModel)]="user.password" formControlName="password">
-              <span class="focus-input100"></span>
-              <span class="symbol-input100">
-                <ion-icon class="symbol-input100" name="key" item-start></ion-icon>
-              </span>
-          </div>
+      <ion-item >
+        <ion-label>
+          <ion-icon name="locate"></ion-icon>
+        </ion-label>
+        <ion-input type="text" [(ngModel)]="user.timezoneId" formControlName="timezoneId"></ion-input>
+      </ion-item>
 
-        
-      </ion-list>
-      <button ion-button block class="login100-form-btn marginTop signup" color="primary" >Save</button>
-      <button ion-button block class="login100-form-btn dlt-btn">Delete Account</button>
+      <ion-item >
+        <ion-label>
+          <ion-icon name="key"></ion-icon>
+        </ion-label>
+        <ion-input type="text" [(ngModel)]="user.password" formControlName="password"></ion-input>
+      </ion-item>
+    </ion-list>
   </form>
-
 </ion-content>
+    

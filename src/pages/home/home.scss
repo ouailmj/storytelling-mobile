@@ -1,4 +1,8 @@
 page-home {
+  #login-page{
+    background: #0d1d38;
+    position: relative
+  }
     @import url('https://fonts.googleapis.com/css?family=Kaushan+Script');
     @import url('https://fonts.googleapis.com/css?family=Montserrat');
     @import url('https://fonts.googleapis.com/css?family=Monoton');
@@ -7,75 +11,26 @@ page-home {
     .circle-one{
       height: 300px;
       width: 300px;
-      /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#161954+0,43c6ac+100&0.65+0,0.72+100 */
-      background: -moz-linear-gradient(45deg,  rgba(22,25,84,0.65) 0%, rgba(67,198,172,0.72) 100%); /* FF3.6-15 */
-      background: -webkit-linear-gradient(45deg,  rgba(22,25,84,0.65) 0%,rgba(67,198,172,0.72) 100%); /* Chrome10-25,Safari5.1-6 */
-      background: linear-gradient(45deg,  rgba(22,25,84,0.65) 0%,rgba(67,198,172,0.72) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
-      filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#a6161954', endColorstr='#b843c6ac',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
+      background: #161954;
+      background: linear-gradient(135deg, #43c6ac 0%,#161954 100%);
+      filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#161954', endColorstr='#43c6ac',GradientType=1 );
       border-radius: 100%;
       position: relative;
       top: -20%;
-      left: -15%;
+      left: -20%;
+      -webkit-box-shadow: 0px 0px 40px 0px rgba(0,0,0,0.75);
+      -moz-box-shadow: 0px 0px 40px 0px rgba(0,0,0,0.75);
+      box-shadow: 0px 0px 40px 0px rgba(0,0,0,0.75);
     }
 
-    .circle-two{
-      height: 200px;
-      width: 200px;
-      border-radius: 100%;
-      position: absolute;
-      top: -5%;
-      left: 15%;
-      &:before {
-    position: absolute;
-    content: "";
-    width: 104%;
-    height: 104%;
-    top: -2%;
-    left: -2%;
-    background-color: white;
-    border-radius: 50%;
-    z-index: -1;
-  }
-
-  &:after {
-    position: absolute;
-    content: "";
-    width: 106%;
-    height: 106%;
-    top: -3%;
-    left: -3%;
-    background-color: $primary-gradient-color-1;
-    background-image: linear-gradient(to right bottom, $primary-gradient-color-1 0%, $secondary-gradient-color-2 100%);
-    border-radius: 50%;
-    z-index: -2;
-    }
-  }
-
-  .circle-tree{
-    height: 30px;
-    width: 30px;
-    /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#161954+0,43c6ac+100&0.65+0,0.72+100 */
-    background: -moz-linear-gradient(45deg,  rgba(22,25,84,0.65) 0%, rgba(67,198,172,1) 100%); /* FF3.6-15 */
-    background: -webkit-linear-gradient(45deg,  rgba(22,25,84,0.65) 0%,rgba(67,198,172,1) 100%); /* Chrome10-25,Safari5.1-6 */
-    background: linear-gradient(45deg,  rgba(22,25,84,0.65) 0%,rgba(67,198,172,1) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
-    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#a6161954', endColorstr='#b843c6ac',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
+  .circle-two{
+    height: 220px;
+    width: 220px;
     border-radius: 100%;
     position: absolute;
-    top: 10%;
-    left: 10%;
-  }
-  .circle-four{
-    height: 100px;
-    width: 100px;
-    /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#161954+0,43c6ac+100&0.65+0,0.72+100 */
-    background: -moz-linear-gradient(45deg,  rgba(22,25,84,0.65) 0%, rgba(67,198,172,1) 100%); /* FF3.6-15 */
-    background: -webkit-linear-gradient(45deg,  rgba(22,25,84,0.65) 0%,rgba(67,198,172,1) 100%); /* Chrome10-25,Safari5.1-6 */
-    background: linear-gradient(45deg,  rgba(22,25,84,0.65) 0%,rgba(67,198,172,1) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
-    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#a6161954', endColorstr='#b843c6ac',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
-    border-radius: 100%;
-    position: absolute;
-    top: -5%;
-    left: -5%;
+    top: -10%;
+    left: 5%;
+    border:1px solid rgb(48, 129, 113);
   }
 
   .titre-registe{
@@ -83,42 +38,28 @@ page-home {
     width: 100%;
     text-align: center;
     position: absolute;
-    top: 10%;
+    top: 5%;
   }
 
   .titre-registe h1{
     text-transform: uppercase;
-    color: #161965;
+    color: #43C6AC;
     font-family: 'Monoton', cursive;
     font-size: 3em;
+    margin-bottom: 0;
   }
 
   .titre-registe h4{
     margin: 0;
+    font-size: 22px;
     text-transform: uppercase;
     letter-spacing: 5px;
-    color: #CCC;
-  }
-
-  .inputs{
-    width:80%;
-    text-align: center;
-    margin: -30px auto;
+    color: rgb(235, 233, 233);
   }
 
 
   ion-item, ion-list{
     border:none !important;
-  }
-
-  ion-input{
-    width: 60%;
-    display: block;
-    border-bottom: 1px solid #43c6ac;
-    color: #43c6ac !important
-  }
-  .list-ios .item-block .item-inner, .item-md.item-block .item-inner{
-    border-bottom: none !important
   }
   .buttons{
     width: auto;
@@ -127,9 +68,10 @@ page-home {
   }
 
   .buttons button{
-    padding: 20px 70px;
+    padding: 25px 50px;
     border-radius: 50px;
     text-transform: uppercase;
+    font-weight: lighter;
     letter-spacing: 1.5px;
     background: -moz-linear-gradient(45deg,  rgba(22,25,84,0.65) 0%, rgba(67,198,172,1) 100%); /* FF3.6-15 */
     background: -webkit-linear-gradient(45deg,  rgba(22,25,84,0.65) 0%,rgba(67,198,172,1) 100%); /* Chrome10-25,Safari5.1-6 */
@@ -137,4 +79,39 @@ page-home {
     filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#a6161954', endColorstr='#b843c6ac',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
 
   }
+
+  .inputs{
+    width: 80%;
+    margin: auto;
+    text-align: center;
+  }
+
+  .inputs ion-item{
+    background: #0d1d38;
+    border-bottom: 1px solid #fff !important;
+  }
+
+  .inputs ion-input{
+    background: transparent;
+    border-bottom: none !important;
+    color: #fff;
+    font-family: Montserrat;
+    margin-left: 20px;
+  }
+
+  .item-inner{
+    border: none !important;
+  }
+
+  .item-md.item-input.ng-invalid.ng-touched:not(.input-has-focus):not(.item-input-has-focus) .item-inner {
+    border: none;
+    -webkit-box-shadow: none !important;
+    box-shadow: none !important;
+}
+
+.item-md.item-input.ng-valid.item-input-has-value:not(.input-has-focus):not(.item-input-has-focus) .item-inner, .item-md.item-input.ng-valid.input-has-value:not(.input-has-focus):not(.item-input-has-focus) .item-inner {
+    border: none;
+    -webkit-box-shadow: none !important;
+    box-shadow: none !important;
+}
 }

@@ -1,31 +1,43 @@
-<ion-content id="register">
-  <div class="circle-two"></div>
-  <div class="titre-registe">
-      <h1>sign up</h1>
-      <h4>to continue</h4>
-  </div>
-  <div class="inputs">
-
+<ion-content id="login-page">
+    <div class="circle-one"></div>
+    <div class="circle-two"></div>
+    <div class="titre-registe">
+        <h1>Sign Up</h1>
+        <h4>to continue</h4>
+    </div>
     <form [formGroup]="authForm"  (ngSubmit)="onSubmit()">
+  <div class="inputs">
     <ion-list>
-
+  
       <ion-item>
-        <ion-input type="text"  formControlName="username" [(ngModel)]="regData.username" placeholder="Username"></ion-input>
+          <ion-label>
+            <ion-icon ios="ios-contact" md="md-contact"></ion-icon>
+          </ion-label>
+          <ion-input type="text"  formControlName="username" [(ngModel)]="regData.username" placeholder="Username"></ion-input>
+      </ion-item>
+  
+      <ion-item>
+          <ion-label>
+              <ion-icon ios="ios-key" md="md-key"></ion-icon>
+          </ion-label>
+          <ion-input type="email"  formControlName="email" [(ngModel)]="regData.email" placeholder="email"></ion-input>
       </ion-item>
 
       <ion-item>
-        <ion-input type="email"  formControlName="email" [(ngModel)]="regData.email" placeholder="email"></ion-input>
+          <ion-label>
+              <ion-icon ios="ios-key" md="md-key"></ion-icon>
+          </ion-label>
+          <ion-input type="password"  formControlName="password" [(ngModel)]="regData.plainPassword"  placeholder="Password"></ion-input>
       </ion-item>
-
-      <ion-item>
-        <ion-input type="password"  formControlName="password" [(ngModel)]="regData.plainPassword"  placeholder="Password"></ion-input>
-      </ion-item>
-      <span class="msg-pswd">Enter between 6 and 18 charchter</span>
-
+  
     </ion-list>
     <div class="buttons">
-      <button type="submit" name="button">log in</button>
+      <button ion-button type="submit" name="button">Sign Up</button>
     </div>
-    </form>
+    <p>
+      <a (click)="testclick">Already have account!</a>
+    </p>
   </div>
-</ion-content>
+  </form>
+  </ion-content>
+  
