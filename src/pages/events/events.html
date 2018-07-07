@@ -1,44 +1,33 @@
 <ion-header>
   <ion-navbar>
-    <ion-title>List Events</ion-title>
+    <button class="menu-btn" ion-button menuToggle icon-only>
+        <ion-icon name='menu'></ion-icon>
+    </button>
+    <ion-title>Events</ion-title>
   </ion-navbar>
 </ion-header>
 <ion-content>
+  <div class="menu-bar">
+    <div class="menu-content">
+        <ul>
+            <li>
+                <a href="">upcoming</a>
+            </li>
+            <li>
+                <a href="">Passed</a>
+            </li>
+            <li>
+                <a href="">Draft</a>
+            </li>
+          </ul>
+    </div>
+  </div>
+  <div class="card-event">
+    <div class="event">
 
-  <button class="menu-btn" ion-button menuToggle icon-only>
-    <ion-icon name='menu'></ion-icon>
-  </button>
-  <ion-card *ngFor="let event of events"  (click)="eventDetails(event.event.id)">
-    <ion-item>
-      <ion-avatar item-start>
-        <img [src]="event.event.CreatedBy.downloadLink" onerror="this.src='assets/imgs/avatar/marty-avatar.png'" >
-      </ion-avatar>
-      <h2>{{event.event.CreatedBy.fullName}}</h2>
-      <!-- <p>{{event.event.endsAt}}</p> -->
-    </ion-item>
-    <!--*ngIf="event.imagesGallery.length"-->
-    <img [src]="event.event.imagesGallery.img1"  onerror="this.src='/assets/imgs/profile_image_1488952985.6978.png'" >
+    </div>
+    <div class="event-date">
 
-    <ion-card-content>
-      <p>{{event.event.description}}</p>
-    </ion-card-content>
-    <ion-row>
-      <ion-col>
-        <button ion-button color="primary" clear small icon-left >
-            <ion-icon name="map"></ion-icon> {{event.event.place}} 
-      </button>
-      </ion-col>
-      <ion-col>
-        <button ion-button color="primary" clear small icon-left >
-            <ion-icon name="clock"></ion-icon>
-           {{event.event.startsAt}}
-      </button>
-      </ion-col>
-      <ion-col center text-center>
-        <ion-note>
-          <!-- {{event.totalPayed}} -->
-        </ion-note>
-      </ion-col>
-    </ion-row>
-  </ion-card>
+    </div>
+  </div>
 </ion-content>
