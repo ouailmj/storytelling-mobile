@@ -6,56 +6,26 @@ page-welcome {
     }
     @import url('https://fonts.googleapis.com/css?family=Monoton');
     body {
-        font-family: voiceInMyHead !important;
+        font-family: voiceInMyHead !important; 
     } 
     .ion-page {
         position: fixed !important;
     }
-    .scroll-content {
-        background: linear-gradient(135deg, rgba(13, 12, 58, 0.856) 50%, rgba(67, 198, 172, 0.5) 100%);
-        /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
-    }
     #welcome {
-        background: url('../assets/imgs/login_cover.png');
+        background: url('../assets/imgs/landing.jpg');
         background-origin: border-box;
         background-size: cover;
         background-position: 30%;
         background-repeat: no-repeat;
         text-align: center;
     }
-    #welcome h1 {
-        text-transform: uppercase;
-        color: #43C6AC;
-        font-family: 'voiceInMyHead' !important;
-        font-size: 3em;
-        margin: 20% 0 0 0
-    }
-    h2 {
-        text-transform: uppercase;
-        color: #fff;
-        font-weight: 400;
-        letter-spacing: 8px;
-        font-size: 18px;
-        margin: 0
-    }
+
     .message {
         width: 60%;
-        margin: 5% auto;
+        margin: 75% auto 10px auto;
+        color: #fff
     }
-    .message h5 {
-        color: #fff;
-        font-weight: 300;
-        letter-spacing: 2px;
-        margin: 0;
-    }
-    .message p {
-        line-height: 20px;
-        margin: 10px 0;
-        color: #ddd;
-        font-size: 12px;
-        font-weight: 500;
-        letter-spacing: 4px;
-    }
+    
     .buttons {
         margin-top: 15%;
     }
@@ -83,5 +53,10 @@ page-welcome {
         font-size: 1em
     }
 
-
+    #login{
+        margin-top: 15px !important;
+        font-weight: bold;
+        color: #161954;
+        font-size: 16px;
+      }
 }

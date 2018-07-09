@@ -1,43 +1,39 @@
-<ion-content id="login-page">
-    <div class="circle-one"></div>
-    <div class="circle-two"></div>
-    <div class="titre-registe">
-        <h1>Sign Up</h1>
-        <h4>to continue</h4>
-    </div>
+<ion-content>
+  <div id="login-page">
     <form [formGroup]="authForm"  (ngSubmit)="onSubmit()">
-  <div class="inputs">
-    <ion-list>
-  
-      <ion-item>
-          <ion-label>
-            <ion-icon ios="ios-contact" md="md-contact"></ion-icon>
-          </ion-label>
-          <ion-input type="text"  formControlName="username" [(ngModel)]="regData.username" placeholder="Username"></ion-input>
-      </ion-item>
-  
-      <ion-item>
-          <ion-label>
-              <ion-icon ios="ios-mail" md="md-mail"></ion-icon>
-          </ion-label>
-          <ion-input type="email"  formControlName="email" [(ngModel)]="regData.email" placeholder="email"></ion-input>
-      </ion-item>
+      <div class="inputs">
+        <ion-list>
+      
+          <ion-item scroll="false">
+              <ion-label>
+                <ion-icon ios="ios-contact" md="md-contact"></ion-icon>
+              </ion-label>
+              <ion-input type="text"  formControlName="username" [(ngModel)]="regData.username" placeholder="Username"></ion-input>
+          </ion-item>
+      
+          <ion-item>
+              <ion-label>
+                  <ion-icon ios="ios-mail" md="md-mail"></ion-icon>
+              </ion-label>
+              <ion-input type="email"  formControlName="email" [(ngModel)]="regData.email" placeholder="email"></ion-input>
+          </ion-item>
 
-      <ion-item>
-          <ion-label>
-              <ion-icon ios="ios-key" md="md-key"></ion-icon>
-          </ion-label>
-          <ion-input type="password"  formControlName="password" [(ngModel)]="regData.plainPassword"  placeholder="Password"></ion-input>
-      </ion-item>
-  
-    </ion-list>
-    <div class="buttons">
-      <button ion-button type="submit" name="button">Sign Up</button>
-    </div>
-    <p>
-      <a (click)="testclick">Already have account!</a>
-    </p>
+          <ion-item>
+              <ion-label>
+                  <ion-icon ios="ios-key" md="md-key"></ion-icon>
+              </ion-label>
+              <ion-input type="password"  formControlName="password" [(ngModel)]="regData.plainPassword"  placeholder="Password"></ion-input>
+          </ion-item>
+      
+        </ion-list>
+        <div class="buttons">
+          <button ion-button type="submit" name="button">Sign Up</button>
+        </div>
+        <p>
+          <a (click)="testclick">Already have account!</a>
+        </p>
+      </div>
+    </form>
   </div>
-  </form>
   </ion-content>
   

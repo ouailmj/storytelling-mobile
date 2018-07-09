@@ -15,44 +15,129 @@ page-events {
     }
 
     ion-navbar{
-      height: 100px;
-      color: #fff
+      height: 80x;
+      color: #fff;
     }
 
     .toolbar-title{
       color: #fff;
-      margin-top: 30px;
-      font-weight: lighter;
+      width: 100%;
+      text-align: center
     }
 
-    ion-content{
-      margin-top: 50px; 
-    }
 
     .menu-bar{
       margin-top: 0;
       -webkit-box-shadow: 0px 0px 14px 0px rgba(0,0,0,0.75);
--moz-box-shadow: 0px 0px 14px 0px rgba(0,0,0,0.75);
-box-shadow: 0px 0px 14px 0px rgba(0,0,0,0.75);
+      -moz-box-shadow: 0px 0px 14px 0px rgba(0,0,0,0.75);
+      box-shadow: 0px 0px 14px 0px rgba(0,0,0,0.75);
+      padding-top: 25px;
+      padding-bottom: 10px;
+      padding-left: 5px;
+      padding-right: 5px;
+
     }
 
     .menu-content{
-      text-align: center
+      text-align: center;
+      background: #7beed7;
+      height: 100%;
+      border-radius: 50px;
+      padding: 3px
+    }
+
+    .menu-bar .menu-content ul{
+      margin-left: -40px;
     }
 
     .menu-bar .menu-content ul li{
       list-style: none;
       display: inline;
-      margin: 5px 20px;
+      background: #092b66;
+      border-radius: 50px;
+      padding: 5px 10px;
+      margin: auto 5px;
 
     }
 
     .menu-bar .menu-content ul li a{
       text-decoration: none;
+      color: #fff;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      font-size: 12px;
+      text-align: center
     }
 
     .scroll-content{
       margin-top: 36px !important;
+    }
+
+    .card-event{
+      height: 100px;
+      margin: 20px 5px;
+      border-top-right-radius: 30px;
+      border-bottom-left-radius: 30px;
+      background-size: 100px;
+      background-repeat: no-repeat;
+      text-align: center;
+      padding-bottom: 30px;
+      position: relative
+    }
+
+    .card-event .filter{
+      height: 100px;
+      width: 100%;
+      background: linear-gradient(to right, rgba(22,25,84,0.4) 0%,rgba(70,198,172,0.5) 100%);
+      filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#c4161954', endColorstr='#0046c6ac',GradientType=1 );
+      border-top-right-radius: 30px;
+      border-bottom-left-radius: 30px;
+    }
+
+    .card-event .event-info{
+      width: 70%;
+      margin-left: 1%;
+      text-align: center;
+      display: inline-block;
+    }
+
+    .card-event .event-info h4{
+      color: #fff;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      font-size: 14px;
+      width: 150px;
+    }
+
+    .card-event .event-info h6{
+      padding: 5px 5px;
+      background: #0d1d38;
+      color: #46c6ac;
+      border-radius: 30px;
+      font-size: 8px;
+      width: 100px;
+    }
+
+    .card-event .event-date{
+      width: 30%;
+      float: right;
+    }
+
+    .card-event .event-date ion-img{
+      position: absolute;
+      top: -6%;
+      right: 10%;
+      background: transparent;
+      width: 50px;
+      height: 50px;
+    }
+
+    .card-event .event-date h5{
+      color: #fff;
+      position: absolute;
+      top:-3%;
+      font-size: 10px;
+      right: 16%;
     }
 
   }

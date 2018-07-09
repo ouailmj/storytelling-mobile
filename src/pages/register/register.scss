@@ -1,7 +1,18 @@
 page-register {
+  .scroll-content {
+    overflow-y: hidden !important;                                          
+}
   #login-page{
-    background: #0d1d38;
-    position: relative
+    background: url("../assets/imgs/login.jpg");
+    background-origin: border-box;
+    background-size: cover;
+    background-position: 30%;
+    background-repeat: no-repeat;
+    text-align: center;
+    position: fixed;
+    height: 100%;
+    width: 100%;
+    padding-top: 65%;
   }
     @import url('https://fonts.googleapis.com/css?family=Kaushan+Script');
     @import url('https://fonts.googleapis.com/css?family=Montserrat');
@@ -80,9 +91,14 @@ page-register {
 
   }
 
+  ion-list{
+    margin: 65% auto auto auto ;
+    position: relative
+  }
+
   .inputs{
     width: 80%;
-    margin: -70px auto auto auto ;
+    margin: auto ;
     text-align: center;
   }
 
