@@ -16,8 +16,8 @@ export class HomePage {
 
   loading: any;
   loginData:UserData = {
-    username: "",//'user_test',
-    password: "",//'f%/R4Uk#](wUvM'V',
+    username:'user_test',
+    password:"f%/R4Uk#](wUvM'V",
   };
   errorAuthentication=false;
   data: any;

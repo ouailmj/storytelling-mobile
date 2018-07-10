@@ -1,8 +1,8 @@
 <ion-content padding class="transparent-header">
-    <div id="profile-bg" [ngStyle]="{'background-image': 'url(' + event.imagesGallery.img1 +')'}"  onerror="this.src='/assets/imgs/profile_image_1488952985.6978.png'" ></div>
+    <div id="profile-bg"  [ngStyle]="{'background-image': 'url('+event.imagesGallery.img1+')'}" ></div>
     <div id="content">
       <div id="profile-info" padding>
-        <img id="profile-image" [src]="this.event.CreatedBy.avatar.downloadLink"   >
+        <img id="profile-image" [src]="this.event.CreatedBy.avatar.downloadLink"  >
         <h3 id="profile-name">{{event.CreatedBy.fullName}}</h3>
         <p class="profile-description">{{event.description}}</p>
       </div>
@@ -22,12 +22,12 @@
         <ion-card *ngFor="let post of posts">
           <ion-item>
             <ion-avatar item-start>
-              <img [src]="post.avatar" onerror="this.src='/assets/imgs/avatar/cosima-avatar.jpg'">
+              <img [src]="post.avatar" onerror="this.src='./assets/imgs/avatar/cosima-avatar.jpg'">
             </ion-avatar>
             <h2 class="sticky">{{post.userName}}</h2>
             <p>{{post.date}}</p>
           </ion-item>
-          <img [src]="post.postImageUrl" >
+          <img [src]="post.postImageUrl" onerror="this.src='./assets/imgs/profile_image_1488952985.6978.png'">
           <ion-card-content>
             <p>{{post.text}}</p>
           </ion-card-content>

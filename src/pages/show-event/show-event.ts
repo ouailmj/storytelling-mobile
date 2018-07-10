@@ -79,13 +79,18 @@ export class ShowEventPage {
       // let img = data['hydra:member'][0].imagesGallery[0].downloadLink === undefined ? '' : data['hydra:member'][0].imagesGallery[0].downloadLink;
 
       this.event = data['hydra:member'][0];
-      this.event.CreatedBy.avatar.downloadLink =  this.event.CreatedBy.avatar.downloadLink == null ? 'assets/imgs/avatar/marty-avatar.png' : this.event.CreatedBy.avatar.downloadLink ;
-      this.event.imagesGallery.img1 =  this.event.imagesGallery.img1 == null ? '/assets/imgs/profile_image_1488952985.6978.png' : this.event.imagesGallery.img1 ;
+      this.event.CreatedBy.avatar.downloadLink =  this.event.CreatedBy.avatar.downloadLink == null ? './assets/imgs/avatar/marty-avatar.png' : this.event.CreatedBy.avatar.downloadLink ;
+      this.event.imagesGallery.img1 =  this.event.imagesGallery.img1 == null ? './assets/imgs/profile_image_1488952985.6978.png' : this.event.imagesGallery.img1 ;
 
 
       console.log('======>',data['hydra:member'][0].loadedMedias);
 
+      
+
       this.posts =  data['hydra:member'][0].loadedMedias;
+
+
+      console.log(this.event.imagesGallery.img1)
     })
 
   }
@@ -159,12 +164,13 @@ export class ShowEventPage {
 
       let coData = JSON.parse(data.response)["hydra:member"][0];
       // console.log(coData)
-      console.log(coData.imgUp.downloadLink)
+      console.log(JSON.stringify(coData.imgUp.downloadLink))
+      console.log(JSON.stringify(this.posts))
 
-      this.posts.push( {
+      this.posts.push({
         postImageUrl: coData.imgUp.downloadLink,
         date: coData.imgUp.uploadedAt,
-        avatar: coData.user.avatar.downloadLink,
+        avatar: coData.user.avatar,
         userName: coData.user.FullName,
       })
 

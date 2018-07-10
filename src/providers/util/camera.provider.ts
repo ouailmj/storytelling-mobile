@@ -40,6 +40,7 @@ export class CameraProvider {
     // };
     const options = {
       quality: 50,
+      allowEdit,
       destinationType: this.camera.DestinationType.DATA_URL,
       encodingType: this.camera.EncodingType.JPEG,
       mediaType: this.camera.MediaType.PICTURE,
