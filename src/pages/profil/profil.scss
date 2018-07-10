@@ -1,119 +1,107 @@
 page-profil {
-    .cover{
-        background: red;
-        background: url('');
-        background-size: cover;
-    }
-    .profile-image{
-        width: 100px;
-        height: 100px;
-        border-radius: 50%;
-        border: 2px solid #ccc
-    }
-    .wrap-input100 {
-        position: relative;
-        width: 100%;
-        z-index: 1;
-        margin-bottom: 10px;
-      }
-      h4{
-        font-family: 'Montserrat', sans-serif;
-      }
-      
-      .input100 {
-        font-family: 'Montserrat', sans-serif;
-        font-size: 15px;
-        line-height: 1.5;
-        color: #666666;
-      
-        display: block;
-        width: 100%;
-        background: #e6e6e6;
-        height: 50px;
-        border-radius: 25px;
-        padding: 0 30px 0 68px;
-      }
-      .dlt-btn{
-          background: rgb(226, 38, 38) !important;
-      }
-      .login100-form-btn {
-        font-family: 'Montserrat', sans-serif;
-        font-size: 15px;
-        line-height: 1.5;
-        color: #fff;
-        text-transform: uppercase;
-      
-        width: 100%;
-        height: 50px;
-        border-radius: 25px;
-        background: #57b846;
-        display: -webkit-box;
-        display: -webkit-flex;
-        display: -moz-box;
-        display: -ms-flexbox;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        padding: 0 25px;
-      
-        -webkit-transition: all 0.4s;
-        -o-transition: all 0.4s;
-        -moz-transition: all 0.4s;
-        transition: all 0.4s;
-      }
-      
-      hr{
-        border: 2px solid #eee
-      }
-      ion-select{
-        background: transparent
-      }
-      /*------------------------------------------------------------------
-      [ Focus ]*/
-      .focus-input100 {
-        display: block;
-        position: absolute;
-        border-radius: 25px;
-        bottom: 0;
-        left: 0;
-        z-index: -1;
-        width: 100%;
-        height: 100%;
-        box-shadow: 0px 0px 0px 0px;
-        color: rgba(87,184,70, 0.8);
-      }
-      
-      .input100:focus + .focus-input100 {
-        animation: anim-shadow 0.5s ease-in-out forwards;
-      }
-      .symbol-input100 {
-        font-size: 22px;
-        display: flex;
-        align-items: center;
-        position: absolute;
-        border-radius: 25px;
-        bottom: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        padding-left: 35px;
-        pointer-events: none;
-        color: #57b846;
-      
-        -webkit-transition: all 0.4s;
-        -o-transition: all 0.4s;
-        -moz-transition: all 0.4s;
-        transition: all 0.4s;
-      }
-      
-      .input100:focus + .focus-input100 + .symbol-input100 {
-        color: #57b846;
-        padding-left: 28px;
-      }
-      .menu-btn{
-        background: transparent;
-      }
-      .menu-btn ion-icon{
-        color: green;
-      }
+  .header{
+    background: url("../assets/imgs/header-profile.jpg");
+    background-origin: border-box;
+    background-size: cover;
+    background-position: 30%;
+    background-repeat: no-repeat;
+    text-align: center;
+    padding-bottom: 30px;
+  }
+
+  .header #profile-image{
+    height: 100px;
+    width: 100px;
+    border-radius: 100%;
+    border: #fff 2px solid;
+  }
+
+  .header #username{
+    color: #fff;
+    font-size: 16px;
+    text-transform: capitalize;
+    margin-top: 2px;
+    margin-bottom: 10px;
+    font-weight: lighter
+  }
+
+  .header .panel{
+    text-align: center;
+    margin-bottom: 5px;
+    height: 50px;
+    padding-top: 20px;
+  }
+
+  .header .panel button{
+    display: inline;
+    text-align: center
+  }
+
+  .header .panel .menu-btn,
+  .header .panel .cancel-btn{
+    background: transparent;
+    box-shadow: none;
+    color: #43c6ac
+  }
+
+  .header .panel .menu-btn{
+    display: block;
+    float: left;
+  }
+
+  .header .panel p{
+    display: inline;
+    text-align: center;
+    margin-top: 5px;
+    color: #fff;
+    font-size: 16px
+    
+  }
+
+  .header .panel .cancel-btn{
+    display: inline;
+    float: right;
+    font-size: 20px
+  }
+
+  .header #btn-event{
+    border: 2.5px solid rgba(255, 255, 255, 0.5);
+    width: 100px;
+    font-weight: lighter;
+  }
+
+  .inputs{
+    width: 90%;
+    margin: auto;
+  }
+
+  .inputs ion-item{
+    margin-bottom: 8px !important;
+    border-bottom: 1px solid rgb(102, 101, 101) !important
+  }
+
+  .inputs ion-item ion-label{
+    text-align: center;
+  }
+
+  .inputs ion-item ion-label ion-icon{
+    color: #43c6ac
+  }
+
+  .inputs ion-item ion-input{
+    padding-bottom: 0px;
+    border: none !important
+  }
+
+  .item-md.item-input.ng-invalid.ng-touched:not(.input-has-focus):not(.item-input-has-focus) .item-inner {
+    border: none;
+    -webkit-box-shadow: none !important;
+    box-shadow: none !important;
+}
+
+.item-md.item-input.ng-valid.item-input-has-value:not(.input-has-focus):not(.item-input-has-focus) .item-inner, .item-md.item-input.ng-valid.input-has-value:not(.input-has-focus):not(.item-input-has-focus) .item-inner {
+    border: none;
+    -webkit-box-shadow: none !important;
+    box-shadow: none !important;
+}
 }

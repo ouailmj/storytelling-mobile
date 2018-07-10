@@ -1,31 +1,31 @@
 <ion-content>
-  <div class="circle-one"></div>
-  <div class="circle-two"></div>
-  <div class="circle-tree"></div>
-  <div class="circle-four"></div>
-  <div class="titre-registe">
-      <h1>log in</h1>
-      <h4>to continue</h4>
+  <div  id="login-page">
+      <form [formGroup]="authForm" (ngSubmit)="doLogin(authForm.value)">
+      <div class="inputs">
+        <ion-list scroll="false">
+
+          <ion-item>
+              <ion-label>
+                <ion-icon ios="ios-contact" md="md-contact"></ion-icon>
+              </ion-label>
+            <ion-input type="text" formControlName="username" placeholder="Pseudo" [(ngModel)]="loginData.username"></ion-input>
+          </ion-item>
+
+          <ion-item>
+              <ion-label>
+                  <ion-icon ios="ios-key" md="md-key"></ion-icon>
+              </ion-label>
+            <ion-input type="password" type="password" formControlName="password" placeholder="Password" [(ngModel)]="loginData.password"></ion-input>
+          </ion-item>
+
+        </ion-list>
+        <div class="buttons">
+          <button ion-button type="submit" name="button">log in</button>
+        </div>
+        <p>
+          <a id="login" (click)="forgotPassword()">Forgot Password ?</a>
+        </p>
+      </div>
+      </form>
   </div>
-<form [formGroup]="authForm" (ngSubmit)="doLogin(authForm.value)">
-<div class="inputs">
-  <ion-list>
-
-    <ion-item>
-      <ion-input type="text" formControlName="username" placeholder="Pseudo" [(ngModel)]="loginData.username"></ion-input>
-    </ion-item>
-
-    <ion-item>
-      <ion-input type="password" type="password" formControlName="password" placeholder="Password" [(ngModel)]="loginData.password"></ion-input>
-    </ion-item>
-
-  </ion-list>
-  <div class="buttons">
-    <button ion-button type="submit" name="button">log in</button>
-  </div>
-  <p>
-    <a (click)="forgotPassword()">Forgot Password ?</a>
-  </p>
-</div>
-</form>
 </ion-content>

@@ -1,55 +1,55 @@
 page-register {
+  .scroll-content {
+    overflow-y: hidden !important;                                          
+}
+  #login-page{
+    background: url("../assets/imgs/login.jpg");
+    background-origin: border-box;
+    background-size: cover;
+    background-position: 30%;
+    background-repeat: no-repeat;
+    text-align: center;
+    position: fixed;
+    height: 100%;
+    width: 100%;
+    padding-top: 65%;
+  }
     @import url('https://fonts.googleapis.com/css?family=Kaushan+Script');
     @import url('https://fonts.googleapis.com/css?family=Montserrat');
     @import url('https://fonts.googleapis.com/css?family=Monoton');
-    $primary-gradient-color-1: rgba(116, 185, 255, 1);
-    $secondary-gradient-color-2: rgba(255,255,255,0);
-    #register{
-      background-color: #4957B8;
-      background-image: url('../assets/imgs/dot.svg');
-    }
-    .circle-two{
-      height: 200px;
-      width: 200px;
+    $primary-gradient-color-1: rgba(242,189,242,1);
+    $secondary-gradient-color-2: rgba(140,218,237,1);
+    .circle-one{
+      height: 300px;
+      width: 300px;
+      background: #161954;
+      background: linear-gradient(135deg, #43c6ac 0%,#161954 100%);
+      filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#161954', endColorstr='#43c6ac',GradientType=1 );
       border-radius: 100%;
-      position: absolute;
-      top: -5%;
-      right: -7%;
-      &:before {
-      position: absolute;
-      content: "";
-      width: 104%;
-      height: 104%;
-      top: -2%;
-      left: -2%;
-      background-color: white;
-      border-radius: 50%;
-      z-index: -1;
-      background-color: #4957B8;
-      background-image: url('../assets/imgs/dot.svg');
-  }
-
-  &:after {
-    position: absolute;
-    content: "";
-    width: 106%;
-    height: 106%;
-    top: -3%;
-    left: -3%;
-    background-color: $primary-gradient-color-1;
-    background-image: linear-gradient(to right bottom, $primary-gradient-color-1 0%, $secondary-gradient-color-2 100%);
-    border-radius: 50%;
-    z-index: -2;
+      position: relative;
+      top: -20%;
+      left: -20%;
+      -webkit-box-shadow: 0px 0px 40px 0px rgba(0,0,0,0.75);
+      -moz-box-shadow: 0px 0px 40px 0px rgba(0,0,0,0.75);
+      box-shadow: 0px 0px 40px 0px rgba(0,0,0,0.75);
     }
-  }
 
+  .circle-two{
+    height: 220px;
+    width: 220px;
+    border-radius: 100%;
+    position: absolute;
+    top: -10%;
+    left: 5%;
+    border:1px solid rgb(48, 129, 113);
+  }
 
   .titre-registe{
     margin: 0 auto;
     width: 100%;
     text-align: center;
     position: absolute;
-    top: 10%;
+    top: 5%;
   }
 
   .titre-registe h1{
@@ -57,42 +57,21 @@ page-register {
     color: #43C6AC;
     font-family: 'Monoton', cursive;
     font-size: 3em;
+    margin-bottom: 0;
   }
 
   .titre-registe h4{
     margin: 0;
+    font-size: 22px;
     text-transform: uppercase;
     letter-spacing: 5px;
-    color: #EEE;
+    color: rgb(235, 233, 233);
   }
 
-  .inputs{
-    width:80%;
-    text-align: center;
-    margin: -40px auto;
-    position: relative;
-    top:50%;
-    background: #4957B8
-  }
 
-.list-ios .item-block .item-inner, .item-md.item-block .item-inner{
-  border-bottom: none !important
-}
   ion-item, ion-list{
     border:none !important;
-    background-color: #4957B8 !important;
-    background-image: url('../assets/imgs/dot.svg');
   }
-
-  ion-input{
-    width: 60%;
-    display: block;
-    border-bottom: 1px solid #eee;
-    color: #43c6ac !important;
-    background: #4957B8;
-    background-image: url('../assets/imgs/dot.svg');
-  }
-
   .buttons{
     width: auto;
     margin: auto;
@@ -100,23 +79,47 @@ page-register {
   }
 
   .buttons button{
-    padding: 20px 70px;
+    padding: 25px 50px;
     border-radius: 50px;
     text-transform: uppercase;
+    font-weight: lighter;
     letter-spacing: 1.5px;
-    background: #eee;
-    -webkit-box-shadow: 0px 0px 10px 0px rgba(255,255,255,0.2);
-    -moz-box-shadow: 0px 0px 10px 0px rgba(255,255,255,0.2);
-    box-shadow: 0px 0px 5px 5px rgba(255,255,255,0.2);
+    background: -moz-linear-gradient(45deg,  rgba(22,25,84,0.65) 0%, rgba(67,198,172,1) 100%); /* FF3.6-15 */
+    background: -webkit-linear-gradient(45deg,  rgba(22,25,84,0.65) 0%,rgba(67,198,172,1) 100%); /* Chrome10-25,Safari5.1-6 */
+    background: linear-gradient(45deg,  rgba(22,25,84,0.65) 0%,rgba(67,198,172,1) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#a6161954', endColorstr='#b843c6ac',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
 
   }
 
-  .msg-pswd{
-    font-size: 10px;
+  ion-list{
+    margin: 65% auto auto auto ;
+    position: relative
+  }
+
+  .inputs{
+    width: 80%;
+    margin: auto ;
+    text-align: center;
+  }
+
+  .inputs ion-item{
+    background: #0d1d38;
+    border-bottom: 1px solid #fff !important;
+  }
+
+  .inputs ion-input{
+    background: transparent;
+    border-bottom: none !important;
     color: #fff;
-    margin-top: -10px;
-    margin-left: 15px;
-    margin-bottom: 20px;
-    float: left;
+    font-family: Montserrat;
+    margin-left: 20px;
+  }
+
+  .inputs ion-label ion-icon{
+    color: #43c6ac;
+  }
+
+  .item-inner{
+    border: none !important;
   }
 }
