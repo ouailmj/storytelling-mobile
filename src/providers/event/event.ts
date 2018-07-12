@@ -148,10 +148,10 @@ console.log(EventRoutes.apiChoosePlan+id)
 
         return new Promise((resolve, reject) => {
             this.storage.get('token').then(tok => {
-                let loader = this.loadingCtrl.create({
-                    content: "Uploading..."
-                });
-                loader.present();
+                // let loader = this.loadingCtrl.create({
+                //     content: "Uploading..."
+                // });
+                // loader.present();
                 const fileTransfer: FileTransferObject = this.transfer.create();
 
                 let options: FileUploadOptions = {
@@ -166,11 +166,11 @@ console.log(EventRoutes.apiChoosePlan+id)
                         console.log(data);
                         resolve(data)
                         //this.imageFileName = "http://192.168.0.7:8080/static/images/ionicfile.jpg"
-                        loader.dismiss();
+                        // loader.dismiss();
                         if (isPresentToast) this.presentToast("Image uploaded successfully");
                     }, (err) => {
                         reject(err);
-                        loader.dismiss();
+                        // loader.dismiss();
                         this.presentToast(err);
                     });
 
