@@ -8,15 +8,22 @@ import { WelcomePage } from '../pages/welcome/welcome';
 import { ProfilPage } from '../pages/profil/profil';
 import { ChangepPasswordPage } from '../pages/changep-password/changep-password';
 import { Storage } from '@ionic/storage';
-import { PasswordRequestPage } from '../pages/password-request/password-request';
 import { EventsPage } from '../pages/events/events';
 import { NewEventPage} from '../pages/new-event/new-event';
-import {EventInformationPage} from '../pages/event-information/event-information';
 
 @Component({
   templateUrl: 'app.html'
 })
 export class StoryTellingApp {
+  pagesTitle = {
+    Profile: 'Profile',
+    Change_Password: 'Change Password',
+    Events_List: 'Events List' ,
+    New_Event: 'New Event' ,
+    Log_Out: 'Log Out'
+  };
+
+
   @ViewChild(Nav) nav: Nav;
   rootPage:any = WelcomePage;
   pages: Array<{title: string, component: any}>;
@@ -31,11 +38,11 @@ export class StoryTellingApp {
     });
 
     this.pages = [
-      { title: 'Profile', component: ProfilPage },
-      { title: 'Change Password', component: ChangepPasswordPage },
-      { title: 'Events List', component: EventsPage },
-      { title: 'New Event', component: NewEventPage },
-      { title: 'Log Out ', component: WelcomePage }
+      { title: this.pagesTitle.Profile, component: ProfilPage },
+      { title: this.pagesTitle.Change_Password, component: ChangepPasswordPage },
+      { title: this.pagesTitle.Events_List, component: EventsPage },
+      { title: this.pagesTitle.New_Event, component: NewEventPage },
+      { title: this.pagesTitle.Log_Out, component: WelcomePage }
     ];
   }
 
@@ -43,10 +50,13 @@ export class StoryTellingApp {
     // Reset the content nav to have just this page
     // we wouldn't want the back button to show in this scenario
 
-    if(page.title === 'Log out'){
+
+    if(page.title === this.pagesTitle.Log_Out){
        this.storage.remove('user');
        this.storage.remove('token');
+       this.storage.remove('lastEventId');
     }
+
     this.nav.setRoot(page.component);
   }
 

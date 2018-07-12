@@ -1,7 +1,15 @@
 page-home {
   #login-page{
-    background: #0d1d38;
-    position: relative
+    background: url("../assets/imgs/login.jpg");
+    background-origin: border-box;
+    background-size: cover;
+    background-position: 30%;
+    background-repeat: no-repeat;
+    text-align: center;
+    position: fixed;
+    height: 100%;
+    width: 100%;
+    padding-top: 65%;
   }
     @import url('https://fonts.googleapis.com/css?family=Kaushan+Script');
     @import url('https://fonts.googleapis.com/css?family=Montserrat');
@@ -80,10 +88,16 @@ page-home {
 
   }
 
+  ion-list{
+    margin: 65% auto auto auto ;
+    position: relative
+  }
+
   .inputs{
     width: 80%;
     margin: auto;
     text-align: center;
+    position: relative;
   }
 
   .inputs ion-item{
@@ -97,6 +111,10 @@ page-home {
     color: #fff;
     font-family: Montserrat;
     margin-left: 20px;
+  }
+
+  .inputs ion-label ion-icon{
+    color: #43c6ac;
   }
 
   .item-inner{
@@ -114,4 +132,6 @@ page-home {
     -webkit-box-shadow: none !important;
     box-shadow: none !important;
 }
+
+
 }

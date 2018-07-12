@@ -1,8 +1,12 @@
 page-profil {
   .header{
-    background-color: #0d1d38;
+    background: url("../assets/imgs/header-profile.jpg");
+    background-origin: border-box;
+    background-size: cover;
+    background-position: 30%;
+    background-repeat: no-repeat;
+    text-align: center;
     padding-bottom: 30px;
-    position: relative;
   }
 
   .header #profile-image{

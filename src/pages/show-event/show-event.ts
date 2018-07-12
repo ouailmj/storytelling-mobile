@@ -69,10 +69,10 @@ export class ShowEventPage {
 
   ionViewDidLoad() {
     console.log('Hello ProfileFour Page');
-    console.log(this.params.get('id_event'))
+    console.log(this.params.get('id_event'));
      this.id_event = this.params.get('id_event');
 
-     console.log('id event ===< ',this.id_event)
+     console.log('id event ===< ',this.id_event);
 
     this.eventProvider.getEvent('/api/show-event/'+this.id_event).then(data=>{
 
@@ -85,7 +85,7 @@ export class ShowEventPage {
 
       console.log('======>',data['hydra:member'][0].loadedMedias);
 
-      
+
 
       this.posts =  data['hydra:member'][0].loadedMedias;
 
@@ -105,13 +105,6 @@ export class ShowEventPage {
           icon: !this.platform.is('ios') ? 'camera' : null,
           handler: () => {
             this.takePicture();
-          }
-        },
-        {
-          text: !this.platform.is('ios') ? 'gallery' : 'camera roll',
-          icon: !this.platform.is('ios') ? 'image' : null,
-          handler: () => {
-            this.getPicture();
           }
         },
         {
@@ -142,20 +135,6 @@ export class ShowEventPage {
     });
   }
 
-  getPicture() {
-    const loading = this.loadingCtrl.create();
-
-    loading.present();
-    return this.cameraProvider.getPictureFromPhotoLibrary(false).then(picture => {
-      if (picture) {
-        this.chosenPicture = picture;
-        this.UploadImg();
-      }
-      loading.dismiss();
-    }, error => {
-      alert(error);
-    });
-  }
 
 
   UploadImg(){
