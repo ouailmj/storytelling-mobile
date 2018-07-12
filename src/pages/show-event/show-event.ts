@@ -18,6 +18,20 @@ import { FileUploadResult } from '@ionic-native/file-transfer';
 })
 export class ShowEventPage {
 
+
+  slides = [
+    {
+      image: "http://placehold.it/300/8fe",
+    },
+    {
+      image: "http://placehold.it/300/a8f",
+    },
+    {
+      image: "http://placehold.it/300/fe8",
+    }
+  ];
+
+  
   placeholder = 'assets/img/avatar/girl-avatar.png';
   chosenPicture: any;
   id_event:string;
@@ -81,7 +95,7 @@ export class ShowEventPage {
       this.event = data['hydra:member'][0];
       this.event.CreatedBy.avatar.downloadLink =  this.event.CreatedBy.avatar.downloadLink == null ? 'assets/imgs/avatar/marty-avatar.png' : this.event.CreatedBy.avatar.downloadLink ;
       this.event.imagesGallery.img1 =  this.event.imagesGallery.img1 == null ? '/assets/imgs/profile_image_1488952985.6978.png' : this.event.imagesGallery.img1 ;
-
+      console.log(this.event);
       this.posts =  data['hydra:member'][0].loadedMedias;
     })
 

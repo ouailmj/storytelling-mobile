@@ -53,11 +53,14 @@ page-events {
     .menu-bar .menu-content ul li{
       list-style: none;
       display: inline;
-      background: #092b66;
       border-radius: 50px;
       padding: 5px 10px;
       margin: auto 5px;
 
+    }
+
+    .menu-bar .menu-content ul .active{
+      background: #092b66;
     }
 
     .menu-bar .menu-content ul li a{
