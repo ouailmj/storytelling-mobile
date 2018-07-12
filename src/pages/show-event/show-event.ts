@@ -3,6 +3,7 @@ import { IonicPage, NavController, NavParams, LoadingController, Platform, Actio
 import { EventProvider } from '../../providers/event/event';
 import { CameraProvider } from '../../providers/util/camera.provider';
 import { FileUploadResult } from '@ionic-native/file-transfer';
+import {EventsPage} from "../events/events";
 
 /**
  * Generated class for the ShowEventPage page.
@@ -65,7 +66,13 @@ export class ShowEventPage {
      public eventProvider : EventProvider,
      public params: NavParams,
 
-  ){ }
+  ){
+
+    platform.registerBackButtonAction(() => {
+      this.navCtrl.push(EventsPage);
+    },1);
+
+  }
 
   ionViewDidLoad() {
     console.log('Hello ProfileFour Page');
