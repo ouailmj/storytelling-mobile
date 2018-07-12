@@ -101,7 +101,12 @@ export class ShowEventPage {
 
       this.event = data['hydra:member'][0];
       this.event.CreatedBy.avatar.downloadLink =  this.event.CreatedBy.avatar.downloadLink == null ? './assets/imgs/avatar/marty-avatar.png' : this.event.CreatedBy.avatar.downloadLink ;
-      this.event.imagesGallery.img1 =  this.event.imagesGallery.img1 == null ? './assets/imgs/profile_image_1488952985.6978.png' : this.event.imagesGallery.img1 ;
+
+
+      this.slides[0].image = this.event.imagesGallery.img1 == null ? './assets/imgs/profile_image_1488952985.6978.png' : this.event.imagesGallery.img1 ;
+      this.slides[1].image = this.event.imagesGallery.img2 == null ? './assets/imgs/profile_image_1488952985.6978.png' : this.event.imagesGallery.img2 ;
+      this.slides[2].image = this.event.imagesGallery.img3 == null ? './assets/imgs/profile_image_1488952985.6978.png' : this.event.imagesGallery.img3 ;
+
 
 
       console.log('======>',data['hydra:member'][0].loadedMedias);
@@ -114,31 +119,6 @@ export class ShowEventPage {
       console.log(this.event.imagesGallery.img1)
     })
 
-  }
-
-  changePicture() {
-
-    const actionsheet = this.actionsheetCtrl.create({
-      title: 'upload picture',
-      buttons: [
-        {
-          text: 'camera',
-          icon: !this.platform.is('ios') ? 'camera' : null,
-          handler: () => {
-            this.takePicture();
-          }
-        },
-        {
-          text: 'cancel',
-          icon: !this.platform.is('ios') ? 'close' : null,
-          role: 'destructive',
-          handler: () => {
-            console.log('the user has cancelled the interaction.');
-          }
-        }
-      ]
-    });
-    return actionsheet.present();
   }
 
   takePicture() {
