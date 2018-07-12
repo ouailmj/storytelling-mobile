@@ -1,60 +1,54 @@
-<ion-content padding class="transparent-header">
-    <div id="profile-bg"  [ngStyle]="{'background-image': 'url('+event.imagesGallery.img1+')'}" ></div>
-    <div id="content">
-      <div id="profile-info" padding>
-        <img id="profile-image" [src]="this.event.CreatedBy.avatar.downloadLink"  >
-        <h3 id="profile-name">{{event.CreatedBy.fullName}}</h3>
-        <p class="profile-description">{{event.description}}</p>
-      </div>
-      <ion-row class="profile-numbers">
-        <ion-col col-4>
-
+<ion-header>
+  <ion-navbar>
+    <ion-grid>
+      <ion-row>
+        <ion-col col-2>
+            <button class="menu-btn" ion-button menuToggle icon-only>
+                <ion-icon name='menu'></ion-icon>
+            </button>
         </ion-col>
-        <ion-col col-4>
-
+        <ion-col col-8>
+            <ion-title class="name-page">Mawazine</ion-title>
         </ion-col>
-        <ion-col col-4>
-
+        <ion-col col-2>
+            <button class="search-btn" right ion-button menuToggle icon-only>
+                <ion-icon name='search'></ion-icon>
+            </button>
         </ion-col>
       </ion-row>
-      <hr/>
-      <div id="posts">
-        <ion-card *ngFor="let post of posts">
-          <ion-item>
-            <ion-avatar item-start>
-              <img [src]="post.avatar" onerror="this.src='./assets/imgs/avatar/cosima-avatar.jpg'">
-            </ion-avatar>
-            <h2 class="sticky">{{post.userName}}</h2>
-            <p>{{post.date}}</p>
-          </ion-item>
-          <img [src]="post.postImageUrl" onerror="this.src='./assets/imgs/profile_image_1488952985.6978.png'">
-          <ion-card-content>
-            <p>{{post.text}}</p>
-          </ion-card-content>
-          <ion-row>
-            <ion-col col-4>
-              <button ion-button color="purple" clear small icon-left >
-                  <ion-icon name='thumbs-up'></ion-icon>
-                  {{post.likes}} Likes
-                </button>
-            </ion-col>
-            <ion-col col-5>
-              <button ion-button no-padding color="purple" clear small icon-left >
-                  <ion-icon name='text'></ion-icon>
-                  {{post.comments}} Comments
-                </button>
-            </ion-col>
-            <ion-col col-3 align-self-center text-center>
-              <p>
-                {{post.timestamp}}
-              </p>
-            </ion-col>
-          </ion-row>
-        </ion-card>
-      </div>
+    </ion-grid>
+  </ion-navbar>
+</ion-header>
+<ion-content class="transparent-header">
+    <ion-slides pager>
+        <ion-slide *ngFor="let slide of slides">
+          <img [src]="slide.image" class="slide-image"/>
+        </ion-slide>
+    </ion-slides>
+    <div class="camera">
+        <ion-fab right bottom edge>
+            <button ion-fab color="light" (click)="changePicture()"><ion-icon name="camera"></ion-icon></button>
+        </ion-fab>
     </div>
-    <ion-fab right bottom>
-        <button ion-fab color="light" (click)="changePicture()"><ion-icon name="camera"></ion-icon></button>
-    </ion-fab>
-  </ion-content>
-
+    <ion-grid>
+      <ion-row>
+        <ion-col class="event-info" col-8>
+          <ion-title>
+            Mawazine
+          </ion-title>
+          <p>17 MAY 2018 - 8:00 PM </p>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <p class="event-desc">
+          Cillum excepteur amet occaecat do est reprehenderit ipsum. Aliqua elit ea Lorem elit occaecat id ex culpa. Proident ullamco ut consequat ex eiusmod nisi ad enim laboris. Consectetur elit deserunt elit enim in occaecat. Minim proident id aliqua elit. Nisi duis nisi mollit amet aliqua nulla id culpa minim esse exercitation.
+  Aliquip officia nulla elit mollit. Anim magna do tempor nisi duis esse irure nisi aute. Culpa sint minim sit nostrud nulla. Dolor esse sit labore nisi enim velit proident qui officia commodo irure ad. Consectetur occaecat cillum aliquip sunt reprehenderit proident velit consequat. Excepteur ullamco exercitation proident laboris pariatur do. Culpa in pariatur culpa magna minim est mollit ex.
+  Tempor non incididunt amet aliquip nulla Lorem sint eu in non non ea tempor. Eiusmod ipsum est amet nostrud officia. Enim culpa tempor id magna ut aute non occaecat. Tempor tempor ipsum cupidatat nostrud cillum dolor non officia deserunt ex est ad elit.
+  Occaecat cupidatat sunt minim dolore est proident irure irure id minim proident eu id culpa. Esse pariatur voluptate est laboris ut commodo voluptate ex nisi id aute. Pariatur eiusmod ea voluptate voluptate aliqua exercitation aliquip eiusmod magna proident.
+  Eu ea qui ipsum sunt nisi occaecat aute. <br> Duis est occaecat sit nostrud. Amet in ullamco tempor nostrud est qui aliquip irure Lorem eiusmod ea eiusmod laborum. Veniam consequat do dolore cillum mollit ea esse ex aliquip dolore laboris nostrud qui. Id dolor officia pariatur officia aute nulla aute eu. Eu excepteur veniam minim ullamco do sint aute in pariatur aliquip. Ullamco deserunt fugiat labore qui deserunt nostrud dolore pariatur eu do.
+Cupidatat incididunt voluptate aliquip ea excepteur ut minim laborum non quis aute dolore. Aliquip cupidatat consectetur commodo minim laboris proident proident aliqua fugiat nisi pariatur. Nisi consequat ad adipisicing adipisicing nulla nulla elit Lorem in laborum pariatur exercitation sunt.
+Ea quis aute quis ipsum. Nisi labore cillum ex aute commodo elit deserunt. Ipsum cillum sint nisi esse minim incididunt exercitation nisi consectetur.
+        </p>
+      </ion-row>
+    </ion-grid>
+</ion-content>

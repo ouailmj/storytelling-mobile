@@ -19,6 +19,20 @@ import {EventsPage} from "../events/events";
 })
 export class ShowEventPage {
 
+
+  slides = [
+    {
+      image: "http://placehold.it/300/8fe",
+    },
+    {
+      image: "http://placehold.it/300/a8f",
+    },
+    {
+      image: "http://placehold.it/300/fe8",
+    }
+  ];
+
+
   placeholder = 'assets/img/avatar/girl-avatar.png';
   chosenPicture: any;
   id_event:string;
