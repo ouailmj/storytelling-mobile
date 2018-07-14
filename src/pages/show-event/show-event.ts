@@ -169,19 +169,19 @@ export class ShowEventPage {
 
 
 
-  lockPortrait() {
-    alert('Orientation locked to portrait.');
-    this.screenOrientation.lock(this.screenOrientation.ORIENTATIONS.PORTRAIT);
-  }
-
-  unlock() {
-    alert('Orientation unlocked');
-    this.screenOrientation.unlock();
-  }
-
-  getCurrentOrientation() {
-    alert('Current Orientation is ' + this.screenOrientation.type);
-  }
+  // lockPortrait() {
+  //   alert('Orientation locked to portrait.');
+  //   this.screenOrientation.lock(this.screenOrientation.ORIENTATIONS.PORTRAIT);
+  // }
+  //
+  // unlock() {
+  //   alert('Orientation unlocked');
+  //   this.screenOrientation.unlock();
+  // }
+  //
+  // getCurrentOrientation() {
+  //   alert('Current Orientation is ' + this.screenOrientation.type);
+  // }
 
 
 //---------------------------------
