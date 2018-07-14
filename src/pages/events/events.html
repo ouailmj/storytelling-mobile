@@ -1,33 +1,44 @@
 <ion-header>
-  <ion-navbar>
-    <button class="menu-btn" ion-button menuToggle icon-only>
-        <ion-icon name='menu'></ion-icon>
-    </button>
-    <ion-title>My Events</ion-title>
+  <ion-navbar hideBackButton="true">
+    <ion-grid>
+      <ion-row>
+        <ion-col col-2>
+          <button class="menu-btn" ion-button icon-only>
+            <ion-icon name='menu'></ion-icon>
+          </button>
+        </ion-col>
+        <ion-col col-8>
+          <ion-title class="page-name">My Events</ion-title>
+        </ion-col>
+        <ion-col col-2>
+          <button class="search-btn" ion-button icon-only>
+            <ion-icon name='options'></ion-icon>
+          </button>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
   </ion-navbar>
 </ion-header>
 <ion-content>
-  <div class="menu-bar">
-    <div class="menu-content">
-        <ul>
-            <li class="active">
-                <a href="">upcoming</a>
-            </li>
-            <li>
-                <a href="">Passed</a>
-            </li>
-            <li>
-                <a href="">Draft</a>
-            </li>
-          </ul>
-    </div>
-  </div>
-  <div *ngFor="let event of events" (click)="eventDetails(event.event.id)" class="card-event" style="background-image: url('event.event.imagesGallery.img1')" >
+  <ion-grid class="event-menu" scroll="false">
+    <ion-row class="list-menu">
+      <ion-col col-4>
+        <a class="active" href="">upcoming</a>
+      </ion-col>
+      <ion-col class="middle-item" col-4>
+        <a href="">Passed</a>
+      </ion-col>
+      <ion-col col-4>
+        <a href="">Draft</a>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+  <div *ngFor="let event of events" (click)="eventDetails(event.event.id)" class="card-event" style="background-image: url('https://static1.squarespace.com/static/55c37beae4b0336075603f86/55c3cd80e4b01531b3208f2e/5603032be4b008bd0ad4e6fb/1486126957019/?format=1500w')" >
     <div class="filter">
       <div class="event-info">
-        <h4 class="event-name">event name</h4>
-        <h6 class="event-place">{{event.event.place}}</h6>
-        <h5 class="event-cat">Festivale</h5>
+        <p class="event-name">event name</p>
+        <p class="event-dt">17 MAY 2018 - 8:00</p>
+        <p class="event-cat">Festivale</p>
       </div>
       <div class="event-date">
           <ion-img src="../assets/imgs/event-date-ico.png"></ion-img>

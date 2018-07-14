@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css?family=Kaushan+Script');
+
 .login-container > .header {
     -webkit-flex: 4;
     padding-top: 20px;
@@ -9,4 +11,9 @@ ion-list ion-item{
 ::-webkit-scrollbar,
 *::-webkit-scrollbar {
   display: none;
+}
+
+.page-name{
+    font-family: 'Kaushan Script', cursive;
+    font-size: 16px !important
 }

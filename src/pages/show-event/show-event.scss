@@ -11,6 +11,10 @@ page-show-event {
     padding: 0;
     margin: 0;
   }
+
+  ion-navbar ion-icon{
+    color: #46c6ac;
+  }
   
   ion-navbar, ion-header, .toolbar-background{
     background-color: #161954 !important;
@@ -38,8 +42,9 @@ ion-grid{
   text-align: center
 }
 
-.name-page{
+.page-name{
   color: #fff;
+  font-size: 16px !important
 }
 .scroll-content{
   margin-top: 0 !important;
@@ -52,9 +57,6 @@ ion-grid{
     height: 100%;
   }
 
-  .slide-title {
-    margin-top: 2.8rem;
-  }
 
   .slide-image {
     max-height: 100%;
@@ -73,6 +75,8 @@ ion-grid{
   .swiper-pagination button{
     height: 10px;
     width: 10px;
+    background: #fff;
+    opacity: 0.7;
   }
 
   .swiper-pagination .swiper-pagination-bullet-active{
@@ -89,6 +93,18 @@ ion-grid{
     background: -webkit-linear-gradient(left, rgba(22,25,84,1) 0%,rgba(70,198,172,1) 100%);
     background: linear-gradient(to right, rgba(22,25,84,1) 0%,rgba(70,198,172,1) 100%);
     filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#161954', endColorstr='#46c6ac',GradientType=1 );
+    text-align: left;
+  }
+
+  .event-info ion-title{
+    float: left;
+    display: inline-block;
+  }
+
+  .event-info p{
+    color: #fff;
+    display: inline-block;
+    margin: 5px auto;
   }
 
   .event-desc{
@@ -98,8 +114,8 @@ ion-grid{
   }
   
   ion-fab{
-    top: 42%;
-    right: 10%;
+    top: 43%;
+    right: 20%;
   }
 
   .camera{
@@ -108,8 +124,11 @@ ion-grid{
   }
 
   .camera button{
-    height: 60px;
-    width: 60px;
+    height: 80px;
+    width: 80px;
+    background: #161954;
+    color: #fff;
+    border: 2px solid #fff
   }
 
 }
