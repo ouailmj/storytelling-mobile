@@ -8,11 +8,11 @@
             </button>
         </ion-col>
         <ion-col col-8>
-            <ion-title class="name-page"> Mawazine MawazineMawazine</ion-title>
+            <ion-title class="page-name">{{event.title}}</ion-title>
         </ion-col>
         <ion-col col-2>
             <button class="search-btn" right ion-button menuToggle="right" icon-only >
-                <ion-icon name='search'></ion-icon>
+                <ion-icon name='options'></ion-icon>
             </button>
         </ion-col>
       </ion-row>
@@ -27,16 +27,16 @@
     </ion-slides>
     <div class="camera">
         <ion-fab right bottom edge>
-            <button ion-fab color="light" (click)="takePicture()" ><ion-icon name="camera"></ion-icon></button>
+            <button class="camera-btn" ion-fab color="light" (click)="takePicture()"><ion-icon name="camera"></ion-icon></button>
         </ion-fab>
     </div>
     <ion-grid>
       <ion-row>
         <ion-col class="event-info" col-8>
           <ion-title>
-            Mawazine Mawazine Mawazine
+            {{event.title}}
           </ion-title>
-          <p>{{event.startsAt  | date : "dd MMM yyyy - H:mm " }} </p>
+          <p> {{ event.startsAt  | date : "dd MMM yyyy - H:mm " }} </p>
         </ion-col>
       </ion-row>
       <ion-row>
