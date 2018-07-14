@@ -39,9 +39,9 @@ export class EventProvider {
 
                 this.apiProvider.get('/api/event/new', {headers: headers}).then(rep => {
                     this.apiProvider.get(rep.appEventURI, {headers: headers}).then(event => {
-                        this.storage.set('currentEvent', event)
-                        console.log('event eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee',event)
-                    }).catch(err=>{console.log('error');reject(err);})
+                        this.storage.set('currentEvent', event);
+                        console.log('event eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee',event);
+                    }).catch(err=>{console.log('error');reject(err);});
 
                     resolve("ok");
                 }).catch(error => {
@@ -124,7 +124,7 @@ export class EventProvider {
                 let headers = new HttpHeaders();
                 headers = headers.set('Content-Type', 'application/json; charset=utf-8');
                 headers = headers.set('Authorization', 'Bearer ' + tok);
-console.log(EventRoutes.apiChoosePlan+id)
+                console.log(EventRoutes.apiChoosePlan+id)
                 this.apiProvider.post(EventRoutes.apiChoosePlan+id, choosePlanData,{headers: headers}).then(rep=>{
                     console.log(rep)
                     resolve("ok");

@@ -4,6 +4,7 @@ import { EventProvider } from '../../providers/event/event';
 import { CameraProvider } from '../../providers/util/camera.provider';
 import { FileUploadResult } from '@ionic-native/file-transfer';
 import {EventsPage} from "../events/events";
+import {ScreenOrientation} from "@ionic-native/screen-orientation";
 
 /**
  * Generated class for the ShowEventPage page.
@@ -79,7 +80,7 @@ export class ShowEventPage {
      public loadingCtrl: LoadingController,
      public eventProvider : EventProvider,
      public params: NavParams,
-
+    public screenOrientation: ScreenOrientation
   ){
 
     platform.registerBackButtonAction(() => {
@@ -118,6 +119,10 @@ export class ShowEventPage {
 
       console.log(this.event.imagesGallery.img1)
     })
+
+
+
+    // this.lockPortrait()
 
   }
 
@@ -159,7 +164,26 @@ export class ShowEventPage {
 
   }
 
+//---------------------------------
 
+
+
+  lockPortrait() {
+    alert('Orientation locked to portrait.');
+    this.screenOrientation.lock(this.screenOrientation.ORIENTATIONS.PORTRAIT);
+  }
+
+  unlock() {
+    alert('Orientation unlocked');
+    this.screenOrientation.unlock();
+  }
+
+  getCurrentOrientation() {
+    alert('Current Orientation is ' + this.screenOrientation.type);
+  }
+
+
+//---------------------------------
 
 }
 
