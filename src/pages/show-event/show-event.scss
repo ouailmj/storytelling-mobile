@@ -1,90 +1,134 @@
 page-show-event {
+
+  * {
+  -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+}
   
   ion-content {
     background: linear-gradient(0deg, #eeeef1 0%, white 80%, white 100%);
+    padding: 0;
+    margin: 0;
   }
-  button,
-  ion-button,
-  .button-md,
-  .button-ios {
-    text-transform: none !important;
-  }
-  p {
-    color: #444;
-  }
-  // Cover image
-  #profile-bg {
-    position: absolute;
-    left: 0;
-    width: 100%;
-    margin-top: -16px;
-    height: 160px;
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-position: center;
-    text-align: center;
-  }
-  // Profile content
-  #content {
-    position: relative;
-    margin-top: 150px;
-    padding-top: 200px;
-    text-align: center;
-  }
-  #profile-image {
-    display: block;
-    border-radius: 50%;
-    width: auto;
-    height: 100px;
-    margin: 0 auto 0;
-    box-shadow: 0px 11px 20px -3px rgba(142, 136, 146, 0.75);
-  }
-  #profile-info {
-    position: absolute;
-    top: -95px;
-    width: 100%;
-    z-index: 2;
-    text-align: center;
-  }
-  #profile-name {
-    color: #444;
-    font-size: 26px;
-  }
-  .profile-description {
-    font-size: 15px;
-    color: #888;
-  }
-  .follow-button {
-    text-transform: none;
-    border-radius: 3px !important;
-    ion-icon {
-      font-weight: bold;
-      padding-left: 5px;
-      font-size: 2.5rem;
-    }
-  }
-  // Following, Followers and all..
-  .profile-numbers {
-    p {
-      color: #444;
-      font-size: medium;
-      margin-bottom: 3px;
-    }
-    span {
-      font-weight: bold;
-      font-size: 2.4rem;
-      color: #34354c;
-    }
-  }
-  hr {
-    border: 0;
-    height: 1px;
-    background: #444;
-    background: -webkit-linear-gradient(left, hsla(0, 0%, 0%, 0) 0%, rgb(188, 198, 214) 50%, hsla(0, 0%, 0%, 0) 100%);
-  }
-  // Posts feed
-  #posts {
-    text-align: justify;
+
+  ion-navbar ion-icon{
+    color: #46c6ac;
   }
   
+  ion-navbar, ion-header, .toolbar-background{
+    background-color: #161954 !important;
+    color: #fff;
+  }
+
+  ion-title, .title{
+    color: #fff !important;
+    margin: 0;
+    width: auto;
+  }
+
+  ion-slides{
+    margin : 0;
+    height: 50%;
+  }
+
+ion-grid{
+  padding : 0 !important;
+}
+
+.toolbar-title{
+  color: #fff;
+  width: 100%;
+  text-align: center
+}
+
+.page-name{
+  color: #fff;
+  font-size: 16px !important
+}
+.scroll-content{
+  margin-top: 0 !important;
+}
+
+  .search-btn{
+    float: right;
+  }
+  .slide-zoom {
+    height: 100%;
+  }
+
+
+  .slide-image {
+    max-height: 100%;
+    max-width: 100%;
+    margin: 44px 0 0 0;
+    min-width: 100%;
+    min-height: 100%;
+    padding: 0;
+    margin-bottom: 0;
+  }
+  .swiper-pagination{
+    text-align: left;
+    margin-left: 5px;
+  }
+
+  .swiper-pagination button{
+    height: 10px;
+    width: 10px;
+    background: #fff;
+    opacity: 0.7;
+  }
+
+  .swiper-pagination .swiper-pagination-bullet-active{
+    background: #46c6ac;
+  }
+
+  .event-info{
+    background: red;
+    transform:skewX(-20deg);
+    margin-left: -20px;
+    padding-left: 25px;
+    background: rgb(22,25,84);
+    background: -moz-linear-gradient(left, rgba(22,25,84,1) 0%, rgba(70,198,172,1) 100%);
+    background: -webkit-linear-gradient(left, rgba(22,25,84,1) 0%,rgba(70,198,172,1) 100%);
+    background: linear-gradient(to right, rgba(22,25,84,1) 0%,rgba(70,198,172,1) 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#161954', endColorstr='#46c6ac',GradientType=1 );
+    text-align: left;
+  }
+
+  .event-info ion-title{
+    float: left;
+    display: inline-block;
+  }
+
+  .event-info p{
+    color: #fff;
+    display: inline-block;
+    margin: 5px auto;
+  }
+
+  .event-desc{
+    padding: 10px 20px;
+    text-align: justify;
+    line-height:20px;
+  }
+  
+  ion-fab{
+    top: 43%;
+    right: 20%;
+  }
+
+  .camera{
+    overflow: visible;
+    height: 0px;
+  }
+
+  .camera button{
+    height: 80px;
+    width: 80px;
+    background: #161954;
+    color: #fff;
+    border: 2px solid #fff
+  }
+
 }

@@ -1,60 +1,48 @@
-<ion-content padding class="transparent-header">
-    <div id="profile-bg" [ngStyle]="{'background-image': 'url(' + event.imagesGallery.img1 +')'}"  onerror="this.src='/assets/imgs/profile_image_1488952985.6978.png'" ></div>
-    <div id="content">
-      <div id="profile-info" padding>
-        <img id="profile-image" [src]="this.event.CreatedBy.avatar.downloadLink"   >
-        <h3 id="profile-name">{{event.CreatedBy.fullName}}</h3>
-        <p class="profile-description">{{event.description}}</p>
-      </div>
-      <ion-row class="profile-numbers">
-        <ion-col col-4>
-
+<ion-header>
+  <ion-navbar>
+    <ion-grid>
+      <ion-row>
+        <ion-col col-2>
+            <button class="menu-btn" ion-button menuToggle icon-only>
+                <ion-icon name='menu'></ion-icon>
+            </button>
         </ion-col>
-        <ion-col col-4>
-
+        <ion-col col-8>
+            <ion-title class="page-name">{{event.title}}</ion-title>
         </ion-col>
-        <ion-col col-4>
-
+        <ion-col col-2>
+            <button class="search-btn" right ion-button menuToggle="right" icon-only >
+                <ion-icon name='options'></ion-icon>
+            </button>
         </ion-col>
       </ion-row>
-      <hr/>
-      <div id="posts">
-        <ion-card *ngFor="let post of posts">
-          <ion-item>
-            <ion-avatar item-start>
-              <img [src]="post.avatar">
-            </ion-avatar>
-            <h2 class="sticky">{{post.userName}}</h2>
-            <p>{{post.date}}</p>
-          </ion-item>
-          <img [src]="post.postImageUrl" >
-          <ion-card-content>
-            <p>{{post.text}}</p>
-          </ion-card-content>
-          <ion-row>
-            <ion-col col-4>
-              <button ion-button color="purple" clear small icon-left >
-                  <ion-icon name='thumbs-up'></ion-icon>
-                  {{post.likes}} Likes
-                </button>
-            </ion-col>
-            <ion-col col-5>
-              <button ion-button no-padding color="purple" clear small icon-left >
-                  <ion-icon name='text'></ion-icon>
-                  {{post.comments}} Comments
-                </button>
-            </ion-col>
-            <ion-col col-3 align-self-center text-center>
-              <p>
-                {{post.timestamp}}
-              </p>
-            </ion-col>
-          </ion-row>
-        </ion-card>
-      </div>
+    </ion-grid>
+  </ion-navbar>
+</ion-header>
+<ion-content class="transparent-header">
+    <ion-slides pager>
+        <ion-slide *ngFor="let slide of slides">
+          <img [src]="slide.image" class="slide-image"/>
+        </ion-slide>
+    </ion-slides>
+    <div class="camera">
+        <ion-fab right bottom edge>
+            <button class="camera-btn" ion-fab color="light" (click)="takePicture()"><ion-icon name="camera"></ion-icon></button>
+        </ion-fab>
     </div>
-    <ion-fab right bottom>
-        <button ion-fab color="light" (click)="changePicture()"><ion-icon name="camera"></ion-icon></button>
-    </ion-fab>
-  </ion-content>
-
+    <ion-grid>
+      <ion-row>
+        <ion-col class="event-info" col-8>
+          <ion-title>
+            {{event.title}}
+          </ion-title>
+          <p> {{ event.startsAt  | date : "dd MMM yyyy - H:mm " }} </p>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <p class="event-desc">
+          {{event.description}}
+          </p>
+      </ion-row>
+    </ion-grid>
+</ion-content>

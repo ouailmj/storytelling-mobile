@@ -27,13 +27,25 @@ export class CameraProvider {
   }
 
   // This method takes optional parameters to make it more customizable
-  getImage(pictureSourceType, crop = false, quality = 50, allowEdit = true, saveToAlbum = true) {
+  getImage(pictureSourceType, crop = false, quality = 1000, allowEdit = true, saveToAlbum = true) {
+    // const options = {
+    //   quality,
+    //   allowEdit,
+    //   destinationType: this.camera.DestinationType.DATA_URL,
+    //   targetWidth: 1000,
+    //   targetHeight: 1000,
+    //   sourceType: pictureSourceType,
+    //   encodingType: this.camera.EncodingType.JPEG,
+    //   saveToPhotoAlbum: saveToAlbum
+    // };
     const options = {
-      quality,
+      quality: 50,
       allowEdit,
       destinationType: this.camera.DestinationType.DATA_URL,
-      sourceType: pictureSourceType,
       encodingType: this.camera.EncodingType.JPEG,
+      mediaType: this.camera.MediaType.PICTURE,
+      correctOrientation: true,
+      sourceType:pictureSourceType,
       saveToPhotoAlbum: saveToAlbum
     };
 

@@ -3,10 +3,14 @@ page-events {
       padding: 0;
     }
 
-    .menu-btn{
+    .menu-btn, .search-btn{
       background: transparent !important;
+      box-shadow: none;
     }
-    .menu-btn ion-icon{
+    .search-btn{
+      float: right
+    }
+    ion-icon{
       color: #fff !important;
     }
 
@@ -14,63 +18,43 @@ page-events {
       background-color: #0d1d38
     }
 
-    ion-navbar{
-      height: 80x;
-      color: #fff;
-    }
-
-    .toolbar-title{
+    .toolbar-title, .page-name{
       color: #fff;
       width: 100%;
-      text-align: center
-    }
-
-
-    .menu-bar{
-      margin-top: 0;
-      -webkit-box-shadow: 0px 0px 14px 0px rgba(0,0,0,0.75);
-      -moz-box-shadow: 0px 0px 14px 0px rgba(0,0,0,0.75);
-      box-shadow: 0px 0px 14px 0px rgba(0,0,0,0.75);
-      padding-top: 25px;
-      padding-bottom: 10px;
-      padding-left: 5px;
-      padding-right: 5px;
-
-    }
-
-    .menu-content{
       text-align: center;
-      background: #7beed7;
-      height: 100%;
-      border-radius: 50px;
-      padding: 3px
+      overflow: visible
     }
 
-    .menu-bar .menu-content ul{
-      margin-left: -40px;
+    .event-menu{
+      box-shadow: 0px 10px 12px -5px rgba(0,0,0,0.5);
+      text-align: center;
+      padding: 10px auto;
     }
 
-    .menu-bar .menu-content ul li{
-      list-style: none;
-      display: inline;
-      background: #092b66;
-      border-radius: 50px;
-      padding: 5px 10px;
-      margin: auto 5px;
-
+    .event-menu .list-menu{
+      background: #46c6ac;
+      border-radius: 20px;
+      padding: 10px 5px;
+      margin: 5px 0;
     }
 
-    .menu-bar .menu-content ul li a{
-      text-decoration: none;
+    .event-menu .list-menu ion-col:nth-child(2){
+      border-left: 1px solid rgba(255, 255, 255, 0.658);
+      border-right: 1px solid rgba(255, 255, 255, 0.658);
+    }
+
+    .event-menu .list-menu a{
       color: #fff;
+      text-decoration: none;
       text-transform: uppercase;
-      letter-spacing: 1px;
-      font-size: 12px;
-      text-align: center
+      font-weight: 500;
+      padding: 5px 15px;
+      font-size: 10px
     }
 
-    .scroll-content{
-      margin-top: 36px !important;
+    .event-menu .list-menu a.active{
+      background: #0d1d38;
+      border-radius: 20px;
     }
 
     .card-event{
@@ -78,48 +62,63 @@ page-events {
       margin: 20px 5px;
       border-top-right-radius: 30px;
       border-bottom-left-radius: 30px;
-      background-size: 100px;
+      background-size: cover;
       background-repeat: no-repeat;
       text-align: center;
       padding-bottom: 30px;
-      position: relative
+      position: relative;
+      box-shadow: 0px 10px 15px 1px rgba(0,0,0,0.2);
     }
 
     .card-event .filter{
       height: 100px;
       width: 100%;
-      background: linear-gradient(to right, rgba(22,25,84,0.4) 0%,rgba(70,198,172,0.5) 100%);
+      background: linear-gradient(to right, rgba(22,25,84,0.7) 0%,rgba(70,198,172,0.5) 100%);
       filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#c4161954', endColorstr='#0046c6ac',GradientType=1 );
       border-top-right-radius: 30px;
       border-bottom-left-radius: 30px;
     }
 
     .card-event .event-info{
-      width: 70%;
       margin-left: 1%;
       text-align: center;
       display: inline-block;
+      margin-right: 40px;
+      margin-top: 15px;
     }
 
-    .card-event .event-info h4{
+    .card-event .event-info .event-name{
       color: #fff;
       text-transform: uppercase;
       letter-spacing: 1px;
       font-size: 14px;
-      width: 150px;
+      width: 100px;
+      font-weight: 800;
+      margin: 5px auto 0 auto; 
     }
 
-    .card-event .event-info h6{
+    .card-event .event-info .event-dt{
+      word-wrap: break-word;
       padding: 5px 5px;
       background: #0d1d38;
       color: #46c6ac;
       border-radius: 30px;
       font-size: 8px;
-      width: 100px;
+      width: 150px;
+      height: 20px;
+      margin: 5px 0 0 0;
+    }
+
+
+
+    .card-event .event-info .event-cat{
+      font-size: 12px;
+      margin: 5px 0 0 0;
+      color: #fff;
+      font-weight: 500;
     }
 
     .card-event .event-date{
-      width: 30%;
       float: right;
     }
 
@@ -139,5 +138,6 @@ page-events {
       font-size: 10px;
       right: 16%;
     }
+
 
   }
