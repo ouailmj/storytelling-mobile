@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
-
+import { trigger, style, state } from '@angular/animations';
 import {HomePage} from "../home/home";
 import {RegisterPage} from "../register/register";
 
@@ -15,10 +15,24 @@ import {RegisterPage} from "../register/register";
 @Component({
   selector: 'page-welcome',
   templateUrl: 'welcome.html',
+  animations: [
+    trigger('myvisibilty', [
+      state('visible', style({
+        opacity: 1
+      })),
+      state('invisible', style({
+        opacity: 0
+      }))
+    ])
+  ]
 })
 export class WelcomePage {
-
+  visibleState = 'visible';
   constructor(public navCtrl: NavController, public navParams: NavParams) {
+  }
+
+  toggleVisibile(){
+    this.visibleState = (this.visibleState == 'visible' ) ? 'invisible' : 'visible';
   }
 
   ionViewDidLoad() {

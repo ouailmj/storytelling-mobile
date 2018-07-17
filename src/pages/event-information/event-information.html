@@ -1,40 +1,35 @@
-<ion-content>
-    <div>
-        <form (ngSubmit)="onSubmit()">
-            <div class='box'>
-                <div class='wave -one'></div>
-                <div class='wave -two'></div>
-                <div class='wave -three'></div>
-                <div class='title'>Event Description</div>
-            </div>
-            <ion-list>
-                <ion-item style="white-space:nowrap">
-                    <ion-textarea placeholder="Enter a description" name="description" [(ngModel)]="eventInformation.description"></ion-textarea>
-                </ion-item>
-                <ion-item>
-                    <ion-input placeholder="event name" name="title" [(ngModel)]="eventInformation.title"></ion-input>
-                </ion-item>
-                <ion-item>
-                    <ion-input placeholder="event place" name="place" [(ngModel)]="eventInformation.place"></ion-input>
-                </ion-item>
-                <ion-label>Star At</ion-label>
-                <ion-item>
-                    <ion-datetime displayFormat="DD-MM-YYYY HH:mm a" name="startsAt" max="2050-12-01" [(ngModel)]="eventInformation.startsAt"></ion-datetime>
-                </ion-item>
-                <ion-label>End</ion-label>
-                <ion-item>
-                    <ion-datetime displayFormat="DD-MM-YYYY HH:mm a" name="endsAt" max="2050-12-01" [(ngModel)]="eventInformation.endsAt"></ion-datetime>
-                </ion-item>
-                <ion-item>
-                    <ion-select [ngModelOptions]="{standalone: true}" [(ngModel)]="eventInformation.idCat">
-                        <ion-option *ngFor="let cat of this.categories" value="{{cat.id}}">{{cat.title}}</ion-option>
-                    </ion-select>
-                </ion-item>
-            </ion-list>
-            <button class="next-btn" type="submit" ion-button large clear icon-end color="primary">
-              Next
-              <ion-icon name="arrow-forward"></ion-icon>
-            </button>
-        </form>
-    </div>
+<ion-content id="event-desc">
+            <ion-slides pager>
+                <ion-slide>
+                    <ion-grid>
+                        <ion-row class="step">
+                            <h1>Tell Us what this events About?</h1>
+                            <ion-item style="white-space:nowrap">
+                                <ion-textarea placeholder="Enter a description" name="description" [(ngModel)]="eventInformation.description"></ion-textarea>
+                            </ion-item>
+                        </ion-row>
+                        <ion-row class="steps">
+                            <ion-img src="../assets/imgs/steps/1.png"></ion-img>
+                        </ion-row>
+                    </ion-grid>
+                    <ion-fab bottom right >
+                        <button ion-fab>
+                                <ion-icon name='arrow-forward'></ion-icon>
+                        </button>
+                    </ion-fab>
+                </ion-slide>
+                <ion-slide>
+                        <ion-grid>
+                            <ion-row class="step">
+                                <h1>Tell Us what this events About?</h1>
+                                <ion-item style="white-space:nowrap">
+                                    <ion-textarea placeholder="Enter a description" name="description" [(ngModel)]="eventInformation.description"></ion-textarea>
+                                </ion-item>
+                            </ion-row>
+                            <ion-row class="steps">
+                                    <ion-img src="../assets/imgs/steps/1.png"></ion-img>
+                            </ion-row>
+                        </ion-grid>
+                    </ion-slide>
+            </ion-slides>
 </ion-content>

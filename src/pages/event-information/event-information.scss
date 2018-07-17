@@ -1,107 +1,58 @@
 page-event-information {
     @import url('https://fonts.googleapis.com/css?family=Kaushan+Script');
-    .box {
-        width: 100%;
-        height: 300px;
-        box-shadow: 0 2px 30px rgba(black, .2);
-        position: relative;
-        overflow: hidden;
-        transform: translate3d(0, 0, 0);
+    *{
+        box-shadow: none;
+        border: none !important;
     }
-    .wave {
-        opacity: .4;
-        position: absolute;
-        top: 3%;
-        left: 50%;
-        background: #0af;
-        width: 500px;
-        height: 500px;
-        margin-left: -250px;
-        margin-top: -250px;
-        transform-origin: 50% 48%;
-        border-radius: 43%;
-        animation: drift 3000ms infinite linear;
-    }
-    .wave.-three {
-        animation: drift 5000ms infinite linear;
-    }
-    .wave.-two {
-        animation: drift 7000ms infinite linear;
-        opacity: .1;
-        background: #43c6ac;
-    }
-    .box:after {
-        content: '';
-        display: block;
-        left: 0;
-        top: 0;
+    #event-desc{
         width: 100%;
         height: 100%;
-        background: linear-gradient(to bottom, rgba(#191654, 1), rgba(#def, 0) 80%, rgba(white, .5));
-        z-index: 11;
-        transform: translate3d(0, 0, 0);
+        padding: 0;
     }
-    .title {
-        position: absolute;
-        left: 0;
-        top: 0;
+    .toolbar-background {
+        background: #fff;
+        border-color: transparent;
+      }
+    
+      .slide-zoom {
+        height: 100%;
+      }
+
+    ion-textarea{
+        min-height: 100%;
+    }
+    ion-slide{
+        height:100%;
+    }
+
+    ion-grid{
+        height:100%;
+        padding: 0 !important;
+        margin: 0 !important;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .steps, .step{
+        height:50%;
         width: 100%;
+    }
+
+    .steps{
+        background: linear-gradient(0deg, rgb(32, 57, 165) 0%,rgba(125,185,232,0) 100%);        text-align: center;
+    }
+
+    .steps ion-img{
+        background: transparent;
         margin: auto;
-        z-index: 1;
-        line-height: 200px;
-        text-align: center;
-        transform: translate3d(0, 0, 0);
-        color: white;
-        text-transform: capitalize;
-        font-family: 'Kaushan Script', cursive;
-        letter-spacing: .4em;
-        font-size: 20px;
-        text-shadow: 0 1px 0 rgba(black, .1);
-        text-indent: .3em;
-    }
-    @keyframes drift {
-        from {
-            transform: rotate(0deg);
-        }
-        from {
-            transform: rotate(360deg);
-        }
-    }
-    ioni-item {
-        border: none !important;
-    }
-    .list-ios>.item-block:first-child,
-    ion-label,
-    item-inner {
-        border: none !important;
-    }
-    ion-input,
-    ion-textarea,
-    ion-select,
-    ion-datetime {
-        font-size: 16px;
-        padding: 10px 10px 10px 5px;
-        display: block;
-        width: 300px;
-        border: 2px solid #43c6ac;
-        border-radius: 4px;
-        box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.075) inset;
+        height: 100%;
         width: 100%;
-        padding: 10px;
+        display: inline-block
     }
-    ion-input:focus {
-        outline: none;
-        border-color: #66AFE9;
-        box-shadow: 0 0 5px rgba(102, 175, 233, 0.8);
-        transition: border-color 0.15s ease-in-out 0s, box-shadow 0.15s ease-in-out 0s;
-    }
-    ion-label {
-        display: block;
-        margin-left: 15px !important
-    }
-    .next-btn {
-        width: 99%;
-        background: #161954 !important;
-        color: #fff;
+
+    button{
+        border: none;
+        background: transparent !important;
+        box-shadow: none !important;
     }
 }

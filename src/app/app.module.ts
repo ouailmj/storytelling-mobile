@@ -36,7 +36,8 @@ import { InviteFriendsPage } from '../pages/invite-friends/invite-friends';
 import { PaymentPage } from '../pages/payment/payment';
 import { FinishCreateEventPage } from '../pages/finish-create-event/finish-create-event';
 import { ChoosePlanPage } from '../pages/choose-plan/choose-plan';
-import {ChangepPasswordPage} from "../pages/changep-password/changep-password";
+import {ChangepPasswordPage} from '../pages/changep-password/changep-password';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
@@ -66,6 +67,7 @@ import {ChangepPasswordPage} from "../pages/changep-password/changep-password";
   imports: [
 BrowserModule,
     HttpClientModule,
+    BrowserAnimationsModule,
     IonicModule.forRoot(StoryTellingApp),
     IonicStorageModule.forRoot(),
 
