@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import {IonicPage, MenuController, NavController, NavParams} from 'ionic-angular';
 import {HomePage} from "../home/home";
 import {RegisterPage} from "../register/register";
 import {ShowEventPage} from "../show-event/show-event";
@@ -21,7 +21,10 @@ import { Storage } from '@ionic/storage';
 })
 export class WelcomePage {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams,private storage:Storage) {
+  constructor(public navCtrl: NavController, public navParams: NavParams,private storage:Storage,private menu: MenuController) {
+    this.menu.enable(false,'menu-right');
+    this.menu.enable(false,'menu-left');
+
     this.storage.get('token').then(token =>{
       if(token === null){
         console.log("token is null : ",token);

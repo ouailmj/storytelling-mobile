@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NavController, LoadingController, ToastController } from 'ionic-angular';
+import {NavController, LoadingController, ToastController, MenuController} from 'ionic-angular';
 import { AuthProvider } from '../../providers/auth/auth';
 import { UserData } from '../../providers/types/userData';
 import { RegisterPage } from '../register/register';
@@ -29,9 +29,12 @@ export class HomePage {
      public loadingCtrl: LoadingController,
      private toastCtrl: ToastController,
      private authService:AuthProvider,
-     public formBuilder: FormBuilder) {
+     public formBuilder: FormBuilder,
+     private menu :MenuController
+  ) {
 
-
+    this.menu.enable(false,'menu-right');
+    this.menu.enable(false,'menu-left');
 
     this.navCtrl = navCtrl;
 
