@@ -1,5 +1,8 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams, LoadingController, Platform, ActionSheetController } from 'ionic-angular';
+import {
+  IonicPage, NavController, NavParams, LoadingController, Platform, ActionSheetController,
+  MenuController, Events
+} from 'ionic-angular';
 import { EventProvider } from '../../providers/event/event';
 import { CameraProvider } from '../../providers/util/camera.provider';
 import { FileUploadResult } from '@ionic-native/file-transfer';
@@ -32,6 +35,10 @@ export class ShowEventPage {
       image: "http://placehold.it/300/fe8",
     }
   ];
+
+
+
+
 
 
   placeholder = 'assets/img/avatar/girl-avatar.png';
@@ -81,8 +88,12 @@ export class ShowEventPage {
      public loadingCtrl: LoadingController,
      public eventProvider : EventProvider,
      public params: NavParams,
-    public screenOrientation: ScreenOrientation
+    public screenOrientation: ScreenOrientation,
+    public menu:MenuController,
+    public events: Events
   ){
+    this.menu.enable(true,'menu-right');
+    this.menu.enable(true,'menu-left');
 
     platform.registerBackButtonAction(() => {
       this.navCtrl.push(EventsPage);
@@ -91,9 +102,23 @@ export class ShowEventPage {
   }
 
   ionViewDidLoad() {
+    this.id_event = this.params.get('id_event');
+
+
+
+      // notify any observers that the data is ready to populate and pass it
+      this.events.publish('articleMenu:populate', this.id_event);
+
+      // subscribe to the change event of the menu (an option being selected)
+      // this.events.subscribe('articleMenu:change', (index) => {this.showArticle(index);});
+      // enable the menu on this page
+      // this.menuCtrl.enable(true, 'ArticleMenu');
+
+
+
     console.log('Hello ProfileFour Page');
     console.log(this.params.get('id_event'));
-     this.id_event = this.params.get('id_event');
+
 
      console.log('id event ===< ',this.id_event);
 
@@ -119,6 +144,7 @@ export class ShowEventPage {
 
 
       console.log(this.event.imagesGallery.img1)
+
     })
 
 

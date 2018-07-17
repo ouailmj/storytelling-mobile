@@ -38,6 +38,7 @@ import { FinishCreateEventPage } from '../pages/finish-create-event/finish-creat
 import { ChoosePlanPage } from '../pages/choose-plan/choose-plan';
 import {ChangepPasswordPage} from "../pages/changep-password/changep-password";
 import { ScreenOrientation } from '@ionic-native/screen-orientation';
+import {EditInviteFrendsPage} from "../pages/edit-invite-frends/edit-invite-frends";
 
 @NgModule({
   declarations: [
@@ -62,7 +63,8 @@ import { ScreenOrientation } from '@ionic-native/screen-orientation';
       InviteFriendsPage,
       PaymentPage,
       ChangepPasswordPage,
-      FinishCreateEventPage
+      FinishCreateEventPage,
+      EditInviteFrendsPage
   ],
   imports: [
 BrowserModule,
@@ -94,7 +96,8 @@ BrowserModule,
       EventChallengePage,
       InviteFriendsPage,
       PaymentPage,
-      FinishCreateEventPage
+      FinishCreateEventPage,
+      EditInviteFrendsPage
   ],
   providers: [
     StatusBar,

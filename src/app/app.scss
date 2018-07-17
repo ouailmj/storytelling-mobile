@@ -17,3 +17,43 @@ ion-list ion-item{
     font-family: 'Kaushan Script', cursive;
     font-size: 16px !important
 }
+
+#menu-right {
+  button {
+    padding-left: 16px;
+  }
+  ion-content {
+    background: rgba(255, 36, 36, 0.82);
+  }
+  .menu-inner {
+    width: 10vh;
+  }
+  @media screen and (orientation: landscape) {
+    .menu-inner {
+      width: 15vh;
+    }
+  }
+  .active-menu-item {
+    position: absolute;
+    border-top: 6px solid transparent;
+    border-bottom: 6px solid transparent;
+    border-left: 6px solid #ffffff;
+  }
+  .label {
+    display: flex;
+    align-items: center;
+  }
+  .list-md[no-lines] .item-block,
+  .list-md[no-lines] ion-item-options,
+  .list-md[no-lines] .item .item-inner,
+  .list-ios[no-lines] .item-block,
+  .list-ios[no-lines] ion-item-options,
+  .list-ios[no-lines] .item .item-inner {
+    padding: .3rem 0;
+    background: transparent;
+    color: white;
+  }
+  ion-icon {
+    line-height: 1;
+  }
+}
