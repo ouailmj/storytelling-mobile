@@ -69,6 +69,7 @@ import {EditInviteFrendsPage} from "../pages/edit-invite-frends/edit-invite-fren
   imports: [
 BrowserModule,
     HttpClientModule,
+    BrowserAnimationsModule,
     IonicModule.forRoot(StoryTellingApp),
     IonicStorageModule.forRoot(),
 
