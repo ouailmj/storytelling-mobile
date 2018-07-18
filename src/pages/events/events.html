@@ -10,11 +10,6 @@
         <ion-col col-8>
           <ion-title class="page-name">My Events</ion-title>
         </ion-col>
-        <ion-col col-2>
-          <button class="search-btn" ion-button icon-only>
-            <ion-icon name='options'></ion-icon>
-          </button>
-        </ion-col>
       </ion-row>
     </ion-grid>
   </ion-navbar>
@@ -36,13 +31,13 @@
   <div *ngFor="let event of events" (click)="eventDetails(event.event.id)" class="card-event" style="background-image: url('https://static1.squarespace.com/static/55c37beae4b0336075603f86/55c3cd80e4b01531b3208f2e/5603032be4b008bd0ad4e6fb/1486126957019/?format=1500w')" >
     <div class="filter">
       <div class="event-info">
-        <p class="event-name">event name</p>
-        <p class="event-dt">17 MAY 2018 - 8:00</p>
-        <p class="event-cat">Festivale</p>
+        <p class="event-name">{{event.event.title}}</p>
+        <p class="event-dt">{{ event.event.startsAt  | date : "dd MMM yyyy - H:mm " }}  </p>
+        <p class="event-cat">{{event.event.category}}</p>
       </div>
       <div class="event-date">
           <ion-img src="../assets/imgs/event-date-ico.png"></ion-img>
-        <h5>17 <br> may</h5>
+        <h5>{{ event.event.startsAt  | date : "dd" }}<br> {{ event.event.startsAt  | date : "MMM " }}</h5>
       </div>
     </div>
   </div>

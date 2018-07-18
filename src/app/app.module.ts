@@ -36,8 +36,9 @@ import { InviteFriendsPage } from '../pages/invite-friends/invite-friends';
 import { PaymentPage } from '../pages/payment/payment';
 import { FinishCreateEventPage } from '../pages/finish-create-event/finish-create-event';
 import { ChoosePlanPage } from '../pages/choose-plan/choose-plan';
-import {ChangepPasswordPage} from '../pages/changep-password/changep-password';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import {ChangepPasswordPage} from "../pages/changep-password/changep-password";
+import { ScreenOrientation } from '@ionic-native/screen-orientation';
+import {EditInviteFrendsPage} from "../pages/edit-invite-frends/edit-invite-frends";
 
 @NgModule({
   declarations: [
@@ -62,7 +63,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
       InviteFriendsPage,
       PaymentPage,
       ChangepPasswordPage,
-      FinishCreateEventPage
+      FinishCreateEventPage,
+      EditInviteFrendsPage
   ],
   imports: [
 BrowserModule,
@@ -95,7 +97,8 @@ BrowserModule,
       EventChallengePage,
       InviteFriendsPage,
       PaymentPage,
-      FinishCreateEventPage
+      FinishCreateEventPage,
+      EditInviteFrendsPage
   ],
   providers: [
     StatusBar,
@@ -112,6 +115,7 @@ BrowserModule,
     File,
     ToastService,
     UserProvider,
+    ScreenOrientation
   ]
 })
 export class AppModule {}

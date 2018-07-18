@@ -1,32 +1,9 @@
-<ion-menu [content]="content">
+<ion-menu [content]="content" id="menu-left">
         <ion-header>
           <ion-toolbar>
             <ion-title>Menu</ion-title>
           </ion-toolbar>
         </ion-header>
-        <!-- <ion-content>
-          <ion-list>
-            <ion-item>
-                    <ion-icon name="contact" item-start></ion-icon>
-                         Edit Profil
-            </ion-item>
-            <ion-item>
-                    <ion-icon name="key" item-start></ion-icon>
-                         Change Password
-            </ion-item>
-            <ion-item>
-                    <ion-icon name="calendar" item-start></ion-icon>
-                         My Events
-            </ion-item>
-            <ion-item menu-close  (click)="openPage()">
-                    <ion-icon name="log-out" item-start></ion-icon>
-                         Log out
-              <button menuClose ion-item *ngFor="let p of pages" (click)="openPage(p)">
-              {{p.title}}
-            </button>
-            </ion-item>
-        </ion-list>
-        </ion-content> -->
         <ion-content>
           <ion-list>
             <button menuClose ion-item *ngFor="let p of pages" (click)="openPage(p)">
@@ -36,4 +13,16 @@
         </ion-content>
       </ion-menu>
 
-<ion-nav [root]="rootPage" #content></ion-nav>
+      <!--Right side menu-->
+<ion-menu side="right" type="push"  [content]="content" id="menu-right">
+        <ion-content>
+          <ion-list no-lines>
+            <button menuClose icon-only ion-item detail-none (click)="this.rightMenuClick(item)" *ngFor="let item of rightMenuItems; let i = index">
+              <div *ngIf="item.active" class="active-menu-item"></div>
+              <ion-icon [name]="item.icon"></ion-icon>
+            </button>
+          </ion-list>
+        </ion-content>
+      </ion-menu>
+
+<ion-nav [root]="rootPage" swipeBackEnabled="false" #content></ion-nav>

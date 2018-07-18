@@ -39,9 +39,9 @@ export class EventProvider {
 
                 this.apiProvider.get('/api/event/new', {headers: headers}).then(rep => {
                     this.apiProvider.get(rep.appEventURI, {headers: headers}).then(event => {
-                        this.storage.set('currentEvent', event)
-                        console.log('event eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee',event)
-                    }).catch(err=>{console.log('error');reject(err);})
+                        this.storage.set('currentEvent', event);
+                        console.log('event eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee',event);
+                    }).catch(err=>{console.log('error');reject(err);});
 
                     resolve("ok");
                 }).catch(error => {
@@ -124,7 +124,7 @@ export class EventProvider {
                 let headers = new HttpHeaders();
                 headers = headers.set('Content-Type', 'application/json; charset=utf-8');
                 headers = headers.set('Authorization', 'Bearer ' + tok);
-console.log(EventRoutes.apiChoosePlan+id)
+                console.log(EventRoutes.apiChoosePlan+id)
                 this.apiProvider.post(EventRoutes.apiChoosePlan+id, choosePlanData,{headers: headers}).then(rep=>{
                     console.log(rep)
                     resolve("ok");
@@ -148,10 +148,10 @@ console.log(EventRoutes.apiChoosePlan+id)
 
         return new Promise((resolve, reject) => {
             this.storage.get('token').then(tok => {
-                let loader = this.loadingCtrl.create({
-                    content: "Uploading..."
-                });
-                loader.present();
+                // let loader = this.loadingCtrl.create({
+                //     content: "Uploading..."
+                // });
+                // loader.present();
                 const fileTransfer: FileTransferObject = this.transfer.create();
 
                 let options: FileUploadOptions = {
@@ -166,11 +166,11 @@ console.log(EventRoutes.apiChoosePlan+id)
                         console.log(data);
                         resolve(data)
                         //this.imageFileName = "http://192.168.0.7:8080/static/images/ionicfile.jpg"
-                        loader.dismiss();
+                        // loader.dismiss();
                         if (isPresentToast) this.presentToast("Image uploaded successfully");
                     }, (err) => {
                         reject(err);
-                        loader.dismiss();
+                        // loader.dismiss();
                         this.presentToast(err);
                     });
 
@@ -397,4 +397,28 @@ console.log(EventRoutes.apiChoosePlan+id)
 
         })
     }
+
+    getListInvite(idEvent): Promise<any>{
+
+      return new Promise((resolve, reject)=>{
+        this.storage.get('token').then(tok => {
+
+          let headers = new HttpHeaders();
+
+          headers = headers.set('Content-Type', 'application/json; charset=utf-8');
+          headers = headers.set('Authorization', 'Bearer ' + tok);
+
+          this.apiProvider.get(EventRoutes.apiListInvite+idEvent, {headers: headers}).then(rep => {
+            resolve(rep["hydra:member"]);
+          }).catch(error => {
+            reject(error)
+          })
+        }).catch(error => {
+          reject(error)
+        })
+
+      })
+    }
+
+
 }

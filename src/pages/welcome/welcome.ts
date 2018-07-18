@@ -1,8 +1,11 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
-import { trigger, style, state } from '@angular/animations';
+import {IonicPage, MenuController, NavController, NavParams} from 'ionic-angular';
 import {HomePage} from "../home/home";
 import {RegisterPage} from "../register/register";
+import {ShowEventPage} from "../show-event/show-event";
+import {EventsPage} from "../events/events";
+import { Storage } from '@ionic/storage';
+
 
 /**
  * Generated class for the WelcomePage page.
@@ -15,30 +18,44 @@ import {RegisterPage} from "../register/register";
 @Component({
   selector: 'page-welcome',
   templateUrl: 'welcome.html',
-  animations: [
-    trigger('myvisibilty', [
-      state('visible', style({
-        opacity: 1
-      })),
-      state('invisible', style({
-        opacity: 0
-      }))
-    ])
-  ]
 })
 export class WelcomePage {
-  visibleState = 'visible';
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
-  }
 
-  toggleVisibile(){
-    this.visibleState = (this.visibleState == 'visible' ) ? 'invisible' : 'visible';
+  constructor(public navCtrl: NavController, public navParams: NavParams,private storage:Storage,private menu: MenuController) {
+    this.menu.enable(false,'menu-right');
+    this.menu.enable(false,'menu-left');
+
+    this.storage.get('token').then(token =>{
+      if(token === null){
+        console.log("token is null : ",token);
+
+      }
+      else{
+
+        this.storage.get('lastEventId').then(id=>{
+          console.log("last event id ",id);
+
+          if(id === null){
+            this.navCtrl.push(EventsPage);
+          }else{
+            this.navCtrl.setRoot(ShowEventPage,{id_event:id}).then();
+          }
+
+        });
+
+      }
+
+    }).catch(error=>{
+      console.log(error)
+    });
+
+
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad WelcomePage');
   }
-  
+
   signup(){
     this.navCtrl.push(RegisterPage);
   }

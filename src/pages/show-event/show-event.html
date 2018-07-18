@@ -8,11 +8,11 @@
             </button>
         </ion-col>
         <ion-col col-8>
-            <ion-title class="page-name">Mawazine</ion-title>
+            <ion-title class="page-name">{{event.title}}</ion-title>
         </ion-col>
         <ion-col col-2>
-            <button class="search-btn" right ion-button menuToggle icon-only>
-                <ion-icon name='search'></ion-icon>
+            <button class="search-btn" right ion-button menuToggle="right" icon-only >
+                <ion-icon name='options'></ion-icon>
             </button>
         </ion-col>
       </ion-row>
@@ -27,28 +27,22 @@
     </ion-slides>
     <div class="camera">
         <ion-fab right bottom edge>
-            <button class="camera-btn" ion-fab color="light" (click)="changePicture()"><ion-icon name="camera"></ion-icon></button>
+            <button class="camera-btn" ion-fab color="light" (click)="takePicture()"><ion-icon name="camera"></ion-icon></button>
         </ion-fab>
     </div>
     <ion-grid>
       <ion-row>
         <ion-col class="event-info" col-8>
           <ion-title>
-            Mawazine
+            {{event.title}}
           </ion-title>
-          <p>17 MAY 2018 - 8:00 PM </p>
+          <p> {{ event.startsAt  | date : "dd MMM yyyy - H:mm " }} </p>
         </ion-col>
       </ion-row>
       <ion-row>
         <p class="event-desc">
-          Cillum excepteur amet occaecat do est reprehenderit ipsum. Aliqua elit ea Lorem elit occaecat id ex culpa. Proident ullamco ut consequat ex eiusmod nisi ad enim laboris. Consectetur elit deserunt elit enim in occaecat. Minim proident id aliqua elit. Nisi duis nisi mollit amet aliqua nulla id culpa minim esse exercitation.
-  Aliquip officia nulla elit mollit. Anim magna do tempor nisi duis esse irure nisi aute. Culpa sint minim sit nostrud nulla. Dolor esse sit labore nisi enim velit proident qui officia commodo irure ad. Consectetur occaecat cillum aliquip sunt reprehenderit proident velit consequat. Excepteur ullamco exercitation proident laboris pariatur do. Culpa in pariatur culpa magna minim est mollit ex.
-  Tempor non incididunt amet aliquip nulla Lorem sint eu in non non ea tempor. Eiusmod ipsum est amet nostrud officia. Enim culpa tempor id magna ut aute non occaecat. Tempor tempor ipsum cupidatat nostrud cillum dolor non officia deserunt ex est ad elit.
-  Occaecat cupidatat sunt minim dolore est proident irure irure id minim proident eu id culpa. Esse pariatur voluptate est laboris ut commodo voluptate ex nisi id aute. Pariatur eiusmod ea voluptate voluptate aliqua exercitation aliquip eiusmod magna proident.
-  Eu ea qui ipsum sunt nisi occaecat aute. <br> Duis est occaecat sit nostrud. Amet in ullamco tempor nostrud est qui aliquip irure Lorem eiusmod ea eiusmod laborum. Veniam consequat do dolore cillum mollit ea esse ex aliquip dolore laboris nostrud qui. Id dolor officia pariatur officia aute nulla aute eu. Eu excepteur veniam minim ullamco do sint aute in pariatur aliquip. Ullamco deserunt fugiat labore qui deserunt nostrud dolore pariatur eu do.
-Cupidatat incididunt voluptate aliquip ea excepteur ut minim laborum non quis aute dolore. Aliquip cupidatat consectetur commodo minim laboris proident proident aliqua fugiat nisi pariatur. Nisi consequat ad adipisicing adipisicing nulla nulla elit Lorem in laborum pariatur exercitation sunt.
-Ea quis aute quis ipsum. Nisi labore cillum ex aute commodo elit deserunt. Ipsum cillum sint nisi esse minim incididunt exercitation nisi consectetur.
-        </p>
+          {{event.description}}
+          </p>
       </ion-row>
     </ion-grid>
 </ion-content>
