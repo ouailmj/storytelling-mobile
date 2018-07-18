@@ -1,40 +1,139 @@
-<ion-content>
-    <div>
-        <form (ngSubmit)="onSubmit()">
-            <div class='box'>
-                <div class='wave -one'></div>
-                <div class='wave -two'></div>
-                <div class='wave -three'></div>
-                <div class='title'>Event Description</div>
-            </div>
-            <ion-list>
-                <ion-item style="white-space:nowrap">
-                    <ion-textarea placeholder="Enter a description" name="description" [(ngModel)]="eventInformation.description"></ion-textarea>
-                </ion-item>
-                <ion-item>
-                    <ion-input placeholder="event name" name="title" [(ngModel)]="eventInformation.title"></ion-input>
-                </ion-item>
-                <ion-item>
-                    <ion-input placeholder="event place" name="place" [(ngModel)]="eventInformation.place"></ion-input>
-                </ion-item>
-                <ion-label>Star At</ion-label>
-                <ion-item>
-                    <ion-datetime displayFormat="DD-MM-YYYY HH:mm a" name="startsAt" max="2050-12-01" [(ngModel)]="eventInformation.startsAt"></ion-datetime>
-                </ion-item>
-                <ion-label>End</ion-label>
-                <ion-item>
-                    <ion-datetime displayFormat="DD-MM-YYYY HH:mm a" name="endsAt" max="2050-12-01" [(ngModel)]="eventInformation.endsAt"></ion-datetime>
-                </ion-item>
-                <ion-item>
-                    <ion-select [ngModelOptions]="{standalone: true}" [(ngModel)]="eventInformation.idCat">
-                        <ion-option *ngFor="let cat of this.categories" value="{{cat.id}}">{{cat.title}}</ion-option>
-                    </ion-select>
-                </ion-item>
-            </ion-list>
-            <button class="next-btn" type="submit" ion-button large clear icon-end color="primary">
-              Next
-              <ion-icon name="arrow-forward"></ion-icon>
-            </button>
-        </form>
-    </div>
+<ion-content id="event-desc">
+    <form (ngSubmit)="onSubmit()">
+    <ion-slides pager>
+        <ion-slide id="first">
+            <ion-grid>
+                <ion-row class="step">
+                    <h1>Tell Us what this event About?</h1>
+                    <ion-item style="white-space:nowrap">
+                        <ion-textarea placeholder="Enter a description" name="description" [(ngModel)]="eventInformation.description"></ion-textarea>
+                    </ion-item>
+                </ion-row>
+                <ion-row class="steps">
+                    <ion-img src="../assets/imgs/steps/1.png"></ion-img>
+                </ion-row>
+            </ion-grid>
+            <ion-fab bottom right >
+                <a href="#second" ion-fab>
+                    <ion-icon name='arrow-forward'></ion-icon>
+                </a>
+            </ion-fab>
+        </ion-slide>
+        <ion-slide id="second">
+            <ion-grid>
+                <ion-fab bottom right >
+                    <a href="#third" ion-fab>
+                        <ion-icon name='arrow-forward'></ion-icon>
+                    </a>
+                </ion-fab>
+                <ion-row class="step">
+                    <h1>Give Your Event Beautiful Name !</h1>
+                    <ion-item style="white-space:nowrap">
+                        <ion-input placeholder="event name" name="title" [(ngModel)]="eventInformation.title"></ion-input>                    </ion-item>
+                </ion-row>
+                <ion-row class="steps">
+                    <ion-img src="../assets/imgs/steps/2.png"></ion-img>
+                </ion-row>
+            </ion-grid>
+            <ion-fab bottom left >
+                <a href="#first" ion-fab>
+                    <ion-icon name='arrow-back'></ion-icon>
+                </a>
+            </ion-fab>
+        </ion-slide>
+        <ion-slide id="third">
+                <ion-grid>
+                    <ion-fab bottom right >
+                        <a href="#fourth" ion-fab>
+                            <ion-icon name='arrow-forward'></ion-icon>
+                        </a>
+                    </ion-fab>
+                    <ion-row class="step">
+                        <h1>where this event will be ?</h1>
+                        <ion-item style="white-space:nowrap">
+                                <ion-input placeholder="event place" name="place" [(ngModel)]="eventInformation.place"></ion-input>                    </ion-item>
+                    </ion-row>
+                    <ion-row class="steps">
+                        <ion-img src="../assets/imgs/steps/3.png"></ion-img>
+                    </ion-row>
+                </ion-grid>
+                <ion-fab bottom left >
+                    <a href="#second" ion-fab>
+                        <ion-icon name='arrow-back'></ion-icon>
+                    </a>
+                </ion-fab>
+            </ion-slide>
+            <ion-slide id="fourth">
+                    <ion-grid>
+                        <ion-fab bottom right >
+                            <a href="" ion-fab>
+                                <ion-icon name='arrow-forward'></ion-icon>
+                            </a>
+                        </ion-fab>
+                        <ion-row class="step">
+                            <h1>When The Event Start?</h1>
+                            <ion-item style="white-space:nowrap">
+                                <ion-datetime displayFormat="DD-MM-YYYY HH:mm a" name="startsAt" max="2050-12-01" [(ngModel)]="eventInformation.startsAt"></ion-datetime>
+                            </ion-item>
+                        </ion-row>
+                        <ion-row class="steps">
+                            <ion-img src="../assets/imgs/steps/4.png"></ion-img>
+                        </ion-row>
+                    </ion-grid>
+                    <ion-fab bottom left >
+                    <a href="#third" ion-fab>
+                        <ion-icon name='arrow-back'></ion-icon>
+                    </a>
+                </ion-fab>
+            </ion-slide>
+            <ion-slide id="fifth">
+                    <ion-grid>
+                        <ion-fab bottom right >
+                            <a href="#sixth" ion-fab>
+                                <ion-icon name='arrow-forward'></ion-icon>
+                            </a>
+                        </ion-fab>
+                        <ion-row class="step">
+                            <h1>When The Event End?</h1>
+                            <ion-item style="white-space:nowrap">
+                                <ion-datetime displayFormat="DD-MM-YYYY HH:mm a" name="endsAt" max="2050-12-01" [(ngModel)]="eventInformation.endsAt"></ion-datetime>
+                            </ion-item>
+                        </ion-row>
+                        <ion-row class="steps">
+                            <ion-img src="../assets/imgs/steps/5.png"></ion-img>
+                        </ion-row>
+                    </ion-grid>
+                    <ion-fab bottom left >
+                    <a href="#third" ion-fab>
+                        <ion-icon name='arrow-back'></ion-icon>
+                    </a>
+                </ion-fab>
+            </ion-slide>
+            <ion-slide id="sixth">
+                <ion-grid>
+                    <ion-fab bottom left >
+                        <a href="#fifth" ion-fab>
+                            <ion-icon name='arrow-back'></ion-icon>
+                        </a>
+                    </ion-fab>
+                    <ion-row class="step">
+                        <h1>What kind of event it is?</h1>
+                        <ion-item style="white-space:nowrap">
+                            <ion-select [ngModelOptions]="{standalone: true}" [(ngModel)]="eventInformation.idCat">
+                                <ion-option *ngFor="let cat of this.categories" value="{{cat.id}}">{{cat.title}}</ion-option>
+                            </ion-select>
+                        </ion-item>
+                    </ion-row>
+                    <ion-row class="steps">
+                        <ion-img src="../assets/imgs/steps/2.png"></ion-img>
+                    </ion-row>
+                </ion-grid>
+                <ion-fab bottom right >
+                    <button type="submit" ion-fab>
+                        <ion-icon name="play"></ion-icon>
+                    </button>
+            </ion-fab>
+        </ion-slide>
+    </ion-slides>
+    </form>
 </ion-content>
