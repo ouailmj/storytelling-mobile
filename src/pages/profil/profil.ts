@@ -22,6 +22,7 @@ import { EventProvider } from '../../providers/event/event';
 export class ProfilPage {
   placeholder = 'assets/img/avatar/girl-avatar.png';
   chosenPicture: any;
+  icon = 'ios-close';
 
   loading: any;
    user: UserData = {
@@ -54,8 +55,8 @@ export class ProfilPage {
 
     this.authForm = formBuilder.group({
 
-      username: ['', Validators.compose([Validators.required, Validators.pattern('[a-zA-Z]*'),  Validators.maxLength(30)])],
-      fullName: ['', Validators.compose([Validators.required, Validators.pattern('[a-zA-Z]*'), Validators.maxLength(30)])],
+      username: ['', Validators.compose([Validators.required,Validators.maxLength(30)])],
+      fullName: ['', Validators.compose([Validators.required,Validators.maxLength(30)])],
       phoneNumber: ['', Validators.compose([Validators.required, Validators.pattern('[0-9]*'), Validators.maxLength(30)])],
       timezoneId: ['', Validators.compose([Validators.required,Validators.maxLength(30)])],
       email: ['', Validators.compose([Validators.required, Validators.email, Validators.minLength(6), Validators.maxLength(30)])],
@@ -126,7 +127,6 @@ export class ProfilPage {
         console.log("valide")
 
         this.authService.updateUser(this.user).then(res=>{
-
           console.log(res)
         }).catch(err=>{
           this.presentToast("Password incorrect !!")
@@ -233,6 +233,13 @@ export class ProfilPage {
 
     this.eventProvider.uploadFile(this.chosenPicture);
 
+
+  }
+
+
+  changeText(){
+
+     this.icon = this.authForm.get('password').status === 'VALID' ?  'checkmark' :  'ios-close';
 
   }
 
