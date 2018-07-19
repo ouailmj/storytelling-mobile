@@ -47,10 +47,7 @@ export class StoryTellingApp {
     this.rightMenuItems = [
       { icon: 'share', active: false , component: EditInviteFrendsPage },
       { icon: 'images', active: true , component: EventGalleryPage},
-      { icon: 'alarm', active: false , component: PositionEventPage},
-      { icon: 'analytics', active: false , component: ProfilPage},
-      { icon: 'archive', active: false , component: ProfilPage},
-      { icon: 'basket', active: false , component: ProfilPage},
+      { icon: 'pin', active: false , component: PositionEventPage},
     ];
 
 
