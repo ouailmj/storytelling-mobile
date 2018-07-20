@@ -25,6 +25,7 @@ export class InviteFriendsPage {
     public email: string = '';
     authForm: FormGroup;
     loading : any ;
+    id_event:any = false;
 
     constructor(public navCtrl: NavController, public navParams: NavParams,public loadingCtrl: LoadingController, public formBuilder: FormBuilder, private toastCtrl: ToastController, private storage: Storage, private eventProvider: EventProvider) {
         this.authForm = formBuilder.group({
@@ -32,6 +33,12 @@ export class InviteFriendsPage {
             email: ['', Validators.compose([Validators.email,Validators.required])],
 
         });
+
+      console.log('start ====',this.id_event);
+
+        this.id_event = this.navParams.get('id_event') === undefined ? false : this.navParams.get('id_event');
+      console.log(this.id_event);
+
     }
 
     removeEmail(index) {
@@ -44,7 +51,11 @@ export class InviteFriendsPage {
           if (this.emails.indexOf(this.email) == -1) {
 
               this.emails.push(this.email)
-          }else{
+            if(this.id_event !== false) this.send();
+
+          }
+
+          else{
             this.presentToast("déja exist")
           }
         }else{
@@ -55,15 +66,24 @@ export class InviteFriendsPage {
 
     send(){
 
-        this.showLoader()
-           console.log('emails', this.emails)
+      console.log('id event to push email',this.id_event);
+      this.showLoader()
+        console.log('emails', this.emails);
+        if(this.id_event  !== false){
+          this.eventProvider.addInviteFriends(this.emails, this.id_event) .then(res=>{
+            this.loading.dismiss();
+            console.log(res)
+            this.navCtrl.push(FinishCreateEventPage)
+          }).catch(error=>{this.loading.dismiss();console.log(error)})
+        }else {
         this.storage.get('currentEvent').then(event=>{
             this.eventProvider.addInviteFriends(this.emails, event.id) .then(res=>{
                 this.loading.dismiss();
                 console.log(res)
                 this.navCtrl.push(FinishCreateEventPage)
             }).catch(error=>{this.loading.dismiss();console.log(error)})
-        }).catch(error=>{console.log(error);this.loading.dismiss()})
+          }).catch(error=>{console.log(error);this.loading.dismiss()})
+        }
     }
 
     presentToast(msg) {
@@ -88,4 +108,6 @@ export class InviteFriendsPage {
 
         this.loading.present();
     }
+
+
 }

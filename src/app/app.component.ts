@@ -10,9 +10,10 @@ import { ChangepPasswordPage } from '../pages/changep-password/changep-password'
 import { Storage } from '@ionic/storage';
 import { EventsPage } from '../pages/events/events';
 import { NewEventPage} from '../pages/new-event/new-event';
-import {EditInviteFrendsPage} from "../pages/edit-invite-frends/edit-invite-frends";
 import {EventGalleryPage} from "../pages/event-gallery/event-gallery";
 import {PositionEventPage} from "../pages/position-event/position-event";
+import {InviteFriendsPage} from "../pages/invite-friends/invite-friends";
+import {EditInviteFrendsPage} from "../pages/edit-invite-frends/edit-invite-frends";
 
 @Component({
   templateUrl: 'app.html'

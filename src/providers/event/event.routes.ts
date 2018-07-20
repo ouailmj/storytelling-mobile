@@ -11,5 +11,6 @@ export const EventRoutes = {
     apiIsTotalPayed: '/api/is-total-payed/',
     apiInviteFriends: '/api/event/invite-friends/',
     apiPriceEvent: '/api/event/price/',
-    apiListInvite:'/api/event/invite/'
+    apiListInvite:'/api/event/invite/',
+    apiListInviteEvent:'/api/event/invitations_event/'
 };

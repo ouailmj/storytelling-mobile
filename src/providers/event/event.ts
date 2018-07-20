@@ -320,7 +320,7 @@ export class EventProvider {
                 headers = headers.set('Content-Type', 'application/json; charset=utf-8');
                 headers = headers.set('Authorization', 'Bearer ' + tok);
                 let data={
-                    "emails":  emails
+                    "emails":  [...emails]
                 }
 
                 this.apiProvider.post(EventRoutes.apiInviteFriends+id, data,{headers: headers}).then(rep=>{
@@ -419,6 +419,28 @@ export class EventProvider {
 
       })
     }
+
+  getListInvitionEvent(idEvent): Promise<any>{
+
+    return new Promise((resolve, reject)=>{
+      this.storage.get('token').then(tok => {
+
+        let headers = new HttpHeaders();
+
+        headers = headers.set('Content-Type', 'application/json; charset=utf-8');
+        headers = headers.set('Authorization', 'Bearer ' + tok);
+
+        this.apiProvider.get(EventRoutes.apiListInviteEvent+idEvent, {headers: headers}).then(rep => {
+          resolve(rep["hydra:member"]);
+        }).catch(error => {
+          reject(error)
+        })
+      }).catch(error => {
+        reject(error)
+      })
+
+    })
+  }
 
 
 }

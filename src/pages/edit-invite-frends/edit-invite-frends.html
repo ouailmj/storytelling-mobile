@@ -14,10 +14,27 @@
 
 
 <ion-content padding>
+  <ion-card >
+      <ion-item>
+        <ion-input type="email" placeholder="email" [(ngModel)]="email"></ion-input>
+      </ion-item>
+      <button ion-button icon-only (click)="addEmail()">
+        add Email
+      </button>
+  </ion-card>
 
-  <ion-card  *ngFor="let email of this.emails" >
+  <ion-card  *ngFor="let item of this.data" >
     <ion-item>
-      {{email}}
+      <ion-row>
+        <ion-col col-11>
+        {{item.email}}
+        </ion-col>
+        <ion-col col-1>
+          <ion-icon *ngIf="item.etat === 'Att' " name="sync"></ion-icon>
+          <ion-icon *ngIf="item.etat === 'Canceled' " name="close"></ion-icon>
+          <ion-icon *ngIf="item.etat === 'Accepted' " name="checkmark"></ion-icon>
+        </ion-col>
+      </ion-row>
     </ion-item>
   </ion-card>
 
