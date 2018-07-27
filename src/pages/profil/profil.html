@@ -7,7 +7,7 @@
         </button>
         <p class="page-name">Edit profil</p>
         <button class="cancel-btn" ion-button icon-only>
-            <ion-icon name='ios-close'></ion-icon>
+            <ion-icon [name]="icon"></ion-icon>
           </button>
       </div>
       <div class="cover" align="center">
@@ -24,7 +24,7 @@
         </ion-label>
         <ion-input type="text" [(ngModel)]="user.fullName" formControlName="fullName"></ion-input>
       </ion-item>
-    
+
       <ion-item>
         <ion-label>
           <ion-icon name="contact"></ion-icon>
@@ -57,9 +57,8 @@
         <ion-label>
           <ion-icon name="key"></ion-icon>
         </ion-label>
-        <ion-input type="text" [(ngModel)]="user.password" formControlName="password"></ion-input>
+        <ion-input type="text" [(ngModel)]="user.password" formControlName="password" (ionChange)="changeText()"></ion-input>
       </ion-item>
     </ion-list>
   </form>
 </ion-content>
-    

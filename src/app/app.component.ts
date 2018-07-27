@@ -10,6 +10,9 @@ import { ChangepPasswordPage } from '../pages/changep-password/changep-password'
 import { Storage } from '@ionic/storage';
 import { EventsPage } from '../pages/events/events';
 import { NewEventPage} from '../pages/new-event/new-event';
+import {EventGalleryPage} from "../pages/event-gallery/event-gallery";
+import {PositionEventPage} from "../pages/position-event/position-event";
+import {InviteFriendsPage} from "../pages/invite-friends/invite-friends";
 import {EditInviteFrendsPage} from "../pages/edit-invite-frends/edit-invite-frends";
 
 @Component({
@@ -43,12 +46,9 @@ export class StoryTellingApp {
     });
 
     this.rightMenuItems = [
-      { icon: 'body', active: false , component: EditInviteFrendsPage },
-      { icon: 'home', active: true , component: ProfilPage},
-      { icon: 'alarm', active: false , component: ProfilPage},
-      { icon: 'analytics', active: false , component: ProfilPage},
-      { icon: 'archive', active: false , component: ProfilPage},
-      { icon: 'basket', active: false , component: ProfilPage},
+      { icon: 'share', active: false , component: EditInviteFrendsPage },
+      { icon: 'images', active: true , component: EventGalleryPage},
+      { icon: 'pin', active: false , component: PositionEventPage},
     ];
 
 

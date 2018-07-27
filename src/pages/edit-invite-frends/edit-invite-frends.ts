@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import {IonicPage, LoadingController, NavController, NavParams} from 'ionic-angular';
 import {EventProvider} from "../../providers/event/event";
 
 /**
@@ -16,21 +16,58 @@ import {EventProvider} from "../../providers/event/event";
 })
 export class EditInviteFrendsPage {
 
-  public emails: string [] =[];
+  public data: string [] =[];
   public email: string = '';
+  emails=[];
+  id_event:string ;
+  loading:any;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams,public event : EventProvider) {
+  constructor(public navCtrl: NavController, public navParams: NavParams,public event : EventProvider,public loadingCtrl: LoadingController) {
 
   }
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad EditInviteFrendsPage');
 
-    let id = this.navParams.get('id_event');
+    this.id_event= this.navParams.get('id_event');
 
-    this.event.getListInvite(id).then(data=>{
-      this.emails = data;
+    this.loadData();
+
+  }
+
+  loadData(){
+    this.event.getListInvitionEvent(this.id_event).then(data=>{
+      this.data = data;
+      this.emails= [];
+      this.data.forEach(function(val:any)  {
+        this.emails.push(val.email)
+      }.bind(this));
+      console.log(this.emails);
     });
+  }
+
+  addEmail(){
+
+    if(this.emails.indexOf(this.email) === -1 ){
+
+
+      this.showLoader()
+      this.event.addInviteFriends([this.email], this.id_event) .then(res=>{
+        this.loading.dismiss();
+
+        this.loadData();
+
+
+      }).catch(error=>{ this.loading.dismiss(); console.log(error)})
+
+    }
+  }
+
+  showLoader(){
+    this.loading = this.loadingCtrl.create({
+      content: 'Loding...'
+    });
+
+    this.loading.present();
   }
 
 
